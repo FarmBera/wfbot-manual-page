@@ -1,10 +1,11 @@
 import { COMMON } from "./common";
 
 // TODO: add english image files
-const IMG_PATH = "/imgen"
+const IMG_PATH = "/imgen";
 const IMG_EXT = ".png";
 
 export const uiTextsEn = {
+  serviceName: "Warframe Utils",
   // common UI
   docTitle: "User Manual",
   searchPlaceholder: "Search...",
@@ -18,8 +19,13 @@ export const uiTextsEn = {
   intro: {
     id: "intro",
     title: "1. Introduction",
-    welcomeTitle: `Welcome to the ${COMMON.name} Guide`,
-    welcomeDesc: `This document covers everything from installation to advanced features of **${COMMON.name}**.`,
+    welcomeTitle: <>Welcome to the {COMMON.nameEn} Guide</>,
+    welcomeDesc: (
+      <>
+        This document covers everything from installation to advanced features
+        of <strong>${COMMON.name}</strong>.
+      </>
+    ),
     note: `This document is based on version ${COMMON.version}.`,
   },
 

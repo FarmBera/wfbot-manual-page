@@ -18,12 +18,16 @@ import P from "../ui/P";
 import HR from "../ui/HR";
 import UL_LINK_GRID from "../ui/UL_LINK_GRID";
 import H2_4XL from "../ui/H2_4XL";
+import NOTE from "../ui/NOTE";
 
-export const getManualSections = (t) => {
+export const getManualSections = (t, isMobile) => {
+  // 모바일일 때 기본 너비 90%, 아니면 각 아이템의 설정 너비 또는 기본값
+  const getImageWidth = (customWidth) => {
+    if (isMobile) return "90%";
+    return customWidth || "70%"; // DocImage의 기본값에 위임하거나 명시
+  };
   return [
-    // ----------------------------------------------------------------
     // 1. 소개 (Intro)
-    // ----------------------------------------------------------------
     {
       id: t.intro.id,
       title: t.intro.title,
@@ -36,18 +40,16 @@ export const getManualSections = (t) => {
           <p className="text-gray-600 leading-relaxed whitespace-pre-line">
             {t.intro.welcomeDesc}
           </p>
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-4">
-            <p className="text-sm text-blue-700">
-              <strong>Note:</strong> {t.intro.note}
-            </p>
-          </div>
+          <NOTE
+            color="red"
+            icon="trianglealert"
+            title={t.intro.noteTitle}
+            text={t.intro.note}
+          />
         </div>
       ),
     },
-
-    // ----------------------------------------------------------------
     // 2. 주요 기능 (Features)
-    // ----------------------------------------------------------------
     {
       id: t.features.id,
       title: t.features.title,
@@ -79,15 +81,11 @@ export const getManualSections = (t) => {
         </div>
       ),
     },
-
-    // ----------------------------------------------------------------
     // 3. 명령어 (Manual/Commands)
-    // ----------------------------------------------------------------
     {
       id: t.manual.id,
       title: t.manual.title,
       icon: <Terminal size={18} />,
-      // 서브 섹션 자동 생성
       subSections: t.manual.list.map((cmd) => ({
         id: cmd.id,
         title: cmd.title,
@@ -103,19 +101,23 @@ export const getManualSections = (t) => {
             <div key={cmd.id} className="mt-12 first:mt-8">
               <H3 id={cmd.id} text={cmd.title} />
               <P text={cmd.desc} />
-
+              {cmd.head}
               {cmd.image && (
                 <DocImage
                   src={cmd.image}
-                  caption={`${cmd.title} Example`}
+                  caption={
+                    <>
+                      <strong className="font-extrabold">/{cmd.title}</strong>{" "}
+                      {t.picEx}
+                    </>
+                  }
                   alt={cmd.title}
-                  maxWidth={cmd.width}
+                  maxWidth={getImageWidth(cmd.width)}
                 />
               )}
-
-              {cmd.footerText && (
-                <div className="mt-2 text-sm text-gray-500">
-                  <p>{cmd.footerText}</p>
+              {cmd.foot && (
+                <div className="mt-2 text-lg text-gray-500">
+                  <p>{cmd.foot}</p>
                 </div>
               )}
               <HR />
@@ -124,10 +126,7 @@ export const getManualSections = (t) => {
         </div>
       ),
     },
-
-    // ----------------------------------------------------------------
     // 4. 파티 (Party)
-    // ----------------------------------------------------------------
     {
       id: t.party.id,
       title: t.party.title,
@@ -141,30 +140,27 @@ export const getManualSections = (t) => {
           <H2 text={t.party.mainTitle} />
           <UL_LINK_GRID content={t.party.list} />
 
-          {t.party.list.map((cmd) => (
-            <div key={cmd.id} className="mt-12 first:mt-8">
-              <H3 id={cmd.id} text={cmd.title} />
-              <P text={cmd.desc} />
-              {cmd.head}
-              {cmd.image && (
+          {t.party.list.map((item) => (
+            <div key={item.id} className="mt-12 first:mt-8">
+              <H3 id={item.id} text={item.title} />
+              <P text={item.desc} />
+              {item.head}
+              {item.image && (
                 <DocImage
-                  src={cmd.image}
-                  caption={`${cmd.title} 명령어 출력 예시`}
-                  maxWidth={cmd.width}
-                  alt={cmd.title}
+                  src={item.image}
+                  caption={`${item.title} 명령어 출력 예시`}
+                  maxWidth={getImageWidth(item.width)}
+                  alt={item.title}
                 />
               )}
-              {cmd.foot}
+              {item.foot}
               <HR />
             </div>
           ))}
         </div>
       ),
     },
-
-    // ----------------------------------------------------------------
     // 5. 거래 (Trade)
-    // ----------------------------------------------------------------
     {
       id: t.trade.id,
       title: t.trade.title,
@@ -186,8 +182,8 @@ export const getManualSections = (t) => {
                 <DocImage
                   src={item.image}
                   caption={item.title}
-                  maxWidth={item.width}
                   alt={item.title}
+                  maxWidth={getImageWidth(item.width)}
                 />
               )}
               {item.foot}
@@ -197,10 +193,7 @@ export const getManualSections = (t) => {
         </div>
       ),
     },
-
-    // ----------------------------------------------------------------
     // 6. 문제 해결 (FAQ)
-    // ----------------------------------------------------------------
     {
       id: t.troubleshooting.id,
       title: t.troubleshooting.title,
@@ -219,10 +212,7 @@ export const getManualSections = (t) => {
         </div>
       ),
     },
-
-    // ----------------------------------------------------------------
     // 7. 법적 고지 (Legal)
-    // ----------------------------------------------------------------
     {
       id: t.legal.id,
       title: t.legal.title,

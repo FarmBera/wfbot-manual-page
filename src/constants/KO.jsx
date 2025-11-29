@@ -1,6 +1,11 @@
 import A from "../ui/A";
 import P from "../ui/P";
+import NOTE from "../ui/NOTE";
+import TipTime from "../components/TipTime";
 import { COMMON } from "./common";
+import DocImage from "../components/DocImage";
+import H2 from "../ui/H2";
+// import H2_4XL from "../ui/H2_4XL";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".png";
@@ -40,15 +45,33 @@ export const uiTextsKo = {
   contactSupport: "고객지원팀에 문의하기",
   copyright: `© ${COMMON.year} ${COMMON.company}`,
 
+  picEx: "내용 예시",
+
+  // tiptime: {
+  //   title: "시간 확인 꿀팁",
+  //   text: "텍스트에 마우스를 가져다 놓으면 정확한 종료 날짜 & 시간이 표시됩니다!",
+  // },
+
   // 1. 소개 섹션
   intro: {
     id: "intro",
     title: "1. 소개",
-    welcomeTitle: `${COMMON.name} 가이드에 오신 것을 환영합니다`,
-    welcomeDesc: `이 문서는 **${COMMON.name}**의 설치부터 고급 기능 활용까지 모든 내용을 담고 있습니다. 왼쪽의 목차를 통해 원하는 정보로 빠르게 이동할 수 있습니다.`,
-    note: `이 문서는 최신 버전(${COMMON.version})을 기준으로 작성되었습니다.`,
+    welcomeTitle: (
+      <>
+        {COMMON.name}
+        <br />
+        가이드에 오신 것을 환영합니다!
+      </>
+    ),
+    welcomeDesc: (
+      <>
+        이 문서는 <strong>{COMMON.name}</strong>의 사용 방법을 알려줍니다.
+        왼쪽의 목차를 통해 원하는 정보로 빠르게 이동할 수 있습니다.
+      </>
+    ),
+    noteTitle: "주의!",
+    note: "이 문서는 현재 알파 버전으로 개발 중인 문서입니다. 부정확한 정보와 오탈자가 있을 수 있습니다.",
   },
-
   // 2. 주요 기능 섹션
   features: {
     id: "features",
@@ -56,25 +79,24 @@ export const uiTextsKo = {
     mainTitle: "핵심 기능 살펴보기",
     items: [
       {
-        title: "실시간 워프레임 컨텐츠 알림",
-        desc: "새로운 워프레임 컨텐츠가 올라온다면 실시간으로 알려줍니다.",
-        subDesc: "(현재 알림 설정은 별도의 관리자 권한이 필요합니다.)",
+        title: "디스코드에서 실시간 워프레임 컨텐츠 확인",
+        desc: "명령어를 이용하여 워프레임 내 컨텐츠를 확인할 수 있어요.",
+        subDesc: "(바로키티어 등장 상태, 출격, 침공, 얼럿 미션 등등)",
       },
       {
         title: "마켓 검색 기능",
-        desc: "워프레임 마켓에 직접 접속 하지 않고, 디스코드에서 간단하게 시세를 검색할 수 있습니다.",
+        desc: "워프레임 마켓에 직접 접속 하지 않고, 디스코드에서 간단하게 시세를 검색할 수 있어요.",
       },
       {
         title: "파티 모집 시스템",
-        desc: "간단한 명령어로 파티 모집을 편리하게 할 수 있습니다.",
+        desc: "간단한 명령어로 파티 모집을 편리하게 할 수 있어요.",
       },
       {
         title: "아이템 거래 시스템",
-        desc: "간단한 명령어로 편리하게 길드원 분들과 아이템 거래를 할 수 있어요.",
+        desc: "간단한 명령어로 거래 글을 편리하게 게시할 수 있어요.",
       },
     ],
   },
-
   // 3. 명령어 섹션
   manual: {
     id: "manual",
@@ -86,9 +108,14 @@ export const uiTextsKo = {
         title: "도움말",
         desc: "사용 가능한 명령어 및 관련 도움말을 확인할 수 있어요.",
         image: `${IMG_PATH}help1${IMG_EXT}`,
-        // width: "80%",
+        width: "80%",
         imagetmp:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Help+Command",
+        foot: (
+          <>
+            <P text="지금 보고 계시는 웹 페이지로 이동하는 링크를 보여줘요" />
+          </>
+        ),
       },
       {
         id: SUB.ANNOUNCEMENT,
@@ -112,9 +139,12 @@ export const uiTextsKo = {
         image: `${IMG_PATH}privacy-policy${IMG_EXT}`,
         imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Privacy",
         foot: (
-          <div>
-            <p>자세한 내용은 좌측 이용약관 섹션을 확인해주세요.</p>
-          </div>
+          <>
+            <p>
+              자세한 내용은 좌측 <strong>이용약관/법적고지</strong> 섹션을
+              확인해주세요.
+            </p>
+          </>
         ),
       },
       {
@@ -123,6 +153,17 @@ export const uiTextsKo = {
         desc: "현재 활성화된 얼럿 미션을 확인할 수 있어요.",
         image: `${IMG_PATH}alerts${IMG_EXT}`,
         imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Alerts",
+        head: (
+          <>
+            <P text="얻을 수 있는 보상 목록을 우선으로 표시합니다. 이후 아래의 정보를 표시해줍니다." />
+            <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10 text-lg">
+              <li>미션 종류 - 노드 위치</li>
+              <li>미션 정보 (적 레벨, 웨이브 수 등)</li>
+              <li>종료까지 남은 시간</li>
+            </ul>
+            <TipTime sampleTime="4일 후" />
+          </>
+        ),
       },
       {
         id: SUB.NEWS,
@@ -130,6 +171,11 @@ export const uiTextsKo = {
         desc: "최신 워프레임 뉴스를 확인할 수 있어요.",
         image: `${IMG_PATH}news${IMG_EXT}`,
         imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=News",
+        head: (
+          <>
+            <P text="파란색 글씨를 클릭하면 해당 공지로 바로 이동할 수 있습니다." />
+          </>
+        ),
       },
       {
         id: SUB.SORTIE,
@@ -137,20 +183,49 @@ export const uiTextsKo = {
         desc: "오늘의 출격 미션을 확인할 수 있어요.",
         image: `${IMG_PATH}sortie${IMG_EXT}`,
         imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Sortie",
+        head: (
+          <>
+            <P text="출격 미션 종료, 어느 노드에서 이루어지는지, 변수는 무엇인지 간단하게 확인할 수 있어요." />
+          </>
+        ),
       },
       {
         id: SUB.ARCHONHUNT,
         title: "집정관사냥",
-        desc: "이번주 집정관 미션 목록 및 샤드를 확인할 수 있어요.",
+        desc: "이번주 집정관 미션 목록과, 얻을 수 있는 샤드를 확인할 수 있어요",
         image: `${IMG_PATH}archonhunt${IMG_EXT}`,
         imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Archon+Hunt",
+        head: (
+          <>
+            <NOTE
+              color="green"
+              title="꿀팁"
+              text="얻을 수 있는 샤드 종류에 따라 왼쪽의 띠 색깔이 바뀌어서 어떤 샤드를 얻을 수 있는지 직관적으로 확인할 수 있어요!"
+            />
+          </>
+        ),
       },
       {
         id: SUB.VOIDTRADERS,
         title: "바로키티어",
-        desc: "현재 바로 키 티어 상태를 알 수 있어요. (등장 여부, 언제, 어디서 등장할지)",
+        desc: "현재 바로 키 티어 상태를 알 수 있어요.",
         image: `${IMG_PATH}voidtraders${IMG_EXT}`,
         imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Void+Trader",
+        head: (
+          <>
+            <P text="등장 여부, 언제/어디서 나타날지 알려줍니다." />
+          </>
+        ),
+        foot: (
+          <>
+            <P text="바로 키 티어가 등장했다면 아래와 같이 나타나요" />
+            <DocImage
+              // src=""
+              alt="바로키티어 등장했을 때 이미지"
+              caption="바로 키 티어가 등장했을 때 표시되는 내용"
+            />
+          </>
+        ),
       },
       {
         id: SUB.VOIDTRADERSITEM,
@@ -274,7 +349,6 @@ export const uiTextsKo = {
       },
     ],
   },
-
   // 4. 파티 섹션
   party: {
     id: "party",
@@ -329,7 +403,6 @@ export const uiTextsKo = {
       { id: "party-exit", title: "모집 종료하기" },
     ],
   },
-
   // 5. 거래 섹션
   trade: {
     id: "trade",
@@ -368,9 +441,8 @@ export const uiTextsKo = {
                 <li>
                   단, 워프레임 마켓 시세를 잘 모르는 특정 분들을 겨냥하여{" "}
                   <span className="text-red-500 font-semibold">
-                    시세값보다{" "}
-                    <span className="font-extrabold">매우</span> 높은 가격으로
-                    구매하도록 매물을 올리는 것은 금지
+                    시세값보다 <span className="font-extrabold">매우</span> 높은
+                    가격으로 구매하도록 매물을 올리는 것은 금지
                   </span>
                   합니다.
                 </li>
@@ -408,8 +480,8 @@ export const uiTextsKo = {
                 </li>
                 <li>
                   현금 거래 및 시도는 워프레임 소프트웨어 사용권 계약(EULA)에
-                  의거하여 제재 대상이 됩니다. <br/>이에 적발 시 DE 측에서 계정을
-                  영구 정지(밴) 시킬 수 있습니다.
+                  의거하여 제재 대상이 됩니다. <br />
+                  이에 적발 시 DE 측에서 계정을 영구 정지(밴) 시킬 수 있습니다.
                 </li>
               </ul>
             </ul>
@@ -430,7 +502,6 @@ export const uiTextsKo = {
       { id: "trade-exit", title: "거래 종료하기" },
     ],
   },
-
   // 6. FAQ 섹션
   troubleshooting: {
     id: "troubleshooting",
@@ -451,7 +522,6 @@ export const uiTextsKo = {
       },
     ],
   },
-
   // 7. 법적 고지
   legal: {
     id: "eula",
@@ -461,7 +531,86 @@ export const uiTextsKo = {
     termsDesc2:
       "사용자는 본 소프트웨어를 사용함으로써 EULA에 동의하는 것으로 간주됩니다.",
     privacyTitle: "개인정보 처리방침",
-    privacyDesc:
-      "더 나은 서비스 제공을 위해 다음과 같은 정보가 수집될 수 있습니다.",
+    privacyDesc: (
+      <>
+        {/* <H2_4XL text="개인정보 처리방침" /> */}
+        <P text="본 디스코드 봇을 사용하는 과정에서 더 나은 서비스 제공을 위해 다음과 같은 정보가 수집될 수 있습니다." />
+        <P text="수집되는 내용에 동의하지 않으신다면 해당 봇은 사용할 수 없습니다." />
+
+        <H2 text="수집하는 내용" />
+        <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10">
+          <li>
+            <strong>사용자 정보</strong>: 디스코드 사용자 ID 및 닉네임
+          </li>
+          <li>
+            <strong>서버 정보</strong>: 명령어가 사용된 서버의 이름, 채널 이름,
+            채널 ID
+          </li>
+          <li>
+            <strong>사용 기록</strong>: 사용한 명령어 및 명령어에 전달한 입력
+            내용 (제목 설명 등)
+          </li>
+        </ul>
+        <H2 text="개인정보의 제3자 제공" />
+        <p>
+          수집된 개인정보는 일반적인 경우에{" "}
+          <strong>제3자에게 제공되지 않습니다.</strong>
+        </p>
+        <br />
+        <P text="단, 다음의 경우에는 예외로 합니다." />
+        <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10">
+          <li>이용자가 사전에 제3자 제공에 동의한 경우</li>
+          <li>
+            법원, 검찰, 경찰 등 수사기관이 수사 목적으로 영장 등 법령에 정해진
+            절차와 방법에 따라 정보 제공을 요구하는 경우
+          </li>
+        </ul>
+        <H2 text="정보의 수집 목적 및 이용" />
+        <ol className="list-disc pl-5 space-y-2 text-gray-600 mb-10">
+          <li>
+            <strong>오류 해결 및 지원</strong>: 사용자의 디스코드 ID, 서버 이름,
+            채널 정보는{" "}
+            <strong>
+              서비스 이용 중 발생하는 오류를 추적하고 해결하기 위한 목적
+            </strong>
+            으로 사용됩니다.
+          </li>
+          <li>
+            <strong>서비스 개선</strong>: 사용된 명령어 및 관련 내용은 통계
+            분석을 통해 <strong>사용자가 선호하는 기능을 파악</strong>하고,{" "}
+            <strong>향후 새로운 기능을 개발</strong>하거나{" "}
+            <strong>기존 기능을 개선</strong> 하는데 참고 자료로 활용됩니다.
+          </li>
+        </ol>
+        {/* 정보의 저장 방법 */}
+        <H2 text="정보의 저장 방법" />
+        <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10">
+          <li>
+            개인정보는 높은 신뢰성의 미국 연방 표준을 준수하는{" "}
+            <strong>FileVault</strong>로 암호화된 저장 장치에 안전하게
+            저장됩니다.
+          </li>
+          <li>
+            암호화 기술에 대한 자세한 내용은{" "}
+            <A
+              text="FileVault 애플 공식 문서"
+              href="https://support.apple.com/ko-kr/guide/deployment/dep82064ec40/web"
+            />
+            를 참고하여주세요.
+          </li>
+        </ul>
+        <H2 text="정보의 보유 기간" />
+        <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10">
+          <li>
+            수집된 정보는 원활한 서비스 운영 및 분석을 위해 수집일로부터 최대{" "}
+            <strong>5년</strong>간 보관될 수 있으며, 해당 기간이 지나면 안전하게
+            파기됩니다.
+          </li>
+          <li>
+            단, 봇 서비스 종료 확정 시, 수집된 모든 정보는 즉시 파기합니다.
+          </li>
+        </ul>
+      </>
+    ),
   },
 };

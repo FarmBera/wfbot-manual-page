@@ -15,6 +15,8 @@ import { APP_INFO, UI_TEXTS } from "./constants/constants";
 import { getManualSections } from "./data/manualData";
 import { COMMON } from "./constants/common";
 
+const MOBILE_UI_SIZE = 768; // Tailwind CSS mobile UI size breakpoint
+
 const UserManual = () => {
   // default language
   const [lang, setLang] = useState("ko");
@@ -26,32 +28,23 @@ const UserManual = () => {
   const [expandedIds, setExpandedIds] = useState(["intro"]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // mobile UI detection
+  const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_UI_SIZE);
+
   const contentRef = useRef(null);
-  // ref for access 'sidebar navigation DOM'
-  const sidebarRef = useRef(null);
+  const sidebarRef = useRef(null); // ref for access 'sidebar navigation DOM'
 
   // track last activated parent sections (for sidebar auto expand)
   // const lastActiveParentRef = useRef(null);
 
   // create section structure based on current lang object
   const uiText = UI_TEXTS[lang];
-  const currentSections = getManualSections(uiText);
+  const currentSections = getManualSections(uiText, isMobile);
 
   const languages = [
     { code: "ko", label: "한국어" },
     { code: "en", label: "English" },
   ];
-
-  // close lang dropdown menu onclick other area
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isLangMenuOpen && !event.target.closest(".lang-dropdown")) {
-        setIsLangMenuOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isLangMenuOpen]);
 
   // section movement handler
   const scrollToSection = (id) => {
@@ -79,9 +72,14 @@ const UserManual = () => {
     scrollToSection(section.id);
 
     // automatic sidebar expand (toggle)
-    // if (section.subSections && section.subSections.length > 0) {
+    // if (section.subSections && section.subSections.length > 0)
     //   toggleExpand(section.id);
-    // }
+  };
+
+  // on select language
+  const handleLangSelect = (code) => {
+    setLang(code);
+    setIsLangMenuOpen(false);
   };
 
   // detect scroll & auto sidebar expand
@@ -161,11 +159,24 @@ const UserManual = () => {
     }
   }, [activeSection]);
 
-  // on select language
-  const handleLangSelect = (code) => {
-    setLang(code);
-    setIsLangMenuOpen(false);
-  };
+  // close lang dropdown menu onclick other area
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isLangMenuOpen && !event.target.closest(".lang-dropdown")) {
+        setIsLangMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isLangMenuOpen]);
+
+  // resize event listener (detect screen size changes)
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < MOBILE_UI_SIZE);
+    window.addEventListener("resize", handleResize);
+    // cleanup function
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="flex h-screen bg-gray-50 text-gray-800 font-sans overflow-hidden">
@@ -173,7 +184,9 @@ const UserManual = () => {
       <div className="md:hidden fixed top-0 left-0 w-full h-14 bg-white border-b z-20 flex items-center justify-between px-4 shadow-sm">
         <div className="flex items-center space-x-2 font-bold text-indigo-600">
           <Book size={20} />
-          <span>User Guidebook</span>
+          <span>
+            {COMMON.name} {uiText.docTitle}
+          </span>
         </div>
         <div className="flex items-center space-x-2">
           <div className="relative lang-dropdown">
@@ -417,6 +430,7 @@ const UserManual = () => {
       {/* main content (manual page) */}
       {/* {isMobileMenuOpen && ( */}
       {lang === languages[1].code ? (
+        // temporary: english manual page
         <main
           ref={contentRef}
           className="flex-1 w-full md:w-3/4 h-full overflow-y-auto bg-gray-50 scroll-smooth relative"
@@ -438,8 +452,9 @@ const UserManual = () => {
                     Translation in Progress
                   </h3>
                   <p className="text-gray-600 leading-relaxed mb-4">
-                    The <strong>English Version</strong> of the {COMMON.name}{" "}
-                    manual is currently under development.
+                    The English Version of the{" "}
+                    <strong>{uiText.serviceName}</strong> manual is currently
+                    under development.
                     <br />
                     We are working hard to provide high-quality documentation
                     for our global users.
@@ -460,6 +475,7 @@ const UserManual = () => {
           </div>
         </main>
       ) : (
+        // korean web page
         <main
           ref={contentRef}
           className="flex-1 w-full md:w-3/4 h-full overflow-y-auto bg-gray-50 scroll-smooth relative"
@@ -492,7 +508,9 @@ const UserManual = () => {
                       }
                       className="group flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
                     >
-                      {uiText.next}: {currentSections[index + 1].title}
+                      {uiText.next}:{" "}
+                      {currentSections[index + 1].title.split(". ")[1] ||
+                        currentSections[index + 1].title}
                       <ChevronRight
                         size={16}
                         className="ml-1 group-hover:translate-x-1 transition-transform"
@@ -506,7 +524,7 @@ const UserManual = () => {
             <div className="text-center py-10 text-gray-400 text-sm">
               {uiText.footerMsg}{" "}
               <a
-                href="#"
+                href="/"
                 className="text-indigo-600 underline hover:text-indigo-800 transition-colors"
               >
                 {uiText.contactSupport}
