@@ -13,7 +13,7 @@ const DocImage = ({ src, caption, alt, maxWidth = "70%" }) => {
     <figure className="my-8 flex flex-col items-center">
       {/* <figure className="my-8 flex flex-col"> */}
       <div
-        className="overflow-hidden rounded-xl border border-gray-200 shadow-md bg-gray-50"
+        className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-600 shadow-md bg-gray-50 transition-colors duration-1000"
         style={{
           maxWidth: maxWidth,
           width: "100%",
@@ -27,7 +27,7 @@ const DocImage = ({ src, caption, alt, maxWidth = "70%" }) => {
         />
       </div>
       {caption && (
-        <figcaption className="mt-3 text-sm text-gray-500 font-medium text-center">
+        <figcaption className="mt-3 text-sm text-gray-500 dark:text-gray-400 font-medium text-center transition-colors duration-1000">
           {/* <figcaption className="mt-3 text-sm text-gray-500 font-medium"> */}
           {caption}
         </figcaption>
