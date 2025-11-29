@@ -8,7 +8,7 @@ import H2 from "../ui/H2";
 // import H2_4XL from "../ui/H2_4XL";
 
 const IMG_PATH = "/imgko/";
-const IMG_EXT = ".png";
+const IMG_EXT = ".webp";
 
 const SUB = {
   HELP: "cmd-help",
@@ -527,9 +527,18 @@ export const uiTextsKo = {
     id: "eula",
     title: "이용 약관 / 법적 고지",
     termsTitle: "이용 약관",
-    termsDesc1: `본 소프트웨어의 저작권은 **${COMMON.company}**에게 있습니다.`,
-    termsDesc2:
-      "사용자는 본 소프트웨어를 사용함으로써 EULA에 동의하는 것으로 간주됩니다.",
+    termsDesc: (
+      <>
+        <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+          본 소프트웨어의 저작권은 <strong>{COMMON.company}</strong>에게
+          있습니다.
+        </p>
+        <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+          사용자는 본 소프트웨어를 사용함으로써 EULA에 동의하는 것으로
+          간주됩니다.
+        </p>
+      </>
+    ),
     privacyTitle: "개인정보 처리방침",
     privacyDesc: (
       <>
@@ -552,11 +561,10 @@ export const uiTextsKo = {
           </li>
         </ul>
         <H2 text="개인정보의 제3자 제공" />
-        <p>
+        <p className="text-gray-600 leading-relaxed mb-6 text-lg">
           수집된 개인정보는 일반적인 경우에{" "}
           <strong>제3자에게 제공되지 않습니다.</strong>
         </p>
-        <br />
         <P text="단, 다음의 경우에는 예외로 합니다." />
         <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10">
           <li>이용자가 사전에 제3자 제공에 동의한 경우</li>

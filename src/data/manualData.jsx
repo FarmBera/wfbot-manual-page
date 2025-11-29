@@ -117,7 +117,7 @@ export const getManualSections = (t, isMobile) => {
               )}
               {cmd.foot && (
                 <div className="mt-2 text-lg text-gray-500">
-                  <p>{cmd.foot}</p>
+                  {cmd.foot}
                 </div>
               )}
               <HR />
@@ -220,11 +220,13 @@ export const getManualSections = (t, isMobile) => {
       content: (
         <div className="space-y-4 text-sm text-gray-500">
           <H2_4XL text={t.legal.termsTitle} />
-          <P text={t.legal.termsDesc1} />
-          <P text={t.legal.termsDesc2} />
+          {t.legal.termsDesc}
+          {/* <P text={t.legal.termsDesc1} />
+          <P text={t.legal.termsDesc2} /> */}
 
           <H2_4XL text={t.legal.privacyTitle} />
-          <P text={t.legal.privacyDesc} />
+          {/* <P text={} /> */}
+          {t.legal.privacyDesc}
         </div>
       ),
     },
