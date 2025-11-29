@@ -34,10 +34,10 @@ export const getManualSections = (t, isMobile) => {
       icon: <Info size={18} />,
       content: (
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 dark:text-gray-200 mb-4">
             {t.intro.welcomeTitle}
           </h1>
-          <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">
             {t.intro.welcomeDesc}
           </p>
           <NOTE
@@ -61,12 +61,12 @@ export const getManualSections = (t, isMobile) => {
             {t.features.items.map((item, idx) => (
               <div
                 key={idx}
-                className="border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                className="border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow dark:border-gray-500"
               >
-                <h4 className="font-bold text-lg mb-2 text-indigo-600">
+                <h4 className="font-bold text-lg mb-2 text-indigo-600 dark:text-violet-300">
                   {item.title}
                 </h4>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-200">
                   {item.desc}
                   {item.subDesc && (
                     <>
@@ -204,8 +204,8 @@ export const getManualSections = (t, isMobile) => {
           <div className="space-y-4">
             {t.troubleshooting.list.map((qna, idx) => (
               <div key={idx} className="border-b pb-4">
-                <h4 className="font-medium text-gray-900 mb-2">Q. {qna.q}</h4>
-                <p className="text-gray-600">A. {qna.a}</p>
+                <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-2">Q. {qna.q}</h4>
+                <p className="text-gray-600 dark:text-gray-400">A. {qna.a}</p>
               </div>
             ))}
           </div>
@@ -218,7 +218,7 @@ export const getManualSections = (t, isMobile) => {
       title: t.legal.title,
       icon: <FileText size={18} />,
       content: (
-        <div className="space-y-4 text-sm text-gray-500">
+        <div className="space-y-4 text-sm text-gray-500 dark:text-gray-300">
           <H2_4XL text={t.legal.termsTitle} />
           {t.legal.termsDesc}
           {/* <P text={t.legal.termsDesc1} />

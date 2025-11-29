@@ -8,6 +8,8 @@ import {
   Globe,
   ChevronDown,
   Check,
+  Moon,
+  Sun,
 } from "lucide-react";
 
 // import { manualData } from "./data/manualData";
@@ -30,6 +32,18 @@ const UserManual = () => {
 
   // mobile UI detection
   const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_UI_SIZE);
+
+  // dark mode status (detect system setting)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    if (typeof window !== "undefined") {
+      return (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      );
+    }
+    return false;
+  });
 
   const contentRef = useRef(null);
   const sidebarRef = useRef(null); // ref for access 'sidebar navigation DOM'
@@ -80,6 +94,14 @@ const UserManual = () => {
   const handleLangSelect = (code) => {
     setLang(code);
     setIsLangMenuOpen(false);
+  };
+
+  // toggle dark mode
+  const toggleDarkMode = () => {
+    // console.log("clicked toggleDarkMode");
+    // console.log(`isDarkMode > ${isDarkMode}`);
+    setIsDarkMode(!isDarkMode);
+    // console.log(`isDarkMode > ${isDarkMode}`);
   };
 
   // detect scroll & auto sidebar expand
@@ -178,21 +200,35 @@ const UserManual = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // apply dark mode
+  useEffect(() => {
+    if (isDarkMode) document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
+  }, [isDarkMode]);
+
   return (
-    <div className="flex h-screen bg-gray-50 text-gray-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-hidden transition-colors duration-1000">
       {/* mobile header */}
-      <div className="md:hidden fixed top-0 left-0 w-full h-14 bg-white border-b z-20 flex items-center justify-between px-4 shadow-sm">
-        <div className="flex items-center space-x-2 font-bold text-indigo-600">
+      <div className="md:hidden fixed top-0 left-0 w-full h-14 bg-white dark:bg-gray-800 border-b dark:border-gray-700 z-20 flex items-center justify-between px-4 shadow-sm transition-colors duration-1000">
+        <div className="flex items-center space-x-2 font-bold text-indigo-600 dark:text-indigo-400">
           <Book size={20} />
           <span>
             {COMMON.name} {uiText.docTitle}
           </span>
         </div>
         <div className="flex items-center space-x-2">
+          {/* mobile dark mode toggle btn */}
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-1000"
+          >
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+
           <div className="relative lang-dropdown">
             <button
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-              className="flex items-center space-x-1 p-2 text-gray-500 hover:text-indigo-600 transition-colors"
+              className="flex items-center space-x-1 p-2 text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors"
             >
               <Globe size={20} />
               <ChevronDown
@@ -204,17 +240,17 @@ const UserManual = () => {
             </button>
 
             {isLangMenuOpen && (
-              <div className="absolute right-0 top-full mt-2 w-32 bg-white rounded-lg shadow-xl border border-gray-100 py-1 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute right-0 top-full mt-2 w-32 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-100 dark:border-gray-700 py-1 z-50 animate-in fade-in zoom-in-95 transition-colors duration-1000">
                 {languages.map((l) => (
                   <button
                     key={l.code}
                     onClick={() => handleLangSelect(l.code)}
                     className={`
-                      w-full text-left px-4 py-2.5 text-sm flex items-center justify-between hover:bg-indigo-50 transition-colors
+                      w-full text-left px-4 py-2.5 text-sm flex items-center justify-between hover:bg-indigo-50 dark:hover:bg-gray-700 transition-colors duration-1000
                       ${
                         lang === l.code
-                          ? "text-indigo-600 font-medium bg-indigo-50/50"
-                          : "text-gray-600"
+                          ? "text-indigo-600 dark:text-indigo-400 font-medium bg-indigo-50/50 dark:bg-indigo-900/30 transition-colors duration-1000"
+                          : "text-gray-600 dark:text-gray-300 transition-colors duration-1000"
                       }
                     `}
                   >
@@ -228,7 +264,7 @@ const UserManual = () => {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-gray-600"
+            className="p-2 text-gray-600 dark:text-gray-300"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -239,7 +275,7 @@ const UserManual = () => {
       <aside
         className={`
           fixed md:relative z-10 
-          w-64 md:w-1/4 h-full bg-white border-r border-gray-200 
+          w-64 md:w-1/4 h-full bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700
           flex flex-col transition-transform duration-300 ease-in-out
           ${
             isMobileMenuOpen
@@ -250,57 +286,71 @@ const UserManual = () => {
         `}
       >
         {/* desktop header */}
-        <div className="hidden md:flex items-center justify-between p-6 border-b border-gray-100">
+        <div className="hidden md:flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700 transition-colors duration-1000">
           <div className="flex items-center space-x-3">
-            <div className="bg-indigo-100 p-2 rounded-lg text-indigo-600">
+            <div className="bg-indigo-100 dark:bg-indigo-900/50 p-2 rounded-lg text-indigo-600 dark:text-indigo-400 transition-colors duration-1000">
               <Book size={24} />
             </div>
             <div>
-              <h1 className="font-bold text-lg text-gray-900">
+              <h1 className="font-bold text-lg text-gray-900 dark:text-gray-100 transition-colors duration-1000">
                 {uiText.docTitle}
               </h1>
-              <p className="text-xs text-gray-500">{APP_INFO.version}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-1000">
+                {APP_INFO.version}
+              </p>
             </div>
           </div>
 
-          <div className="relative lang-dropdown">
+          <div className="flex items-center space-x-2">
             <button
-              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-              className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-600 transition-all border border-transparent hover:border-gray-200"
+              onClick={toggleDarkMode}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-1000"
+              title={
+                isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
+              }
             >
-              <Globe size={18} />
-              <span className="text-sm font-medium">
-                {languages.find((l) => l.code === lang).label}
-              </span>
-              <ChevronDown
-                size={14}
-                className={`text-gray-400 transition-transform duration-200 ${
-                  isLangMenuOpen ? "rotate-180" : ""
-                }`}
-              />
+              {isDarkMode ? <Moon size={18} /> : <Sun size={18} />}
             </button>
 
-            {isLangMenuOpen && (
-              <div className="absolute right-0 top-full mt-2 w-36 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100">
-                {languages.map((l) => (
-                  <button
-                    key={l.code}
-                    onClick={() => handleLangSelect(l.code)}
-                    className={`
-                      w-full text-left px-4 py-2 text-sm flex items-center justify-between hover:bg-gray-50 transition-colors
+            <div className="relative lang-dropdown">
+              <button
+                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
+              >
+                <Globe size={18} />
+                <span className="text-sm font-medium">
+                  {languages.find((l) => l.code === lang).label}
+                </span>
+                <ChevronDown
+                  size={14}
+                  className={`text-gray-400 transition-transform duration-200 ${
+                    isLangMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {isLangMenuOpen && (
+                <div className="absolute right-0 top-full mt-2 w-36 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-1.5 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100">
+                  {languages.map((l) => (
+                    <button
+                      key={l.code}
+                      onClick={() => handleLangSelect(l.code)}
+                      className={`
+                      w-full text-left px-4 py-2 text-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors
                       ${
                         lang === l.code
-                          ? "text-indigo-600 font-bold bg-indigo-50/30"
-                          : "text-gray-600"
+                          ? "text-indigo-600 dark:text-indigo-400 font-bold bg-indigo-50/30 dark:bg-indigo-900/30"
+                          : "text-gray-600 dark:text-gray-300"
                       }
                     `}
-                  >
-                    {l.label}
-                    {lang === l.code && <Check size={16} />}
-                  </button>
-                ))}
-              </div>
-            )}
+                    >
+                      {l.label}
+                      {lang === l.code && <Check size={16} />}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -308,21 +358,21 @@ const UserManual = () => {
         <div className="p-4 pb-0">
           <div className="relative">
             <Search
-              className="absolute left-3 top-2.5 text-gray-400"
+              className="absolute left-3 top-2.5 text-gray-400 dark:text-gray-500"
               size={16}
             />
             <input
               type="text"
               disabled={true}
               placeholder={uiText.searchPlaceholder}
-              className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-shadow"
+              className="w-full pl-9 pr-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md text-sm text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-shadow transition-colors duration-1000"
             />
           </div>
         </div>
 
         {/* navigation menu */}
         <nav ref={sidebarRef} className="flex-1 overflow-y-auto p-4 space-y-1">
-          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 ml-2 mt-2">
+          <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 ml-2 mt-2 transition-colors duration-1000">
             {uiText.contents}
           </div>
           {currentSections.map((section) => {
@@ -338,11 +388,11 @@ const UserManual = () => {
                 <div
                   className={`
                     w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all cursor-pointer
-                    sticky top-[-16px] z-10 
+                    sticky top-[-16px] z-10
                     ${
                       isActive
-                        ? "bg-indigo-50 shadow-sm"
-                        : "bg-white hover:bg-gray-100"
+                        ? "bg-indigo-50 dark:bg-indigo-900/30 shadow-sm"
+                        : "bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
                     }
                   `}
                   onClick={(e) => handleItemClick(e, section)}
@@ -352,12 +402,18 @@ const UserManual = () => {
                     data-section-id={section.id}
                     className={`
                       flex-1 flex items-center space-x-3 text-sm font-medium text-left bg-transparent
-                      ${isActive ? "text-indigo-700" : "text-gray-600"}
+                      ${
+                        isActive
+                          ? "text-indigo-700 dark:text-indigo-400"
+                          : "text-gray-600 dark:text-gray-300"
+                      }
                     `}
                   >
                     <span
                       className={`transition-colors ${
-                        isActive ? "text-indigo-600" : "text-gray-400"
+                        isActive
+                          ? "text-indigo-600 dark:text-indigo-400"
+                          : "text-gray-400 dark:text-gray-500"
                       }`}
                     >
                       {section.icon}
@@ -377,8 +433,8 @@ const UserManual = () => {
                         p-1 rounded-md transition-colors ml-1
                         ${
                           isActive
-                            ? "text-indigo-500 hover:bg-indigo-100"
-                            : "text-gray-400 hover:bg-gray-200 hover:text-gray-600"
+                            ? "text-indigo-500 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/50"
+                            : "text-gray-400 dark:text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-600 hover:text-gray-600 dark:hover:text-gray-300"
                         }
                       `}
                     >
@@ -394,7 +450,7 @@ const UserManual = () => {
 
                 {/* render 2nd category */}
                 {hasSubSections && isExpanded && (
-                  <div className="mt-1 ml-4 pl-4 border-l-2 border-indigo-100 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                  <div className="mt-1 ml-4 pl-4 border-l-2 border-indigo-100 dark:border-indigo-900/50 space-y-1 animate-in slide-in-from-top-2 duration-300">
                     {section.subSections.map((sub) => (
                       <button
                         key={sub.id}
@@ -407,8 +463,8 @@ const UserManual = () => {
                           w-full text-left px-3 py-2 text-sm rounded-md transition-colors truncate
                           ${
                             activeSection === sub.id
-                              ? "text-indigo-600 font-semibold bg-indigo-50/50"
-                              : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+                              ? "text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50/50 dark:bg-indigo-900/30"
+                              : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
                           }
                         `}
                       >
@@ -422,7 +478,7 @@ const UserManual = () => {
           })}
         </nav>
 
-        <div className="p-4 border-t border-gray-200 text-xs text-center text-gray-400">
+        <div className="p-4 border-t border-gray-200 dark:border-gray-700 text-xs text-center text-gray-400 dark:text-gray-500 transition-colors duration-1000">
           {uiText.copyright}
         </div>
       </aside>
@@ -433,7 +489,7 @@ const UserManual = () => {
         // temporary: english manual page
         <main
           ref={contentRef}
-          className="flex-1 w-full md:w-3/4 h-full overflow-y-auto bg-gray-50 scroll-smooth relative"
+          className="flex-1 w-full md:w-3/4 h-full overflow-y-auto bg-gray-50 dark:bg-gray-900 scroll-smooth relative"
         >
           <div className="max-w-4xl mx-auto px-6 py-10 md:py-16 mt-10 md:mt-0">
             <section className="mb-16 scroll-mt-20 bg-white p-8 rounded-xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
@@ -478,35 +534,35 @@ const UserManual = () => {
         // korean web page
         <main
           ref={contentRef}
-          className="flex-1 w-full md:w-3/4 h-full overflow-y-auto bg-gray-50 scroll-smooth relative"
+          className="flex-1 w-full md:w-3/4 h-full overflow-y-auto bg-gray-50 dark:bg-neutral-900 scroll-smooth relative transition-colors duration-1000"
         >
           <div className="max-w-4xl mx-auto px-6 py-10 md:py-16 mt-10 md:mt-0">
             {currentSections.map((section, index) => (
               <section
                 key={section.id}
                 id={section.id}
-                className="mb-16 scroll-mt-20 bg-white p-8 rounded-xl shadow-sm border border-gray-100 transition-all hover:shadow-md"
+                className="mb-16 scroll-mt-20 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transition-all hover:shadow-md transition-colors duration-1000"
               >
-                <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-gray-100">
-                  <div className="p-2 bg-indigo-50 rounded-lg text-indigo-600">
+                <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-gray-100 dark:border-gray-700 transition-colors duration-1000">
+                  <div className="p-2 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg text-indigo-600 dark:text-indigo-400 transition-colors duration-1000">
                     {section.icon}
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-1000">
                     {section.title}
                   </h2>
                 </div>
 
-                <div className="prose prose-indigo max-w-none">
+                <div className="prose prose-indigo dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 transition-colors duration-1000">
                   {section.content}
                 </div>
 
                 {index < currentSections.length - 1 && (
-                  <div className="mt-10 pt-6 border-t border-dashed border-gray-200 flex justify-end">
+                  <div className="mt-10 pt-6 border-t border-dashed border-gray-200 dark:border-gray-700 flex justify-end transition-colors duration-1000">
                     <button
                       onClick={() =>
                         scrollToSection(currentSections[index + 1].id)
                       }
-                      className="group flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+                      className="group flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-1000"
                     >
                       {uiText.next}:{" "}
                       {currentSections[index + 1].title.split(". ")[1] ||
@@ -521,11 +577,11 @@ const UserManual = () => {
               </section>
             ))}
 
-            <div className="text-center py-10 text-gray-400 text-sm">
+            <div className="text-center py-10 text-gray-400 dark:text-gray-500 text-sm transition-colors duration-1000">
               {uiText.footerMsg}{" "}
               <a
                 href="/"
-                className="text-indigo-600 underline hover:text-indigo-800 transition-colors"
+                className="text-indigo-600 dark:text-indigo-400 underline hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors transition-colors duration-1000"
               >
                 {uiText.contactSupport}
               </a>

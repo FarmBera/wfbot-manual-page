@@ -65,7 +65,7 @@ export const uiTextsKo = {
     ),
     welcomeDesc: (
       <>
-        이 문서는 <strong>{COMMON.name}</strong>의 사용 방법을 알려줍니다.
+        {/* 이 문서는 <strong>{COMMON.name}</strong>의 사용 방법을 알려줍니다. */}
         왼쪽의 목차를 통해 원하는 정보로 빠르게 이동할 수 있습니다.
       </>
     ),
@@ -199,6 +199,7 @@ export const uiTextsKo = {
           <>
             <NOTE
               color="green"
+              icon="lightbulb"
               title="꿀팁"
               text="얻을 수 있는 샤드 종류에 따라 왼쪽의 띠 색깔이 바뀌어서 어떤 샤드를 얻을 수 있는지 직관적으로 확인할 수 있어요!"
             />
@@ -274,8 +275,8 @@ export const uiTextsKo = {
         imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Invasions",
         foot: (
           <div>
-            <p>보여지는 내용이 많아, 이후 내용은 생략되었습니다.</p>
-            <p>실제로는 모든 침공 노드가 표시됩니다.</p>
+            <P text="보여지는 내용이 많아, 이후 내용은 생략되었습니다. 실제로는 모든 침공 노드가 표시됩니다." />
+            <p></p>
           </div>
         ),
       },
@@ -368,7 +369,7 @@ export const uiTextsKo = {
         //
         foot: (
           <div>
-            <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10 text-lg">
+            <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-200 mb-10 text-lg">
               <li>
                 파티를 생성 및 수정할 때 입력되는 내용은 모두에게 공개되는
                 내용입니다. 민감한 개인정보는 입력하지 말아주세요.
@@ -420,7 +421,7 @@ export const uiTextsKo = {
         desc: "기능 이용 전 주의사항을 안내합니다.",
         foot: (
           <div>
-            <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10 text-lg">
+            <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-200 mb-10 text-lg">
               <li>
                 거래 기능은{" "}
                 <span className="text-red-500 font-bold">
@@ -437,7 +438,7 @@ export const uiTextsKo = {
                 으로 합니다.
               </li>
               {/* detailed description */}
-              <ul className="list-disc pl-6 space-y-2 text-gray-600 mb-10 text-lg">
+              <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-200 mb-10 text-lg">
                 <li>
                   단, 워프레임 마켓 시세를 잘 모르는 특정 분들을 겨냥하여{" "}
                   <span className="text-red-500 font-semibold">
@@ -467,7 +468,7 @@ export const uiTextsKo = {
                 <span className="font-bold">[플레티넘]</span>일 필요는 없으며,
                 이것은 판매자 분들의 결정에 전적으로 달려있습니다.
               </li>
-              <ul className="list-disc pl-6 space-y-2 text-gray-600 mb-10 text-lg">
+              <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-200 mb-10 text-lg">
                 <li>
                   단,{" "}
                   <span className="text-red-500 font-bold">
