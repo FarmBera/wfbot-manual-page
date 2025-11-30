@@ -9,22 +9,25 @@ import {
   UsersRound,
   Handshake,
 } from "lucide-react";
+import { tw } from "../style/tailwind";
 
 // UI components
 import DocImage from "../components/DocImage";
-import H2 from "../ui/H2";
-import H3 from "../ui/H3";
-import P from "../ui/P";
-import HR from "../ui/HR";
-import UL_LINK_GRID from "../ui/UL_LINK_GRID";
-import H2_4XL from "../ui/H2_4XL";
-import NOTE from "../ui/NOTE";
+import {
+  P,
+  HR,
+  H2,
+  H2_4XL,
+  H3,
+  NOTE,
+  UL_LINK_GRID,
+} from "../ui/CustomElements";
 
 export const getManualSections = (t, isMobile) => {
-  // 모바일일 때 기본 너비 90%, 아니면 각 아이템의 설정 너비 또는 기본값
+  // setup automatic image width
   const getImageWidth = (customWidth) => {
     if (isMobile) return "90%";
-    return customWidth || "70%"; // DocImage의 기본값에 위임하거나 명시
+    return customWidth || "70%";
   };
   return [
     // 1. 소개 (Intro)
@@ -34,10 +37,12 @@ export const getManualSections = (t, isMobile) => {
       icon: <Info size={18} />,
       content: (
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 dark:text-gray-200 mb-4">
+          <h1 className={`${tw.txt.bright} ${tw.tcd} mb-4 text-3xl font-bold`}>
             {t.intro.welcomeTitle}
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">
+          <p
+            className={`${tw.txt.dim} ${tw.tcd} leading-relaxed whitespace-pre-line `}
+          >
             {t.intro.welcomeDesc}
           </p>
           <NOTE
@@ -61,12 +66,13 @@ export const getManualSections = (t, isMobile) => {
             {t.features.items.map((item, idx) => (
               <div
                 key={idx}
-                className="border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow dark:border-gray-500"
+                className={`border ${tw.border.gray2} p-4 rounded-lg shadow-sm dark:shadow-sm hover:shadow-md dark:hover:shadow-xl transition-shadow ${tw.tcd}`}
               >
-                <h4 className="font-bold text-lg mb-2 text-indigo-600 dark:text-violet-300">
+                <h4 className={`font-bold text-lg mb-2 ${tw.txt.indigo}`}>
                   {item.title}
                 </h4>
-                <p className="text-sm text-gray-500 dark:text-gray-200">
+                {/* text-gray-500 dark:text-gray-200 */}
+                <p className={`text-sm ${tw.txt.light}`}>
                   {item.desc}
                   {item.subDesc && (
                     <>
@@ -93,13 +99,11 @@ export const getManualSections = (t, isMobile) => {
       content: (
         <div className="space-y-4">
           <H2 text={t.manual.mainTitle} />
-          {/* 상단 빠른 링크 */}
           <UL_LINK_GRID content={t.manual.list} />
-
-          {/* 명령어 본문 루프 */}
           {t.manual.list.map((cmd, idx) => (
             <div key={cmd.id} className="mt-12 first:mt-8">
-              <H3 id={cmd.id} text={cmd.title} />
+              <HR />
+              <H3 id={cmd.id} text={`/${cmd.title}`} />
               <P text={cmd.desc} />
               {cmd.head}
               {cmd.image && (
@@ -116,11 +120,10 @@ export const getManualSections = (t, isMobile) => {
                 />
               )}
               {cmd.foot && (
-                <div className="mt-2 text-lg text-gray-500">
+                <div className={`mt-2 text-lg ${tw.txt.normal}`}>
                   {cmd.foot}
                 </div>
               )}
-              <HR />
             </div>
           ))}
         </div>
@@ -139,9 +142,9 @@ export const getManualSections = (t, isMobile) => {
         <div className="space-y-4">
           <H2 text={t.party.mainTitle} />
           <UL_LINK_GRID content={t.party.list} />
-
           {t.party.list.map((item) => (
             <div key={item.id} className="mt-12 first:mt-8">
+              <HR />
               <H3 id={item.id} text={item.title} />
               <P text={item.desc} />
               {item.head}
@@ -154,7 +157,6 @@ export const getManualSections = (t, isMobile) => {
                 />
               )}
               {item.foot}
-              <HR />
             </div>
           ))}
         </div>
@@ -204,7 +206,9 @@ export const getManualSections = (t, isMobile) => {
           <div className="space-y-4">
             {t.troubleshooting.list.map((qna, idx) => (
               <div key={idx} className="border-b pb-4">
-                <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-2">Q. {qna.q}</h4>
+                <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-2">
+                  Q. {qna.q}
+                </h4>
                 <p className="text-gray-600 dark:text-gray-400">A. {qna.a}</p>
               </div>
             ))}

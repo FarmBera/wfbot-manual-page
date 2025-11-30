@@ -1,4 +1,4 @@
-import NOTE from "../ui/NOTE";
+import { NOTE } from "../ui/CustomElements";
 
 export const TipTime = ({ sampleTime }) => {
   if (!sampleTime) sampleTime = "남은 시간";

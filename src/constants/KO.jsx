@@ -1,11 +1,9 @@
-import A from "../ui/A";
-import P from "../ui/P";
-import NOTE from "../ui/NOTE";
-import TipTime from "../components/TipTime";
 import { COMMON } from "./common";
+import { htags, tw } from "../style/tailwind";
+
+import { H2, P, A, NOTE, BOLD } from "../ui/CustomElements";
+import TipTime from "../components/TipTime";
 import DocImage from "../components/DocImage";
-import H2 from "../ui/H2";
-// import H2_4XL from "../ui/H2_4XL";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".webp";
@@ -42,7 +40,9 @@ export const uiTextsKo = {
   contents: "목차",
   next: "다음",
   footerMsg: "문서의 끝입니다. 도움이 필요하신가요?",
-  contactSupport: "고객지원팀에 문의하기",
+  // contactSupport: "고객지원팀에 문의하기",
+  contactSupport:
+    "문의사항이 있다면, 닉네임 '고양이'를 가진 간부진(서버운영진)에게 DM 부탁드립니다.",
   copyright: `© ${COMMON.year} ${COMMON.company}`,
 
   picEx: "내용 예시",
@@ -109,11 +109,11 @@ export const uiTextsKo = {
         desc: "사용 가능한 명령어 및 관련 도움말을 확인할 수 있어요.",
         image: `${IMG_PATH}help1${IMG_EXT}`,
         width: "80%",
-        imagetmp:
+        imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Help+Command",
-        foot: (
+        head: (
           <>
-            <P text="지금 보고 계시는 웹 페이지로 이동하는 링크를 보여줘요" />
+            <P text="지금 보고 계시는 웹 페이지로 이동하는 링크를 보여줘요." />
           </>
         ),
       },
@@ -122,22 +122,25 @@ export const uiTextsKo = {
         title: "공지사항",
         desc: "봇 공지사항을 확인할 수 있어요.",
         image: `${IMG_PATH}announcement${IMG_EXT}`,
-        imagetmp:
+        imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Announcement",
       },
       {
         id: SUB.PATCHNOTE,
         title: "패치노트",
-        desc: "봇의 최근 업데이트 내역을 확인할 수 있어요.",
+        desc: "봇의 최근 업데이트/패치 내역을 확인할 수 있어요.",
         image: `${IMG_PATH}patchnote${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Patch+Note",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Patch+Note",
+        head: (
+          <P text="새로 업데이트된 내용, 버그 수정 내역 등을 확인할 수 있어요." />
+        ),
       },
       {
         id: SUB.PRIVACY,
         title: "개인정보-처리방침",
         desc: "봇의 개인정보 처리방침에 대하여 중요한 내용을 표시합니다.",
         image: `${IMG_PATH}privacy-policy${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Privacy",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Privacy",
         foot: (
           <>
             <p>
@@ -152,11 +155,14 @@ export const uiTextsKo = {
         title: "얼럿",
         desc: "현재 활성화된 얼럿 미션을 확인할 수 있어요.",
         image: `${IMG_PATH}alerts${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Alerts",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Alerts",
         head: (
           <>
-            <P text="얻을 수 있는 보상 목록을 우선으로 표시합니다. 이후 아래의 정보를 표시해줍니다." />
-            <ul className="list-disc pl-5 space-y-2 text-gray-600 mb-10 text-lg">
+            <p className={htags.pTag}>
+              얻을 수 있는 보상 목록을 우선으로 표시합니다. 이후 아래의 정보를
+              표시해줍니다.
+            </p>
+            <ul className={htags.ulTag}>
               <li>미션 종류 - 노드 위치</li>
               <li>미션 정보 (적 레벨, 웨이브 수 등)</li>
               <li>종료까지 남은 시간</li>
@@ -170,10 +176,12 @@ export const uiTextsKo = {
         title: "뉴스",
         desc: "최신 워프레임 뉴스를 확인할 수 있어요.",
         image: `${IMG_PATH}news${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=News",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=News",
         head: (
           <>
-            <P text="파란색 글씨를 클릭하면 해당 공지로 바로 이동할 수 있습니다." />
+            <p className={htags.pTag}>
+              파란색 글씨를 클릭하면 해당 공지로 바로 이동할 수 있습니다.
+            </p>
           </>
         ),
       },
@@ -182,10 +190,13 @@ export const uiTextsKo = {
         title: "출격",
         desc: "오늘의 출격 미션을 확인할 수 있어요.",
         image: `${IMG_PATH}sortie${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Sortie",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Sortie",
         head: (
           <>
-            <P text="출격 미션 종료, 어느 노드에서 이루어지는지, 변수는 무엇인지 간단하게 확인할 수 있어요." />
+            <p className={htags.pTag}>
+              출격 미션 종료까지 남은 시간, 어느 노드에서 이루어지는지, 변수는
+              무엇인지 간단하게 확인할 수 있어요.
+            </p>
           </>
         ),
       },
@@ -194,7 +205,7 @@ export const uiTextsKo = {
         title: "집정관사냥",
         desc: "이번주 집정관 미션 목록과, 얻을 수 있는 샤드를 확인할 수 있어요",
         image: `${IMG_PATH}archonhunt${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Archon+Hunt",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Archon+Hunt",
         head: (
           <>
             <NOTE
@@ -211,7 +222,7 @@ export const uiTextsKo = {
         title: "바로키티어",
         desc: "현재 바로 키 티어 상태를 알 수 있어요.",
         image: `${IMG_PATH}voidtraders${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Void+Trader",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Void+Trader",
         head: (
           <>
             <P text="등장 여부, 언제/어디서 나타날지 알려줍니다." />
@@ -221,7 +232,7 @@ export const uiTextsKo = {
           <>
             <P text="바로 키 티어가 등장했다면 아래와 같이 나타나요" />
             <DocImage
-              // src=""
+              src={`${IMG_PATH}voidtraders-activated${IMG_EXT}`}
               alt="바로키티어 등장했을 때 이미지"
               caption="바로 키 티어가 등장했을 때 표시되는 내용"
             />
@@ -232,24 +243,34 @@ export const uiTextsKo = {
         id: SUB.VOIDTRADERSITEM,
         title: "바로키티어-물품",
         desc: "바로 키 티어가 판매하는 물품 목록을 확인할 수 있어요.",
-        image: `${IMG_PATH}voidtraders-item${IMG_EXT}`,
-        imagetmp:
+        image: `${IMG_PATH}voidtraders-item-yes${IMG_EXT}`,
+        imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Void+Trader+Items",
+        foot: (
+          <>
+            <P text="만약 바로 키 티어가 등장하지 않았다면, 아래와 같이 표시됩니다" />
+            <DocImage
+              src={`${IMG_PATH}voidtraders-item-no${IMG_EXT}`}
+              alt="바로키티어 미등장"
+              caption="키 티어가 등장하지 않았을 때"
+            />
+          </>
+        ),
       },
       {
         id: SUB.STEELPATH,
         title: "강길에센스",
-        desc: "주간 태신의 강길 에센스 교환 물품을 확인할 수 있어요.",
+        desc: "태신의 스틸에센스 교환 물품을 확인할 수 있어요.",
         image: `${IMG_PATH}steelpath${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Steel+Path",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Steel+Path",
       },
       {
         id: SUB.FISSURES,
         title: "보이드균열",
-        desc: "현재 활성화된 보이드 균열 중 빠르게 클리어 가능한 미션 목록을 보여줘요. (예시:섬멸, 생포 등)",
+        desc: "현재 활성화된 성유물 노드(보이드 균열) 중 빠르게 클리어 가능한 미션 목록을 보여줘요. (예시:섬멸, 생포 등)",
         image: `${IMG_PATH}fissures${IMG_EXT}`,
         width: "50%",
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Fissures",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Fissures",
       },
       {
         id: SUB.CALENDAR,
@@ -257,7 +278,12 @@ export const uiTextsKo = {
         desc: "[베타버전] 이번주 헥스 캘린더 할일/보상 목록 등을 확인할 수 있어요.",
         image: `${IMG_PATH}calendar${IMG_EXT}`,
         width: "50%",
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Calendar",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Calendar",
+        head: (
+          <>
+            <P text="현재 개선 중인 명령어로, 가독성이 떨어지거나 일부 정보가 표시되지 않을 수 있습니다." />
+          </>
+        ),
       },
       {
         id: SUB.DAILYDEALS,
@@ -265,18 +291,17 @@ export const uiTextsKo = {
         desc: "다르보가 제시하는 오늘의 특가 물품을 확인할 수 있어요.",
         image: `${IMG_PATH}dailydeals${IMG_EXT}`,
         width: "50%",
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Daily+Deals",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Daily+Deals",
       },
       {
         id: SUB.INVASIONS,
         title: "침공",
         desc: "현재 활성화된 침공 미션 목록을 확인할 수 있어요.",
         image: `${IMG_PATH}invasions${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Invasions",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Invasions",
         foot: (
           <div>
-            <P text="보여지는 내용이 많아, 이후 내용은 생략되었습니다. 실제로는 모든 침공 노드가 표시됩니다." />
-            <p></p>
+            <P text="(보여지는 내용이 많아 이후 내용은 생략되었습니다. 실제로 사용했을 때는 모든 침공 노드가 표시됩니다.)" />
           </div>
         ),
       },
@@ -285,23 +310,45 @@ export const uiTextsKo = {
         title: "마켓검색",
         desc: "'Warframe Market' 에서 원하는 아이템을 검색하여 가장 저렴한 매물을 검색할 수 있어요.",
         image: `${IMG_PATH}market-search-result${IMG_EXT}`,
-        imagetmp:
+        imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Market+Search",
         foot: (
           <div>
-            <p>
+            <p className={htags.pTag}>
               파란색으로 된 아이템 이름을 클릭하면 해당 아이템의 마켓 검색
               결과로 이동할 수 있어요.
             </p>
+            <ol className={htags.olTag}>
+              <li>
+                검색창에서 <strong>/마켓검색</strong> 명령어를 입력하여 명령어를
+                선택 후
+              </li>
+              <li>
+                <strong>item_name</strong> 부분에 검색하고자 하는 아이템을
+                입력해주세요.
+              </li>
+            </ol>
+            <DocImage src={`${IMG_PATH}market-search-searching${IMG_EXT}`} />
+            <p className={htags.pTag}>
+              자동완성 기능을 지원하고 있어, 검색하고자 하는 아이템이 거래
+              가능한지 확인할 수 있어요.
+            </p>
+            <NOTE
+              color="yellow"
+              icon="trianglealert"
+              title="알림"
+              text={
+                <>
+                  일부 변역이 되지 않은 아이템이 있을 수 있습니다.
+                  <br />
+                  검색이 되지 않는 항목이 있다면 별명{" "}
+                  <strong className="">고양이</strong>를 가진 간부진에게 DM
+                  바랍니다.
+                </>
+              }
+            />
           </div>
         ),
-      },
-      {
-        id: SUB.MARKET_HELP,
-        title: "마켓도움말",
-        desc: "'마켓검색' 명령어에 대한 도움말을 확인할 수 있어요.",
-        image: `${IMG_PATH}${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Market+Help",
       },
       {
         id: SUB.PARTY_CREATE,
@@ -312,7 +359,7 @@ export const uiTextsKo = {
             <p>자세한 내용은 이곳에서 확인해주세요 (링크 삽입)</p>
           </div>
         ),
-        // imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Create+Party",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Create+Party",
       },
       {
         id: SUB.TRADE_CREATE,
@@ -323,21 +370,21 @@ export const uiTextsKo = {
             <p>자세한 내용은 이곳에서 확인해주세요 (링크 삽입)</p>
           </div>
         ),
-        // imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Create+Trade",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Create+Trade",
       },
       {
         id: SUB.EVENTS,
         title: "이벤트",
         desc: "[베타버전] 현재 진행중인 정기 이벤트 (써미아, 포모리안 등) 목록을 확인할 수 있어요.",
         image: `${IMG_PATH}events${IMG_EXT}`,
-        imagetmp: "https://placehold.co/600x300/e2e8f0/64748b?text=Events",
+        imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Events",
       },
       {
         id: SUB.DUVIRI_WF,
         title: "순환로-워프레임",
         desc: "이번주 순환로 워프레임 보상 목록을 확인합니다.",
         image: `${IMG_PATH}circuit-warframe${IMG_EXT}`,
-        imagetmp:
+        imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Duviri+Warframe",
       },
       {
@@ -345,7 +392,7 @@ export const uiTextsKo = {
         title: "순환로-인카논",
         desc: "이번주 순환로 인카논 보상 목록을 확인합니다.",
         image: `${IMG_PATH}circuit-incarnon${IMG_EXT}`,
-        imagetmp:
+        imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Duviri+Incarnon",
       },
     ],
@@ -356,32 +403,42 @@ export const uiTextsKo = {
     title: "4. 파티 모집 기능",
     mainTitle: "파티 모집 명령어",
     list: [
+      // 파티 기능 개요
       {
         id: "party-intro",
-        title: "파티 생성하기",
-        desc: "새로운 파티 구인 글을 생성합니다. 이는 종합 게임을 대상으로 하고 있어 워프레임에 한정되지 않습니다.",
+        title: "기능 개요",
+        desc: (
+          <>
+            <P text="간편하게 파티 구인 글을 생성할 수 있습니다." />
+            이는 종합 게임을 대상으로 하고 있어 워프레임 뿐만 아니라 다른 게임
+            파티 모집도 가능합니다. <br />
+            같이 게임 할 분들을 손쉽게 모집해보세요!
+          </>
+        ),
         // image: ...
       },
+      // 이용 전 주의사항
       {
         id: "party-warning",
         title: "[필독] 기능 이용 전 주의사항",
-        desc: "기능 이용 전 주의사항을 안내합니다.",
+        desc: "기능 이용 전 주의사항을 안내해드립니다.",
         //
         foot: (
           <div>
-            <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-200 mb-10 text-lg">
+            <ul className={htags.ulTag}>
               <li>
                 파티를 생성 및 수정할 때 입력되는 내용은 모두에게 공개되는
-                내용입니다. 민감한 개인정보는 입력하지 말아주세요.
+                내용입니다.{" "}
+                <strong>민감한 개인정보는 입력하지 말아주세요.</strong>
               </li>
               <li>
-                서버 규칙이 동일하게 적용됩니다. 부적절한 단어 사용 시, 게시글
-                자동 삭제 및 서버 규칙에 따라 제재 및 처벌됩니다.
+                <strong>서버 규칙이 동일하게 적용</strong>됩니다. 부적절한 단어
+                사용 시, 게시글 자동 삭제 & 서버 규칙에 따라 제재 및 처벌됩니다.
               </li>
               <li>
                 서버 규칙은{" "}
                 <A
-                  text="이곳을 클릭하면"
+                  text="이곳에서"
                   href="https://discord.com/channels/569543516749824000/1165264267436638248"
                 />{" "}
                 확인할 수 있습니다.
@@ -390,18 +447,173 @@ export const uiTextsKo = {
           </div>
         ),
       },
+      // (1) 파티 정보 확인
+      {
+        id: "party-list",
+        title: "(1) 파티 정보 확인하기",
+        desc: "생성된 파티 정보를 확인하는 방법을 안내합니다.",
+        foot: (
+          <>
+            <p>
+              <strong className={tw.txt.sky}>일상채널</strong> 카테고리의{" "}
+              <strong className={tw.txt.sky}>파티모집</strong> 채널로 이동하면
+              모집 중인 모든 파티 목록을 확인할 수 있습니다.
+            </p>
+            <DocImage
+              src={`${IMG_PATH}party-listing${IMG_EXT}`}
+              caption="파티 목록 예시"
+            />
+            <p>
+              생성되어있는 스레드를 선택하여 파티 모집 게시글을 확인할 수
+              있습니다.
+            </p>
+          </>
+        ),
+      },
+      // (2) 파티 참여하기
+      {
+        id: "party-join-leave",
+        title: "(2) 파티 참여/탈퇴하기",
+        desc: "파티에 참여하는 방법에 대해서 소개합니다.",
+        foot: (
+          <>
+            <h4 className={htags.H4}>어렵지 않습니다!</h4>
+            <p>
+              초록색{" "}
+              <span className={`${tw.txt.green} font-extrabold`}>참여하기</span>{" "}
+              버튼만 누르면 파티에 참여할 수 있습니다!
+            </p>
+            <P />
+            <h4 className={htags.H4}>파티 탈퇴의 경우</h4>{" "}
+            <p>
+              빨간색{" "}
+              <span className={`${tw.txt.red} font-extrabold`}>탈퇴하기</span>{" "}
+              버튼을 누르면 탈퇴할 수 있습니다.
+            </p>
+            <DocImage
+              src={`${IMG_PATH}party-article${IMG_EXT}`}
+              caption="파티 게시글 예시"
+            />
+            {/* <p>
+              잘못 누르는 것을 대비하여{" "}
+              <span className={`font-extrabold`}>참여하기</span> 버튼을 누르면
+              정말 참여를 할 것인지 물어보는 메시지가 추가로 표시됩니다.{" "}
+            </p>
+            <DocImage
+              src={`${IMG_PATH}party-confirm-join${IMG_EXT}`}
+              // maxWidth="100%"
+              caption="파티 참가 확인 메시지"
+            />
+            <p>
+              <span className={`${tw.txt.green} font-extrabold`}>
+                Yes (진행)
+              </span>{" "}
+              버튼을 눌러야 파티에 참가됩니다.
+            </p> */}
+          </>
+        ),
+      },
+      // (3) 파티 생성하기
       {
         id: "party-how-create",
-        title: "(1) 파티 생성하기",
-        desc: "파티 모집 글을 생성하는 방법에 대하여 알려줍니다",
+        title: "(3) 파티 생성하기",
+        desc: "파티 모집 글을 생성하는 방법입니다.",
+        foot: (
+          <>
+            <h4 className={htags.H4}>
+              <strong>/파티생성</strong> 명령어를 이용하여 파티를 생성할 수
+              있습니다.
+            </h4>
+            <ul className={htags.ulTag}>
+              <li>
+                채팅을 입력하는 곳에 / 기호를 입력하면 명령어를 사용할 수
+                있습니다.{" "}
+              </li>
+              <ul className={htags.ulTag}>
+                <li>/ 키는 우측 시프트(Shift) 키 바로 왼쪽에 있습니다. </li>
+              </ul>
+              <li>이후 '파티생성' 을 검색하여 해당 명령어를 선택해주세요.</li>
+            </ul>
+            <DocImage
+              src={`${IMG_PATH}party-cmd0${IMG_EXT}`}
+              alt="명령어 검색 결과"
+              caption="명령어 검색 결과"
+            />
+            <h4 className={htags.H4}>
+              입력 할 수 있는 내용으로 총 4가지가 있습니다. <br />
+            </h4>
+            <ul className={htags.ulTag}>
+              <li>title: 모집 글 제목</li>
+              <li>game_type: 플레이 할 게임 이름 (워프레임, 롤, 배그 등)</li>
+              <li>
+                [선택사항] number_of_user: 모집 인원 수 (본인 포함, 기본값 4명,
+                최대 20명)
+              </li>
+              <li>[선택사항] description: 모집 글에 대한 세부 설명 등</li>
+            </ul>
+            <h4 className={htags.H4}>원하는 내용으로 채워주세요.</h4>
+            (상단에 어떤 내용이 들어가야할지 알려주는 문구가 있으니
+            참고바랍니다)
+            <DocImage
+              src={`${IMG_PATH}party-cmd-input${IMG_EXT}`}
+              maxWidth="100%"
+              caption="원하는 내용으로 채워주세요."
+            />
+            입력 후 엔터 키를 눌러 전송을 하면 <strong>'파티모집'</strong>{" "}
+            채널에 공개 스레드 및 모집 글이 생성됩니다.
+            <DocImage
+              src={`${IMG_PATH}party-created${IMG_EXT}`}
+              maxWidth="100%"
+              caption="파티 생성 완료 메시지"
+            />
+            파란색 배경의 링크를 클릭하면 해당 모집글로 바로 이동할 수 있습니다.
+            <br />
+            또는 직접 파티모집 채널로 이동해주세요.
+          </>
+        ),
       },
-      { id: "party-edit", title: "(2) 파티 정보 수정하기" },
-      { id: "party-edit-member", title: "인원 수정" },
-      { id: "party-edit-article", title: "게시글 수정" },
-      { id: "party-change", title: "모집 상태 전환" },
-      { id: "party-call", title: "파티원 호출" },
-      { id: "party-kick", title: "파티원 내보내기" },
-      { id: "party-exit", title: "모집 종료하기" },
+      {
+        id: "party-edit",
+        title: "(4) 파티 정보 수정하기",
+        desc: "해당 섹션에서 소개하는 기능은 파티장(파티를 생성한 분)만 사용이 가능해요.",
+      },
+      {
+        id: "party-edit-member",
+        title: "(4-1) 인원 수정",
+        foot: (
+          <>
+            <p className={htags.pTag}>
+              <BOLD text="인원 수정" /> 버튼을 누르면 모집 정원을 수정할 수
+              있습니다.
+            </p>
+            <ul className={htags.ulTag}>
+              <li>
+                <strong>기본값으로 4명</strong>이 설정됩니다. (워프레임 최대
+                파티원 수 4명)
+              </li>
+              <li>
+                <strong>2 ~ 20명</strong> 사이로 설정 가능합니다.
+              </li>
+              <li>숫자가 아닌 값을 입력할 시, 기본값 4로 자동 설정됩니다.</li>
+            </ul>
+            인원 수정 버튼을 누르면 다음과 같은 창이 표시됩니다. <br />
+            <DocImage
+              src={`${IMG_PATH}party-nop${IMG_EXT}`}
+              caption="인원 수정 팝업창"
+            />
+            원하는 인원수를 입력하고{" "}
+            <strong className={`${tw.txt.sky}`}>전송</strong>을 눌러주세요.
+          </>
+        ),
+      },
+      {
+        id: "party-edit-article",
+        title: "(4-) 게시글 수정",
+      },
+      { id: "party-change", title: "(4-) 모집 상태 전환" },
+      { id: "party-call", title: "(4-) 파티원 호출" },
+      { id: "party-kick", title: "(4-) 파티원 내보내기" },
+      { id: "party-exit", title: "(4-) 모집 종료하기" },
     ],
   },
   // 5. 거래 섹션

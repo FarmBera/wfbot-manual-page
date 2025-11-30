@@ -1,4 +1,5 @@
 import React from "react";
+import { tw } from "../style/tailwind";
 
 /**
  * Image components for manual
@@ -13,7 +14,7 @@ const DocImage = ({ src, caption, alt, maxWidth = "70%" }) => {
     <figure className="my-8 flex flex-col items-center">
       {/* <figure className="my-8 flex flex-col"> */}
       <div
-        className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-600 shadow-md bg-gray-50 transition-colors duration-1000"
+        className={`overflow-hidden rounded-xl border ${tw.border.gray2} shadow-md dark:shadow-xl bg-gray-50 ${tw.tcd}`}
         style={{
           maxWidth: maxWidth,
           width: "100%",
@@ -21,13 +22,15 @@ const DocImage = ({ src, caption, alt, maxWidth = "70%" }) => {
       >
         <img
           src={src}
-          alt={alt || "Description"}
+          alt={caption || "Description"}
           className="w-full h-auto object-cover block transition-transform duration-300 hover:scale-[1.03]"
           loading="lazy"
         />
       </div>
       {caption && (
-        <figcaption className="mt-3 text-sm text-gray-500 dark:text-gray-400 font-medium text-center transition-colors duration-1000">
+        <figcaption
+          className={`mt-3 text-sm ${tw.txt.dim} font-medium text-center ${tw.tcd}`}
+        >
           {/* <figcaption className="mt-3 text-sm text-gray-500 font-medium"> */}
           {caption}
         </figcaption>
