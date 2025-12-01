@@ -3,6 +3,6 @@ export const COMMON = {
   name: `워프레임 유틸봇 (서버관리봇 III)`,
   nameEn: 'Warframe Utils',
   version: `v1.0.0 Alpha`,
-  company: `고양이`,
+  company: `'고양이' 닉네임을 가진 간부진`,
   year: 2025,
 };

@@ -17,6 +17,7 @@ import { APP_INFO, UI_TEXTS } from "./constants/constants";
 import { getManualSections } from "./data/manualData";
 import { COMMON } from "./constants/common";
 import { tw } from "./style/tailwind";
+// eslint-disable-next-line
 import { A } from "./ui/CustomElements";
 
 const MOBILE_UI_SIZE = 768; // Tailwind CSS mobile UI size breakpoint
@@ -614,8 +615,8 @@ const UserManual = () => {
               className={`text-center py-10 ${tw.txt.dark} text-sm ${tw.tcd}`}
             >
               {uiText.footerMsg}
-              <br />
-              {uiText.contactSupport}
+              {/* <br /> */}
+              {/* {uiText.contactSupport} */}
               {/* <A href="." text={uiText.contactSupport} /> */}
             </div>
           </div>

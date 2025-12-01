@@ -1,13 +1,17 @@
 import React from "react";
 import { Lightbulb, TriangleAlert } from "lucide-react";
 
-import { tw } from "../style/tailwind";
+import { tw, TXT_SIZE } from "../style/tailwind";
 import DocLink from "../components/DocLink";
 
 const styles = {
   red: {
     container: "bg-red-50 dark:bg-orange-950 border-red-500",
     text: "text-red-700 dark:text-red-200",
+  },
+  orange: {
+    container: "bg-orange-50 dark:bg-orange-950 border-orange-500",
+    text: "text-orange-700 dark:text-orange-200",
   },
   yellow: {
     container: "bg-yellow-50 dark:bg-yellow-950 border-yellow-500",
@@ -37,7 +41,9 @@ const icons = {
 
 export const P = ({ text }) => {
   return (
-    <div className={`${tw.txt.normal} leading-relaxed mb-6 text-lg ${tw.tcd}`}>
+    <div
+      className={`${tw.txt.normal} leading-relaxed mb-6 ${TXT_SIZE} ${tw.tcd}`}
+    >
       {text}
     </div>
   );
@@ -118,7 +124,9 @@ export const UL_LINK_GRID = ({ content }) => {
     <div className="bg-gray-50 dark:bg-slate-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600 mb-8 transition-colors duration-1000">
       {/* <p className="text-gray-600">클릭하면 해당 명령어 가이드로 이동합니다.</p> */}
       {/* <h4 className="font-semibold text-gray-700 mb-2">클릭하면 해당 명령어 가이드로 이동합니다.</h4> */}
-      <ul className="grid grid-cols-2 md:grid-cols-3 gap-2 text-base text-gray-600 dark:text-gray-200 transition-colors duration-1000">
+      <ul
+        className={`grid grid-cols-2 md:grid-cols-3 gap-2 ${TXT_SIZE} text-gray-600 dark:text-gray-200 transition-colors duration-1000`}
+      >
         {content.map((cmd) => (
           <li key={cmd.id}>
             <DocLink to={cmd.id}>{cmd.title}</DocLink>
@@ -160,13 +168,13 @@ export const NOTE = ({ color = "blue", icon, title = "Note", text }) => {
     <div
       className={`${currentStyle.container} border-l-4 p-4 mt-4 rounded-md ${tw.tcd}`}
     >
-      <p className={`text-md ${currentStyle.text}`}>
+      <div className={`${TXT_SIZE} ${currentStyle.text}`}>
         <span>{icons[icon]}</span>
-        {title && <strong>{title}</strong>}
+        {title && <strong className="text-2xl">{title}</strong>}
         <br />
         <br />
         {text}
-      </p>
+      </div>
     </div>
   );
 };

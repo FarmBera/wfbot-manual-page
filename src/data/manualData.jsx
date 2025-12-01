@@ -8,8 +8,9 @@ import {
   Terminal,
   UsersRound,
   Handshake,
+  Contact2,
 } from "lucide-react";
-import { tw } from "../style/tailwind";
+import { htags, tw } from "../style/tailwind";
 
 // UI components
 import DocImage from "../components/DocImage";
@@ -72,7 +73,7 @@ export const getManualSections = (t, isMobile) => {
                   {item.title}
                 </h4>
                 {/* text-gray-500 dark:text-gray-200 */}
-                <p className={`text-sm ${tw.txt.light}`}>
+                <div className={`text-sm ${tw.txt.light}`}>
                   {item.desc}
                   {item.subDesc && (
                     <>
@@ -80,7 +81,7 @@ export const getManualSections = (t, isMobile) => {
                       <span className="text-xs">{item.subDesc}</span>
                     </>
                   )}
-                </p>
+                </div>
               </div>
             ))}
           </div>
@@ -177,6 +178,7 @@ export const getManualSections = (t, isMobile) => {
           <UL_LINK_GRID content={t.trade.list} />
           {t.trade.list.map((item) => (
             <div key={item.id} className="mt-12 first:mt-8">
+              <HR />
               <H3 id={item.id} text={item.title} />
               <P text={item.desc} />
               {item.head}
@@ -189,7 +191,6 @@ export const getManualSections = (t, isMobile) => {
                 />
               )}
               {item.foot}
-              <HR />
             </div>
           ))}
         </div>
@@ -206,10 +207,12 @@ export const getManualSections = (t, isMobile) => {
           <div className="space-y-4">
             {t.troubleshooting.list.map((qna, idx) => (
               <div key={idx} className="border-b pb-4">
-                <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-2">
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
                   Q. {qna.q}
                 </h4>
-                <p className="text-gray-600 dark:text-gray-400">A. {qna.a}</p>
+                <div className="text-gray-600 dark:text-gray-400">
+                  A. {qna.a}
+                </div>
               </div>
             ))}
           </div>
@@ -231,6 +234,18 @@ export const getManualSections = (t, isMobile) => {
           <H2_4XL text={t.legal.privacyTitle} />
           {/* <P text={} /> */}
           {t.legal.privacyDesc}
+        </div>
+      ),
+    },
+    // 8. 연락 (contact)
+    {
+      id: t.contact.id,
+      title: t.contact.title,
+      icon: <Contact2 size={20} />,
+      content: (
+        <div className="space-y-4 text-md text-gray-500 dark:text-gray-300">
+          <div className={htags.pTag}>{t.contact.desc}</div>
+          <div className={htags.pTag}>{t.contact.foot}</div>
         </div>
       ),
     },

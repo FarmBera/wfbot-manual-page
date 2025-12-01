@@ -1,3 +1,5 @@
+export const TXT_SIZE = "text-md";
+
 export const tw = {
   tc: "transition-colors",
   d2: "duration-200",
@@ -82,9 +84,9 @@ export const tw = {
 };
 
 export const htags = {
-  pTag: `${tw.txt.normal} leading-relaxed mb-6 text-lg ${tw.tcd}`,
-  ulTag: `list-disc pl-5 space-y-2 ${tw.txt.normal} mb-10 text-md`,
-  olTag: `list-decimal pl-5 space-y-2 ${tw.txt.normal} mb-10 text-lg`,
+  pTag: `${tw.txt.normal} leading-relaxed mb-6 ${TXT_SIZE} ${tw.tcd}`,
+  ulTag: `list-disc pl-5 space-y-2 ${tw.txt.normal} mb-10 ${TXT_SIZE}`,
+  olTag: `list-decimal pl-5 space-y-2 ${tw.txt.normal} mb-10 ${TXT_SIZE}`,
 
   // mb-3 scroll-mt-24 flex items-center
   H4: `text-xl ${tw.txt.bright} ${tw.tcd} mb-4`,
