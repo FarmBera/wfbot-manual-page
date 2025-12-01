@@ -20,7 +20,6 @@ import {
   H2,
   H2_4XL,
   H3,
-  NOTE,
   UL_LINK_GRID,
 } from "../ui/CustomElements";
 
@@ -46,12 +45,7 @@ export const getManualSections = (t, isMobile) => {
           >
             {t.intro.welcomeDesc}
           </p>
-          <NOTE
-            color="red"
-            icon="trianglealert"
-            title={t.intro.noteTitle}
-            text={t.intro.note}
-          />
+          {t.intro.foot}
         </div>
       ),
     },
@@ -206,11 +200,13 @@ export const getManualSections = (t, isMobile) => {
           <H2 text={t.troubleshooting.mainTitle} />
           <div className="space-y-4">
             {t.troubleshooting.list.map((qna, idx) => (
-              <div key={idx} className="border-b pb-4">
+              // className="border-b pb-4"
+              <div key={idx}>
+                {idx !== 0 && <HR />}
                 <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
                   Q. {qna.q}
                 </h4>
-                <div className="text-gray-600 dark:text-gray-400">
+                <div className="text-gray-500 dark:text-gray-400">
                   A. {qna.a}
                 </div>
               </div>

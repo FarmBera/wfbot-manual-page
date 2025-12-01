@@ -1,5 +1,5 @@
 import React from "react";
-import { Lightbulb, TriangleAlert } from "lucide-react";
+import { Info, Lightbulb, TriangleAlert } from "lucide-react";
 
 import { tw, TXT_SIZE } from "../style/tailwind";
 import DocLink from "../components/DocLink";
@@ -35,8 +35,11 @@ const styles = {
   },
 };
 const icons = {
-  lightbulb: <Lightbulb />,
-  trianglealert: <TriangleAlert />,
+  info: <Info />,
+  tip: <Lightbulb />,
+  lightbulb: <Lightbulb />, //TODO: replace this to tip
+  alert: <TriangleAlert />,
+  trianglealert: <TriangleAlert />, //TODO: replace this to alert
 };
 
 export const P = ({ text }) => {
@@ -169,9 +172,10 @@ export const NOTE = ({ color = "blue", icon, title = "Note", text }) => {
       className={`${currentStyle.container} border-l-4 p-4 mt-4 rounded-md ${tw.tcd}`}
     >
       <div className={`${TXT_SIZE} ${currentStyle.text}`}>
-        <span>{icons[icon]}</span>
-        {title && <strong className="text-2xl">{title}</strong>}
-        <br />
+        <div className="flex items-center gap-2">
+          <span>{icons[icon]}</span>
+          {title && <strong className="text-2xl">{title}</strong>}
+        </div>
         <br />
         {text}
       </div>
