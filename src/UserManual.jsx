@@ -50,6 +50,8 @@ const UserManual = () => {
 
   const contentRef = useRef(null);
   const sidebarRef = useRef(null); // ref for access 'sidebar navigation DOM'
+  const initialScrollDone = useRef(false);
+  const isProgrammaticScroll = useRef(false);
 
   // track last activated parent sections (for sidebar auto expand)
   // const lastActiveParentRef = useRef(null);
@@ -66,10 +68,21 @@ const UserManual = () => {
   // section movement handler
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
+    const currentUrl = new URL(window.location);
+
     if (element) {
-      element.scrollIntoView({ behavior: "instant", block: "start" });
-      setActiveSection(id);
-      setIsMobileMenuOpen(false);
+      isProgrammaticScroll.current = true;
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "instant", block: "start" });
+        setActiveSection(id);
+        setIsMobileMenuOpen(false);
+
+        currentUrl.searchParams.set("id", id);
+        window.history.pushState({}, "", currentUrl);
+        setTimeout(() => {
+          isProgrammaticScroll.current = false;
+        }, 500); // Allow 500ms for scroll correction
+      }, 10); // A small delay to ensure rendering before scroll
     }
   };
 
@@ -166,6 +179,25 @@ const UserManual = () => {
     };
   }, [currentSections]);
 
+  // on initial component load, check for 'id' query parameter
+  useEffect(() => {
+    // Prevent re-running if initial scroll is done or sections are not loaded yet.
+    if (initialScrollDone.current || currentSections.length === 0) {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    if (id) {
+      // Use a timeout to ensure the element is rendered before scrolling.
+      setTimeout(() => {
+        scrollToSection(id);
+        setActiveSection(id);
+        initialScrollDone.current = true;
+      }, 0);
+    }
+  }, [lang, isMobile]); // Run only when language or mobile status changes.
+
   // automatic sidebar scroll (executes every activeSection changes)
   useEffect(() => {
     if (activeSection && sidebarRef.current) {
@@ -208,6 +240,32 @@ const UserManual = () => {
     if (isDarkMode) document.documentElement.classList.add("dark");
     else document.documentElement.classList.remove("dark");
   }, [isDarkMode]);
+
+  // Re-scroll to the active section when images load to correct the position
+  useEffect(() => {
+    const contentEl = contentRef.current;
+    if (!contentEl) return;
+
+    const handleImageLoad = () => {
+      if (isProgrammaticScroll.current) {
+        const element = document.getElementById(activeSection);
+        if (element) {
+          element.scrollIntoView({ behavior: "instant", block: "start" });
+        }
+      }
+    };
+
+    const images = contentEl.getElementsByTagName("img");
+    Array.from(images).forEach((img) => {
+      img.addEventListener("load", handleImageLoad);
+    });
+
+    return () => {
+      Array.from(images).forEach((img) => {
+        img.removeEventListener("load", handleImageLoad);
+      });
+    };
+  }, [lang, currentSections]); // Re-attach listeners when content changes
 
   return (
     <div
@@ -284,7 +342,6 @@ const UserManual = () => {
           </button>
         </div>
       </div>
-
       {/* sidebar */}
       <aside
         className={`
@@ -511,7 +568,6 @@ const UserManual = () => {
           {uiText.copyright}
         </div>
       </aside>
-
       {/* main content (manual page) */}
       {/* {isMobileMenuOpen && ( */}
       {lang === languages[1].code ? (

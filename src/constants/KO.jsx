@@ -1232,7 +1232,7 @@ export const uiTextsKo = {
   },
   // 6. FAQ 섹션
   troubleshooting: {
-    id: "troubleshooting",
+    id: "faq",
     title: "자주 묻는 질문 (FAQ)",
     list: [
       // 상호작용 오류
@@ -1329,7 +1329,7 @@ export const uiTextsKo = {
   },
   // 7. 법적 고지
   legal: {
-    id: "eula",
+    id: "privacy",
     title: "이용 약관 / 법적 고지",
     termsTitle: "이용 약관",
     termsDesc: (
