@@ -81,7 +81,7 @@ const UserManual = () => {
         window.history.pushState({}, "", currentUrl);
         setTimeout(() => {
           isProgrammaticScroll.current = false;
-        }, 500); // Allow 500ms for scroll correction
+        }, 3000); // Allow 500ms for scroll correction
       }, 10); // A small delay to ensure rendering before scroll
     }
   };
