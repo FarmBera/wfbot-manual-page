@@ -1,4 +1,4 @@
-import { COMMON } from "./common";
+import { COMMON, SUB } from "./common";
 import { htags, tw } from "../style/tailwind";
 
 import { H2, H3, P, A, NOTE, BOLD } from "../ui/CustomElements";
@@ -8,31 +8,6 @@ import ContactMe from "../components/ContactAdmin";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".webp";
-
-const SUB = {
-  HELP: "cmd-help",
-  ANNOUNCEMENT: "cmd-announcement",
-  PATCHNOTE: "cmd-patchnote",
-  PRIVACY: "cmd-privacy",
-  ALERTS: "Alerts",
-  NEWS: "Events",
-  SORTIE: "Sorties",
-  ARCHONHUNT: "LiteSorties",
-  VOIDTRADERS: "VoidTraders",
-  VOIDTRADERSITEM: "VoidTradersItem",
-  STEELPATH: "steelPath",
-  FISSURES: "ActiveMissions",
-  CALENDAR: "KnownCalendarSeasons",
-  DAILYDEALS: "DailyDeals",
-  INVASIONS: "Invasions",
-  MARKET_SEARCH: "market-search",
-  MARKET_HELP: "market-help",
-  PARTY_CREATE: "partys",
-  TRADE_CREATE: "trades",
-  DUVIRI_WF: "EndlessXpChoicesWF",
-  DUVIRI_INC: "EndlessXpChoicesINC",
-  EVENTS: "Goals",
-};
 
 export const uiTextsKo = {
   // common UI
@@ -1512,7 +1487,7 @@ export const uiTextsKo = {
           </li>
           <li>
             단, 서비스 내에서 표시되는 게임(Warframe) 관련 데이터, 이미지, 상표
-            등은 해당 저작권자(Digital Extremes 등)에게 권리가 있습니다.
+            등은 해당 저작권자(Digital Extremes)에게 권리가 있습니다.
           </li>
           <li>
             이용자는 서비스를 이용하여 얻은 정보를 운영자의 승낙 없이 영리

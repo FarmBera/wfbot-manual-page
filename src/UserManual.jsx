@@ -570,113 +570,75 @@ const UserManual = () => {
           {uiText.copyright}
         </div>
       </aside>
-      {/* main content (manual page) */}
-      {/* {isMobileMenuOpen && ( */}
-      {lang === languages[1].code ? (
-        // temporary: english manual page
-        <main
-          ref={contentRef}
-          className="flex-1 w-full md:w-3/4 h-full overflow-y-auto bg-gray-50 dark:bg-gray-900 scroll-smooth relative"
-        >
-          <div className="max-w-4xl mx-auto px-6 py-10 md:py-16 mt-10 md:mt-0">
-            <section className="mb-16 scroll-mt-20 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-600 transition-all hover:shadow-md">
-              <div className="space-y-6">
-                <h1 className={`text-3xl font-bold ${tw.txt.bright} mb-4`}>
-                  We're Sorry.
-                </h1>
+      {isMobileMenuOpen && (
+        <div
+        className="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden"
+        onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
 
-                <div className="p-8 bg-gray-50 dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600 text-center">
-                  <div className="flex justify-center mb-6">
-                    <div className="bg-white p-4 rounded-full shadow-sm">
-                      <Globe size={50} className="text-indigo-400" />
-                    </div>
-                  </div>
-                  <h3 className="text-3xl font-semibold text-gray-900 dark:text-gray-50 mb-2 py-5">
-                    Translation in Progress
-                  </h3>
-                  <p className={`${tw.txt.normal} leading-relaxed mb-4`}>
-                    The English Version of the{" "}
-                    <strong>{uiText.serviceName}</strong> manual is currently
-                    under development.
-                    <br />
-                    We are working hard to provide high-quality documentation
-                    for our global users.
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Please refer to the Korean version for the time being.
-                  </p>
-                </div>
-              </div>
-            </section>
-          </div>
-        </main>
-      ) : (
-        // korean web page
-        <main
-          ref={contentRef}
-          className={`flex-1 w-full md:w-3/4 h-full overflow-y-auto ${tw.main.bg} scroll-smooth relative ${tw.tcd}`}
-        >
-          <div className="max-w-4xl mx-auto px-6 py-10 md:py-16 mt-10 md:mt-0">
-            {currentSections.map((section, index) => (
-              <section
-                key={section.id}
-                id={section.id}
-                className={`mb-16 scroll-mt-20 ${tw.main.secBg} p-8 rounded-xl shadow-sm border ${tw.border.gray} transition-all hover:shadow-md ${tw.tcd}`}
+      {/* main content (manual page) */}
+      <main
+        ref={contentRef}
+        className={`flex-1 w-full md:w-3/4 h-full overflow-y-auto ${tw.main.bg} scroll-smooth relative ${tw.tcd}`}
+      >
+        <div className="max-w-4xl mx-auto px-6 py-10 md:py-16 mt-10 md:mt-0">
+          {currentSections.map((section, index) => (
+            <section
+              key={section.id}
+              id={section.id}
+              className={`mb-16 scroll-mt-20 ${tw.main.secBg} p-8 rounded-xl shadow-sm border ${tw.border.gray} transition-all hover:shadow-md ${tw.tcd}`}
+            >
+              <div
+                className={`flex items-center space-x-3 mb-6 pb-4 border-b ${tw.border.gray} ${tw.tcd}`}
               >
                 <div
-                  className={`flex items-center space-x-3 mb-6 pb-4 border-b ${tw.border.gray} ${tw.tcd}`}
+                  className={`p-2 ${tw.main.secIconBg} rounded-lg ${tw.txt.indigo} ${tw.tcd}`}
                 >
-                  <div
-                    className={`p-2 ${tw.main.secIconBg} rounded-lg ${tw.txt.indigo} ${tw.tcd}`}
-                  >
-                    {section.icon}
-                  </div>
-                  <h2
-                    className={`text-2xl font-bold ${tw.txt.bright} ${tw.tcd}`}
-                  >
-                    {section.title}
-                  </h2>
+                  {section.icon}
                 </div>
+                <h2 className={`text-2xl font-bold ${tw.txt.bright} ${tw.tcd}`}>
+                  {section.title}
+                </h2>
+              </div>
 
+              <div
+                className={`prose prose-indigo dark:prose-invert max-w-none ${tw.txt.normal} ${tw.tcd}`}
+              >
+                {section.content}
+              </div>
+
+              {/* link: go to next section */}
+              {index < currentSections.length - 1 && (
                 <div
-                  className={`prose prose-indigo dark:prose-invert max-w-none ${tw.txt.normal} ${tw.tcd}`}
+                  className={`mt-10 pt-6 border-t border-dashed ${tw.border.gray2} flex justify-end ${tw.tcd}`}
                 >
-                  {section.content}
-                </div>
-
-                {/* link: go to next section */}
-                {index < currentSections.length - 1 && (
-                  <div
-                    className={`mt-10 pt-6 border-t border-dashed ${tw.border.gray2} flex justify-end ${tw.tcd}`}
+                  <button
+                    onClick={() =>
+                      scrollToSection(currentSections[index + 1].id)
+                    }
+                    className={`group flex items-center text-sm font-medium ${tw.txt.indigo} hover:text-indigo-800 dark:hover:text-indigo-300 ${tw.tcd}`}
                   >
-                    <button
-                      onClick={() =>
-                        scrollToSection(currentSections[index + 1].id)
-                      }
-                      className={`group flex items-center text-sm font-medium ${tw.txt.indigo} hover:text-indigo-800 dark:hover:text-indigo-300 ${tw.tcd}`}
-                    >
-                      {uiText.next}:{" "}
-                      {currentSections[index + 1].title.split(". ")[1] ||
-                        currentSections[index + 1].title}
-                      <ChevronRight
-                        size={16}
-                        className="ml-1 group-hover:translate-x-1 transition-transform"
-                      />
-                    </button>
-                  </div>
-                )}
-              </section>
-            ))}
+                    {uiText.next}:{" "}
+                    {currentSections[index + 1].title.split(". ")[1] ||
+                      currentSections[index + 1].title}
+                    <ChevronRight
+                      size={16}
+                      className="ml-1 group-hover:translate-x-1 transition-transform"
+                    />
+                  </button>
+                </div>
+              )}
+            </section>
+          ))}
 
-            {/* footer msg */}
-            <div
-              className={`text-center py-10 ${tw.txt.dark} text-sm ${tw.tcd}`}
-            >
-              {uiText.footerMsg}
-            </div>
+          {/* footer msg */}
+          <div className={`text-center py-10 ${tw.txt.dark} text-sm ${tw.tcd}`}>
+            {uiText.footerMsg}
           </div>
-        </main>
-      )}
+        </div>
+      </main>
+      {/* )} */}
     </div>
   );
 };
