@@ -10,18 +10,11 @@ import {
   Handshake,
   Contact2,
 } from "lucide-react";
-import { htags, tw } from "../style/tailwind";
+import { htags, tw, TXT_SIZE } from "../style/tailwind";
 
 // UI components
 import DocImage from "../components/DocImage";
-import {
-  P,
-  HR,
-  H2,
-  H2_4XL,
-  H3,
-  UL_LINK_GRID,
-} from "../ui/CustomElements";
+import { P, HR, H2, H3, UL_LINK_GRID } from "../ui/CustomElements";
 
 export const getManualSections = (t, isMobile) => {
   // setup automatic image width
@@ -115,7 +108,7 @@ export const getManualSections = (t, isMobile) => {
                 />
               )}
               {cmd.foot && (
-                <div className={`mt-2 text-lg ${tw.txt.normal}`}>
+                <div className={`mt-2 ${TXT_SIZE} ${tw.txt.normal}`}>
                   {cmd.foot}
                 </div>
               )}
@@ -215,31 +208,39 @@ export const getManualSections = (t, isMobile) => {
         </div>
       ),
     },
-    // 7. 법적 고지 (Legal)
+    // 7. 이용 약관 (terms of services)
     {
-      id: t.legal.id,
-      title: t.legal.title,
+      id: t.terms.id,
+      title: t.terms.title,
       icon: <FileText size={18} />,
       content: (
-        <div className="space-y-4 text-sm text-gray-500 dark:text-gray-300">
-          <H2_4XL text={t.legal.termsTitle} />
-          {t.legal.termsDesc}
-          {/* <P text={t.legal.termsDesc1} />
-          <P text={t.legal.termsDesc2} /> */}
-
-          <H2_4XL text={t.legal.privacyTitle} />
-          {/* <P text={} /> */}
-          {t.legal.privacyDesc}
+        <div className={`space-y-4 text-md ${tw.txt.normal}`}>
+          {/* <H2_4XL text={t.terms.termsTitle} /> */}
+          {t.terms.desc}
         </div>
       ),
     },
-    // 8. 연락 (contact)
+    // 8. 개인정보 처리방침 (privacy)
+    {
+      id: t.privacy.id,
+      title: t.privacy.title,
+      icon: <FileText size={18} />,
+      content: (
+        <div className={`space-y-4 text-md ${tw.txt.normal}`}>
+          {/* <H2_4XL text={t.privacy.termsTitle} /> */}
+          {t.privacy.desc}
+        </div>
+      ),
+    },
+    // 9. 연락 (contact)
     {
       id: t.contact.id,
       title: t.contact.title,
       icon: <Contact2 size={20} />,
       content: (
-        <div className="space-y-4 text-md text-gray-500 dark:text-gray-300">
+        <div
+          className={`space-y-4 ${TXT_SIZE} ${tw.txt.normal}`}
+        >
           <div className={htags.pTag}>{t.contact.desc}</div>
           <div className={htags.pTag}>{t.contact.foot}</div>
         </div>

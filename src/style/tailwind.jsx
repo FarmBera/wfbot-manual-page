@@ -13,7 +13,9 @@ export const tw = {
     // nd: "text-gray-600 dark:text-gray-400",
     dim: "text-gray-500 dark:text-gray-400",
     dark: "text-gray-400 dark:text-gray-500",
-    deep: "",
+    deep: "text.gray-300 dark:text-gray-600",
+
+    grave: "text-green-700 dark:text-green-500 bg-yellow-200 dark:bg-yellow-900",
 
     indigo: "text-indigo-600 dark:text-indigo-400",
     indigoHover: "hover:text-indigo-900 dark:hover:text-indigo-100",
@@ -85,6 +87,8 @@ export const tw = {
 
 export const htags = {
   pTag: `${tw.txt.normal} leading-relaxed mb-6 ${TXT_SIZE} ${tw.tcd}`,
+  graveTag: `${tw.txt.grave} ${TXT_SIZE} ${tw.tcd}`,
+
   ulTag: `list-disc pl-5 space-y-2 ${tw.txt.normal} mb-10 ${TXT_SIZE}`,
   olTag: `list-decimal pl-5 space-y-2 ${tw.txt.normal} mb-10 ${TXT_SIZE}`,
 

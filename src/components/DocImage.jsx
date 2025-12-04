@@ -22,6 +22,7 @@ const DocImage = ({ src, caption, alt, maxWidth = "70%" }) => {
       >
         <img
           src={src}
+          // alt='이미지를 찾을 수 없습니다.'
           alt={caption || "Description"}
           className="w-full h-auto object-cover block transition-transform duration-300 hover:scale-[1.03]"
           loading="lazy"

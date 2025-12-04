@@ -35,7 +35,7 @@ const SUB = {
 
 export const uiTextsKo = {
   // common UI
-  docTitle: "사용 설명서",
+  docTitle: "이용 가이드",
   searchPlaceholder: "검색하기...는 아직 사용할 수 없어요...",
   contents: "목차",
   next: "다음",
@@ -197,8 +197,8 @@ export const uiTextsKo = {
         foot: (
           <>
             <p>
-              자세한 내용은 좌측 <strong>이용약관/법적고지</strong> 섹션을
-              확인해주세요.
+              자세한 내용은 좌측 목차에서 <strong>이용약관 / 법적고지</strong>{" "}
+              섹션을 확인해주세요.
             </p>
           </>
         ),
@@ -216,7 +216,7 @@ export const uiTextsKo = {
               표시해줍니다.
             </p>
             <ul className={htags.ulTag}>
-              <li>미션 종류 - 노드 위치</li>
+              <li>미션 종류 - 노드 (위치)</li>
               <li>미션 정보 (적 레벨, 웨이브 수 등)</li>
               <li>종료까지 남은 시간</li>
             </ul>
@@ -366,11 +366,9 @@ export const uiTextsKo = {
         imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Market+Search",
         foot: (
-          <div>
-            <p className={htags.pTag}>
-              파란색으로 된 아이템 이름을 클릭하면 해당 아이템의 마켓 검색
-              결과로 이동할 수 있어요.
-            </p>
+          <>
+            <P text="파란색으로 된 아이템 이름을 클릭하면 해당 아이템의 마켓 검색 결과로 이동할 수 있어요." />
+            <P text="마켓 검색 명령어 사용 방법은 다음과 같습니다." />
             <ol className={htags.olTag}>
               <li>
                 검색창에서 <strong>/마켓검색</strong> 명령어를 입력하여 명령어를
@@ -400,7 +398,7 @@ export const uiTextsKo = {
                 </>
               }
             />
-          </div>
+          </>
         ),
       },
       {
@@ -561,15 +559,15 @@ export const uiTextsKo = {
               <span className={`${tw.txt.red} font-extrabold`}>탈퇴하기</span>{" "}
               버튼을 누르면 탈퇴할 수 있습니다.
             </p>
+            <DocImage
+              src={`${IMG_PATH}party-article${IMG_EXT}`}
+              caption="파티 게시글 예시"
+            />
             <NOTE
               color="yellow"
               icon="lightbulb"
               title="알림"
               text="디스코드 앱 화면 크기에 따라 버튼 배치는 달라질 수 있습니다."
-            />
-            <DocImage
-              src={`${IMG_PATH}party-article${IMG_EXT}`}
-              caption="파티 게시글 예시"
             />
             {/* <p>
               잘못 누르는 것을 대비하여{" "}
@@ -620,13 +618,34 @@ export const uiTextsKo = {
               입력 할 수 있는 내용으로 총 4가지가 있습니다. <br />
             </h4>
             <ul className={htags.ulTag}>
-              <li>title: 모집 글 제목</li>
-              <li>game_type: 플레이 할 게임 이름 (워프레임, 롤, 배그 등)</li>
               <li>
-                [선택사항] number_of_user: 모집 인원 수 (본인 포함, 기본값 4명,
-                최대 20명)
+                <span className={htags.graveTag}>title</span>: 모집 글 제목
               </li>
-              <li>[선택사항] description: 모집 글에 대한 세부 설명 등</li>
+              <li>
+                <span className={htags.graveTag}>game_type</span>: 플레이 할
+                게임 이름 (워프레임, 롤, 배그 등)
+              </li>
+              <li>
+                [선택사항]{" "}
+                <span className={htags.graveTag}>number_of_user</span>: 모집
+                인원 수
+              </li>
+              <ul className={htags.ulTag}>
+                <li>
+                  <strong>파티장(본인)을 포함</strong>한 인원 수 입니다.
+                </li>
+                <li>
+                  <strong>기본값으로 4명</strong>이 설정됩니다. (워프레임 최대
+                  파티원 수 4명)
+                </li>
+                <li>
+                  <strong>최대 20명</strong>까지 설정 가능합니다.
+                </li>
+              </ul>
+              <li>
+                [선택사항] <span className={htags.graveTag}>description</span>:
+                모집 글에 대한 세부 설명 등
+              </li>
             </ul>
             <h4 className={htags.H4}>원하는 내용으로 채워주세요.</h4>
             (상단에 어떤 내용이 들어가야할지 알려주는 문구가 있으니
@@ -667,13 +686,16 @@ export const uiTextsKo = {
             </p>
             <ul className={htags.ulTag}>
               <li>
-                <strong>기본값으로 4명</strong>이 설정됩니다. (워프레임 최대
-                파티원 수 4명)
+                <strong>파티장(본인)을 포함</strong>한 인원 수 입니다.
               </li>
               <li>
                 <strong>2 ~ 20명</strong> 사이로 설정 가능합니다.
               </li>
-              <li>숫자가 아닌 값을 입력할 시, 기본값 4로 자동 설정됩니다.</li>
+              <li>
+                숫자가 아닌 값을 입력할 시, <strong>기본값 4명</strong>이 자동
+                설정됩니다. <br />
+                (워프레임 최대 파티원 수 4명)
+              </li>
             </ul>
             <p className={htags.pTag}>
               인원 수정 버튼을 누르면 다음과 같은 창이 표시됩니다.{" "}
@@ -828,8 +850,8 @@ export const uiTextsKo = {
               버튼을 누르면 아래와 같은 메시지가 나타납니다.
             </p>
             <p className={htags.pTag}>
-              드롭다운 메뉴를 클릭하면 내보내고자 하는 파티원을 선택할 수
-              있습니다.
+              <strong>내보낼 파티원을 선택하세요</strong>(드롭다운 메뉴)를
+              클릭하면 내보내고자 하는 파티원을 선택할 수 있습니다.
             </p>
             <DocImage
               src={`${IMG_PATH}party-kick-select${IMG_EXT}`}
@@ -839,7 +861,12 @@ export const uiTextsKo = {
               color="orange"
               icon="trianglealert"
               title="주의!"
-              text="내보낼 파티원을 선택하면 즉시 파티원을 탈퇴시킵니다. 이점 유의하여 사용해주세요!"
+              text={
+                <>
+                  내보낼 파티원을 클릭하면 즉시 파티원을 탈퇴시킵니다. <br />
+                  잘못 클릭하지 않도록 유의하여 사용해주세요!
+                </>
+              }
             />
           </>
         ),
@@ -864,9 +891,13 @@ export const uiTextsKo = {
             </p>
 
             <p className={htags.pTag}>
-              사진과 같이 글 전체를 삭제하는 것이 아닌, 게시글을 비활성화
+              아래 사진과 같이 글 전체를 삭제하는 것이 아닌, 게시글을 비활성화
               시킵니다. (유사 아카이브 형태)
             </p>
+            <DocImage
+              src={`${IMG_PATH}party-deleted${IMG_EXT}`}
+              caption="모집 종료 버튼 클릭 후 내용 예"
+            />
             <p className={htags.pTag}></p>
             <p className={htags.pTag}></p>
             <NOTE
@@ -1014,13 +1045,17 @@ export const uiTextsKo = {
             />
             <p className={htags.pTag}>입력 가능한 내용은 아래와 같습니다.</p>
             <ul className={htags.ulTag}>
-              <li>trade_type: 거래 유형. (판매/구매 중 택1)</li>
               <li>
-                item_name: 판매/구매 하고자 하는 아이템 이름 (마켓에서 판매하는
-                물품 검색 가능)
+                <span className={htags.graveTag}>trade_type</span>: 거래 유형.
+                (판매/구매 중 택1)
               </li>
               <li>
-                game_nickname: 워프레임 닉네임 (디스코드 닉네임 아닙니다!)
+                <span className={htags.graveTag}>item_name</span>: 판매/구매
+                하고자 하는 아이템 이름 (마켓에서 판매하는 물품 검색 가능)
+              </li>
+              <li>
+                <span className={htags.graveTag}>game_nickname</span>: 워프레임
+                닉네임 (디스코드 닉네임 아닙니다!)
               </li>
               <ul className={htags.ulTag}>
                 <li>
@@ -1028,10 +1063,14 @@ export const uiTextsKo = {
                 </li>
               </ul>
               <li>
-                item_rank: [선택사항] 아케인과 같이 아이템 랭크가 존재한다면,
-                거래하고자 하는 아이템의 랭크를 입력합니다
+                <span className={htags.graveTag}>item_rank</span>: [선택사항]
+                아케인과 같이 아이템 랭크가 존재한다면, 거래하고자 하는 아이템의
+                랭크를 입력합니다
               </li>
-              <li>price: [선택사항] 물품 개당 가격</li>
+              <li>
+                <span className={htags.graveTag}>price</span>: [선택사항] 물품
+                개당 가격
+              </li>
               <ul className={htags.ulTag}>
                 <li>
                   빈칸으로 설정하면 마켓 최저가 기반 적정 가격으로 자동
@@ -1039,7 +1078,8 @@ export const uiTextsKo = {
                 </li>
               </ul>
               <li>
-                quantity: [선택사항] 아이템 수량. (기본값으로 1개가 설정됩니다.)
+                <span className={htags.graveTag}>quantity</span>: [선택사항]
+                아이템 수량. (기본값으로 1개가 설정됩니다.)
               </li>
             </ul>
             <DocImage
@@ -1327,115 +1367,304 @@ export const uiTextsKo = {
       },
     ],
   },
-  // 7. 법적 고지
-  legal: {
-    id: "privacy",
-    title: "이용 약관 / 법적 고지",
-    termsTitle: "이용 약관",
-    termsDesc: (
+  // 7. 이용 약관
+  terms: {
+    id: "terms",
+    title: "이용 약관",
+    desc: (
       <>
-        <p className={htags.pTag}>
-          본 소프트웨어의 저작권은 <strong>{COMMON.company}</strong>에게
-          있습니다.
-        </p>
-        <p className={htags.pTag}>
-          사용자는 본 소프트웨어를 사용함으로써 EULA(최종 사용자 라이선스
-          협정)에 동의하는 것으로 간주됩니다.
-        </p>
-      </>
-    ),
-    privacyTitle: "개인정보 처리방침",
-    privacyDesc: (
-      <>
-        {/* <H2_4XL text="개인정보 처리방침" /> */}
-        <P text="본 디스코드 봇을 사용하는 과정에서 더 나은 서비스 제공을 위해 다음과 같은 정보가 수집될 수 있습니다." />
-        <P text="수집되는 내용에 동의하지 않으신다면 해당 봇은 사용할 수 없습니다." />
+        <H2 text="목적" />
+        <P text='본 약관은 워프레임 유틸봇(가칭, 이하 "서비스")이 제공하는 모든 기능과 콘텐츠, 웹사이트를 이용함에 있어, 서비스를 제공해드리는 ‘고양이’ 간부진(이하 "운영자")과 이용자 간의 권리, 의무 및 책임 사항을 규정함을 목적으로 합니다. ' />
+        <P text="이용자가 봇을 서버에 추가하거나 기능을 사용함으로써 본 약관에 동의하는 것으로 간주합니다." />
+        <H2 text="약관의 효력과 변경" />
+        <ul className={htags.ulTag}>
+          <li>본 약관은 서비스를 이용하는 모든 이용자에게 적용됩니다.</li>
+          <li>
+            운영자는 필요한 경우 관련 법령을 위배하지 않는 범위 내에서 약관을
+            개정할 수 있습니다.
+          </li>
+          <li>
+            약관이 변경될 경우, 디스코드 봇 공지사항 또는 지원 서버 등을 통해
+            사전 공지합니다.
+          </li>
+          <li>
+            이용자가 변경된 약관 공지 후에도 서비스를 계속 이용하는 경우, 변경
+            사항에 동의한 것으로 간주합니다. 동의하지 않을 경우 서비스 이용을
+            중단할 수 있습니다.
+          </li>
+        </ul>
+        <H2 text="서비스의 제공 및 변경" />
+        <ul className={htags.ulTag}>
+          <li>
+            운영자는 디스코드 플랫폼 내에서 사용자 편의를 위한 다양한 기능을
+            제공합니다.
+          </li>
+          <li>
+            운영자는 유지/보수, 디스코드 API 정책 변경, 천재지변 등 불가피한
+            사유가 발생할 경우 서비스의 전부 또는 일부를 변경하거나 중단할 수
+            있습니다.
+          </li>
+          <li>
+            서비스의 변경 또는 중단으로 인해 발생하는 이용자의 손해에 대해서는
+            책임을 지지 않고 별도의 보상을 하지 않습니다.
+          </li>
+        </ul>
+        <H2 text="이용자의 의무" />
+        <ul className={htags.ulTag}>
+          <li>
+            이용자는 디스코드의 자체 이용약관(Terms of Service) 및 커뮤니티
+            가이드라인을 준수해야 합니다.
+          </li>
+          <li>
+            이용자는 서비스를 오직 합법적인 목적으로만 사용해야 하며, 다음 각
+            호의 행위를 금지합니다.
+          </li>
+          <ul className={htags.ulTag}>
+            <li>봇을 활용한 도배, 스팸, 광고 등 타인에게 불쾌감을 주는 행위</li>
+            <li>
+              서비스의 의도된 이용 범위(운영자의 독자적인 판단에 따름)를 벗어나
+              서비스에 접근하거나 이용하는 행위
+            </li>
+            <li>운영자의 사전 허가 없이 서비스를 상업적으로 이용하는 행위</li>
+            <li>서비스를 불법적으로 이용하는 행위</li>
+            <li>서비스의 버그나 취약점을 악용하거나 이를 유포하는 행위</li>
+            <li>기타 관련 법령을 위반하거나 서비스 운영을 방해하는 행위</li>
+          </ul>
+        </ul>
+        <li>
+          서비스 이용 중 버그나 보안 취약점을 발견할 경우, 이용자는 즉시
+          운영자에게 제보해야 하며 이를 악용해서는 안 됩니다.
+        </li>
+        <li>
+          위 의무를 위반할 경우, 운영자는 사전 통보 없이 해당 이용자의 서비스
+          이용을 제한하거나 영구 차단할 수 있습니다.
+        </li>
+        <H2 text="개인정보 보호" />
+        <P text="운영자는 더 나은 서비스 제공을 위해 데이터를 수집하고 있습니다. " />
+        <P text="수집된 정보는 서비스 운영 목적 외의 다른 목적으로 사용하지 않으며, 법령에 의한 요구가 있는 경우를 제외하고는 제3자에게 제공되지 않습니다." />
 
-        <H2 text="수집하는 내용" />
-        <ul className={htags.ulTag}>
-          <li>
-            <strong>사용자 정보</strong>: 디스코드 사용자 ID 및 닉네임
-          </li>
-          <li>
-            <strong>서버 정보</strong>: 명령어가 사용된 서버의 이름, 채널 이름,
-            채널 ID
-          </li>
-          <li>
-            <strong>사용 기록</strong>: 사용한 명령어 및 명령어에 전달한 입력
-            내용 (제목 설명 등)
-          </li>
-        </ul>
-        <H2 text="개인정보의 제3자 제공" />
         <p className={htags.pTag}>
-          수집된 개인정보는 일반적인 경우에{" "}
-          <strong>제3자에게 제공되지 않습니다.</strong>
+          상세한 내용은 별도로 고지된 <strong>개인정보 처리방침</strong>을
+          따릅니다.
+          <br />
+          좌측 사이드바에서 개인정보 처리방침을 클릭하여 확인해주세요. (모바일은
+          우측 상단 메뉴 버튼을 통해 이동할 수 있습니다.)
         </p>
-        <P text="단, 다음의 경우에는 예외로 합니다." />
+
+        <H2 text="책임의 제한 (면책)" />
         <ul className={htags.ulTag}>
           <li>
-            법원, 검찰, 경찰 등 수사기관이 수사 목적으로 영장 등 법령에 정해진
-            절차와 방법에 따라 정보 제공을 요구하는 경우
+            운영자는 천재지변, 디스코드 플랫폼의 장애, 통신망의 장애 등
+            불가항력으로 인해 서비스를 제공할 수 없는 경우에 대해 책임을 지지
+            않습니다.
+          </li>
+          <li>
+            운영자는 이용자의 귀책 사유로 인한 서비스 이용의 장애나 데이터
+            손실에 대해 책임을 지지 않습니다.
+          </li>
+          <li>
+            운영자는 이용자가 서비스를 이용하여 기대하는 수익을 상실하거나,
+            서비스를 통해 얻은 자료로 인해 발생한 손해에 대해 운영자의 고의 또는
+            중대 과실이 없는 한 책임을 지지 않습니다.
           </li>
         </ul>
-        <H2 text="정보의 수집 목적 및 이용" />
-        <ol className={htags.olTag}>
-          <li>
-            <strong>오류 해결 및 지원</strong>: 사용자의 디스코드 ID, 서버 이름,
-            채널 정보는{" "}
-            <strong>
-              서비스 이용 중 발생하는 오류를 추적하고 해결하기 위한 목적
-            </strong>
-            으로 사용됩니다.
-          </li>
-          <li>
-            <strong>서비스 개선</strong>: 사용된 명령어 및 관련 내용은 통계
-            분석을 통해 <strong>사용자가 선호하는 기능을 파악</strong>하고,{" "}
-            <strong>향후 새로운 기능을 개발</strong>하거나{" "}
-            <strong>기존 기능을 개선</strong> 하는데 참고 자료로 활용됩니다.
-          </li>
-        </ol>
-        {/* 정보의 저장 방법 */}
-        <H2 text="정보의 저장 방법" />
+
+        <H2 text="저작권" />
         <ul className={htags.ulTag}>
           <li>
-            개인정보는 높은 신뢰성의 미국 연방 표준을 준수하는{" "}
-            <strong>FileVault</strong>로 암호화된 저장 장치에 안전하게
-            저장됩니다.
+            서비스가 제공하는 기능, 코드, 디자인 등에 대한 저작권 및
+            지적재산권은 운영자에게 귀속됩니다.
           </li>
           <li>
-            암호화 기술에 대한 자세한 내용은{" "}
-            <A
-              text="FileVault 애플 공식 문서"
-              href="https://support.apple.com/ko-kr/guide/deployment/dep82064ec40/web"
-            />
-            를 참고하여주세요.
+            단, 서비스 내에서 표시되는 게임(Warframe) 관련 데이터, 이미지, 상표
+            등은 해당 저작권자(Digital Extremes 등)에게 권리가 있습니다.
+          </li>
+          <li>
+            이용자는 서비스를 이용하여 얻은 정보를 운영자의 승낙 없이 영리
+            목적으로 이용하거나 제3자에게 배포할 수 없습니다.
           </li>
         </ul>
-        <H2 text="정보의 보유 기간" />
+
+        <H2 text="링크" />
+        <P text="서비스 내에 제3자가 제공하는 외부 웹사이트 및 자원에 대한 링크가 포함되는 경우, 이러한 링크는 이용자의 편의를 위해 제공되는 것입니다. 운영자는 해당 외부 사이트의 콘텐츠나 정책을 통제하지 않으며, 이용자가 이를 이용함으로써 발생하는 문제에 대해 책임을 지지 않습니다." />
+
+        <H2 text="이용 제한 및 연령 준수" />
+        <P text="본 서비스는 만 14세 이상을 대상으로 합니다. 만 14세 미만의 아동은 서비스를 이용할 수 없으며, 해당 사실이 확인될 경우 서비스 이용이 제한될 수 있습니다." />
+
+        <H2 text="준거법 및 관할" />
+        <P text="본 약관의 해석 및 분쟁에 관해서는 대한민국 법률을 따르며, 서비스 이용과 관련하여 소송이 제기될 경우 민사소송법상의 관할 법원을 따릅니다." />
+
+        <H2 text="부칙" />
+        <P text="본 이용 약관은 법령, 정책의 변경에 따라 내용이 추가, 삭제 및 수정될 수 있습니다." />
+        <P text="변경 사항이 있을 경우 시행 7일 전부터 디스코드 봇 공지사항 또는 공식 지원 서버를 통해 공지할 것입니다." />
         <ul className={htags.ulTag}>
-          <li>
-            수집된 정보는 원활한 서비스 운영 및 분석을 위해 수집일로부터 최대{" "}
-            <strong>5년</strong>간 보관될 수 있으며, 해당 기간이 지나면 안전하게
-            파기됩니다.
-          </li>
-          <li>
-            단, 봇 서비스 종료 확정 시, 서비스 종료와 동시에 수집된 모든 정보는
-            즉시 파기합니다.
-          </li>
+          <li>공고 일자: 2025년 12월 4일</li>
+          <li>시행 일자: 2025년 12월 5일</li>
         </ul>
       </>
     ),
   },
-  // 8. 법적 고지
+  // 8. 개인정보 처리방침
+  privacy: {
+    id: "privacy",
+    title: "개인정보 처리방침",
+    desc: (
+      <>
+        <P text="워프레임 유틸봇(가칭, 이하 “서비스”)을 운영하는 ‘고양이 간부진’(이하 “운영자”)은 이용자의 개인정보를 소중하게 생각하며, 사용자의 개인정보 보호를 위해 최선을 다하고 있습니다." />
+
+        <P text="봇을 이용하는 경우, 본 개인정보 처리방침에 동의하는 것으로 간주합니다. 내용에 동의하지 않으신다면 봇 사용을 중단하셔야 합니다." />
+
+        <H2 text="수집하는 개인정보의 항목" />
+
+        <P text="운영자는 원활한 서비스 제공과 문제 해결을 위해 다음과 같은 최소한의 정보를 수집합니다." />
+
+        <P text="수집 항목" />
+        <ul className={htags.ulTag}>
+          <li>
+            <strong>사용자 식별 정보</strong>: 디스코드 사용자 ID, 닉네임{" "}
+          </li>
+          <li>
+            <strong>이용 환경 정보</strong>: 명령어가 사용된 서버(Guild)의 이름
+            및 ID, 채널 이름 및 ID{" "}
+          </li>
+          <li>
+            <strong>서비스 이용 기록</strong>: 사용한 명령어, 팝업창(Modal) 등을
+            통해 입력된 데이터, 오류 발생 로그
+          </li>
+        </ul>
+
+        <H2 text="수집 방법" />
+        <P text="봇 이용 과정에서 자동으로 생성되어 수집" />
+
+        <H2 text="개인정보의 수집 및 이용 목적" />
+        <P text="수집된 정보는 다음의 목적 이외의 용도로는 사용되지 않으며, 목적이 변경될 경우 사전에 동의를 구합니다." />
+
+        <ol className={htags.olTag}>
+          <li>
+            <strong>서비스 제공 및 기능 수행</strong>: 봇의 핵심 기능 제공 및
+            사용자 식별
+          </li>
+          <li>
+            <strong>오류 해결 및 기술 지원</strong>: 서비스 이용 중 발생하는
+            오류 및 버그 추적, 사용자 문의 대응
+          </li>
+          <li>
+            <strong>서비스 개선</strong>: 이용 통계 분석을 통한 선호 기능을
+            파악하여 기존 기능을 개선, 또는 신규 기능 개발 자료로 활용
+          </li>
+        </ol>
+
+        <H2 text="개인정보 보유 기간" />
+        <P text="이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용 목적이 달성되면 지체 없이 파기합니다. 단, 다음의 정보는 아래의 사유로 명시한 기간 동안 보존합니다." />
+        <ul className={htags.ulTag}>
+          <li>
+            <strong>보존 항목</strong>: 서비스 이용 기록 및 로그 데이터
+          </li>
+          <li>
+            <strong>보존 기간</strong>: 수집일로부터 최대 1년
+          </li>
+          <li>
+            <strong>보존 사유</strong>: 서비스 부정 이용 방지 및 기능 개선을
+            위한 통계 데이터 확보
+          </li>
+          <li>
+            <strong>서비스 종료 시</strong>: 봇 서비스 종료가 확정될 경우,
+            서비스 종료와 함께 수집된 모든 정보는 즉시 파기됩니다.
+          </li>
+        </ul>
+        <P text="단, 관계 법령의 규정에 의하여 보존할 필요가 있는 경우 운영자는 해당 법령에서 정한 일정한 기간 동안 정보를 보관합니다." />
+
+        <H2 text="정보의 파기절차 및 방법" />
+        <P text="개인정보 파기 시점 도래 시 다음의 방법으로 파기합니다." />
+        <ul className={htags.ulTag}>
+          <li>
+            <strong>전자적 파일 형태</strong>: 복구 및 재생할 수 없는 기술적
+            방법을 사용하여 영구 삭제합니다.
+          </li>
+          <li>
+            <strong>절차</strong>: 보존 기간이 경과하거나 처리 목적이 달성된
+            개인정보는 내부 방침에 따라 안전하게 파기됩니다.
+          </li>
+        </ul>
+
+        <H2 text="개인정보의 제3자 제공" />
+        <P text="운영자는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다." />
+        <ul className={htags.ulTag}>
+          <li>이용자가 사전에 동의한 경우</li>
+          <li>
+            법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에
+            따라 수사기관의 요구가 있는 경우
+          </li>
+        </ul>
+
+        <H2 text="이용자의 권리와 행사 방법" />
+        <P text="이용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 삭제를 요청할 수 있습니다." />
+        <ul className={htags.ulTag}>
+          <li>
+            <strong>권리 행사 방법</strong>: 운영자 이메일 또는 공식 지원 서버를
+            통해 서면, 채팅 등으로 요청
+          </li>
+          <li>
+            <strong>요청 가능 사항</strong>: 개인정보 열람, 정정, 삭제, 처리
+            정지 요구
+          </li>
+        </ul>
+
+        <H2 text="개인정보 안전성 확보 조치" />
+        <P text="운영자는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다." />
+        <ol className={htags.ulTag}>
+          <li>
+            <strong>관리적 조치</strong>: 개인정보에 접근할 수 있는 인원을
+            운영자로 최소화하고 있습니다.
+          </li>
+          <li>
+            <strong>기술적 조치</strong>:
+          </li>
+          <ul className={htags.ulTag}>
+            <li>
+              저장된 데이터는 OS 레벨의 암호화 기술(FileVault 등)이 적용된 저장
+              장치에 보관됩니다.
+            </li>
+            <li>외부 전송 시 암호화된 통신 프로토콜을 사용합니다.</li>
+            <li>
+              정기적인 소프트웨어 업데이트를 통해 해킹이나 바이러스로부터
+              시스템을 보호합니다.
+            </li>
+          </ul>
+        </ol>
+
+        <H2 text="개인정보 보호 책임자 및 연락처" />
+        <P text="서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 창구로 문의해 주시기 바랍니다." />
+        <ul className={htags.ulTag}>
+          <li>
+            책임자: 닉네임 <strong>고양이</strong>를 가진 간부진 (창설클랜 역할)
+          </li>
+          {/* TODO: 이메일 추가 */}
+          <li>이메일: {process.env.REACT_APP_CONTACT_EMAIL}</li>
+          <li>디스코드 지원 서버: [제작 중]</li>
+          {/* TODO: 공식 지원 서버 링크 추가 */}
+        </ul>
+
+        <H2 text="개인정보 처리방침의 변경" />
+
+        <P text="본 개인정보 처리방침은 법령, 정책 또는 보안 기술의 변경에 따라 내용이 추가, 삭제 및 수정될 수 있습니다. 변경 사항이 있을 경우 시행 7일 전부터 디스코드 봇 공지사항 또는 공식 지원 서버를 통해 공지할 것입니다." />
+        <ul className={htags.ulTag}>
+          <li>공고 일자: 2025년 12월 4일</li>
+          <li>시행 일자: 2025년 12월 5일</li>
+        </ul>
+      </>
+    ),
+  },
+  // 9. 법적 고지
   contact: {
     id: "contact",
     title: "도움이 필요하신가요?",
     foot: (
       <>
         <p className={htags.pTag}>
-          버그 제보와 각종 문의/건의/제안사항이 있다면, <br />
-          닉네임 <strong>'고양이'</strong>를 가진 간부진(창설클랜 역할의
-          서버운영진) 에게 DM 부탁드립니다.
+          버그 제보와 각종 문의/건의/제안사항이 있다면, 닉네임{" "}
+          <strong>'고양이'</strong>를 가진 간부진(창설클랜 역할의 서버운영진)
+          에게 DM 부탁드립니다.
         </p>
 
         <p className={htags.pTag}>피드백은 언제나 환영합니다. 감사합니다.</p>

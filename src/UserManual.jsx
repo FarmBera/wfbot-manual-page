@@ -196,6 +196,7 @@ const UserManual = () => {
         initialScrollDone.current = true;
       }, 0);
     }
+    // eslint-disable-next-line
   }, [lang, isMobile]); // Run only when language or mobile status changes.
 
   // automatic sidebar scroll (executes every activeSection changes)
@@ -265,6 +266,7 @@ const UserManual = () => {
         img.removeEventListener("load", handleImageLoad);
       });
     };
+    // eslint-disable-next-line
   }, [lang, currentSections]); // Re-attach listeners when content changes
 
   return (
