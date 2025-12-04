@@ -200,7 +200,8 @@ export const getManualSections = (t, isMobile) => {
                   Q. {qna.q}
                 </h4>
                 <div className="text-gray-500 dark:text-gray-400">
-                  A. {qna.a}
+                  <span className="font-black">A. </span>
+                  {qna.a}
                 </div>
               </div>
             ))}
@@ -238,9 +239,7 @@ export const getManualSections = (t, isMobile) => {
       title: t.contact.title,
       icon: <Contact2 size={20} />,
       content: (
-        <div
-          className={`space-y-4 ${TXT_SIZE} ${tw.txt.normal}`}
-        >
+        <div className={`space-y-4 ${TXT_SIZE} ${tw.txt.normal}`}>
           <div className={htags.pTag}>{t.contact.desc}</div>
           <div className={htags.pTag}>{t.contact.foot}</div>
         </div>

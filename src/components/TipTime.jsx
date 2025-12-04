@@ -6,7 +6,7 @@ export const TipTime = ({ sampleTime }) => {
   return (
     <NOTE
       color="indigo"
-      icon="lightbulb"
+      icon="tip"
       title="시간 확인 꿀팁"
       text={
         <>

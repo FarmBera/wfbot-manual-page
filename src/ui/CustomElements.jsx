@@ -37,9 +37,7 @@ const styles = {
 const icons = {
   info: <Info />,
   tip: <Lightbulb />,
-  lightbulb: <Lightbulb />, //TODO: replace this to tip
   alert: <TriangleAlert />,
-  trianglealert: <TriangleAlert />, //TODO: replace this to alert
 };
 
 export const P = ({ text }) => {

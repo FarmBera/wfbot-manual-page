@@ -1,9 +1,10 @@
 import { COMMON } from "./common";
 import { htags, tw } from "../style/tailwind";
 
-import { H2, P, A, NOTE, BOLD } from "../ui/CustomElements";
+import { H2, H3, P, A, NOTE, BOLD } from "../ui/CustomElements";
 import TipTime from "../components/TipTime";
 import DocImage from "../components/DocImage";
+import ContactMe from "../components/ContactAdmin";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".webp";
@@ -40,9 +41,6 @@ export const uiTextsKo = {
   contents: "목차",
   next: "다음",
   footerMsg: "문서의 끝부분 입니다.",
-  // contactSupport: "고객지원팀에 문의하기",
-  contactSupport:
-    "문의사항이 있다면, 닉네임 '고양이'를 가진 간부진(서버운영진)에게 DM 부탁드립니다.",
   copyright: `© ${COMMON.year} ${COMMON.company}`,
 
   picEx: "내용 예시",
@@ -76,8 +74,9 @@ export const uiTextsKo = {
         title="알림"
         text={
           <p>
-            이 문서는 현재 베타 버전으로 작성 중인 문서입니다. <br />
-            오탈자 및 어색한 표현이 있을 수 있으니, 양해 부탁드립니다.
+            이 문서는 현재 베타 버전입니다.
+            <br />
+            오탈자가 있을 수 있으니, 양해 부탁드립니다.
           </p>
         }
       />
@@ -102,7 +101,6 @@ export const uiTextsKo = {
             확인만 가능할까요?
             <br />
             새로운 컨텐츠가 업데이트 될 때 마다 실시간으로 메시지를 보내 줍니다!
-            <br />
             명령어에서 보던 그 레이아웃 그대로요!
           </>
         ),
@@ -113,9 +111,8 @@ export const uiTextsKo = {
           <>
             <p className="text-lg">매번 마켓에 접속해서 검색한다고요???</p>
             <br />
-            이 봇을 이용하면 디스코드에서 간단하게 시세를 검색할 수 있어요.
-            <br />
-            매번 워프레임 마켓 웹사이트에 접속할 필요가 없죠!
+            이 봇을 이용하면 디스코드에서 간단하게 시세를 검색할 수 있어요. 매번
+            워프레임 마켓 웹사이트에 접속할 필요가 없죠!
             <br />
             <br />
             또한, 검색 결과에 마켓으로 이동할 수 있는 링크를 제공하고 있으니,
@@ -139,12 +136,14 @@ export const uiTextsKo = {
         title: "아이템 거래 시스템",
         desc: (
           <>
-            어렵게만 다가왔던 아이템 거래, 대체 어떻게 하라는 건지...
+            어렵게만 다가왔던 아이템 거래, 아이템 시세는 어떻게 보고, 대체
+            어떻게 하라는 건지...
             <br />
             <br />
             <p className="text-lg">더 이상 두려워하지 마세요!</p>
             <br />
-            초보자 분들도 간단한 명령어로 거래 글을 편리하게 게시할 수 있어요.
+            워프레임 마켓 기반 자동 시세 책정 기능으로, 초보자 분들도 시세 걱정
+            없이 간단한 명령어로 거래 글을 편리하게 게시할 수 있어요.
           </>
         ),
       },
@@ -197,8 +196,9 @@ export const uiTextsKo = {
         foot: (
           <>
             <p>
-              자세한 내용은 좌측 목차에서 <strong>이용약관 / 법적고지</strong>{" "}
-              섹션을 확인해주세요.
+              자세한 내용은 좌측 목차에서{" "}
+              <strong>이용 약관 / 개인정보 처리방침</strong> 섹션을
+              확인해주세요.
             </p>
           </>
         ),
@@ -263,7 +263,7 @@ export const uiTextsKo = {
           <>
             <NOTE
               color="green"
-              icon="lightbulb"
+              icon="tip"
               title="꿀팁"
               text="얻을 수 있는 샤드 종류에 따라 왼쪽의 띠 색깔이 바뀌어서 어떤 샤드를 얻을 수 있는지 직관적으로 확인할 수 있어요!"
             />
@@ -361,13 +361,17 @@ export const uiTextsKo = {
       {
         id: SUB.MARKET_SEARCH,
         title: "마켓검색",
-        desc: "'Warframe Market'(워프레임 마켓) 에서 원하는 아이템을 검색하여 가장 저렴한 매물을 검색할 수 있어요.",
+        desc: (
+          <>
+            <P text="'Warframe Market'(워프레임 마켓) 에서 원하는 아이템을 검색하여 가장 저렴한 매물을 검색할 수 있어요." />
+            <P text="파란색으로 된 아이템 이름을 클릭하면 해당 아이템의 마켓 검색 결과로 이동할 수 있어요." />
+          </>
+        ),
         image: `${IMG_PATH}market-search-result${IMG_EXT}`,
         imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Market+Search",
         foot: (
           <>
-            <P text="파란색으로 된 아이템 이름을 클릭하면 해당 아이템의 마켓 검색 결과로 이동할 수 있어요." />
             <P text="마켓 검색 명령어 사용 방법은 다음과 같습니다." />
             <ol className={htags.olTag}>
               <li>
@@ -381,20 +385,17 @@ export const uiTextsKo = {
             </ol>
             <DocImage src={`${IMG_PATH}market-search-searching${IMG_EXT}`} />
             <p className={htags.pTag}>
-              자동완성 기능을 지원하고 있어, 검색하고자 하는 아이템이 거래
-              가능한지 확인할 수 있어요.
+              자동완성 기능을 지원하고 있어, 아이템을 검색 해볼 수 있어요.
             </p>
             <NOTE
               color="yellow"
-              icon="trianglealert"
+              icon="alert"
               title="알림"
               text={
                 <>
                   일부 변역이 되지 않은 아이템이 있을 수 있습니다.
                   <br />
-                  검색이 되지 않는 항목이 있다면 별명{" "}
-                  <strong className="">고양이</strong>를 가진 간부진에게 DM
-                  바랍니다.
+                  검색이 되지 않는 항목이 있다면 <ContactMe />
                 </>
               }
             />
@@ -481,7 +482,7 @@ export const uiTextsKo = {
       // 이용 전 주의사항
       {
         id: "party-warning",
-        title: "[필독] 기능 이용 전 주의사항",
+        title: <span className={tw.txt.red}>[필독] 기능 이용 전 주의사항</span>,
         desc: "기능 이용 전 주의사항을 안내해드립니다.",
         //
         foot: (
@@ -510,6 +511,7 @@ export const uiTextsKo = {
               있으므로, 당사자는 클랜 서버에서 '인게임 닉네임' 을 전체 공개하고,
               경고를 받습니다.
             </p>
+            <br />
             <p>
               <strong>(경고 3회, 이후 클랜 영구 추방)</strong>
             </p>
@@ -565,7 +567,7 @@ export const uiTextsKo = {
             />
             <NOTE
               color="yellow"
-              icon="lightbulb"
+              icon="tip"
               title="알림"
               text="디스코드 앱 화면 크기에 따라 버튼 배치는 달라질 수 있습니다."
             />
@@ -697,17 +699,15 @@ export const uiTextsKo = {
                 (워프레임 최대 파티원 수 4명)
               </li>
             </ul>
+            <P text="인원 수정 버튼을 누르면 다음과 같은 창이 표시됩니다." />
             <p className={htags.pTag}>
-              인원 수정 버튼을 누르면 다음과 같은 창이 표시됩니다.{" "}
+              원하는 인원수를 입력하고{" "}
+              <strong className={`${tw.txt.sky}`}>전송</strong>을 눌러주세요.
             </p>
             <DocImage
               src={`${IMG_PATH}party-nop${IMG_EXT}`}
               caption="인원 수정 팝업창"
             />
-            <p className={htags.pTag}>
-              원하는 인원수를 입력하고{" "}
-              <strong className={`${tw.txt.sky}`}>전송</strong>을 눌러주세요.
-            </p>
           </>
         ),
       },
@@ -821,7 +821,7 @@ export const uiTextsKo = {
           <>
             <NOTE
               color="red"
-              icon="trianglealert"
+              icon="alert"
               title="주의사항"
               text={
                 <div>
@@ -859,7 +859,7 @@ export const uiTextsKo = {
             />
             <NOTE
               color="orange"
-              icon="trianglealert"
+              icon="alert"
               title="주의!"
               text={
                 <>
@@ -902,7 +902,7 @@ export const uiTextsKo = {
             <p className={htags.pTag}></p>
             <NOTE
               color="orange"
-              icon="trianglealert"
+              icon="alert"
               title="주의!"
               text="종료 작업은 되돌릴 수 없습니다."
             />
@@ -927,7 +927,7 @@ export const uiTextsKo = {
       // trade warnings
       {
         id: "trade-warning",
-        title: "[필독] 기능 이용 전 주의사항",
+        title: <span className={tw.txt.red}>[필독] 기능 이용 전 주의사항</span>,
         desc: "기능 이용 전 주의사항을 안내합니다.",
         foot: (
           <div>
@@ -1017,7 +1017,23 @@ export const uiTextsKo = {
               거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을
               눌러주세요.
             </p>
-            <p className={htags.pTag}>끝입니다.</p>
+            <P text="버튼을 누르면 거래 글 게시자에게 멘션 알림이 갑니다." />
+            <P text="이후 스레드에서 자유롭게 대화를 나누며 거래하시면 됩니다." />
+            <NOTE
+              color="blue"
+              icon="tip"
+              title="꿀팁"
+              text={
+                <>
+                  게시글 하단의 귓속말 및 파티초대 명령어에 마우스를 가져다
+                  놓으면 우측에 복사하기 버튼이 뜹니다.
+                  <br />
+                  <br />
+                  복사한 뒤, 워프레임 채팅에 붙여넣어서 귓속말 및 파티초대
+                  기능을 사용하시면 됩니다.
+                </>
+              }
+            />
             <DocImage
               src={`${IMG_PATH}trade-created${IMG_EXT}`}
               maxWidth="90%"
@@ -1054,14 +1070,15 @@ export const uiTextsKo = {
                 하고자 하는 아이템 이름 (마켓에서 판매하는 물품 검색 가능)
               </li>
               <li>
-                <span className={htags.graveTag}>game_nickname</span>: 워프레임
-                닉네임 (디스코드 닉네임 아닙니다!)
+                <span className={htags.graveTag}>game_nickname</span>: 사용자
+                닉네임 기반으로 자동 설정됩니다.
+                {/* 워프레임 닉네임 (디스코드 닉네임 아닙니다!) */}
               </li>
-              <ul className={htags.ulTag}>
+              {/* <ul className={htags.ulTag}>
                 <li>
                   귓속말 및 파티초대 명령어에 사용되기에, 정확하게 기입해주세요!
                 </li>
-              </ul>
+              </ul> */}
               <li>
                 <span className={htags.graveTag}>item_rank</span>: [선택사항]
                 아케인과 같이 아이템 랭크가 존재한다면, 거래하고자 하는 아이템의
@@ -1258,7 +1275,7 @@ export const uiTextsKo = {
             />
             <NOTE
               color="orange"
-              icon="trianglealert"
+              icon="alert"
               title="주의!"
               text="안내 문구와 같이 모든 버튼이 비활성화되어, 게시글을 수정할 수 없고 다시 활성화할 수 없습니다."
             />
@@ -1282,7 +1299,8 @@ export const uiTextsKo = {
           <>
             <ol className={`${htags.olTag} ${tw.txt.dim}`}>
               <li>
-                <strong>서버관리봇 III</strong> 이 온라인 상태인지 확인해주세요.
+                <strong>서버관리봇 III</strong> 이 <strong>온라인 상태</strong>
+                인지 확인해주세요.
               </li>
               <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
                 <li>
@@ -1290,13 +1308,11 @@ export const uiTextsKo = {
                   불가능합니다.
                 </li>
                 <li>
-                  봇이 오프라인 상태라면... 사이드바의{" "}
-                  <strong>'도움이 필요하신가요?'</strong> 부분을 참고하여 빠르게
-                  관리자에게 연락 바랍니다.
+                  봇이 오프라인 상태라면, <ContactMe />
                 </li>
               </ul>
               <li>
-                온라인 상태인 것을 확인했다면
+                <strong>온라인 상태인 것을 확인</strong>했다면
                 <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
                   <li>
                     데스크탑 및 웹 환경의 경우 Ctrl + R 키를 눌러서 디스코드
@@ -1314,14 +1330,23 @@ export const uiTextsKo = {
           </>
         ),
       },
+      // 애플리케이션 응답 오류
       {
-        q: "'애플리케이션이 응답하지 않았어요' 메시지가 뜨면서 명령어/버튼 작동이 안돼요.",
+        q: (
+          <span>
+            '애플리케이션이 응답하지 않았어요' 메시지가 뜨면서 명령어/버튼
+            작동이 안돼요.
+            <br />
+            또는 봇이 생각을 너무 오랫동안 해요 (1분 이상 '생각 중이에요'
+            메시지만 뜨는 경우)
+          </span>
+        ),
         a: (
           <>
-            사이드바에서 <strong>'도움이 필요하신가요?'</strong> 부분을 참고하여
-            담당자에게 DM 바랍니다.
+            처리 과정에서 예기치 못한 오류가 발생하여 기능 작동이 안되는
+            상황입니다.
             <br />
-            어느 기능을 사용했는지 알려준다면 원인 파악을 빠르게 할 수 있어요.
+            <ContactMe />
           </>
         ),
       },
@@ -1330,18 +1355,31 @@ export const uiTextsKo = {
         q: `별다른 공지/예고 없이 파티에서 강제 탈퇴 당했어요`,
         a: (
           <>
-            <strong>파티장에게 우선 문의해주세요.</strong> (잘못 사용했을
-            가능성이 있습니다.)
+            <strong>파티장에게 우선 문의해주세요.</strong> 잘못 사용했을
+            가능성이 있습니다.
             <br />
             <br /> 파티장과 연락이 되지 않을경우,{" "}
             <strong>부정 사용으로 판단</strong>할 수 있습니다.
             <br />
-            사이드바의 <strong>'도움이 필요하신가요?'</strong> 섹션을 참고하여
-            담당자에게 DM으로 파티장의 닉네임과 상황을 설명해주세요. (대화
-            스크린샷 첨부해주면 더욱 좋습니다.)
+            <ContactMe />
             <br />
             간부진과 내부 회의를 거친 후, 파티장에게 부정 사용에 대한 경고/제재
             조치가 이루어질 예정입니다.
+          </>
+        ),
+      },
+      // 지속적인 알림
+      {
+        q: `특정 유저가 파티 또는 거래 게시글의 알림 시스템을 이용하여 알림 테러를 해요`,
+        a: (
+          <>
+            알림 테러는 본 디스코드 봇 약관 위반 행위 입니다.
+            <br />
+            <ContactMe />
+            신고가 접수된다면 내부 검토 및 간부진과 회의를 거친 후 조치를 취할
+            예정입니다.
+            <br />
+            (대화 스크린샷 첨부해주면 더욱 좋습니다.)
           </>
         ),
       },
@@ -1350,26 +1388,23 @@ export const uiTextsKo = {
         q: "봇을 개인 서버에 추가하고 싶어요",
         a: (
           <>
-            해당 기능은 Korea Warframe 만을 위하여 제작된 기능입니다. <br />
+            해당 기능은 Korea Warframe 서버를 위하여 제작된 기능입니다. <br />
             개인 서버에 추가를 원할 경우, 이용료를 지불하면 사용 가능합니다.
             <br />
             이용료는 서버 규모에 따라 가격이 책정되는 부분이 있으니, 상담을
-            원하신다면 사이드바의{" "}
-            {/* <A text="'도움이 필요하신가요?'" href={scrollToSection('contact')}/>  */}
-            <strong>'도움이 필요하신가요?'</strong> 부분을 참고하여 담당자에게
-            DM 바랍니다
+            원하신다면 <ContactMe />
           </>
         ),
       },
       {
         q: "기타 궁금한 사항이나 문의사항이 있다면?",
-        a: "사이드바에서 '도움이 필요하신가요? 부분을 참고하여 담당자에게 DM 바랍니다.",
+        a: <ContactMe />,
       },
     ],
   },
   // 7. 이용 약관
   terms: {
-    id: "terms",
+    id: "tos",
     title: "이용 약관",
     desc: (
       <>
@@ -1511,21 +1546,17 @@ export const uiTextsKo = {
     desc: (
       <>
         <P text="워프레임 유틸봇(가칭, 이하 “서비스”)을 운영하는 ‘고양이 간부진’(이하 “운영자”)은 이용자의 개인정보를 소중하게 생각하며, 사용자의 개인정보 보호를 위해 최선을 다하고 있습니다." />
-
         <P text="봇을 이용하는 경우, 본 개인정보 처리방침에 동의하는 것으로 간주합니다. 내용에 동의하지 않으신다면 봇 사용을 중단하셔야 합니다." />
 
         <H2 text="수집하는 개인정보의 항목" />
-
         <P text="운영자는 원활한 서비스 제공과 문제 해결을 위해 다음과 같은 최소한의 정보를 수집합니다." />
-
-        <P text="수집 항목" />
         <ul className={htags.ulTag}>
           <li>
-            <strong>사용자 식별 정보</strong>: 디스코드 사용자 ID, 닉네임{" "}
+            <strong>사용자 식별 정보</strong>: 디스코드 사용자 ID, 닉네임
           </li>
           <li>
             <strong>이용 환경 정보</strong>: 명령어가 사용된 서버(Guild)의 이름
-            및 ID, 채널 이름 및 ID{" "}
+            및 ID, 채널 이름 및 ID
           </li>
           <li>
             <strong>서비스 이용 기록</strong>: 사용한 명령어, 팝업창(Modal) 등을
@@ -1578,12 +1609,12 @@ export const uiTextsKo = {
         <P text="개인정보 파기 시점 도래 시 다음의 방법으로 파기합니다." />
         <ul className={htags.ulTag}>
           <li>
-            <strong>전자적 파일 형태</strong>: 복구 및 재생할 수 없는 기술적
-            방법을 사용하여 영구 삭제합니다.
-          </li>
-          <li>
             <strong>절차</strong>: 보존 기간이 경과하거나 처리 목적이 달성된
             개인정보는 내부 방침에 따라 안전하게 파기됩니다.
+          </li>
+          <li>
+            <strong>전자적 파일 형태</strong>: 복구 및 재생할 수 없는 기술적
+            방법을 사용하여 영구 삭제합니다.
           </li>
         </ul>
 
@@ -1622,7 +1653,7 @@ export const uiTextsKo = {
           </li>
           <ul className={htags.ulTag}>
             <li>
-              저장된 데이터는 OS 레벨의 암호화 기술(FileVault 등)이 적용된 저장
+              저장된 데이터는 OS(운영체제) 레벨의 암호화 기술이 적용된 저장
               장치에 보관됩니다.
             </li>
             <li>외부 전송 시 암호화된 통신 프로토콜을 사용합니다.</li>
@@ -1639,14 +1670,17 @@ export const uiTextsKo = {
           <li>
             책임자: 닉네임 <strong>고양이</strong>를 가진 간부진 (창설클랜 역할)
           </li>
-          {/* TODO: 이메일 추가 */}
           <li>이메일: {process.env.REACT_APP_CONTACT_EMAIL}</li>
-          <li>디스코드 지원 서버: [제작 중]</li>
-          {/* TODO: 공식 지원 서버 링크 추가 */}
+          <li>
+            <A
+              href={process.env.REACT_APP_SUPPORT_SERVER}
+              text="디스코드 지원 서버"
+            />{" "}
+            바로가기
+          </li>
         </ul>
 
         <H2 text="개인정보 처리방침의 변경" />
-
         <P text="본 개인정보 처리방침은 법령, 정책 또는 보안 기술의 변경에 따라 내용이 추가, 삭제 및 수정될 수 있습니다. 변경 사항이 있을 경우 시행 7일 전부터 디스코드 봇 공지사항 또는 공식 지원 서버를 통해 공지할 것입니다." />
         <ul className={htags.ulTag}>
           <li>공고 일자: 2025년 12월 4일</li>
@@ -1661,13 +1695,51 @@ export const uiTextsKo = {
     title: "도움이 필요하신가요?",
     foot: (
       <>
-        <p className={htags.pTag}>
-          버그 제보와 각종 문의/건의/제안사항이 있다면, 닉네임{" "}
-          <strong>'고양이'</strong>를 가진 간부진(창설클랜 역할의 서버운영진)
-          에게 DM 부탁드립니다.
-        </p>
+        {/* <H3 text="다음 상황에서 연락을 할 수 있습니다." /> */}
+        <ul className={htags.ulTag}>
+          <li>부정 사용자 신고</li>
+          <li>버그 제보</li>
+          <li>기타 봇 관련 문의/건의/제안사항</li>
+        </ul>
 
-        <p className={htags.pTag}>피드백은 언제나 환영합니다. 감사합니다.</p>
+        <H3 text="연락 방법" />
+        <P text="아래 방법 중 하나를 선택하여 담당자에게 연락 바랍니다." />
+        <ul className={htags.ulTag}>
+          <li>
+            <A
+              href={process.env.REACT_APP_SUPPORT_SERVER}
+              text="공식 지원 서버"
+            />
+            에 접수
+            <br />
+            <span className={tw.txt.dark}>
+              (파란색 글씨를 클릭하면 지원 서버 초대장으로 이동합니다.)
+            </span>
+          </li>
+          {/* <li>
+            <strong className={htags.graveTag}>/문의하기</strong> 명령어를
+            이용하여 문의 접수
+          </li> */}
+        </ul>
+        <P text="스크린샷 등 이미지 파일 첨부가 필요한 경우, 공식 지원 서버에서 접수 해주시길 바랍니다." />
+        <P text="피드백은 언제나 환영합니다." />
+        <NOTE
+          color="red"
+          icon="alert"
+          title="주의사항"
+          text={
+            <ul>
+              <li>
+                <strong>사용자 신고</strong>의 경우,{" "}
+                <strong>구체적 사유가 있어야만 접수가 가능</strong>합니다.
+              </li>
+              <li>
+                스크린샷 등 확실한 증거가 없을 경우 신고를 접수하여도 제재가
+                이루어지지 않을 수 있습니다.
+              </li>
+            </ul>
+          }
+        />
       </>
     ),
   },
