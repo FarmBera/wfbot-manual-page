@@ -1,3 +1,5 @@
+import React from "react";
+
 export const ContactMe = () => {
   return (
     <span>
@@ -5,6 +7,18 @@ export const ContactMe = () => {
       담당자에게 연락 바랍니다.
       <br />
       (모바일 사용자는 우측 상단 메뉴를 이용해주세요.)
+      <br />
+    </span>
+  );
+};
+
+export const ContactMeEn = () => {
+  return (
+    <span>
+      Please refer to the <strong>Need Help?</strong> section in the left
+      sidebar to contact the support team.
+      <br />
+      (Mobile users, please use the menu on the top right.)
       <br />
     </span>
   );

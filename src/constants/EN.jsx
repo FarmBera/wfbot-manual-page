@@ -4,7 +4,7 @@ import { htags, tw } from "../style/tailwind";
 import { H2, P, A, NOTE, BOLD, H3 } from "../ui/CustomElements";
 import TipTime from "../components/TipTime";
 import DocImage from "../components/DocImage";
-import ContactMe from "../components/ContactAdmin";
+import { ContactMeEn } from "../components/ContactAdmin";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".webp";
@@ -387,7 +387,7 @@ export const uiTextsEn = {
                   There may be some items that are not translated.
                   <br />
                   If there is an item that cannot be searched, please{" "}
-                  <ContactMe />
+                  <ContactMeEn />
                 </>
               }
             />
@@ -1321,7 +1321,7 @@ export const uiTextsEn = {
                   until maintenance is over.
                 </li>
                 <li>
-                  If the bot is offline, <ContactMe />
+                  If the bot is offline, <ContactMeEn />
                 </li>
               </ul>
               <li>
@@ -1359,7 +1359,7 @@ export const uiTextsEn = {
             An unexpected error occurred during processing, so the function is
             not working.
             <br />
-            <ContactMe />
+            <ContactMeEn />
           </>
         ),
       },
@@ -1374,7 +1374,7 @@ export const uiTextsEn = {
             <br /> If you cannot contact the Party Leader, it can be{" "}
             <strong>judged as abuse</strong>.
             <br />
-            <ContactMe />
+            <ContactMeEn />
             <br />
             After internal meetings with the executives, warnings/sanctions for
             abuse will be taken against the Party Leader.
@@ -1389,7 +1389,7 @@ export const uiTextsEn = {
             Spamming notifications is a violation of this Discord bot's terms of
             service.
             <br />
-            <ContactMe />
+            <ContactMeEn />
             If a report is received, we will take action after internal review
             and meetings with executives.
             <br />
@@ -1407,13 +1407,13 @@ export const uiTextsEn = {
             a fee.
             <br />
             Since the fee depends on the server scale, if you want a
-            consultation, <ContactMe />
+            consultation, <ContactMeEn />
           </>
         ),
       },
       {
         q: "If you have any other questions or inquiries?",
-        a: <ContactMe />,
+        a: <ContactMeEn />,
       },
     ],
   },

@@ -4,7 +4,7 @@ import { htags, tw } from "../style/tailwind";
 import { H2, H3, P, A, NOTE, BOLD } from "../ui/CustomElements";
 import TipTime from "../components/TipTime";
 import DocImage from "../components/DocImage";
-import ContactMe from "../components/ContactAdmin";
+import { ContactMe } from "../components/ContactAdmin";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".webp";
