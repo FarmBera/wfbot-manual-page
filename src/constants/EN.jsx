@@ -11,21 +11,27 @@ const IMG_EXT = ".webp";
 
 export const uiTextsEn = {
   // common UI
-  docTitle: "Usage Guide",
-  searchPlaceholder: "Search... is currently unavailable",
-  contents: "Contents",
+  docTitle: (
+    <span>
+      <span className="">{COMMON.nameEn}</span> Usage Guide
+    </span>
+  ),
+  searchPlaceholder: "Search... is currently unavailable...",
+  contents: "Contentss",
   next: "Next",
   footerMsg: "End of Documents",
-  copyright: `© ${COMMON.year} ${COMMON.company}`,
+  copyright: (
+    <>
+      (C) {COMMON.year} {COMMON.companyEn}. All rights reserved.
+      <br />
+      Note: Copyright for Warframe-related images and data belongs to Digital
+      Extremes Ltd.
+    </>
+  ),
 
   picEx: "Content Example",
 
-  // tiptime: {
-  //   title: "시간 확인 꿀팁",
-  //   text: "텍스트에 마우스를 가져다 놓으면 정확한 종료 날짜 & 시간이 표시됩니다!",
-  // },
-
-  // 1. 소개 섹션
+  // 1. Introduction
   intro: {
     id: "intro",
     title: "1. Introduction",
@@ -37,6 +43,7 @@ export const uiTextsEn = {
         Contents on the left.
       </>
     ),
+    imgDesc: "Meow~ My name is Kavat Prime! Nice to meet you",
     foot: (
       <>
         <NOTE
@@ -66,9 +73,9 @@ export const uiTextsEn = {
       </>
     ),
   },
-  // 2. 주요 기능 섹션
+  // 2. Features
   features: {
-    d: "features",
+    id: "features",
     title: "2. So, what does this bot do?",
     mainTitle: "Let's check the key points quickly!",
     items: [
@@ -1417,7 +1424,14 @@ export const uiTextsEn = {
     desc: (
       <>
         <H2 text="Purpose" />
-        <P text='These terms aim to define the rights, obligations, and responsibilities between the "Server Administrator who have nickname: Cat" executives (hereinafter "Operator") providing the service and the user in using all functions, content, and websites provided by the Warframe Utility Bot (tentative name, hereinafter "Service").' />
+        <p className={htags.pTag}>
+          These terms aim to define the rights, obligations, and
+          responsibilities between the <strong>{COMMON.companyEn}</strong>{" "}
+          executives (hereinafter "Operator") providing the service and the user
+          in using all functions, content, and websites provided by the{" "}
+          <strong>"{COMMON.nameEn}" Bot</strong> (tentative name, hereinafter
+          "Service").
+        </p>
         <P text="By adding the bot to a server or using its functions, the user is deemed to agree to these terms." />
         <H2 text="Effectiveness and Modification of Terms" />
         <ul className={htags.ulTag}>
@@ -1571,7 +1585,12 @@ export const uiTextsEn = {
     title: "Privacy Policy",
     desc: (
       <>
-        <P text="'Server Administrator who have nickname: Cat' (hereinafter 'Operator') operating the Warframe Utility Bot (tentative name, hereinafter 'Service') values the user's personal information and does its best to protect the user's personal information." />
+        <p>
+          {COMMON.companyEn} (hereinafter 'Operator') operating the{" "}
+          {COMMON.nameEn} Bot (tentative name, hereinafter 'Service') values the
+          user's personal information and does its best to protect the user's
+          personal information.
+        </p>
         <P text="By using the bot, you are deemed to agree to this Privacy Policy. If you do not agree, you must stop using the bot." />
 
         <H2 text="Items of Personal Information Collected" />
@@ -1727,6 +1746,55 @@ export const uiTextsEn = {
     ),
   },
   // 9. Legal Notice
+  legal: {
+    id: "legal",
+    title: "Copyright & Legal Notice",
+    desc: (
+      <>
+        <H3 text="Service Copyright" />
+        {/* <p>
+          Ownership of the Bot The source code, design, and custom mechanics of
+          {COMMON.nameEn} are the intellectual property of{" "}
+          <strong>{COMMON.companyEn}</strong>. All rights reserved.
+        </p> */}
+        <p>
+          The copyright for the proprietary source code, database structures,
+          website designs, and other elements related to the development and
+          operation of {COMMON.name} (tentative name, hereinafter referred to as
+          the “Service”) belongs to the developer {COMMON.companyEn}.
+        </p>
+        <p>
+          Service users may not copy, modify, distribute the code of this
+          service, or create any derivative works without the operator's
+          explicit written consent. (However, portions released as open source
+          shall follow the applicable license.)
+        </p>
+
+        <H3 text="Third-Party Content" />
+        <p>
+          Warframe Intellectual Property Portions of the materials used are
+          trademarks and/or copyrighted works of Digital Extremes Ltd. All
+          rights reserved by Digital Extremes Ltd. This material is not official
+          and is not endorsed by Digital Extremes.
+        </p>
+        <p>
+          Warframe© and the Warframe logo are trademarks of Digital Extremes
+          Ltd. The game-related images used in this service are intended solely
+          for informational purposes and are not intended to infringe upon the
+          rights of the copyright holder.
+        </p>
+
+        <H3 text="Disclaimer" />
+        <p>
+          This bot is a fan-made utility tool. It is not affiliated with,
+          endorsed, sponsored, or specifically approved by Digital Extremes Ltd.
+          The information provided by this service may differ from the actual
+          game content due to updates.
+        </p>
+      </>
+    ),
+  },
+  // 10. Contact
   contact: {
     id: "contact",
     title: "Need Help?",
@@ -1734,9 +1802,13 @@ export const uiTextsEn = {
       <>
         {/* <H3 text="You can contact us in the following situations." /> */}
         <ul className={htags.ulTag}>
+          <li>
+            If the issue persists even after following the 'FAQ' troubleshooting
+            steps
+          </li>
           <li>Report Abuse</li>
           <li>Report Bug</li>
-          <li>Other Bot Inquiries/Suggestions</li>
+          <li>Other Bot Inquiries, Suggestions</li>
         </ul>
 
         <H3 text="How to Contact" />

@@ -38,6 +38,11 @@ export const getManualSections = (t, isMobile) => {
           >
             {t.intro.welcomeDesc}
           </p>
+          <DocImage
+            src="/profile.webp"
+            maxWidth="45%"
+            caption={t.intro.imgDesc}
+          />
           {t.intro.foot}
         </div>
       ),
@@ -50,6 +55,7 @@ export const getManualSections = (t, isMobile) => {
       content: (
         <div className="space-y-6">
           <H2 text={t.features.mainTitle} />
+          {t.features.head}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {t.features.items.map((item, idx) => (
               <div
@@ -196,10 +202,8 @@ export const getManualSections = (t, isMobile) => {
               // className="border-b pb-4"
               <div key={idx}>
                 {idx !== 0 && <HR />}
-                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
-                  Q. {qna.q}
-                </h4>
-                <div className="text-gray-500 dark:text-gray-400">
+                <h4 className={`font-bold ${tw.txt.white} mb-2`}>Q. {qna.q}</h4>
+                <div className={`${tw.txt.dim}`}>
                   <span className="font-black">A. </span>
                   {qna.a}
                 </div>
@@ -233,7 +237,18 @@ export const getManualSections = (t, isMobile) => {
         </div>
       ),
     },
-    // 9. 연락 (contact)
+    // 9. 법적 고지 (Legall)
+    {
+      id: t.legal.id,
+      title: t.legal.title,
+      icon: <FileText size={18} />,
+      content: (
+        <div className={`space-y-4 text-md ${tw.txt.normal}`}>
+          {t.legal.desc}
+        </div>
+      ),
+    },
+    // 10. 연락 (contact)
     {
       id: t.contact.id,
       title: t.contact.title,

@@ -7,6 +7,7 @@ export const tw = {
 
   txt: {
     bright: "text-gray-950 dark:text-gray-50",
+    white: "text-gray-900 dark:text-gray-100",
     light: "text-gray-700 dark:text-gray-200",
     normal: "text-gray-600 dark:text-gray-300",
     // p: "text-gray-600 dark:text-gray-200",
@@ -15,7 +16,8 @@ export const tw = {
     dark: "text-gray-400 dark:text-gray-500",
     deep: "text.gray-300 dark:text-gray-600",
 
-    grave: "text-green-700 dark:text-green-500 bg-yellow-200 dark:bg-yellow-900",
+    grave:
+      "text-green-700 dark:text-green-500 bg-yellow-200 dark:bg-yellow-900",
 
     indigo: "text-indigo-600 dark:text-indigo-400",
     indigoHover: "hover:text-indigo-900 dark:hover:text-indigo-100",

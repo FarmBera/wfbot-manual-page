@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import {
   Book,
   Menu,
@@ -15,10 +15,7 @@ import {
 // import { manualData } from "./data/manualData";
 import { APP_INFO, UI_TEXTS } from "./constants/constants";
 import { getManualSections } from "./data/manualData";
-import { COMMON } from "./constants/common";
 import { tw } from "./style/tailwind";
-// eslint-disable-next-line
-import { A } from "./ui/CustomElements";
 
 const MOBILE_UI_SIZE = 768; // Tailwind CSS mobile UI size breakpoint
 
@@ -282,9 +279,7 @@ const UserManual = () => {
           className={`flex items-center space-x-2 font-bold ${tw.txt.indigo}`}
         >
           <Book size={20} />
-          <span>
-            {COMMON.name} {uiText.docTitle}
-          </span>
+          <span>{uiText.docTitle}</span>
         </div>
         <div className="flex items-center space-x-2">
           {/* mobile dark mode toggle btn */}
@@ -340,7 +335,7 @@ const UserManual = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`p-2 ${tw.txt.normal}`}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={36} /> : <Menu size={36} />}
           </button>
         </div>
       </div>
@@ -348,7 +343,7 @@ const UserManual = () => {
       <aside
         className={`
           fixed md:relative z-10 
-          w-64 md:w-1/4 h-full bg-white dark:bg-gray-800 border-r ${
+          w-80 md:w-1/4 h-full bg-white dark:bg-gray-800 border-r ${
             tw.border.gray2
           }
           flex flex-col transition-transform duration-300 ease-in-out
@@ -362,10 +357,10 @@ const UserManual = () => {
       >
         {/* desktop header */}
         <div
-          className={`hidden md:flex items-center justify-between p-6 border-b ${tw.border.gray} ${tw.tcd}`}
+          className={`hidden md:flex items-center justify-between p-4 border-b ${tw.border.gray} ${tw.tcd}`}
         >
           {/* text area */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             <div
               className={`${tw.head.bg} p-2 rounded-lg ${tw.txt.indigo} ${tw.tcd}`}
             >
@@ -385,7 +380,7 @@ const UserManual = () => {
             {/* btn: dark mode toggle */}
             <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 ${tw.tcd}`}
+              className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 ${tw.tcd}`}
               title={
                 isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
               }
@@ -397,7 +392,7 @@ const UserManual = () => {
             <div className="relative lang-dropdown">
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 ${tw.txt.normal} transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-600`}
+                className={`flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700 ${tw.txt.normal} transition-all border border-gray-200 dark:border-gray-600`}
               >
                 <Globe size={18} />
                 <span className="text-sm font-medium">
@@ -475,8 +470,7 @@ const UserManual = () => {
               <div key={section.id} className="mb-1">
                 <div
                   className={`
-                    w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all cursor-pointer
-                    sticky top-[-16px] z-10
+                    w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all cursor-pointer sticky top-[-16px] z-10
                     ${
                       isActive
                         ? `${tw.main.secIconBg} shadow-sm`
@@ -572,8 +566,8 @@ const UserManual = () => {
       </aside>
       {isMobileMenuOpen && (
         <div
-        className="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden"
-        onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
 

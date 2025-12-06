@@ -1,9 +1,15 @@
 // 앱 기본 정보 (언어 공통)
 export const COMMON = {
-  name: `워프레임 유틸봇 (서버관리봇 III)`,
-  nameEn: "Warframe Utils",
+  nameGeneral: `카밧 프라임 (서버관리봇 III)`,
+  name: "카밧 프라임",
+  nameEn: "Kavat Prime",
   version: `v1.0.0 Alpha`,
-  company: `'고양이' 닉네임을 가진 간부진`,
+  company: (
+      <strong>'고양이' 닉네임을 가진 간부진</strong> 
+  ),
+  companyEn: (
+      <strong>Server Administrator who have nickname: 'Cat'</strong>
+  ),
   year: 2025,
 };
 

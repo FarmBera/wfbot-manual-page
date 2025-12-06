@@ -11,12 +11,23 @@ const IMG_EXT = ".webp";
 
 export const uiTextsKo = {
   // common UI
-  docTitle: "이용 가이드",
+  docTitle: (
+    <span>
+      <span className="">{COMMON.name}</span> 이용 가이드
+    </span>
+  ),
   searchPlaceholder: "검색하기...는 아직 사용할 수 없어요...",
   contents: "목차",
   next: "다음",
   footerMsg: "문서의 끝부분 입니다.",
-  copyright: `© ${COMMON.year} ${COMMON.company}`,
+  copyright: (
+    <>
+      (C) {COMMON.year} {COMMON.company}. All rights reserved.
+      <br />
+      단, Warframe 관련 이미지 및 데이터의 저작권은 Digital Extremes Ltd.에
+      있습니다.
+    </>
+  ),
 
   picEx: "내용 예시",
 
@@ -29,19 +40,14 @@ export const uiTextsKo = {
   intro: {
     id: "intro",
     title: "1. 소개",
-    welcomeTitle: (
-      <>
-        {COMMON.name}
-        <br />
-        가이드에 오신 것을 환영합니다!
-      </>
-    ),
+    welcomeTitle: `${COMMON.name} 가이드에 오신 것을 환영합니다!`,
     welcomeDesc: (
       <>
         {/* 이 문서는 <strong>{COMMON.name}</strong>의 사용 방법을 알려줍니다. */}
         왼쪽의 목차를 통해 원하는 정보로 빠르게 이동할 수 있습니다.
       </>
     ),
+    imgDesc: `야옹~ 나는 ${COMMON.name}! 날 보러 와줘서 고맙다냥`,
     foot: (
       <NOTE
         color="yellow"
@@ -63,9 +69,12 @@ export const uiTextsKo = {
     id: "features",
     title: "2. 그래서 이게 뭘 하는 봇인데요?",
     mainTitle: "핵심만 빠르게 살펴보죠!",
+    head: (
+      <P text="실시간 워프레임 컨텐츠를 제공해주고, 추가 편의 기능을 제공합니다." />
+    ),
     items: [
       {
-        title: "디스코드에서 실시간 워프레임 컨텐츠 확인",
+        title: "실시간 워프레임 컨텐츠 확인",
         desc: "명령어를 이용하여 워프레임 내 컨텐츠를 확인할 수 있어요.",
         subDesc: "(바로키티어 등장 상태, 출격, 침공, 얼럿 미션 등등)",
       },
@@ -90,14 +99,14 @@ export const uiTextsKo = {
             워프레임 마켓 웹사이트에 접속할 필요가 없죠!
             <br />
             <br />
-            또한, 검색 결과에 마켓으로 이동할 수 있는 링크를 제공하고 있으니,
-            원한다면 마켓으로 바로 이동할 수도 있죠!
+            검색 결과에 마켓으로 이동할 수 있는 링크를 제공하고 있으니, 원한다면
+            마켓으로 바로 이동할 수도 있죠!
           </>
         ),
         subDesc: "",
       },
       {
-        title: "파티 모집 시스템",
+        title: "서버 내 파티 모집 시스템",
         desc: (
           <>
             매번 파티원들에게 DM 보내기 힘드셨죠?
@@ -108,7 +117,7 @@ export const uiTextsKo = {
         ),
       },
       {
-        title: "아이템 거래 시스템",
+        title: "서버 내 아이템 거래 시스템",
         desc: (
           <>
             어렵게만 다가왔던 아이템 거래, 아이템 시세는 어떻게 보고, 대체
@@ -118,7 +127,8 @@ export const uiTextsKo = {
             <p className="text-lg">더 이상 두려워하지 마세요!</p>
             <br />
             워프레임 마켓 기반 자동 시세 책정 기능으로, 초보자 분들도 시세 걱정
-            없이 간단한 명령어로 거래 글을 편리하게 게시할 수 있어요.
+            없이 간단한 명령어로 길드 거래 게시판에 글을 편리하게 게시하고
+            구매할 수 있어요.
           </>
         ),
       },
@@ -474,10 +484,7 @@ export const uiTextsKo = {
               </li>
               <li>
                 서버 규칙은{" "}
-                <A
-                  text="이곳에서"
-                  href="https://discord.com/channels/569543516749824000/1165264267436638248"
-                />{" "}
+                <A text="이곳에서" href={process.env.REACT_APP_SERVER_RULE} />{" "}
                 확인할 수 있습니다.
               </li>
             </ul>
@@ -1338,8 +1345,8 @@ export const uiTextsKo = {
             <br />
             <ContactMe />
             <br />
-            간부진과 내부 회의를 거친 후, 파티장에게 부정 사용에 대한 경고/제재
-            조치가 이루어질 예정입니다.
+            간부진과 내부 회의를 거친 후, 파티장에게 경고/제재 조치가 이루어질
+            예정입니다.
           </>
         ),
       },
@@ -1351,8 +1358,8 @@ export const uiTextsKo = {
             알림 테러는 본 디스코드 봇 약관 위반 행위 입니다.
             <br />
             <ContactMe />
-            신고가 접수된다면 내부 검토 및 간부진과 회의를 거친 후 조치를 취할
-            예정입니다.
+            신고가 접수된다면 내부 검토 및 간부진과 내부 회의를 거친 후 조치를
+            취할 예정입니다.
             <br />
             (대화 스크린샷 첨부해주면 더욱 좋습니다.)
           </>
@@ -1384,7 +1391,12 @@ export const uiTextsKo = {
     desc: (
       <>
         <H2 text="목적" />
-        <P text='본 약관은 워프레임 유틸봇(가칭, 이하 "서비스")이 제공하는 모든 기능과 콘텐츠, 웹사이트를 이용함에 있어, 서비스를 제공해드리는 ‘고양이’ 간부진(이하 "운영자")과 이용자 간의 권리, 의무 및 책임 사항을 규정함을 목적으로 합니다. ' />
+        <p>
+          본 약관은 {COMMON.name}(가칭, 이하 "서비스") 봇이 제공하는 모든 기능과
+          콘텐츠, 웹사이트를 이용함에 있어, 서비스를 제공해드리는
+          {COMMON.company}(이하 "운영자")과 이용자 간의 권리, 의무 및 책임
+          사항을 규정함을 목적으로 합니다.
+        </p>
         <P text="이용자가 봇을 서버에 추가하거나 기능을 사용함으로써 본 약관에 동의하는 것으로 간주합니다." />
         <H2 text="약관의 효력과 변경" />
         <ul className={htags.ulTag}>
@@ -1520,7 +1532,11 @@ export const uiTextsKo = {
     title: "개인정보 처리방침",
     desc: (
       <>
-        <P text="워프레임 유틸봇(가칭, 이하 “서비스”)을 운영하는 ‘고양이 간부진’(이하 “운영자”)은 이용자의 개인정보를 소중하게 생각하며, 사용자의 개인정보 보호를 위해 최선을 다하고 있습니다." />
+        <p>
+          {COMMON.name}(가칭, 이하 “서비스”) 봇을 운영하는 {COMMON.company}
+          (이하 “운영자”)은 이용자의 개인정보를 소중하게 생각하며, 사용자의
+          개인정보 보호를 위해 최선을 다하고 있습니다.
+        </p>
         <P text="봇을 이용하는 경우, 본 개인정보 처리방침에 동의하는 것으로 간주합니다. 내용에 동의하지 않으신다면 봇 사용을 중단하셔야 합니다." />
 
         <H2 text="수집하는 개인정보의 항목" />
@@ -1628,8 +1644,8 @@ export const uiTextsKo = {
           </li>
           <ul className={htags.ulTag}>
             <li>
-              저장된 데이터는 OS(운영체제) 레벨의 암호화 기술이 적용된 저장
-              장치에 보관됩니다.
+              저장된 데이터는 하드웨어 레벨의 암호화 기술이 적용된 저장 장치에
+              보관됩니다.
             </li>
             <li>외부 전송 시 암호화된 통신 프로토콜을 사용합니다.</li>
             <li>
@@ -1642,9 +1658,7 @@ export const uiTextsKo = {
         <H2 text="개인정보 보호 책임자 및 연락처" />
         <P text="서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 창구로 문의해 주시기 바랍니다." />
         <ul className={htags.ulTag}>
-          <li>
-            책임자: 닉네임 <strong>고양이</strong>를 가진 간부진 (창설클랜 역할)
-          </li>
+          <li>책임자: {COMMON.company} (창설클랜 역할)</li>
           <li>이메일: {process.env.REACT_APP_CONTACT_EMAIL}</li>
           <li>
             <A
@@ -1665,6 +1679,46 @@ export const uiTextsKo = {
     ),
   },
   // 9. 법적 고지
+  legal: {
+    id: "legal",
+    title: "저작권 및 법적 고지",
+    desc: (
+      <>
+        <H3 text="서비스 운영자의 권리" />
+        <p>
+          {COMMON.name}(가칭, 이하 서비스) 의 개발 및 운영과 관련된 독자적인
+          소스 코드, 데이터베이스 구조, 웹사이트 디자인 등에 대한 저작권은
+          개발자 {COMMON.company}에게 귀속됩니다.
+        </p>
+        <p>
+          서비스 이용자는 운영자의 명시적인 서면 동의 없이 본 서비스의 코드를
+          복제, 수정, 배포하거나 2차 저작물을 생성할 수 없습니다. (단, 오픈
+          소스로 공개된 부분은 해당 라이선스를 따릅니다.)
+        </p>
+        <H3 text="제3자 콘텐츠 및 상표권" />
+        <p>
+          본 서비스 내에서 제공되는 게임 Warframe과 관련된 모든 데이터, 예술
+          저작물, 로고, 아이콘, 텍스트, 고유명사 등의 지적재산권은{" "}
+          <strong>Digital Extremes Ltd.</strong>에 있습니다.
+        </p>
+        <p>
+          <strong>Warframe©</strong>은 Digital Extremes Ltd.의 등록 상표입니다.
+          본 서비스에서 사용된 게임 관련 이미지는 정보 전달을 목적으로
+          사용되었으며, 저작권자의 권리를 침해할 의도가 없습니다.
+        </p>
+
+        <H3 text="비공식 팬 프로젝트 고지" />
+        <p>
+          본 서비스는 Warframe의 팬(Fan)에 의해 만들어진 비공식(Unofficial)
+          프로젝트입니다. <strong>{COMMON.name}</strong>은 Digital Extremes Ltd.
+          와 제휴, 보증, 후원 또는 공식적인 승인 관계에 있지 않습니다. 본
+          서비스가 제공하는 정보는 게임의 업데이트에 따라 실제 게임 내용과 다를
+          수 있습니다.
+        </p>
+      </>
+    ),
+  },
+  // 10. 연락 방법
   contact: {
     id: "contact",
     title: "도움이 필요하신가요?",
@@ -1672,6 +1726,7 @@ export const uiTextsKo = {
       <>
         {/* <H3 text="다음 상황에서 연락을 할 수 있습니다." /> */}
         <ul className={htags.ulTag}>
+          <li>'자주 묻는 질문' 절차대로 진행해도 문제가 해결되지 않은 경우</li>
           <li>부정 사용자 신고</li>
           <li>버그 제보</li>
           <li>기타 봇 관련 문의/건의/제안사항</li>
