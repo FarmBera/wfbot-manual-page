@@ -13,16 +13,16 @@ export const uiTextsEn = {
   // common UI
   docTitle: (
     <span>
-      <span className="">{COMMON.nameEn}</span> Usage Guide
+      <span>{COMMON.nameEn}</span> Guide
     </span>
   ),
   searchPlaceholder: "Search... is currently unavailable...",
-  contents: "Contentss",
+  contents: "Contents",
   next: "Next",
   footerMsg: "End of Documents",
   copyright: (
     <>
-      (C) {COMMON.year} {COMMON.companyEn}. All rights reserved.
+      (C) {COMMON.year}. {COMMON.companyEn}. All rights reserved.
       <br />
       Note: Copyright for Warframe-related images and data belongs to Digital
       Extremes Ltd.
@@ -35,7 +35,12 @@ export const uiTextsEn = {
   intro: {
     id: "intro",
     title: "1. Introduction",
-    welcomeTitle: <>Welcome to the '{COMMON.nameEn}' Guide!</>,
+    welcomeTitle: (
+      <>
+        Welcome to the{" "}
+        <strong className={`${tw.txt.blue}`}>'{COMMON.nameEn}'</strong> Guide!
+      </>
+    ),
     welcomeDesc: (
       <>
         {/* This document explains how to use <strong>{COMMON.name}</strong>. */}
@@ -52,7 +57,7 @@ export const uiTextsEn = {
           title="Notify"
           text={
             <p>
-              This document is currently in Beta Version.
+              This homepage is currently in Beta Version.
               <br />
               Please understand that there may be typos.
             </p>
@@ -96,11 +101,11 @@ export const uiTextsEn = {
         ),
       },
       {
-        title: "Market Search Function",
+        title: "Market Search Feature",
         desc: (
           <>
             <p className="text-lg">
-              You log into the market every time to search???
+              If you enter the market website every time to search,
             </p>
             <br />
             With this bot, you can easily search for prices directly on Discord.
@@ -128,14 +133,13 @@ export const uiTextsEn = {
         title: "Item Trading System",
         desc: (
           <>
-            Item trading felt difficult, how to check prices, and what to do...
+            With simple commands and a management system, you can conveniently
+            buy and sell items within your guild.
             <br />
             <br />
-            <p className="text-lg">Don't be afraid anymore!</p>
-            <br />
-            With the automatic pricing feature based on Warframe Market, even
-            beginners can conveniently post trade listings with simple commands
-            without worrying about prices.
+            Additionally, it features built-in automatic pricing based on market
+            prices, so even beginners can post trade listings without worrying
+            about market prices.
           </>
         ),
       },
@@ -402,7 +406,7 @@ export const uiTextsEn = {
           <div>
             <p className={htags.pTag}>
               For more details, please refer to the{" "}
-              <strong>4. Party Recruitment Function</strong> section in the
+              <strong>4. Party Recruitment Feature</strong> section in the
               sidebar menu. (Link inserted)
             </p>
           </div>
@@ -418,7 +422,7 @@ export const uiTextsEn = {
           <div>
             <p className={htags.pTag}>
               For more details, please refer to the{" "}
-              <strong>5. Trade Function</strong> section in the sidebar menu.
+              <strong>5. Trade Feature</strong> section in the sidebar menu.
               (Link inserted)
             </p>
           </div>
@@ -454,13 +458,13 @@ export const uiTextsEn = {
   // 4. Party Section
   party: {
     id: "party",
-    title: "4. Party Recruitment Function",
+    title: "4. Party Recruitment Feature",
     mainTitle: "Party Recruitment Commands",
     list: [
-      // Party Function Overview
+      // Party Feature Overview
       {
         id: "party-intro",
-        title: "Function Overview",
+        title: "Feature Overview",
         desc: (
           <>
             <P text="You can easily create a party recruitment post." />
@@ -475,7 +479,7 @@ export const uiTextsEn = {
         id: "party-warning",
         title: (
           <span className={tw.txt.red}>
-            [Must Read] Precautions Before Using the Function
+            [Must Read] Precautions Before Using this Feature
           </span>
         ),
         desc: "We will guide you through the instructions before using this feature.",
@@ -920,30 +924,23 @@ export const uiTextsEn = {
   // 5. Trade Section
   trade: {
     id: "trade",
-    title: "5. Trade Function",
+    title: "5. Trade Feature",
     mainTitle: "Trade Commands",
     list: [
-      // trade intro
-      {
-        id: "trade-create",
-        title: "Trade Function Overview",
-        desc: "Explains how to use the trade function.",
-        // foot: <P text="Trade items are limited to Warframe items. (Trading items from other games is prohibited)" />,
-      },
       // trade warnings
       {
         id: "trade-warning",
         title: (
           <span className={tw.txt.red}>
-            [Must Read] Precautions Before Using the Function
+            [Must Read] Precautions Before Using this Feature
           </span>
         ),
-        desc: "We will guide you through the instructions before using the function.",
+        desc: "We will guide you through the instructions before using the feature.",
         foot: (
           <div>
             <ul className={htags.ulTag}>
               <li>
-                The trade function is{" "}
+                The trade feature is{" "}
                 <span className="text-red-500 font-bold">
                   limited to Warframe items
                 </span>
@@ -979,11 +976,6 @@ export const uiTextsEn = {
                   </span>
                   in the trade post takes you to the market search results.)
                 </li>
-                <li>
-                  Also, since we have built-in a feature that automatically sets
-                  the price based on real-time market prices when you post a
-                  trade, please refer to it.
-                </li>
               </ul>
               <li>
                 The currency corresponding to the item being traded does not
@@ -999,14 +991,23 @@ export const uiTextsEn = {
                   </span>
                   .
                 </li>
-                <li className="text-red-500 font-bold">
-                  If caught trading with real money, you will be permanently
-                  banned from the clan without warning.
-                </li>
                 <li>
-                  Real money trading and attempts are subject to sanctions under
-                  the Warframe End User License Agreement (EULA). <br />
-                  If caught, DE may permanently ban the account.
+                  In{" "}
+                  <A
+                    href="https://www.warframe.com/en/eula#virtualGoods"
+                    text="Warframe End User License Agreements (EULA)"
+                  />
+                  , Section{" "}
+                  <strong>
+                    '9. Virtual Goods and Game Currency' - Clause B
+                  </strong>{" "}
+                  of the document specifies that
+                  <strong className={`${tw.txt.orange}`}>
+                    trading accounts or items for cash (physical currency) is
+                    prohibited
+                  </strong>
+                  If caught, the DE may{" "}
+                  <strong>permanently suspend (ban) your/their account</strong>.
                 </li>
               </ul>
             </ul>
@@ -1043,7 +1044,7 @@ export const uiTextsEn = {
                   <br />
                   <br />
                   Copy it, then paste it into the Warframe chat to use the
-                  whisper and party invite functions.
+                  whisper and party invite features.
                 </>
               }
             />
@@ -1356,7 +1357,7 @@ export const uiTextsEn = {
         ),
         a: (
           <>
-            An unexpected error occurred during processing, so the function is
+            An unexpected error occurred during processing, so the feature is
             not working.
             <br />
             <ContactMeEn />
@@ -1428,11 +1429,11 @@ export const uiTextsEn = {
           These terms aim to define the rights, obligations, and
           responsibilities between the <strong>{COMMON.companyEn}</strong>{" "}
           executives (hereinafter "Operator") providing the service and the user
-          in using all functions, content, and websites provided by the{" "}
-          <strong>"{COMMON.nameEn}" Bot</strong> (tentative name, hereinafter
+          in using all features, content, and websites provided by the{" "}
+          <strong>"{COMMON.nameEn}" Bot</strong> (hereinafter
           "Service").
         </p>
-        <P text="By adding the bot to a server or using its functions, the user is deemed to agree to these terms." />
+        <P text="By adding the bot to a server or using its features, the user is deemed to agree to these terms." />
         <H2 text="Effectiveness and Modification of Terms" />
         <ul className={htags.ulTag}>
           <li>These terms apply to all users using the Service.</li>
@@ -1453,7 +1454,7 @@ export const uiTextsEn = {
         <H2 text="Provision and Change of Service" />
         <ul className={htags.ulTag}>
           <li>
-            The Operator provides various functions for user convenience within
+            The Operator provides various features for user convenience within
             the Discord platform.
           </li>
           <li>
@@ -1587,7 +1588,7 @@ export const uiTextsEn = {
       <>
         <p>
           {COMMON.companyEn} (hereinafter 'Operator') operating the{" "}
-          {COMMON.nameEn} Bot (tentative name, hereinafter 'Service') values the
+          {COMMON.nameEn} Bot (hereinafter 'Service') values the
           user's personal information and does its best to protect the user's
           personal information.
         </p>
@@ -1618,8 +1619,8 @@ export const uiTextsEn = {
 
         <ol className={htags.olTag}>
           <li>
-            <strong>Service Provision and Function Execution</strong>: Providing
-            core bot functions and user identification
+            <strong>Service Provision and Feature Execution</strong>: Providing
+            core bot features and user identification
           </li>
           <li>
             <strong>Error Resolution and Technical Support</strong>: Tracking
@@ -1627,9 +1628,9 @@ export const uiTextsEn = {
             inquiries
           </li>
           <li>
-            <strong>Service Improvement</strong>: Identifying preferred
-            functions through usage statistics analysis to improve existing
-            functions or use as data for new function development
+            <strong>Service Improvement</strong>: Identifying preferred features
+            through usage statistics analysis to improve existing features or
+            use as data for new feature development
           </li>
         </ol>
 
@@ -1645,7 +1646,7 @@ export const uiTextsEn = {
           </li>
           <li>
             <strong>Retention Reason</strong>: Securing statistical data for
-            preventing service abuse and improving functions
+            preventing service abuse and improving features
           </li>
           <li>
             <strong>Upon Service Termination</strong>: If the bot service
@@ -1760,7 +1761,7 @@ export const uiTextsEn = {
         <p>
           The copyright for the proprietary source code, database structures,
           website designs, and other elements related to the development and
-          operation of {COMMON.name} (tentative name, hereinafter referred to as
+          operation of {COMMON.name} (hereinafter referred to as
           the “Service”) belongs to the developer {COMMON.companyEn}.
         </p>
         <p>

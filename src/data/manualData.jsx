@@ -123,72 +123,72 @@ export const getManualSections = (t, isMobile) => {
         </div>
       ),
     },
-    // 4. 파티 (Party)
-    {
-      id: t.party.id,
-      title: t.party.title,
-      icon: <UsersRound size={18} />,
-      subSections: t.party.list.map((item) => ({
-        id: item.id,
-        title: item.title,
-      })),
-      content: (
-        <div className="space-y-4">
-          <H2 text={t.party.mainTitle} />
-          <UL_LINK_GRID content={t.party.list} />
-          {t.party.list.map((item) => (
-            <div key={item.id} className="mt-12 first:mt-8">
-              <HR />
-              <H3 id={item.id} text={item.title} />
-              <P text={item.desc} />
-              {item.head}
-              {item.image && (
-                <DocImage
-                  src={item.image}
-                  caption={`${item.title} 명령어 출력 예시`}
-                  maxWidth={getImageWidth(item.width)}
-                  alt={item.title}
-                />
-              )}
-              {item.foot}
-            </div>
-          ))}
-        </div>
-      ),
-    },
-    // 5. 거래 (Trade)
-    {
-      id: t.trade.id,
-      title: t.trade.title,
-      icon: <Handshake size={18} />,
-      subSections: t.trade.list.map((item) => ({
-        id: item.id,
-        title: item.title,
-      })),
-      content: (
-        <div className="space-y-4">
-          <H2 text={t.trade.mainTitle} />
-          <UL_LINK_GRID content={t.trade.list} />
-          {t.trade.list.map((item) => (
-            <div key={item.id} className="mt-12 first:mt-8">
-              <HR />
-              <H3 id={item.id} text={item.title} />
-              <P text={item.desc} />
-              {item.head}
-              {item.image && (
-                <DocImage
-                  src={item.image}
-                  caption={item.title}
-                  alt={item.title}
-                  maxWidth={getImageWidth(item.width)}
-                />
-              )}
-              {item.foot}
-            </div>
-          ))}
-        </div>
-      ),
-    },
+    // // 4. 파티 (Party)
+    // {
+    //   id: t.party.id,
+    //   title: t.party.title,
+    //   icon: <UsersRound size={18} />,
+    //   subSections: t.party.list.map((item) => ({
+    //     id: item.id,
+    //     title: item.title,
+    //   })),
+    //   content: (
+    //     <div className="space-y-4">
+    //       <H2 text={t.party.mainTitle} />
+    //       <UL_LINK_GRID content={t.party.list} />
+    //       {t.party.list.map((item) => (
+    //         <div key={item.id} className="mt-12 first:mt-8">
+    //           <HR />
+    //           <H3 id={item.id} text={item.title} />
+    //           <P text={item.desc} />
+    //           {item.head}
+    //           {item.image && (
+    //             <DocImage
+    //               src={item.image}
+    //               caption={`${item.title} 명령어 출력 예시`}
+    //               maxWidth={getImageWidth(item.width)}
+    //               alt={item.title}
+    //             />
+    //           )}
+    //           {item.foot}
+    //         </div>
+    //       ))}
+    //     </div>
+    //   ),
+    // },
+    // // 5. 거래 (Trade)
+    // {
+    //   id: t.trade.id,
+    //   title: t.trade.title,
+    //   icon: <Handshake size={18} />,
+    //   subSections: t.trade.list.map((item) => ({
+    //     id: item.id,
+    //     title: item.title,
+    //   })),
+    //   content: (
+    //     <div className="space-y-4">
+    //       <H2 text={t.trade.mainTitle} />
+    //       <UL_LINK_GRID content={t.trade.list} />
+    //       {t.trade.list.map((item) => (
+    //         <div key={item.id} className="mt-12 first:mt-8">
+    //           <HR />
+    //           <H3 id={item.id} text={item.title} />
+    //           <P text={item.desc} />
+    //           {item.head}
+    //           {item.image && (
+    //             <DocImage
+    //               src={item.image}
+    //               caption={item.title}
+    //               alt={item.title}
+    //               maxWidth={getImageWidth(item.width)}
+    //             />
+    //           )}
+    //           {item.foot}
+    //         </div>
+    //       ))}
+    //     </div>
+    //   ),
+    // },
     // 6. 문제 해결 (FAQ)
     {
       id: t.troubleshooting.id,

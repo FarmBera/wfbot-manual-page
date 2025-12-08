@@ -29,6 +29,7 @@ export const tw = {
     green: "text-green-500 dark:text-green-400",
     orange: "text-orange-500 dark:text-orange-400",
     sky: "text-sky-500 dark:text-sky-400",
+    blue: "text-blue-500 dark:text-blue-400",
 
     violet: "text-violet-600 dark:text-violet-300",
 
