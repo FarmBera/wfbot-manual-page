@@ -1,6 +1,6 @@
 import { React, useState, useEffect, useRef } from "react";
 import {
-  Book,
+  // Book,
   Menu,
   X,
   ChevronRight,
@@ -16,6 +16,12 @@ import {
 import { APP_INFO, UI_TEXTS } from "./constants/constants";
 import { getManualSections } from "./data/manualData";
 import { tw } from "./style/tailwind";
+import KavatLogo from "./components/KavatLogo";
+
+// define fixed width constants and trigger point
+const SIDEBAR_WIDTH = 410; // Sidebar fixed width (px)
+const CONTENT_WIDTH = 800; // Content fixed width (px)
+const TOTAL_WIDTH_TRIGGER = SIDEBAR_WIDTH + CONTENT_WIDTH; // trigger mobile mode if window is smaller than this
 
 const MOBILE_UI_SIZE = 768; // Tailwind CSS mobile UI size breakpoint
 
@@ -31,7 +37,12 @@ const UserManual = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // mobile UI detection
-  const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_UI_SIZE);
+  // update initial mobile state logic to use TOTAL_WIDTH_TRIGGER
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined")
+      return window.innerWidth < TOTAL_WIDTH_TRIGGER;
+    return false;
+  });
 
   // dark mode status (detect system setting)
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -78,7 +89,7 @@ const UserManual = () => {
         window.history.pushState({}, "", currentUrl);
         setTimeout(() => {
           isProgrammaticScroll.current = false;
-        }, 3000); // Allow 500ms for scroll correction
+        }, 3000); // Allow time for scroll correction
       }, 10); // A small delay to ensure rendering before scroll
     }
   };
@@ -111,10 +122,7 @@ const UserManual = () => {
 
   // toggle dark mode
   const toggleDarkMode = () => {
-    // console.log("clicked toggleDarkMode");
-    // console.log(`isDarkMode > ${isDarkMode}`);
     setIsDarkMode(!isDarkMode);
-    // console.log(`isDarkMode > ${isDarkMode}`);
   };
 
   // detect scroll & auto sidebar expand
@@ -125,7 +133,6 @@ const UserManual = () => {
       const allTrackableItems = currentSections.flatMap((section) => {
         const items = [section];
         if (section.subSections) items.push(...section.subSections);
-
         return items;
       });
 
@@ -208,7 +215,7 @@ const UserManual = () => {
         // automatic adjust scroll to show activated section title
         activeElement.scrollIntoView({
           behavior: "smooth",
-          // block: "nearest",
+          block: "center",
         });
       }
     }
@@ -266,174 +273,192 @@ const UserManual = () => {
     // eslint-disable-next-line
   }, [lang, currentSections]); // Re-attach listeners when content changes
 
+  // update resize handler to use TOTAL_WIDTH_TRIGGER
+  useEffect(() => {
+    const handleResize = () =>
+      setIsMobile(window.innerWidth < TOTAL_WIDTH_TRIGGER);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
       // text-gray-800 dark:text-gray-100 ${tw.light.bg_gray} ${tw.dark.bg_gray}
       className={`flex h-screen font-sans overflow-hidden ${tw.tcd}`}
     >
       {/* mobile header */}
-      <div
-        className={`md:hidden fixed top-0 left-0 w-full h-14 ${tw.l.bg_main} ${tw.d.bg_main} border-b dark:border-gray-700 z-20 flex items-center justify-between px-4 shadow-sm ${tw.tcd}`}
-      >
+      {isMobile && (
         <div
-          className={`flex items-center space-x-2 font-bold ${tw.txt.indigo}`}
+          className={`fixed top-0 left-0 w-full h-14 ${tw.l.bg_main} border-b dark:border-gray-700 z-20 flex items-center justify-between px-4 shadow-lg ${tw.tcd} ${tw.bg.dim}`}
         >
-          <Book size={20} />
-          <span>{uiText.docTitle}</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          {/* mobile dark mode toggle btn */}
-          <button
-            onClick={toggleDarkMode}
-            className={`p-2 ${tw.txt.indigo} ${tw.txt.indigoHover} ${tw.txt.indigoHoverBg} ${tw.btn.d} ${tw.btn.dh} ${tw.tcd}`}
+          <div
+            className={`flex items-center space-x-2 font-bold ${tw.txt.theme}`}
           >
-            {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
-
-          <div className="relative lang-dropdown">
-            <button
-              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-              className={`flex items-center space-x-1 p-2 ${tw.txt.indigo} ${tw.txt.indigoHover} ${tw.txt.indigoHoverBg} ${tw.btn.d} ${tw.btn.dh} ${tw.tc}`}
-            >
-              <Globe size={20} />
-              <ChevronDown
-                size={14}
-                className={`transition-transform ${tw.d2} ${
-                  isLangMenuOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            {isLangMenuOpen && (
-              <div
-                className={`absolute right-0 top-full mt-2 w-32 ${tw.bg.dim} border ${tw.border.gray} rounded-lg shadow-xl py-1 z-50 animate-in fade-in zoom-in-95 ${tw.tcd}`}
-              >
-                {languages.map((l) => (
-                  <button
-                    key={l.code}
-                    onClick={() => handleLangSelect(l.code)}
-                    className={`
-                      w-full text-left px-4 py-2.5 text-sm flex items-center justify-between ${
-                        tw.txt.indigo
-                      } ${tw.txt.indigoHoverBg} ${tw.tc} ${tw.d2}
-                      ${
-                        lang === l.code
-                          ? `${tw.txt.indigo} font-lg ${tw.bg.indigo} ${tw.tcd}`
-                          : `${tw.txt.normal} ${tw.tc} ${tw.d2}`
-                      }
-                    `}
-                  >
-                    {l.label}
-                    {lang === l.code && <Check size={14} />}
-                  </button>
-                ))}
-              </div>
-            )}
+            {/* <Book size={20} /> */}
+            <KavatLogo />
+            <span className="text-xl">{uiText.docTitle}</span>
           </div>
-
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`p-2 ${tw.txt.normal}`}
-          >
-            {isMobileMenuOpen ? <X size={36} /> : <Menu size={36} />}
-          </button>
-        </div>
-      </div>
-      {/* sidebar */}
-      <aside
-        className={`
-          fixed md:relative z-10 
-          w-80 md:w-1/4 h-full bg-white dark:bg-gray-800 border-r ${
-            tw.border.gray2
-          }
-          flex flex-col transition-transform duration-300 ease-in-out
-          ${
-            isMobileMenuOpen
-              ? "translate-x-0"
-              : "-translate-x-full md:translate-x-0"
-          }
-          pt-14 md:pt-0
-        `}
-      >
-        {/* desktop header */}
-        <div
-          className={`hidden md:flex items-center justify-between p-4 border-b ${tw.border.gray} ${tw.tcd}`}
-        >
-          {/* text area */}
           <div className="flex items-center space-x-2">
-            <div
-              className={`${tw.head.bg} p-2 rounded-lg ${tw.txt.indigo} ${tw.tcd}`}
-            >
-              <Book size={24} />
-            </div>
-            <div>
-              <h1 className={`font-bold text-lg ${tw.txt.bright} ${tw.tcd}`}>
-                {uiText.docTitle}
-              </h1>
-              <p className={`text-xs ${tw.txt.dim} ${tw.tcd}`}>
-                {APP_INFO.version}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-2">
-            {/* btn: dark mode toggle */}
+            {/* mobile dark mode toggle btn */}
             <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 ${tw.tcd}`}
-              title={
-                isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
-              }
+              className={`p-2 ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} ${tw.tcd}`}
             >
-              {isDarkMode ? <Moon size={18} /> : <Sun size={18} />}
+              {isDarkMode ? <Moon size={28} /> : <Sun size={28} />}
             </button>
 
-            {/* btn: select language (dropdown) */}
+            {/* language dropdown */}
             <div className="relative lang-dropdown">
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700 ${tw.txt.normal} transition-all border border-gray-200 dark:border-gray-600`}
+                className={`flex items-center space-x-1 p-2 ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} ${tw.tc}`}
               >
-                <Globe size={18} />
-                <span className="text-sm font-medium">
-                  {languages.find((l) => l.code === lang).label}
-                </span>
+                <Globe size={26} />
                 <ChevronDown
-                  size={14}
-                  className={`${
-                    tw.txt.dark
-                  } transition-transform duration-200 ${
+                  size={20}
+                  className={`transition-transform ${tw.d2} ${
                     isLangMenuOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
+              {/* lang menu pop-up */}
               {isLangMenuOpen && (
                 <div
-                  className={`absolute right-0 top-full mt-2 w-36 ${tw.bg.dim} rounded-xl shadow-xl border ${tw.border.gray} py-1.5 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100`}
+                  className={`absolute right-0 top-full mt-2 w-32 ${tw.bg.dim} border ${tw.border.gray} rounded-lg shadow-xl py-1 z-50 animate-in fade-in zoom-in-95 ${tw.tcd}`}
                 >
                   {languages.map((l) => (
                     <button
                       key={l.code}
                       onClick={() => handleLangSelect(l.code)}
                       className={`
-                      w-full text-left px-4 py-2 text-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors
+                      w-full text-left px-4 py-2.5 text-sm flex items-center justify-between ${
+                        tw.txt.theme
+                      } ${tw.txt.themeHoverBg} ${tw.tc} ${tw.d2}
                       ${
                         lang === l.code
-                          ? `${tw.txt.indigo} font-bold bg-indigo-50/30 dark:bg-indigo-900/30`
-                          : `${tw.txt.normal}`
+                          ? `${tw.txt.theme} font-lg ${tw.bg.indigo} ${tw.tcd}`
+                          : `${tw.txt.normal} ${tw.tc} ${tw.d2}`
                       }
                     `}
                     >
                       {l.label}
-                      {lang === l.code && <Check size={16} />}
+                      {lang === l.code && <Check size={14} />}
                     </button>
                   ))}
                 </div>
               )}
             </div>
+
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`p-2 ${tw.txt.normal}`}
+            >
+              {isMobileMenuOpen ? <X size={36} /> : <Menu size={36} />}
+            </button>
           </div>
         </div>
+      )}
+      {/* sidebar */}
+      <aside
+        style={{
+          width: isMobile ? "399px" : `${SIDEBAR_WIDTH}px`,
+          maxWidth: "100%",
+        }}
+        className={`
+          z-30 h-full ${tw.bg.point} border-r ${tw.border.dim}
+          flex flex-col transition-transform duration-300 ease-in-out
+          ${
+            isMobile
+              ? `fixed top-0 left-0 pt-14 shadow-2xl ${
+                  isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+                }`
+              : `relative translate-x-0 pt-0`
+          }
+        `}
+      >
+        {/* desktop header */}
+        {!isMobile && (
+          <div
+            className={`flex items-center justify-between p-4 border-b ${tw.border.gray} ${tw.tcd}`}
+          >
+            {/* text area */}
+            <div className="flex items-center space-x-2">
+              <div
+                // className: "p-2"
+                className={`${tw.head.bg} p-0 rounded-lg ${tw.txt.theme} ${tw.tcd}`}
+              >
+                <KavatLogo /> {/* <Book size={24} /> */}
+              </div>
+              <div>
+                <h1 className={`font-bold text-lg ${tw.txt.bright} ${tw.tcd}`}>
+                  {uiText.docTitle}
+                </h1>
+                <p className={`text-xs ${tw.txt.dim} ${tw.tcd}`}>
+                  {APP_INFO.version}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              {/* btn: dark mode toggle */}
+              <button
+                onClick={toggleDarkMode}
+                className={`p-2 rounded-lg ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} border ${tw.border.dim}  ${tw.d2}`}
+                title={
+                  isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
+                }
+              >
+                {isDarkMode ? <Moon size={18} /> : <Sun size={18} />}
+              </button>
+
+              {/* btn: select language (dropdown) */}
+              <div className="relative lang-dropdown">
+                <button
+                  onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg ${tw.txt.normal} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} transition-all border ${tw.border.dim}`}
+                >
+                  <Globe size={18} className={`${tw.txt.theme}`} />
+                  <span className="text-sm font-medium">
+                    {languages.find((l) => l.code === lang).label}
+                  </span>
+                  <ChevronDown
+                    size={14}
+                    className={`${
+                      tw.txt.dark
+                    } transition-transform duration-200 ${
+                      isLangMenuOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {isLangMenuOpen && (
+                  <div
+                    className={`absolute right-0 top-full mt-2 w-36 ${tw.bg.dim} rounded-xl shadow-xl border ${tw.border.gray} py-1.5 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100`}
+                  >
+                    {languages.map((l) => (
+                      <button
+                        key={l.code}
+                        onClick={() => handleLangSelect(l.code)}
+                        className={`
+                      w-full text-left px-4 py-2 text-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors
+                      ${
+                        lang === l.code
+                          ? `${tw.txt.theme} font-bold ${tw.bg.theme}`
+                          : `${tw.txt.normal}`
+                      }
+                    `}
+                      >
+                        {l.label}
+                        {lang === l.code && <Check size={16} />}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* search bar */}
         <div className="p-4 pb-0">
@@ -446,7 +471,7 @@ const UserManual = () => {
               type="text"
               disabled={true}
               placeholder={uiText.searchPlaceholder}
-              className={`w-full pl-9 pr-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md text-sm text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-shadow ${tw.tcd}`}
+              className={`w-full pl-9 pr-4 py-2 ${tw.bg.bright} border ${tw.border.dim} rounded-md text-sm ${tw.txt.light} focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow ${tw.tcd}`}
             />
           </div>
         </div>
@@ -454,7 +479,7 @@ const UserManual = () => {
         {/* navigation menu */}
         <nav ref={sidebarRef} className="flex-1 overflow-y-auto p-4 space-y-1">
           <div
-            className={`text-xs font-semibold ${tw.txt.dark} uppercase tracking-wider mb-2 ml-2 mt-2 ${tw.tcd}`}
+            className={`text-xl center font-semibold ${tw.txt.dark} uppercase tracking-wider mb-2 ml-2 mt-2 ${tw.tcd}`}
           >
             {uiText.contents}
           </div>
@@ -473,8 +498,8 @@ const UserManual = () => {
                     w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all cursor-pointer sticky top-[-16px] z-10
                     ${
                       isActive
-                        ? `${tw.main.secIconBg} shadow-sm`
-                        : "bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        ? `${tw.bg.theme} shadow-lg`
+                        : `${tw.bg.dim} ${tw.bg.hover}`
                     }
                   `}
                   onClick={(e) => handleItemClick(e, section)}
@@ -483,17 +508,13 @@ const UserManual = () => {
                   <button
                     data-section-id={section.id}
                     className={`
-                      flex-1 flex items-center space-x-3 text-sm font-medium text-left bg-transparent
-                      ${
-                        isActive
-                          ? "text-indigo-700 dark:text-indigo-400"
-                          : `${tw.txt.normal}`
-                      }
+                      flex-1 flex items-center space-x-3 text-md font-medium text-left bg-transparent
+                      ${isActive ? `${tw.txt.theme}` : `${tw.txt.normal}`}
                     `}
                   >
                     <span
                       className={`transition-colors ${
-                        isActive ? `${tw.txt.indigo}` : `${tw.txt.dark}`
+                        isActive ? `${tw.txt.theme}` : `${tw.txt.dark}`
                       }`}
                     >
                       {section.icon}
@@ -513,8 +534,8 @@ const UserManual = () => {
                         p-1 rounded-md transition-colors ml-1
                         ${
                           isActive
-                            ? "text-indigo-500 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/50"
-                            : `${tw.txt.dark} hover:bg-gray-200 dark:hover:bg-gray-600 hover:text-gray-600 dark:hover:text-gray-300`
+                            ? `${tw.txt.theme} hover:bg-gray-300 dark:hover:bg-gray-500 hover:text-gray-600 dark:hover:text-gray-300`
+                            : `${tw.txt.dim} hover:bg-gray-300 dark:hover:bg-gray-500 hover:text-gray-600 dark:hover:text-gray-300`
                         }
                       `}
                     >
@@ -530,7 +551,9 @@ const UserManual = () => {
 
                 {/* render 2nd category */}
                 {hasSubSections && isExpanded && (
-                  <div className="mt-1 ml-4 pl-4 border-l-2 border-indigo-100 dark:border-indigo-900/50 space-y-1 animate-in slide-in-from-top-2 duration-300">
+                  <div
+                    className={`mt-1 ml-4 pl-4 border-l-2 ${tw.border.theme} space-y-1 animate-in slide-in-from-top-2 duration-300`}
+                  >
                     {section.subSections.map((sub) => (
                       <button
                         key={sub.id}
@@ -543,8 +566,8 @@ const UserManual = () => {
                           w-full text-left px-3 py-2 text-sm rounded-md transition-colors truncate
                           ${
                             activeSection === sub.id
-                              ? `${tw.txt.indigo} font-semibold bg-indigo-50/50 dark:bg-indigo-900/30`
-                              : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                              ? `${tw.txt.theme} font-bold ${tw.bg.theme}`
+                              : `${tw.txt.dim} hover:bg-gray-300 dark:hover:bg-gray-600 ${tw.border.bright}`
                           }
                         `}
                       >
@@ -558,12 +581,14 @@ const UserManual = () => {
           })}
         </nav>
 
+        {/* copyright */}
         <div
-          className={`p-4 border-t ${tw.border.gray2} text-xs text-center ${tw.txt.dark} ${tw.tcd}`}
+          className={`p-4 border-t ${tw.border.dim} text-xs text-center ${tw.txt.dark} ${tw.tcd}`}
         >
           {uiText.copyright}
         </div>
       </aside>
+
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-0 md:hidden"
@@ -574,9 +599,14 @@ const UserManual = () => {
       {/* main content (manual page) */}
       <main
         ref={contentRef}
-        className={`flex-1 w-full md:w-3/4 h-full overflow-y-auto ${tw.main.bg} scroll-smooth relative ${tw.tcd}`}
+        className={`flex-1 h-full overflow-y-auto ${tw.main.bg} scroll-smooth relative ${tw.tcd}`}
       >
-        <div className="max-w-4xl mx-auto px-6 py-10 md:py-16 mt-10 md:mt-0">
+        <div
+          style={{
+            width: isMobile ? "100%" : `${CONTENT_WIDTH}px`,
+          }}
+          className="mx-auto max-w-4xl px-6 py-10 md:py-16 mt-10 md:mt-0"
+        >
           {currentSections.map((section, index) => (
             <section
               key={section.id}
@@ -587,11 +617,11 @@ const UserManual = () => {
                 className={`flex items-center space-x-3 mb-6 pb-4 border-b ${tw.border.gray} ${tw.tcd}`}
               >
                 <div
-                  className={`p-2 ${tw.main.secIconBg} rounded-lg ${tw.txt.indigo} ${tw.tcd}`}
+                  className={`p-2 ${tw.main.secIconBg} rounded-lg ${tw.txt.theme} ${tw.bg.theme} ${tw.tcd}`}
                 >
                   {section.icon}
                 </div>
-                <h2 className={`text-2xl font-bold ${tw.txt.bright} ${tw.tcd}`}>
+                <h2 className={`text-2xl font-bold ${tw.txt.light} ${tw.tcd}`}>
                   {section.title}
                 </h2>
               </div>
@@ -605,13 +635,13 @@ const UserManual = () => {
               {/* link: go to next section */}
               {index < currentSections.length - 1 && (
                 <div
-                  className={`mt-10 pt-6 border-t border-dashed ${tw.border.gray2} flex justify-end ${tw.tcd}`}
+                  className={`mt-10 pt-6 border-t border-dashed ${tw.border.dim} flex justify-end ${tw.tcd}`}
                 >
                   <button
                     onClick={() =>
                       scrollToSection(currentSections[index + 1].id)
                     }
-                    className={`group flex items-center text-sm font-medium ${tw.txt.indigo} hover:text-indigo-800 dark:hover:text-indigo-300 ${tw.tcd}`}
+                    className={`group flex items-center text-md font-medium ${tw.txt.theme} hover:text-indigo-800 dark:hover:text-indigo-300 ${tw.tcd}`}
                   >
                     {uiText.next}:{" "}
                     {currentSections[index + 1].title.split(". ")[1] ||

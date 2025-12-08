@@ -14,7 +14,7 @@ const DocImage = ({ src, caption, alt, maxWidth = "70%" }) => {
     <figure className="my-8 flex flex-col items-center">
       {/* <figure className="my-8 flex flex-col"> */}
       <div
-        className={`overflow-hidden rounded-xl border ${tw.border.gray2} shadow-md dark:shadow-xl bg-gray-50 ${tw.tcd}`}
+        className={`overflow-hidden rounded-xl border ${tw.border.dim} shadow-md dark:shadow-xl bg-gray-50 ${tw.tcd}`}
         style={{
           maxWidth: maxWidth,
           width: "100%",

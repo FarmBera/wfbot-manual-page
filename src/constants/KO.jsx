@@ -13,7 +13,7 @@ export const uiTextsKo = {
   // common UI
   docTitle: (
     <span>
-      <span className="">{COMMON.name}</span> 이용 가이드
+      <span>{COMMON.name}</span> 이용 가이드
     </span>
   ),
   searchPlaceholder: "검색하기...는 아직 사용할 수 없어요...",
@@ -22,29 +22,24 @@ export const uiTextsKo = {
   footerMsg: "문서의 끝부분 입니다.",
   copyright: (
     <>
-      (C) {COMMON.year} {COMMON.company}. All rights reserved.
+      (C) {COMMON.year}. {COMMON.company}. All rights reserved.
       <br />
-      단, Warframe 관련 이미지 및 데이터의 저작권은 Digital Extremes Ltd.에
-      있습니다.
+      단, 워프레임 관련 이미지/데이터의 저작권은 Digital Extremes Ltd.에 있음
     </>
   ),
-
   picEx: "내용 예시",
-
-  // tiptime: {
-  //   title: "시간 확인 꿀팁",
-  //   text: "텍스트에 마우스를 가져다 놓으면 정확한 종료 날짜 & 시간이 표시됩니다!",
-  // },
 
   // 1. 소개 섹션
   intro: {
     id: "intro",
     title: "1. 소개",
-    welcomeTitle: `${COMMON.name} 가이드에 오신 것을 환영합니다!`,
+    welcomeTitle: <><strong className={`${tw.txt.blue}`}>{COMMON.name}</strong> 봇 홈페이지에 오신 것을 환영합니다!</>,
     welcomeDesc: (
       <>
         {/* 이 문서는 <strong>{COMMON.name}</strong>의 사용 방법을 알려줍니다. */}
         왼쪽의 목차를 통해 원하는 정보로 빠르게 이동할 수 있습니다.
+        <br />
+        3, 4, 5번 목차는 봇 사용법에 대해서 담고 있습니다.
       </>
     ),
     imgDesc: `야옹~ 나는 ${COMMON.name}! 날 보러 와줘서 고맙다냥`,
@@ -55,7 +50,7 @@ export const uiTextsKo = {
         title="알림"
         text={
           <p>
-            이 문서는 현재 베타 버전입니다.
+            이 홈페이지는 현재 베타 버전입니다.
             <br />
             오탈자가 있을 수 있으니, 양해 부탁드립니다.
           </p>
@@ -93,7 +88,7 @@ export const uiTextsKo = {
         title: "마켓 검색 기능",
         desc: (
           <>
-            <p className="text-lg">매번 마켓에 접속해서 검색한다고요???</p>
+            <p className="text-lg">매번 마켓에 접속해서 시세를 검색하신다면?</p>
             <br />
             이 봇을 이용하면 디스코드에서 간단하게 시세를 검색할 수 있어요. 매번
             워프레임 마켓 웹사이트에 접속할 필요가 없죠!
@@ -120,15 +115,12 @@ export const uiTextsKo = {
         title: "서버 내 아이템 거래 시스템",
         desc: (
           <>
-            어렵게만 다가왔던 아이템 거래, 아이템 시세는 어떻게 보고, 대체
-            어떻게 하라는 건지...
+            간단한 명령어와 관리 시스템으로 길드 내에서 판매/구매 거래를
+            편리하게 할 수 있어요.
             <br />
             <br />
-            <p className="text-lg">더 이상 두려워하지 마세요!</p>
-            <br />
-            워프레임 마켓 기반 자동 시세 책정 기능으로, 초보자 분들도 시세 걱정
-            없이 간단한 명령어로 길드 거래 게시판에 글을 편리하게 게시하고
-            구매할 수 있어요.
+            또한 마켓 가격을 기반, 자동 가격 책정 기능이 내장되어있어, 초보자
+            분들도 시세 걱정 없이 거래 게시글을 작성할 수 있어요.
           </>
         ),
       },
@@ -899,13 +891,6 @@ export const uiTextsKo = {
     title: "5. 거래 기능",
     mainTitle: "거래 명령어",
     list: [
-      // trade intro
-      {
-        id: "trade-create",
-        title: "거래 기능 개요",
-        desc: "거래 기능 사용 방법에 대하여 알려드립니다.",
-        // foot: <P text="거래 아이템은 워프레임 아이템으로 한정합니다. (타 게임 아이템 거래 금지)" />,
-      },
       // trade warnings
       {
         id: "trade-warning",
@@ -915,16 +900,15 @@ export const uiTextsKo = {
           <div>
             <ul className={htags.ulTag}>
               <li>
-                거래 기능은{" "}
-                <span className="text-red-500 font-bold">
+                거래는{" "}
+                <span className={`${tw.txt.orange}`}>
                   워프레임 아이템으로 한정
                 </span>
                 합니다. (타 게임 아이템 불가)
               </li>
               <li>
-                모든 <span className="text-blue-500 font-bold">거래 시세</span>
-                는{" "}
-                <span className="text-green-600 font-bold">
+                모든 거래 시세는{" "}
+                <span className={`${tw.txt.orange}`}>
                   워프레임 마켓의 실시간 시세값을 기준
                 </span>
                 으로 합니다.
@@ -933,7 +917,7 @@ export const uiTextsKo = {
               <ul className={htags.ulTag}>
                 <li>
                   단, 워프레임 마켓 시세를 잘 모르는 특정 분들을 겨냥하여{" "}
-                  <span className="text-red-500 font-semibold">
+                  <span className={`${tw.txt.red} font-semibold`}>
                     시세값보다 <span className="font-extrabold">매우</span> 높은
                     가격으로 구매하도록 매물을 올리는 것은 금지
                   </span>
@@ -941,18 +925,11 @@ export const uiTextsKo = {
                 </li>
                 <li>
                   시세를 잘 모르는 분들을 위하여, 게시되어 있는 물품의{" "}
-                  <span className="text-blue-500">워프레임 마켓</span> 검색
+                  <span className={`${tw.txt.sky}`}>워프레임 마켓</span> 검색
                   결과를 확인할 수 있도록 바로가기 링크를 제공하고 있습니다.
                   (거래 게시글의{" "}
-                  <span className="text-blue-600 font-bold underline">
-                    파란색 링크로된 글씨
-                  </span>
-                  를 클릭하면 마켓 검색 결과로 이동할 수 있습니다.)
-                </li>
-                <li>
-                  또한, 거래 글을 게시하면 실시간 마켓 시세를 기반으로 자동으로
-                  가격을 책정해주는 기능을 내장하였으니, 이용에 참고하시길
-                  바랍니다.
+                  <span className={`${tw.a.txt}`}>파란색 링크로된 글씨</span>를
+                  클릭하면 마켓 검색 결과로 이동할 수 있습니다.)
                 </li>
               </ul>
               <li>
@@ -963,18 +940,27 @@ export const uiTextsKo = {
               <ul className={htags.ulTag}>
                 <li>
                   단,{" "}
-                  <span className="text-red-500 font-bold">
+                  <span className={`${tw.txt.red} ${tw.bold.eb}`}>
                     현찰로의 거래는 금지
                   </span>
                   합니다.
-                </li>
-                <li className="text-red-500 font-bold">
-                  현금 거래 적발 시, 경고조치 없이 바로 클랜 영구 추방합니다.
+                  <span className={`${tw.txt.red} ${tw.bold.b}`}>
+                    (적발 시, 경고조치 없이 클랜 영구 추방)
+                  </span>
                 </li>
                 <li>
-                  현금 거래 및 시도는 워프레임 소프트웨어 사용권 계약(EULA)에
-                  의거하여 제재 대상이 됩니다. <br />
-                  이에 적발 시 DE 측에서 계정을 영구 정지(밴) 시킬 수 있습니다.
+                  <A
+                    href="https://www.warframe.com/ko/eula#virtualGoods"
+                    text="워프레임 소프트웨어 사용권 계약(EULA)"
+                  />{" "}
+                  문서의 <strong>'9. 가상 상품 및 게임 통화' - B 조항</strong>에{" "}
+                  <strong className={`${tw.txt.orange}`}>
+                    현금(현찰)을 주고받는 형태의 계정·아이템 현물 거래를
+                    금지한다고 명시
+                  </strong>
+                  되어 있습니다. 이에 적발 시 DE 측에서{" "}
+                  <strong>계정을 영구 정지(밴)</strong>
+                  시킬 수 있습니다.
                 </li>
               </ul>
             </ul>
@@ -983,7 +969,9 @@ export const uiTextsKo = {
               있으므로, 당사자는 클랜 서버에서 "인게임 닉네임"을 전체공개하고,
               경고를 받습니다.'
             />
-            <p className="text-lg font-bold">(경고 3회, 이후 클랜 영구 추방)</p>
+            <p className={`text-lg ${tw.bold.b}`}>
+              (경고 3회, 이후 클랜 영구 추방)
+            </p>
           </div>
         ),
       },
@@ -1081,6 +1069,11 @@ export const uiTextsKo = {
                 아이템 수량. (기본값으로 1개가 설정됩니다.)
               </li>
             </ul>
+            <P
+              text="가격을 입력하지 않고 거래 글을 게시하면 실시간 마켓
+                  시세를 기반으로 자동으로 가격을 책정해주는 기능을
+                  내장하였으니, 이용에 참고하시길 바랍니다."
+            />
             <DocImage
               src={`${IMG_PATH}trade-cmd${IMG_EXT}`}
               maxWidth="80%"
@@ -1371,10 +1364,7 @@ export const uiTextsKo = {
         a: (
           <>
             해당 기능은 Korea Warframe 서버를 위하여 제작된 기능입니다. <br />
-            개인 서버에 추가를 원할 경우, 이용료를 지불하면 사용 가능합니다.
-            <br />
-            이용료는 서버 규모에 따라 가격이 책정되는 부분이 있으니, 상담을
-            원하신다면 <ContactMe />
+            개인 서버에 기능을 제공해드리긴 어렵습니다.
           </>
         ),
       },
@@ -1392,7 +1382,7 @@ export const uiTextsKo = {
       <>
         <H2 text="목적" />
         <p>
-          본 약관은 {COMMON.name}(가칭, 이하 "서비스") 봇이 제공하는 모든 기능과
+          본 약관은 {COMMON.name}(이하 "서비스") 봇이 제공하는 모든 기능과
           콘텐츠, 웹사이트를 이용함에 있어, 서비스를 제공해드리는
           {COMMON.company}(이하 "운영자")과 이용자 간의 권리, 의무 및 책임
           사항을 규정함을 목적으로 합니다.
@@ -1533,7 +1523,7 @@ export const uiTextsKo = {
     desc: (
       <>
         <p>
-          {COMMON.name}(가칭, 이하 “서비스”) 봇을 운영하는 {COMMON.company}
+          {COMMON.name}(이하 “서비스”) 봇을 운영하는 {COMMON.company}
           (이하 “운영자”)은 이용자의 개인정보를 소중하게 생각하며, 사용자의
           개인정보 보호를 위해 최선을 다하고 있습니다.
         </p>
@@ -1686,9 +1676,9 @@ export const uiTextsKo = {
       <>
         <H3 text="서비스 운영자의 권리" />
         <p>
-          {COMMON.name}(가칭, 이하 서비스) 의 개발 및 운영과 관련된 독자적인
-          소스 코드, 데이터베이스 구조, 웹사이트 디자인 등에 대한 저작권은
-          개발자 {COMMON.company}에게 귀속됩니다.
+          {COMMON.name}(이하 서비스) 의 개발 및 운영과 관련된 독자적인 소스
+          코드, 데이터베이스 구조, 웹사이트 디자인 등에 대한 저작권은 개발자{" "}
+          {COMMON.company}에게 귀속됩니다.
         </p>
         <p>
           서비스 이용자는 운영자의 명시적인 서면 동의 없이 본 서비스의 코드를

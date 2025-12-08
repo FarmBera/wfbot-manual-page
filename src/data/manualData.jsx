@@ -60,9 +60,9 @@ export const getManualSections = (t, isMobile) => {
             {t.features.items.map((item, idx) => (
               <div
                 key={idx}
-                className={`border ${tw.border.gray2} p-4 rounded-lg shadow-sm dark:shadow-sm hover:shadow-md dark:hover:shadow-xl transition-shadow ${tw.tcd}`}
+                className={`border ${tw.border.dim} p-4 rounded-lg shadow-sm dark:shadow-sm hover:shadow-md dark:hover:shadow-xl transition-shadow ${tw.tcd}`}
               >
-                <h4 className={`font-bold text-lg mb-2 ${tw.txt.indigo}`}>
+                <h4 className={`font-bold text-lg mb-2 ${tw.txt.theme}`}>
                   {item.title}
                 </h4>
                 {/* text-gray-500 dark:text-gray-200 */}
