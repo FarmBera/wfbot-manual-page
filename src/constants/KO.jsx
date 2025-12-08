@@ -13,7 +13,7 @@ export const uiTextsKo = {
   // common UI
   docTitle: (
     <span>
-      <span>{COMMON.name}</span> 이용 가이드
+      <span>{COMMON.name}</span> 가이드북
     </span>
   ),
   searchPlaceholder: "검색하기...는 아직 사용할 수 없어요...",

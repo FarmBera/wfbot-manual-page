@@ -386,7 +386,7 @@ const UserManual = () => {
             <div className="flex items-center space-x-2">
               <div
                 // className: "p-2"
-                className={`${tw.head.bg} p-0 rounded-lg ${tw.txt.theme} ${tw.tcd}`}
+                className={`p-0 rounded-lg ${tw.txt.theme} ${tw.tcd}`}
               >
                 <KavatLogo /> {/* <Book size={24} /> */}
               </div>
