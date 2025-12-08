@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link as LinkIcon } from 'lucide-react';
+import { tw } from '../style/tailwind';
 
 /**
  * hyperlink components for document movement
@@ -27,7 +28,7 @@ const DocLink = ({ to, children, showIcon = true }) => {
     <a 
       href={`#${to.replace(/^#/, '')}`}
       onClick={handleClick}
-      className="inline-flex items-center text-indigo-600 dark:text-indigo-200 hover:text-indigo-800 font-medium hover:underline cursor-pointer transition-colors"
+      className={`inline-flex items-center ${tw.txt.theme} hover:text-indigo-800 dark:hover:text-indigo-400 font-medium hover:underline cursor-pointer transition-colors`}
     >
       {showIcon && <LinkIcon size={14} className="mr-1" />}
       {children}

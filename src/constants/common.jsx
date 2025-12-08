@@ -3,13 +3,9 @@ export const COMMON = {
   nameGeneral: `카밧 프라임 (서버관리봇 III)`,
   name: "카밧 프라임",
   nameEn: "Kavat Prime",
-  version: `v1.0.0 Alpha`,
-  company: (
-      <strong>'고양이' 닉네임을 가진 간부진</strong> 
-  ),
-  companyEn: (
-      <strong>Server Administrator who have nickname: 'Cat'</strong>
-  ),
+  version: `v1.1.0-rc`,
+  company: <strong>'고양이' 간부진</strong>,
+  companyEn: <strong>Admin who have nickname: 'Cat'</strong>,
   year: 2025,
 };
 
