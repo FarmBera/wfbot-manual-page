@@ -2,7 +2,7 @@
 export const COMMON = {
   name: "카밧 프라임",
   nameEn: "Kavat Prime",
-  version: `v1.2.1-rc`,
+  version: `v1.2.4-rc`,
   company: <strong>'고양이' 간부진</strong>,
   companyEn: <strong>Admin who have nickname: 'Cat'</strong>,
   year: 2025,

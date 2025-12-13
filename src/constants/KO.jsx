@@ -13,7 +13,7 @@ export const uiTextsKo = {
   // common UI
   docTitle: (
     <span>
-      <span>{COMMON.name}</span> 가이드북
+      <span>{COMMON.name}</span> 홈페이지
     </span>
   ),
   searchPlaceholder: "검색하기...는 아직 사용할 수 없어요...",
@@ -140,7 +140,7 @@ export const uiTextsKo = {
         title: "도움말",
         desc: "사용 가능한 명령어 및 관련 도움말을 확인할 수 있어요.",
         image: `${IMG_PATH}help1${IMG_EXT}`,
-        width: "80%",
+        width: "60%",
         imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Help+Command",
         head: (
@@ -388,10 +388,11 @@ export const uiTextsKo = {
         desc: "새로운 파티 구인 글을 생성합니다. (종합 게임 대상)",
         foot: (
           <div>
-            <p className={htags.pTag}>
+            추후 출시될 예정이오니, 많은 기대 바랍니다.
+            {/* <p className={htags.pTag}>
               자세한 내용은 사이드바 메뉴의 <strong>4. 파티 모집 기능</strong>{" "}
               섹션을 참고 바랍니다. (링크 삽입)
-            </p>
+            </p> */}
           </div>
         ),
         imagealt:
@@ -400,13 +401,14 @@ export const uiTextsKo = {
       {
         id: SUB.TRADE_CREATE,
         title: "거래",
-        desc: "새로운 거래 글을 생성합니다. (워프레임 아이템 한정)",
+        desc: "서버의 거래채널에 거래 글을 생성합니다. (워프레임 아이템 한정)",
         foot: (
           <div>
-            <p className={htags.pTag}>
+            추후 출시될 예정이오니, 많은 기대 바랍니다.
+            {/* <p className={htags.pTag}>
               자세한 내용은 사이드바 메뉴의 <strong>5. 거래 기능</strong> 섹션을
               참고 바랍니다. (링크 삽입)
-            </p>
+            </p> */}
           </div>
         ),
         imagealt:
