@@ -13,7 +13,7 @@ export const uiTextsKo = {
   // common UI
   docTitle: (
     <span>
-      <span>{COMMON.name}</span> 이용 가이드
+      <span>{COMMON.name}</span> 가이드북
     </span>
   ),
   searchPlaceholder: "검색하기...는 아직 사용할 수 없어요...",
@@ -33,7 +33,12 @@ export const uiTextsKo = {
   intro: {
     id: "intro",
     title: "1. 소개",
-    welcomeTitle: <><strong className={`${tw.txt.blue}`}>{COMMON.name}</strong> 봇 홈페이지에 오신 것을 환영합니다!</>,
+    welcomeTitle: (
+      <>
+        <strong className={`${tw.txt.blue}`}>{COMMON.name}</strong> 봇
+        홈페이지에 오신 것을 환영합니다!
+      </>
+    ),
     welcomeDesc: (
       <>
         {/* 이 문서는 <strong>{COMMON.name}</strong>의 사용 방법을 알려줍니다. */}
@@ -77,8 +82,6 @@ export const uiTextsKo = {
         title: "실시간 컨텐츠 알림",
         desc: (
           <>
-            확인만 가능할까요?
-            <br />
             새로운 컨텐츠가 업데이트 될 때 마다 실시간으로 메시지를 보내 줍니다!
             명령어에서 보던 그 레이아웃 그대로요!
           </>
@@ -900,17 +903,12 @@ export const uiTextsKo = {
           <div>
             <ul className={htags.ulTag}>
               <li>
-                거래는{" "}
-                <span className={`${tw.txt.orange}`}>
-                  워프레임 아이템으로 한정
-                </span>
+                거래는 <strong>워프레임 아이템으로 한정</strong>
                 합니다. (타 게임 아이템 불가)
               </li>
               <li>
                 모든 거래 시세는{" "}
-                <span className={`${tw.txt.orange}`}>
-                  워프레임 마켓의 실시간 시세값을 기준
-                </span>
+                <strong>워프레임 마켓의 실시간 시세값을 기준</strong>
                 으로 합니다.
               </li>
               {/* detailed description */}
@@ -925,11 +923,10 @@ export const uiTextsKo = {
                 </li>
                 <li>
                   시세를 잘 모르는 분들을 위하여, 게시되어 있는 물품의{" "}
-                  <span className={`${tw.txt.sky}`}>워프레임 마켓</span> 검색
-                  결과를 확인할 수 있도록 바로가기 링크를 제공하고 있습니다.
-                  (거래 게시글의{" "}
-                  <span className={`${tw.a.txt}`}>파란색 링크로된 글씨</span>를
-                  클릭하면 마켓 검색 결과로 이동할 수 있습니다.)
+                  <strong>워프레임 마켓</strong> 검색 결과를 확인할 수 있도록
+                  바로가기 링크를 제공하고 있습니다. (거래 게시글의{" "}
+                  <strong>파란색 링크로된 글씨</strong>를 클릭하면 마켓 검색
+                  결과로 이동할 수 있습니다.)
                 </li>
               </ul>
               <li>
@@ -954,13 +951,12 @@ export const uiTextsKo = {
                     text="워프레임 소프트웨어 사용권 계약(EULA)"
                   />{" "}
                   문서의 <strong>'9. 가상 상품 및 게임 통화' - B 조항</strong>에{" "}
-                  <strong className={`${tw.txt.orange}`}>
+                  <strong>
                     현금(현찰)을 주고받는 형태의 계정·아이템 현물 거래를
                     금지한다고 명시
                   </strong>
                   되어 있습니다. 이에 적발 시 DE 측에서{" "}
-                  <strong>계정을 영구 정지(밴)</strong>
-                  시킬 수 있습니다.
+                  <strong>계정을 영구 정지(밴)</strong> 시킬 수 있습니다.
                 </li>
               </ul>
             </ul>
@@ -1482,20 +1478,7 @@ export const uiTextsKo = {
         </ul>
 
         <H2 text="저작권" />
-        <ul className={htags.ulTag}>
-          <li>
-            서비스가 제공하는 기능, 코드, 디자인 등에 대한 저작권 및
-            지적재산권은 운영자에게 귀속됩니다.
-          </li>
-          <li>
-            단, 서비스 내에서 표시되는 게임(Warframe) 관련 데이터, 이미지, 상표
-            등은 해당 저작권자(Digital Extremes)에게 권리가 있습니다.
-          </li>
-          <li>
-            이용자는 서비스를 이용하여 얻은 정보를 운영자의 승낙 없이 영리
-            목적으로 이용하거나 제3자에게 배포할 수 없습니다.
-          </li>
-        </ul>
+        <P text="자세한 내용은 좌측 '저작권 및 법적고지' 섹션을 확인해주세요." />
 
         <H2 text="링크" />
         <P text="서비스 내에 제3자가 제공하는 외부 웹사이트 및 자원에 대한 링크가 포함되는 경우, 이러한 링크는 이용자의 편의를 위해 제공되는 것입니다. 운영자는 해당 외부 사이트의 콘텐츠나 정책을 통제하지 않으며, 이용자가 이를 이용함으로써 발생하는 문제에 대해 책임을 지지 않습니다." />
@@ -1653,7 +1636,7 @@ export const uiTextsKo = {
           <li>
             <A
               href={process.env.REACT_APP_SUPPORT_SERVER}
-              text="디스코드 지원 서버"
+              text="카밧 프라임 디스코드 지원 서버"
             />{" "}
             바로가기
           </li>
@@ -1668,7 +1651,7 @@ export const uiTextsKo = {
       </>
     ),
   },
-  // 9. 법적 고지
+  // 9. 저작권 & 법적 고지
   legal: {
     id: "legal",
     title: "저작권 및 법적 고지",
@@ -1687,14 +1670,14 @@ export const uiTextsKo = {
         </p>
         <H3 text="제3자 콘텐츠 및 상표권" />
         <p>
-          본 서비스 내에서 제공되는 게임 Warframe과 관련된 모든 데이터, 예술
+          본 서비스 내에서 제공되는 게임 'Warframe'과 관련된 모든 데이터, 예술
           저작물, 로고, 아이콘, 텍스트, 고유명사 등의 지적재산권은{" "}
           <strong>Digital Extremes Ltd.</strong>에 있습니다.
         </p>
         <p>
           <strong>Warframe©</strong>은 Digital Extremes Ltd.의 등록 상표입니다.
-          본 서비스에서 사용된 게임 관련 이미지는 정보 전달을 목적으로
-          사용되었으며, 저작권자의 권리를 침해할 의도가 없습니다.
+          본 서비스에서 사용된 워프레임(Warframe) 관련 이미지는 정보 전달을
+          목적으로 사용되었으며, 저작권자의 권리를 침해할 의도가 없습니다.
         </p>
 
         <H3 text="비공식 팬 프로젝트 고지" />
@@ -1719,7 +1702,7 @@ export const uiTextsKo = {
           <li>'자주 묻는 질문' 절차대로 진행해도 문제가 해결되지 않은 경우</li>
           <li>부정 사용자 신고</li>
           <li>버그 제보</li>
-          <li>기타 봇 관련 문의/건의/제안사항</li>
+          <li>기타 봇 관련 문의 / 건의 / 제안사항</li>
         </ul>
 
         <H3 text="연락 방법" />

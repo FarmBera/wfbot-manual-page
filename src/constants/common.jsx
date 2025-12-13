@@ -1,9 +1,8 @@
 // 앱 기본 정보 (언어 공통)
 export const COMMON = {
-  nameGeneral: `카밧 프라임 (서버관리봇 III)`,
   name: "카밧 프라임",
   nameEn: "Kavat Prime",
-  version: `v1.1.0-rc`,
+  version: `v1.2.1-rc`,
   company: <strong>'고양이' 간부진</strong>,
   companyEn: <strong>Admin who have nickname: 'Cat'</strong>,
   year: 2025,
