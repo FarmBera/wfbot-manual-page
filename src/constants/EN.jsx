@@ -13,13 +13,14 @@ export const uiTextsEn = {
   // common UI
   docTitle: (
     <span>
-      <span>{COMMON.nameEn}</span> Guide
+      <span>{COMMON.nameEn}</span> Home
     </span>
   ),
   searchPlaceholder: "Search... is currently unavailable...",
   contents: "Contents",
   next: "Next",
   footerMsg: "End of Documents",
+  donate: "☕️ Buy Me a Coffee",
   copyright: (
     <>
       (C) {COMMON.year}. {COMMON.companyEn}. All rights reserved.
@@ -38,7 +39,7 @@ export const uiTextsEn = {
     welcomeTitle: (
       <>
         Welcome to the{" "}
-        <strong className={`${tw.txt.blue}`}>'{COMMON.nameEn}'</strong> Guide!
+        <strong className={`${tw.txt.blue}`}>'{COMMON.nameEn}'</strong> Homepage!
       </>
     ),
     welcomeDesc: (
@@ -48,7 +49,7 @@ export const uiTextsEn = {
         Contents on the left.
       </>
     ),
-    imgDesc: "Meow~ My name is Kavat Prime! Nice to meet you",
+    imgDesc: `Meow~ My name is ${COMMON.nameEn}! Nice to meet you`,
     foot: (
       <>
         <NOTE
@@ -93,8 +94,6 @@ export const uiTextsEn = {
         title: "Real-time Content Notifications",
         desc: (
           <>
-            Is checking manually all you can do?
-            <br />
             It sends real-time messages whenever new content is updated! With
             the same layout you see in the commands!
           </>

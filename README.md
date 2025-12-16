@@ -1,7 +1,7 @@
 # Discord Bot Manual Webpage
 
-- 카밧 프라임 (워프레임 유틸리티 봇) 홈페이지
-- Homepage for 'Kavat Prime' (Warframe utility bot)
+- 디스코드 봇 '고양이 프라임' 홈페이지
+- Homepage for Discord Bot called 'Cat Prime'
 
 ## Copyright Notice / 저작권 알림
 

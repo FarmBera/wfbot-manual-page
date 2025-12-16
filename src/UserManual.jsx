@@ -16,11 +16,11 @@ import {
 import { APP_INFO, UI_TEXTS } from "./constants/constants";
 import { getManualSections } from "./data/manualData";
 import { tw } from "./style/tailwind";
-import KavatLogo from "./components/KavatLogo";
+import BotLogo from "./components/BotLogo";
 
 // define fixed width constants and trigger point
 const SIDEBAR_WIDTH = 410; // Sidebar fixed width (px)
-const CONTENT_WIDTH = 800; // Content fixed width (px)
+const CONTENT_WIDTH = 860; // Content fixed width (px)
 const TOTAL_WIDTH_TRIGGER = SIDEBAR_WIDTH + CONTENT_WIDTH; // trigger mobile mode if window is smaller than this
 
 const MOBILE_UI_SIZE = 768; // Tailwind CSS mobile UI size breakpoint
@@ -284,7 +284,7 @@ const UserManual = () => {
   return (
     <div
       // text-gray-800 dark:text-gray-100 ${tw.light.bg_gray} ${tw.dark.bg_gray}
-      className={`flex h-screen font-sans overflow-hidden ${tw.tcd}`}
+      className={`flex h-screen font-sans overflow-hidden break-keep ${tw.tcd}`}
     >
       {/* mobile header */}
       {isMobile && (
@@ -295,7 +295,7 @@ const UserManual = () => {
             className={`flex items-center space-x-2 font-bold ${tw.txt.theme}`}
           >
             {/* <Book size={20} /> */}
-            <KavatLogo />
+            <BotLogo />
             <span className="text-xl">{uiText.docTitle}</span>
           </div>
           <div className="flex items-center space-x-2">
@@ -388,7 +388,7 @@ const UserManual = () => {
                 // className: "p-2"
                 className={`p-0 rounded-lg ${tw.txt.theme} ${tw.tcd}`}
               >
-                <KavatLogo /> {/* <Book size={24} /> */}
+                <BotLogo /> {/* <Book size={24} /> */}
               </div>
               <div>
                 <h1 className={`font-bold text-lg ${tw.txt.bright} ${tw.tcd}`}>
@@ -519,7 +519,7 @@ const UserManual = () => {
                     >
                       {section.icon}
                     </span>
-                    <span>{section.title}</span>
+                    <span className={`${section.strong}`}>{section.title}</span>
                   </button>
 
                   {/* expand/collapse icon */}
@@ -585,6 +585,13 @@ const UserManual = () => {
         <div
           className={`p-4 border-t ${tw.border.dim} text-xs text-center ${tw.txt.dark} ${tw.tcd}`}
         >
+          <a
+            className="inline-block mb-3 rounded-2xl bg-yellow-400 text-gray-950 font-bold text-xl p-3"
+            href={process.env.REACT_APP_DONATION}
+          >
+            {uiText.donate}
+          </a>
+          <div></div>
           {uiText.copyright}
         </div>
       </aside>

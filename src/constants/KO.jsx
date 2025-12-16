@@ -11,15 +11,12 @@ const IMG_EXT = ".webp";
 
 export const uiTextsKo = {
   // common UI
-  docTitle: (
-    <span>
-      <span>{COMMON.name}</span> 홈페이지
-    </span>
-  ),
+  docTitle: <span>{COMMON.name} 홈페이지</span>,
   searchPlaceholder: "검색하기...는 아직 사용할 수 없어요...",
   contents: "목차",
   next: "다음",
   footerMsg: "문서의 끝부분 입니다.",
+  donate: "☕️ 개발자에게 커피 선물하기",
   copyright: (
     <>
       (C) {COMMON.year}. {COMMON.company}. All rights reserved.
@@ -471,6 +468,10 @@ export const uiTextsKo = {
           <div>
             <ul className={htags.ulTag}>
               <li>
+                파티를 생성하고 활동(파티원의 참여/탈퇴, 모집상태 변환 등)이
+                없다면 <strong>30일 후에 자동으로 모집 종료</strong> 됩니다.
+              </li>
+              <li>
                 파티를 생성 및 수정할 때 입력되는 내용은 모두에게 공개되는
                 내용입니다.{" "}
                 <strong>민감한 개인정보는 입력하지 말아주세요.</strong>
@@ -485,15 +486,11 @@ export const uiTextsKo = {
                 확인할 수 있습니다.
               </li>
             </ul>
-            <p>
-              금지사항을 위반하여 적발될 경우, 다른 분들에게 피해가 갈 우려가
-              있으므로, 당사자는 클랜 서버에서 '인게임 닉네임' 을 전체 공개하고,
-              경고를 받습니다.
-            </p>
-            <br />
-            <p>
+            <P text="금지사항을 위반하여 적발될 경우, 다른 분들에게 피해가 갈 우려가 있으므로, 당사자는 클랜 서버에서 '인게임 닉네임' 을 전체 공개하고, 경고를 받습니다." />
+            <P text="사안이 중대하다고 판단되는 경우, 간부진 과반수 동의하에 즉시 영구 추방 할 수 있습니다." />
+            {/* <p>
               <strong>(경고 3회, 이후 클랜 영구 추방)</strong>
-            </p>
+            </p> */}
           </div>
         ),
       },
@@ -905,7 +902,8 @@ export const uiTextsKo = {
           <div>
             <ul className={htags.ulTag}>
               <li>
-                거래는 <strong>워프레임 아이템으로 한정</strong>
+                거래는{" "}
+                <span className={tw.txt.sky}>워프레임 아이템으로 한정</span>
                 합니다. (타 게임 아이템 불가)
               </li>
               <li>
@@ -917,7 +915,7 @@ export const uiTextsKo = {
               <ul className={htags.ulTag}>
                 <li>
                   단, 워프레임 마켓 시세를 잘 모르는 특정 분들을 겨냥하여{" "}
-                  <span className={`${tw.txt.red} font-semibold`}>
+                  <span className={`${tw.txt.sky}`}>
                     시세값보다 <span className="font-extrabold">매우</span> 높은
                     가격으로 구매하도록 매물을 올리는 것은 금지
                   </span>
@@ -967,9 +965,10 @@ export const uiTextsKo = {
               있으므로, 당사자는 클랜 서버에서 "인게임 닉네임"을 전체공개하고,
               경고를 받습니다.'
             />
-            <p className={`text-lg ${tw.bold.b}`}>
+            <P text="사안이 중대하다고 판단되는 경우, 간부진 과반수 동의하에 즉시 영구 추방 할 수 있습니다." />
+            {/* <p className={`text-lg ${tw.bold.b}`}>
               (경고 3회, 이후 클랜 영구 추방)
-            </p>
+            </p> */}
           </div>
         ),
       },
@@ -1272,13 +1271,13 @@ export const uiTextsKo = {
           <>
             <ol className={`${htags.olTag} ${tw.txt.dim}`}>
               <li>
-                <strong>서버관리봇 III</strong> 이 <strong>온라인 상태</strong>
+                <strong>{COMMON.name}</strong>이 <strong>온라인 상태</strong>
                 인지 확인해주세요.
               </li>
               <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
                 <li>
-                  <strong>점검 중</strong> 이라면 점검이 종료될 때 까지 사용이
-                  불가능합니다.
+                  방해금지 표시와 함께 <strong>"점검 중"</strong> 상태 메시지가
+                  적혀있다면, 점검이 종료될 때 까지 사용이 불가능합니다.
                 </li>
                 <li>
                   봇이 오프라인 상태라면, <ContactMe />
@@ -1288,10 +1287,12 @@ export const uiTextsKo = {
                 <strong>온라인 상태인 것을 확인</strong>했다면
                 <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
                   <li>
-                    데스크탑 및 웹 환경의 경우 Ctrl + R 키를 눌러서 디스코드
-                    앱을 새로고침 해주세요.
+                    데스크탑 앱 또는 웹 환경의 경우 <strong>Ctrl + R</strong>{" "}
+                    키를 눌러서 디스코드 앱을 새로고침 해주세요.
                   </li>
-                  <li>(macOS 환경일 경우 cmd + R)</li>
+                  <li>
+                    (macOS 환경일 경우 <strong>cmd + R</strong>)
+                  </li>
                   <li>
                     모바일 환경의 경우, 디스코드 앱을 종료했다가 다시
                     실행해주세요.
@@ -1299,20 +1300,25 @@ export const uiTextsKo = {
                 </ul>
               </li>
             </ol>
-            {/* <br /> */}
+            <p>
+              위 절차대로 진행해도 문제가 해결되지 않은 경우, <ContactMe />
+            </p>
           </>
         ),
       },
       // 애플리케이션 응답 오류
       {
         q: (
-          <span>
-            '애플리케이션이 응답하지 않았어요' 메시지가 뜨면서 명령어/버튼
-            작동이 안돼요.
-            <br />
-            또는 봇이 생각을 너무 오랫동안 해요 (1분 이상 '생각 중이에요'
-            메시지만 뜨는 경우)
-          </span>
+          <>
+            <span>다음과 같은 문제가 발생한다면?</span>
+            <ul className={`${htags.ulTag} pt-3`}>
+              <li>
+                '애플리케이션이 응답하지 않았어요' 메시지가 뜨면서 명령어/버튼
+                작동이 안돼요.
+              </li>
+              <li>1분이상 봇이 응답없이 '생각 중이에요' 메시지만 뜨는 경우</li>
+            </ul>
+          </>
         ),
         a: (
           <>
@@ -1331,7 +1337,7 @@ export const uiTextsKo = {
             <strong>파티장에게 우선 문의해주세요.</strong> 잘못 사용했을
             가능성이 있습니다.
             <br />
-            <br /> 파티장과 연락이 되지 않을경우,{" "}
+            <br /> 파티장과 연락이 되지 않거나 문제가 해결되지 않은 경우,{" "}
             <strong>부정 사용으로 판단</strong>할 수 있습니다.
             <br />
             <ContactMe />
@@ -1341,28 +1347,29 @@ export const uiTextsKo = {
           </>
         ),
       },
-      // 지속적인 알림
-      {
-        q: `특정 유저가 파티 또는 거래 게시글의 알림 시스템을 이용하여 알림 테러를 해요`,
-        a: (
-          <>
-            알림 테러는 본 디스코드 봇 약관 위반 행위 입니다.
-            <br />
-            <ContactMe />
-            신고가 접수된다면 내부 검토 및 간부진과 내부 회의를 거친 후 조치를
-            취할 예정입니다.
-            <br />
-            (대화 스크린샷 첨부해주면 더욱 좋습니다.)
-          </>
-        ),
-      },
       // 개인 서버 추가
       {
         q: "봇을 개인 서버에 추가하고 싶어요",
         a: (
           <>
-            해당 기능은 Korea Warframe 서버를 위하여 제작된 기능입니다. <br />
-            개인 서버에 기능을 제공해드리긴 어렵습니다.
+            아직은 사용이 불가능해요...
+            <br />
+            다른 서버에서도 이용할 수 있도독 기능을 추가하고 있어요. 잠시만
+            기다려주세요...
+            {/* <span className={`${tw.txt.blue} ${tw.bold.b}`}>
+              추가 가능합니다! 단, 일부 기능은 유료로 제공되고 있어요.
+            </span>{" "}
+            <ContactMe />
+            <br />
+            <ul className={htags.ulTag}>
+              <li>
+                <strong>워프레임 관련 기능은 무료로 제공됩니다.</strong> <br />
+              </li>
+              <li>
+                그 외의 봇 기능(파티 모집 등)은 <strong>유료로 제공</strong>
+                되고, 서버 규모에 따라 추가 이용료가 부과될 수 있습니다.
+              </li>
+            </ul> */}
           </>
         ),
       },
@@ -1440,19 +1447,18 @@ export const uiTextsKo = {
             <li>서비스의 버그나 취약점을 악용하거나 이를 유포하는 행위</li>
             <li>기타 관련 법령을 위반하거나 서비스 운영을 방해하는 행위</li>
           </ul>
+          <li>
+            서비스 이용 중 버그나 보안 취약점을 발견할 경우, 이용자는 즉시
+            운영자에게 제보해야 하며 이를 악용해서는 안됩니다.
+          </li>
+          <li>
+            위 의무를 위반할 경우, 운영자는 사전 통보 없이 해당 이용자의 서비스
+            이용을 제한하거나 영구 차단할 수 있습니다.
+          </li>
         </ul>
-        <li>
-          서비스 이용 중 버그나 보안 취약점을 발견할 경우, 이용자는 즉시
-          운영자에게 제보해야 하며 이를 악용해서는 안 됩니다.
-        </li>
-        <li>
-          위 의무를 위반할 경우, 운영자는 사전 통보 없이 해당 이용자의 서비스
-          이용을 제한하거나 영구 차단할 수 있습니다.
-        </li>
         <H2 text="개인정보 보호" />
         <P text="운영자는 더 나은 서비스 제공을 위해 데이터를 수집하고 있습니다. " />
         <P text="수집된 정보는 서비스 운영 목적 외의 다른 목적으로 사용하지 않으며, 법령에 의한 요구가 있는 경우를 제외하고는 제3자에게 제공되지 않습니다." />
-
         <p className={htags.pTag}>
           상세한 내용은 별도로 고지된 <strong>개인정보 처리방침</strong>을
           따릅니다.
@@ -1460,7 +1466,6 @@ export const uiTextsKo = {
           좌측 사이드바에서 개인정보 처리방침을 클릭하여 확인해주세요. (모바일은
           우측 상단 메뉴 버튼을 통해 이동할 수 있습니다.)
         </p>
-
         <H2 text="책임의 제한 (면책)" />
         <ul className={htags.ulTag}>
           <li>
@@ -1478,19 +1483,15 @@ export const uiTextsKo = {
             중대 과실이 없는 한 책임을 지지 않습니다.
           </li>
         </ul>
-
         <H2 text="저작권" />
         <P text="자세한 내용은 좌측 '저작권 및 법적고지' 섹션을 확인해주세요." />
-
         <H2 text="링크" />
         <P text="서비스 내에 제3자가 제공하는 외부 웹사이트 및 자원에 대한 링크가 포함되는 경우, 이러한 링크는 이용자의 편의를 위해 제공되는 것입니다. 운영자는 해당 외부 사이트의 콘텐츠나 정책을 통제하지 않으며, 이용자가 이를 이용함으로써 발생하는 문제에 대해 책임을 지지 않습니다." />
-
         <H2 text="이용 제한 및 연령 준수" />
         <P text="본 서비스는 만 14세 이상을 대상으로 합니다. 만 14세 미만의 아동은 서비스를 이용할 수 없으며, 해당 사실이 확인될 경우 서비스 이용이 제한될 수 있습니다." />
 
         <H2 text="준거법 및 관할" />
         <P text="본 약관의 해석 및 분쟁에 관해서는 대한민국 법률을 따르며, 서비스 이용과 관련하여 소송이 제기될 경우 민사소송법상의 관할 법원을 따릅니다." />
-
         <H2 text="부칙" />
         <P text="본 이용 약관은 법령, 정책의 변경에 따라 내용이 추가, 삭제 및 수정될 수 있습니다." />
         <P text="변경 사항이 있을 경우 시행 7일 전부터 디스코드 봇 공지사항 또는 공식 지원 서버를 통해 공지할 것입니다." />
@@ -1638,7 +1639,7 @@ export const uiTextsKo = {
           <li>
             <A
               href={process.env.REACT_APP_SUPPORT_SERVER}
-              text="카밧 프라임 디스코드 지원 서버"
+              text={`${COMMON.name} 디스코드 지원 서버`}
             />{" "}
             바로가기
           </li>
@@ -1739,7 +1740,7 @@ export const uiTextsKo = {
                 <strong>구체적 사유가 있어야만 접수가 가능</strong>합니다.
               </li>
               <li>
-                스크린샷 등 확실한 증거가 없을 경우 신고를 접수하여도 제재가
+                스크린샷 등 확실한 증거가 없을 경우, 신고를 접수하여도 제재가
                 이루어지지 않을 수 있습니다.
               </li>
             </ul>
