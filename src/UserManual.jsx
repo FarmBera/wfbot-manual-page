@@ -588,6 +588,8 @@ const UserManual = () => {
           <a
             className="inline-block mb-3 rounded-2xl bg-yellow-400 text-gray-950 font-bold text-xl p-3"
             href={process.env.REACT_APP_DONATION}
+            target="_blank"
+            rel="noreferrer"
           >
             {uiText.donate}
           </a>

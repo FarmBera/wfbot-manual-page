@@ -1700,7 +1700,6 @@ export const uiTextsKo = {
     title: "도움이 필요하신가요?",
     foot: (
       <>
-        {/* <H3 text="다음 상황에서 연락을 할 수 있습니다." /> */}
         <ul className={htags.ulTag}>
           <li>'자주 묻는 질문' 절차대로 진행해도 문제가 해결되지 않은 경우</li>
           <li>부정 사용자 신고</li>
@@ -1732,7 +1731,7 @@ export const uiTextsKo = {
         <NOTE
           color="red"
           icon="alert"
-          title="주의사항"
+          title="사용자 신고 시, 주의사항"
           text={
             <ul>
               <li>
