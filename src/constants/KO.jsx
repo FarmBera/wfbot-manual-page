@@ -16,7 +16,7 @@ export const uiTextsKo = {
   contents: "목차",
   next: "다음",
   footerMsg: "문서의 끝부분 입니다.",
-  donate: "☕️ 개발자에게 커피 선물하기",
+  donate: "☕️ 개발자 후원하기",
   copyright: (
     <>
       (C) {COMMON.year}. {COMMON.company}. All rights reserved.
