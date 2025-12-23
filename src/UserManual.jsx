@@ -1,4 +1,5 @@
 import { React, useState, useEffect, useRef } from "react";
+import AdSense from "react-adsense";
 import {
   // Book,
   Menu,
@@ -595,6 +596,15 @@ const UserManual = () => {
           </a>
           <div></div>
           {uiText.copyright}
+          <div>
+            <AdSense.Google
+              client={process.env.REACT_APP_AD_SIDE_CLIENT}
+              slot={process.env.REACT_APP_AD_SIDE_SLOT}
+              style={{ display: "block" }}
+              format="auto"
+              responsive="true"
+            />
+          </div>
         </div>
       </aside>
 
