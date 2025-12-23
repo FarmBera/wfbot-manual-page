@@ -142,7 +142,7 @@ export const uiTextsKo = {
           "https://placehold.co/600x300/e2e8f0/64748b?text=Help+Command",
         head: (
           <>
-            <P text="지금 보고 계시는 웹 페이지로 이동하는 링크를 보여줘요." />
+            {/* <P text="지금 보고 계시는 웹 페이지로 이동하는 링크를 보여줘요." /> */}
           </>
         ),
       },
@@ -303,6 +303,38 @@ export const uiTextsKo = {
         imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Fissures",
       },
       {
+        id: SUB.DEEPARCHIMEDEA,
+        title: "심층아르키메디아",
+        desc: "[베타버전] 이번주 심층 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
+        image: `${IMG_PATH}deep${IMG_EXT}`,
+        foot: (
+          <>
+            <NOTE
+              color="orange"
+              icon="alert"
+              title="안내"
+              text="해당 명령어는 현재 베타 버전으로, 번역이 안 되어 있거나 누락된 정보가 있을 수 있습니다. 이용에 참고 바랍니다."
+            />
+          </>
+        ),
+      },
+      {
+        id: SUB.TEMPORALARCHIMEDEA,
+        title: "템포럴아르키메디아",
+        desc: "[베타버전] 이번주 템포럴 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
+        image: `${IMG_PATH}temporal${IMG_EXT}`,
+        foot: (
+          <>
+            <NOTE
+              color="yellow"
+              icon="alert"
+              title="안내"
+              text="해당 명령어는 현재 베타 버전으로, 번역이 안 되어 있거나 누락된 정보가 있을 수 있습니다. 이용에 참고 바랍니다."
+            />
+          </>
+        ),
+      },
+      {
         id: SUB.CALENDAR,
         title: "헥스캘린더",
         desc: "[베타버전] 이번주 헥스 캘린더 할일/보상 목록 등을 확인할 수 있어요.",
@@ -433,6 +465,62 @@ export const uiTextsKo = {
         image: `${IMG_PATH}circuit-incarnon${IMG_EXT}`,
         imagealt:
           "https://placehold.co/600x300/e2e8f0/64748b?text=Duviri+Incarnon",
+      },
+      {
+        id: "cmd-descendia",
+        title: "디센디아",
+        desc: "[베타버전] 이번주 디센디아(하강) 미션 및 도전 목록을 불러옵니다.",
+        foot: (
+          <>
+            {/* <p className={htags.pTag}></p> */}
+            <NOTE
+              color="orange"
+              icon="alert"
+              title="안내"
+              text="해당 명령어는 현재 베타 버전으로, 일부 번역이 안된 텍스트가 있을 수 있습니다.이용에 참고 바랍니다."
+            />
+            <DocImage
+              src={`${IMG_PATH}descendia${IMG_EXT}`}
+              caption="/디센디아 명령어 예시"
+              max
+            />
+          </>
+        ),
+      },
+      {
+        id: "alert-setup-cmd",
+        title: "알림설정",
+        desc: "워프레임 컨텐츠 알림을 구독합니다.",
+        image: `${IMG_PATH}alert-set${IMG_EXT}`,
+        foot: (
+          <>
+            <P text="다양한 워프레임 관련 알림을 받아볼 수 있으니, 확인해보세요!" />
+            {/* <p className={htags.pTag}></p> */}
+            <NOTE
+              color="yellow"
+              icon="info"
+              title="알림"
+              text="현재 알림설정은 개인 서버에서만 이용할 수 있는 기능 입니다. 이용에 참고 바랍니다."
+            />
+          </>
+        ),
+      },
+      {
+        id: "alert-delete-cmd",
+        title: "알림해제",
+        desc: "워프레임 컨텐츠 알림 구독을 해제합니다.",
+        image: `${IMG_PATH}alert-del${IMG_EXT}`,
+        foot: (
+          <>
+            <p className={htags.pTag}></p>
+            <NOTE
+              color="yellow"
+              icon="info"
+              title="알림"
+              text="현재 알림해제는 개인 서버에서만 이용할 수 있는 기능 입니다. 이용에 참고 바랍니다."
+            />
+          </>
+        ),
       },
     ],
   },
@@ -1516,7 +1604,7 @@ export const uiTextsKo = {
         <P text="봇을 이용하는 경우, 본 개인정보 처리방침에 동의하는 것으로 간주합니다. 내용에 동의하지 않으신다면 봇 사용을 중단하셔야 합니다." />
 
         <H2 text="수집하는 개인정보의 항목" />
-        <P text="운영자는 원활한 서비스 제공과 문제 해결을 위해 다음과 같은 최소한의 정보를 수집합니다." />
+        <P text="운영자는 원활한 서비스 제공과 문제 해결을 위해 다음과 같은 정보를 수집합니다." />
         <ul className={htags.ulTag}>
           <li>
             <strong>사용자 식별 정보</strong>: 디스코드 사용자 ID, 닉네임
@@ -1550,6 +1638,10 @@ export const uiTextsKo = {
             <strong>서비스 개선</strong>: 이용 통계 분석을 통한 선호 기능을
             파악하여 기존 기능을 개선, 또는 신규 기능 개발 자료로 활용
           </li>
+          <li>
+            <strong>부정 사용자 식별</strong>: 이용약관 위반 등의 행위로 인하여
+            봇 이용이 정지된 사용자 식별
+          </li>
         </ol>
 
         <H2 text="개인정보 보유 기간" />
@@ -1562,15 +1654,16 @@ export const uiTextsKo = {
             <strong>보존 기간</strong>: 수집일로부터 최대 1년
           </li>
           <li>
-            <strong>보존 사유</strong>: 서비스 부정 이용 방지 및 기능 개선을
-            위한 통계 데이터 확보
+            <strong>보존 사유</strong>: 기능 개선을 위한 통계 데이터 확보 및
+            서비스 부정 이용 방지
           </li>
           <li>
             <strong>서비스 종료 시</strong>: 봇 서비스 종료가 확정될 경우,
             서비스 종료와 함께 수집된 모든 정보는 즉시 파기됩니다.
           </li>
         </ul>
-        <P text="단, 관계 법령의 규정에 의하여 보존할 필요가 있는 경우 운영자는 해당 법령에서 정한 일정한 기간 동안 정보를 보관합니다." />
+        <P text="단, 부정 사용자 식별 정보는 서비스가 종료될 때 까지 보관될 수 있습니다." />
+        <P text="또한, 관계 법령의 규정에 의하여 보존할 필요가 있는 경우, 운영자는 해당 법령에서 정한 일정한 기간 동안 정보를 보관할 수 있습니다." />
 
         <H2 text="정보의 파기절차 및 방법" />
         <P text="개인정보 파기 시점 도래 시 다음의 방법으로 파기합니다." />
@@ -1588,7 +1681,7 @@ export const uiTextsKo = {
         <H2 text="개인정보의 제3자 제공" />
         <P text="운영자는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다." />
         <ul className={htags.ulTag}>
-          <li>이용자가 사전에 동의한 경우</li>
+          {/* <li>이용자가 사전에 동의한 경우</li> */}
           <li>
             법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에
             따라 수사기관의 요구가 있는 경우
@@ -1623,7 +1716,9 @@ export const uiTextsKo = {
               저장된 데이터는 하드웨어 레벨의 암호화 기술이 적용된 저장 장치에
               보관됩니다.
             </li>
-            <li>외부 전송 시 암호화된 통신 프로토콜을 사용합니다.</li>
+            <li>
+              외부 전송 시 데이터 암호화 및 암호화된 통신 프로토콜을 사용합니다.
+            </li>
             <li>
               정기적인 소프트웨어 업데이트를 통해 해킹이나 바이러스로부터
               시스템을 보호합니다.
@@ -1632,7 +1727,7 @@ export const uiTextsKo = {
         </ol>
 
         <H2 text="개인정보 보호 책임자 및 연락처" />
-        <P text="서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 창구로 문의해 주시기 바랍니다." />
+        <P text="서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 관리자에게 문의해 주시기 바랍니다." />
         <ul className={htags.ulTag}>
           <li>책임자: {COMMON.company} (창설클랜 역할)</li>
           <li>이메일: {process.env.REACT_APP_CONTACT_EMAIL}</li>

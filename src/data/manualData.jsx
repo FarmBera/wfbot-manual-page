@@ -20,7 +20,7 @@ export const getManualSections = (t, isMobile) => {
   // setup automatic image width
   const getImageWidth = (customWidth) => {
     if (isMobile) return "90%";
-    return customWidth || "70%";
+    return customWidth || "60%";
   };
   return [
     // 1. 소개 (Intro)

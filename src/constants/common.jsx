@@ -21,6 +21,8 @@ export const SUB = {
   VOIDTRADERSITEM: "VoidTradersItem",
   STEELPATH: "steelPath",
   FISSURES: "ActiveMissions",
+  DEEPARCHIMEDEA: "ConquestsDeep",
+  TEMPORALARCHIMEDEA: "ConquestsTemporal",
   CALENDAR: "KnownCalendarSeasons",
   DAILYDEALS: "DailyDeals",
   INVASIONS: "Invasions",

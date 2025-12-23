@@ -8,7 +8,7 @@ import { tw } from "../style/tailwind";
  * @param {string} caption - image captions (obtional)
  * @param {string} maxWidth - max image width (default: 70%)
  */
-const DocImage = ({ src, caption, alt, maxWidth = "70%" }) => {
+const DocImage = ({ src, caption, alt, maxWidth = "60%" }) => {
   // console.log(`${maxWidth}: ${caption}`);
   return (
     <figure className="my-8 flex flex-col items-center">
