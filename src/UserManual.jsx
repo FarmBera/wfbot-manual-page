@@ -1,5 +1,4 @@
 import { React, useState, useEffect, useRef } from "react";
-import AdSense from "react-adsense";
 import {
   // Book,
   Menu,
@@ -18,6 +17,7 @@ import { APP_INFO, UI_TEXTS } from "./constants/constants";
 import { getManualSections } from "./data/manualData";
 import { tw } from "./style/tailwind";
 import BotLogo from "./components/BotLogo";
+import GoogleAds from "./components/GoogleAds";
 
 // define fixed width constants and trigger point
 const SIDEBAR_WIDTH = 410; // Sidebar fixed width (px)
@@ -597,13 +597,7 @@ const UserManual = () => {
           <div></div>
           {uiText.copyright}
           <div>
-            <AdSense.Google
-              client={process.env.REACT_APP_AD_SIDE_CLIENT}
-              slot={process.env.REACT_APP_AD_SIDE_SLOT}
-              style={{ display: "block" }}
-              format="auto"
-              responsive="true"
-            />
+            <GoogleAds client="ca-pub-1921589776767213" slot="3296930298" />
           </div>
         </div>
       </aside>
