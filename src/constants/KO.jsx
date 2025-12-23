@@ -44,7 +44,7 @@ export const uiTextsKo = {
         3, 4, 5번 목차는 봇 사용법에 대해서 담고 있습니다.
       </>
     ),
-    imgDesc: `야옹~ 나는 ${COMMON.name}! 날 보러 와줘서 고맙다냥`,
+    imgDesc: `날 보러 와줘서 고맙다냥`,
     foot: (
       <NOTE
         color="yellow"
@@ -197,7 +197,7 @@ export const uiTextsKo = {
               <li>미션 정보 (적 레벨, 웨이브 수 등)</li>
               <li>종료까지 남은 시간</li>
             </ul>
-            <TipTime sampleTime="4일 후" />
+            {/* <TipTime sampleTime="4일 후" /> */}
           </>
         ),
       },
@@ -1359,7 +1359,7 @@ export const uiTextsKo = {
           <>
             <ol className={`${htags.olTag} ${tw.txt.dim}`}>
               <li>
-                <strong>{COMMON.name}</strong>이 <strong>온라인 상태</strong>
+                <strong>{COMMON.name}</strong> 봇이 <strong>온라인 상태</strong>
                 인지 확인해주세요.
               </li>
               <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
@@ -1417,33 +1417,33 @@ export const uiTextsKo = {
           </>
         ),
       },
-      // 파티에서 예고없이 탈퇴당함
-      {
-        q: `별다른 공지/예고 없이 파티에서 강제 탈퇴 당했어요`,
-        a: (
-          <>
-            <strong>파티장에게 우선 문의해주세요.</strong> 잘못 사용했을
-            가능성이 있습니다.
-            <br />
-            <br /> 파티장과 연락이 되지 않거나 문제가 해결되지 않은 경우,{" "}
-            <strong>부정 사용으로 판단</strong>할 수 있습니다.
-            <br />
-            <ContactMe />
-            <br />
-            간부진과 내부 회의를 거친 후, 파티장에게 경고/제재 조치가 이루어질
-            예정입니다.
-          </>
-        ),
-      },
+      // // 파티에서 예고없이 탈퇴당함
+      // {
+      //   q: `별다른 공지/예고 없이 파티에서 강제 탈퇴 당했어요`,
+      //   a: (
+      //     <>
+      //       <strong>파티장에게 우선 문의해주세요.</strong> 잘못 사용했을
+      //       가능성이 있습니다.
+      //       <br />
+      //       <br /> 파티장과 연락이 되지 않거나 문제가 해결되지 않은 경우,{" "}
+      //       <strong>부정 사용으로 판단</strong>할 수 있습니다.
+      //       <br />
+      //       <ContactMe />
+      //       <br />
+      //       간부진과 내부 회의를 거친 후, 파티장에게 경고/제재 조치가 이루어질
+      //       예정입니다.
+      //     </>
+      //   ),
+      // },
       // 개인 서버 추가
       {
         q: "봇을 개인 서버에 추가하고 싶어요",
         a: (
           <>
-            아직은 사용이 불가능해요...
+            아직은 추가가 불가능해요...
             <br />
             다른 서버에서도 이용할 수 있도독 기능을 추가하고 있어요. 잠시만
-            기다려주세요...
+            기다려주세요.
             {/* <span className={`${tw.txt.blue} ${tw.bold.b}`}>
               추가 가능합니다! 단, 일부 기능은 유료로 제공되고 있어요.
             </span>{" "}
@@ -1476,7 +1476,7 @@ export const uiTextsKo = {
         <H2 text="목적" />
         <p>
           본 약관은 {COMMON.name}(이하 "서비스") 봇이 제공하는 모든 기능과
-          콘텐츠, 웹사이트를 이용함에 있어, 서비스를 제공해드리는
+          콘텐츠, 웹사이트를 이용함에 있어, 서비스를 제공해드리는{" "}
           {COMMON.company}(이하 "운영자")과 이용자 간의 권리, 의무 및 책임
           사항을 규정함을 목적으로 합니다.
         </p>
@@ -1759,7 +1759,7 @@ export const uiTextsKo = {
         <p>
           {COMMON.name}(이하 서비스) 의 개발 및 운영과 관련된 독자적인 소스
           코드, 데이터베이스 구조, 웹사이트 디자인 등에 대한 저작권은 개발자{" "}
-          {COMMON.company}에게 귀속됩니다.
+          {COMMON.company}(이하 운영자)에게 귀속됩니다.
         </p>
         <p>
           서비스 이용자는 운영자의 명시적인 서면 동의 없이 본 서비스의 코드를
@@ -1768,20 +1768,20 @@ export const uiTextsKo = {
         </p>
         <H3 text="제3자 콘텐츠 및 상표권" />
         <p>
-          본 서비스 내에서 제공되는 게임 'Warframe'과 관련된 모든 데이터, 예술
-          저작물, 로고, 아이콘, 텍스트, 고유명사 등의 지적재산권은{" "}
-          <strong>Digital Extremes Ltd.</strong>에 있습니다.
+          본 서비스 내에서 제공되는 게임 <strong>'워프레임 (Warframe)'</strong>
+          과 관련된 모든 데이터, 예술 저작물, 로고, 아이콘, 텍스트, 고유명사
+          등의 지적재산권은 <strong>Digital Extremes Ltd.</strong>에 있습니다.
         </p>
         <p>
           <strong>Warframe©</strong>은 Digital Extremes Ltd.의 등록 상표입니다.
-          본 서비스에서 사용된 워프레임(Warframe) 관련 이미지는 정보 전달을
+          본 서비스에서 사용된 워프레임(Warframe) 관련 이미지 및 컨텐츠는 정보 전달을
           목적으로 사용되었으며, 저작권자의 권리를 침해할 의도가 없습니다.
         </p>
 
         <H3 text="비공식 팬 프로젝트 고지" />
         <p>
           본 서비스는 Warframe의 팬(Fan)에 의해 만들어진 비공식(Unofficial)
-          프로젝트입니다. <strong>{COMMON.name}</strong>은 Digital Extremes Ltd.
+          프로젝트입니다. <strong>'{COMMON.name}'</strong> 봇은 Digital Extremes Ltd.
           와 제휴, 보증, 후원 또는 공식적인 승인 관계에 있지 않습니다. 본
           서비스가 제공하는 정보는 게임의 업데이트에 따라 실제 게임 내용과 다를
           수 있습니다.
