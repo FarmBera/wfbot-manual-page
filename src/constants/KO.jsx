@@ -2,7 +2,7 @@ import { COMMON, SUB } from "./common";
 import { htags, tw } from "../style/tailwind";
 
 import { H2, H3, P, A, NOTE, BOLD } from "../ui/CustomElements";
-import TipTime from "../components/TipTime";
+// import TipTime from "../components/TipTime";
 import DocImage from "../components/DocImage";
 import { ContactMe } from "../components/ContactAdmin";
 
@@ -988,6 +988,13 @@ export const uiTextsKo = {
         desc: "기능 이용 전 주의사항을 안내합니다.",
         foot: (
           <div>
+            {/* <NOTE
+              color="yellow"
+              icon="alert"
+              title="알림"
+              text="본 서비스는 거래 편의를 위한 정보 공유 기능만을 제공합니다. 실제 거래 시 발생하는 모든 게임 내 재화 손실에 대한 책임은 사용자 본인에게 있습니다. 운영진은 회원 간의 분쟁이나 사기 피해 등에 대해 법적 책임을 지지 않습니다."
+            />
+            <P /> */}
             <ul className={htags.ulTag}>
               <li>
                 거래는{" "}
@@ -1557,9 +1564,9 @@ export const uiTextsKo = {
         <H2 text="책임의 제한 (면책)" />
         <ul className={htags.ulTag}>
           <li>
-            운영자는 천재지변, 디스코드 플랫폼의 장애, 통신망의 장애 등
-            불가항력으로 인해 서비스를 제공할 수 없는 경우에 대해 책임을 지지
-            않습니다.
+            운영자는 천재지변, 게임사의 서버 점검, 디스코드 플랫폼의 장애,
+            통신망의 장애, 또는 이에 준하는 불가항력으로 인해 서비스를 제공할 수
+            없는 경우에 대해 책임을 지지 않습니다.
           </li>
           <li>
             운영자는 이용자의 귀책 사유로 인한 서비스 이용의 장애나 데이터
@@ -1570,6 +1577,31 @@ export const uiTextsKo = {
             서비스를 통해 얻은 자료로 인해 발생한 손해에 대해 운영자의 고의 또는
             중대 과실이 없는 한 책임을 지지 않습니다.
           </li>
+          <li>
+            운영자는 이용자간 서비스를 매개로 하여 발생한 분쟁에 개입할 의무가
+            없으며, 이로 인한 손해를 배상할 책임도 없습니다.
+          </li>
+          <li>
+            운영자가 제공하는 거래 관련 기능은 이용자 간의 편의를 위한 보조
+            도구일 뿐이며, 실제 거래의 이행 및 결과에 대한 책임은 거래 당사자인
+            이용자에게 있습니다.
+          </li>
+          <ul className={htags.ulTag}>
+            <li>
+              서비스를 통해 이루어지는 이용자 간의 거래는 전적으로 이용자의
+              판단과 책임 하에 이루어집니다.{" "}
+            </li>
+            <li>
+              거래 기능을 이용함에 있어 발생할 수 있는 게임 내 재화의 손실, 사기
+              피해 및 기타 금전적 손해에 대해 스스로 책임을 부담하며, 운영자는
+              이에 대해 고의 또는 중대한 과실이 없는 한 어떠한 책임도 지지
+              않습니다.
+            </li>
+            <li>
+              이용자가 게임사의 운영 정책 미숙지로 발생한 계정 제재 및 아이템
+              회수에 대해서 운영자는 책임을 지지 않습니다.
+            </li>
+          </ul>
         </ul>
         <H2 text="저작권" />
         <P text="자세한 내용은 좌측 '저작권 및 법적고지' 섹션을 확인해주세요." />
@@ -1585,7 +1617,8 @@ export const uiTextsKo = {
         <P text="변경 사항이 있을 경우 시행 7일 전부터 디스코드 봇 공지사항 또는 공식 지원 서버를 통해 공지할 것입니다." />
         <ul className={htags.ulTag}>
           <li>공고 일자: 2025년 12월 4일</li>
-          <li>시행 일자: 2025년 12월 5일</li>
+          <li>시행 일자: 2025년 12월 10일</li>
+          <li>개정 일자: 2025년 12월 24일</li>
         </ul>
       </>
     ),
@@ -1744,7 +1777,8 @@ export const uiTextsKo = {
         <P text="본 개인정보 처리방침은 법령, 정책 또는 보안 기술의 변경에 따라 내용이 추가, 삭제 및 수정될 수 있습니다. 변경 사항이 있을 경우 시행 7일 전부터 디스코드 봇 공지사항 또는 공식 지원 서버를 통해 공지할 것입니다." />
         <ul className={htags.ulTag}>
           <li>공고 일자: 2025년 12월 4일</li>
-          <li>시행 일자: 2025년 12월 5일</li>
+          <li>시행 일자: 2025년 12월 10일</li>
+          <li>개정 일자: 2025년 12월 24일</li>
         </ul>
       </>
     ),
@@ -1774,15 +1808,16 @@ export const uiTextsKo = {
         </p>
         <p>
           <strong>Warframe©</strong>은 Digital Extremes Ltd.의 등록 상표입니다.
-          본 서비스에서 사용된 워프레임(Warframe) 관련 이미지 및 컨텐츠는 정보 전달을
-          목적으로 사용되었으며, 저작권자의 권리를 침해할 의도가 없습니다.
+          본 서비스에서 사용된 워프레임(Warframe) 관련 이미지 및 컨텐츠는 정보
+          전달을 목적으로 사용되었으며, 저작권자의 권리를 침해할 의도가
+          없습니다.
         </p>
 
         <H3 text="비공식 팬 프로젝트 고지" />
         <p>
           본 서비스는 Warframe의 팬(Fan)에 의해 만들어진 비공식(Unofficial)
-          프로젝트입니다. <strong>'{COMMON.name}'</strong> 봇은 Digital Extremes Ltd.
-          와 제휴, 보증, 후원 또는 공식적인 승인 관계에 있지 않습니다. 본
+          프로젝트입니다. <strong>'{COMMON.name}'</strong> 봇은 Digital Extremes
+          Ltd. 와 제휴, 보증, 후원 또는 공식적인 승인 관계에 있지 않습니다. 본
           서비스가 제공하는 정보는 게임의 업데이트에 따라 실제 게임 내용과 다를
           수 있습니다.
         </p>
