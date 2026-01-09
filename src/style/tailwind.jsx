@@ -3,31 +3,28 @@ export const COLOR = "sky";
 export const TXT_SIZE = "text-md";
 
 export const tw = {
-  tc: "transition-colors",
-  d2: "duration-200",
-  tcd: "transition-colors duration-500",
+  tc: "transition-colors", d2: "duration-200", tcd: "transition-colors duration-500",
 
   txt: {
     bright: "text-gray-950 dark:text-gray-50",
     white: "text-gray-900 dark:text-gray-100",
     light: "text-gray-700 dark:text-gray-200",
-    normal: "text-gray-600 dark:text-gray-300",
-    // p: "text-gray-600 dark:text-gray-200",
+    normal: "text-gray-600 dark:text-gray-300", // p: "text-gray-600 dark:text-gray-200",
     // nd: "text-gray-600 dark:text-gray-400",
     dim: "text-gray-500 dark:text-gray-400",
     dark: "text-gray-400 dark:text-gray-500",
     deep: "text.gray-300 dark:text-gray-600",
 
-    grave:
-      "text-green-700 dark:text-green-500 bg-yellow-200 dark:bg-yellow-900",
+    grave: "text-green-700 dark:text-green-500 bg-yellow-200 dark:bg-yellow-900",
 
     theme: `text-sky-600 dark:text-sky-400`,
     themeHover: `hover:text-sky-950 dark:hover:text-sky-100`,
     themeHoverBg: `hover:bg-sky-100 dark:hover:bg-gray-700`,
 
     red: "text-red-500 dark:text-red-500",
-    green: "text-green-500 dark:text-green-400",
     orange: "text-orange-500 dark:text-orange-400",
+    yellow: "text-yellow-600 dark:text-yellow-400",
+    green: "text-green-500 dark:text-green-400",
     sky: "text-sky-500 dark:text-sky-400",
     blue: "text-blue-500 dark:text-blue-400",
 
@@ -37,9 +34,7 @@ export const tw = {
   },
 
   bold: {
-    b: "font-bold",
-    eb: "font-extrabold",
-    // font-thin
+    b: "font-bold", eb: "font-extrabold", // font-thin
     // font-extralight
     // font-light
     // font-normal
@@ -73,29 +68,22 @@ export const tw = {
 
   // light
   l: {
-    bg_main: "bg-white",
-    bg_gray: "bg-gray-50",
-  },
-  // dark
+    bg_main: "bg-white", bg_gray: "bg-gray-50",
+  }, // dark
   d: {
-    bg_main: "dark:bg-gray-800",
-    bg_gray: "dark:bg-gray-900",
-  },
-  a: {
-    txt: "text-blue-600 dark:text-blue-400 font-bold underline",
-    hover: "hover:text-cyan-400 dark:hover:text-cyan-100",
+    bg_main: "dark:bg-gray-800", bg_gray: "dark:bg-gray-900",
+  }, a: {
+    txt: "text-blue-600 dark:text-blue-400 font-bold underline", hover: "hover:text-cyan-400 dark:hover:text-cyan-100",
   },
 
   // desktop header
   head: {
     bg: "bg-indigo-100 dark:bg-indigo-900/50", // background
-  },
-  main: {
+  }, main: {
     bg: "bg-gray-50 dark:bg-neutral-900",
     secBg: "bg-white dark:bg-gray-800",
     secIconBg: "bg-indigo-50 dark:bg-indigo-900",
-  },
-  // button
+  }, // button
   btn: {
     // txt: "text-gray-600 dark:text-gray-400",
     txtHover: "hover:text-indigo-600 dark:hover:text-indigo-400",
