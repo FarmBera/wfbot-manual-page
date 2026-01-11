@@ -75,40 +75,28 @@ export const uiTextsKo = {
       desc: "사용 가능한 명령어 및 관련 도움말을 확인할 수 있어요.",
       image: `${IMG_PATH}help1${IMG_EXT}`,
       width: "60%",
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Help+Command",
       head: (<>
         {/* <P text="지금 보고 계시는 웹 페이지로 이동하는 링크를 보여줘요." /> */}
       </>),
     }, {
-      id: SUB.ANNOUNCEMENT,
-      title: "공지사항",
-      desc: "봇 공지사항을 확인할 수 있어요.",
-      image: `${IMG_PATH}announcement${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Announcement",
+      id: SUB.ANNOUNCEMENT, title: "공지사항", desc: "봇 공지사항을 확인할 수 있어요.", image: `${IMG_PATH}announcement${IMG_EXT}`,
     }, {
       id: SUB.PATCHNOTE,
       title: "패치노트",
       desc: "봇의 최근 업데이트/패치 내역을 확인할 수 있어요.",
       image: `${IMG_PATH}patchnote${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Patch+Note",
       head: (<P text="새로 업데이트된 내용, 버그 수정 내역 등을 확인할 수 있어요."/>),
     }, {
       id: SUB.PRIVACY,
       title: "개인정보-처리방침",
       desc: "봇의 개인정보 처리방침을 확인할 수 있어요.",
       image: `${IMG_PATH}privacy-policy${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Privacy",
       foot: (<>
         <p> 자세한 내용은 좌측 목차에서 <strong>이용 약관 / 개인정보 처리방침</strong> 섹션을 확인해주세요. </p>
         <p>버튼을 클릭하면 해당 내용을 확인할 수 있어요. (외부 페이지로 연결됩니다)</p>
       </>),
     }, {
-      id: SUB.ALERTS,
-      title: "얼럿",
-      desc: "현재 활성화된 얼럿 미션을 확인할 수 있어요.",
-      image: `${IMG_PATH}alerts${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Alerts",
-      head: (<>
+      id: SUB.ALERTS, title: "얼럿", desc: "현재 활성화된 얼럿 미션을 확인할 수 있어요.", image: `${IMG_PATH}alerts${IMG_EXT}`, head: (<>
         <p className={htags.pTag}> 얼럿 미션에 대하여 아래의 정보를 확인할 수 있어요.</p>
         <ul className={htags.ulTag}>
           <li>미션 종류 - 노드 (위치)</li>
@@ -118,21 +106,17 @@ export const uiTextsKo = {
         {/* <TipTime sampleTime="4일 후" /> */}
       </>),
     }, {
-      id: SUB.NEWS,
-      title: "뉴스",
-      desc: "최신 워프레임 뉴스를 확인할 수 있어요.",
-      image: `${IMG_PATH}news${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=News",
-      head: (<>
+      id: SUB.NEWS, title: "뉴스", desc: "최신 워프레임 뉴스를 확인할 수 있어요.", image: `${IMG_PATH}news${IMG_EXT}`, head: (<>
         <p className={htags.pTag}>파란색 글씨를 클릭하면 해당 공지로 바로 이동할 수 있어요.</p>
       </>),
     }, {
-      id: SUB.SORTIE,
-      title: "출격",
-      desc: "오늘의 출격 미션을 확인할 수 있어요.",
-      image: `${IMG_PATH}sortie${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Sortie",
-      head: (<>
+      id: SUB.CETUSCYCLE,
+      title: "시터스주기",
+      desc: "현재 지구 시터스 주기를 확인합니다",
+      image: `${IMG_PATH}cetus${IMG_EXT}`,
+      width: '50%',
+    }, {
+      id: SUB.SORTIE, title: "출격", desc: "오늘의 출격 미션을 확인할 수 있어요.", image: `${IMG_PATH}sortie${IMG_EXT}`, head: (<>
         <p className={htags.pTag}>출격 미션 종료까지 남은 시간, 어느 노드에서 이루어지는지, 변수는 무엇인지 간단하게 확인할 수 있어요.</p>
       </>),
     }, {
@@ -140,7 +124,6 @@ export const uiTextsKo = {
       title: "집정관사냥",
       desc: "이번주 집정관 미션 목록과, 얻을 수 있는 샤드를 확인할 수 있어요",
       image: `${IMG_PATH}archonhunt${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Archon+Hunt",
       head: (<>
         <NOTE color="green" icon="tip" title="꿀팁"
               text="얻을 수 있는 샤드 종류에 따라 왼쪽의 띠 색깔이 바뀌어서 어떤 샤드를 얻을 수 있는지 직관적으로 확인할 수 있어요!"/>
@@ -150,39 +133,30 @@ export const uiTextsKo = {
       title: "바로키티어",
       desc: "현재 바로 키 티어 상태를 알 수 있어요.",
       image: `${IMG_PATH}voidtraders${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Void+Trader",
       head: (<><P text="등장 여부, 언제/어디서 나타날지 알려줍니다."/></>),
       foot: (<>
         <P text="바로 키 티어가 등장했다면 아래와 같이 나타나요"/>
-        <DocImage src={`${IMG_PATH}voidtraders-activated${IMG_EXT}`}
-                  alt="바로키티어 등장했을 때 이미지"
-                  caption="바로 키 티어가 등장했을 때 표시되는 내용"/>
+        <DocImage src={`${IMG_PATH}voidtraders-activated${IMG_EXT}`} caption="바로 키 티어가 등장했을 때 표시되는 내용"/>
       </>),
     }, {
       id: SUB.VOIDTRADERSITEM,
       title: "바로키티어-물품",
       desc: "바로 키 티어가 판매하는 물품 목록을 확인할 수 있어요.",
       image: `${IMG_PATH}voidtraders-item-yes${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Void+Trader+Items",
       foot: (<>
         <P text="만약 바로 키 티어가 등장하지 않았다면, 아래와 같이 표시됩니다"/>
-        <DocImage src={`${IMG_PATH}voidtraders-item-no${IMG_EXT}`}
-                  alt="바로키티어 미등장"
-                  caption="키 티어가 등장하지 않았을 때"/>
+        <DocImage src={`${IMG_PATH}voidtraders-item-no${IMG_EXT}`} caption="키 티어가 등장하지 않았을 때"/>
       </>),
     }, {
       id: SUB.STEELPATH,
       title: "스틸에센스",
       desc: "이번주 태신의 스틸에센스 교환 물품을 확인할 수 있어요.",
       image: `${IMG_PATH}steelpath${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Steel+Path",
     }, {
       id: SUB.FISSURES,
       title: "보이드균열",
       desc: "현재 활성화된 보이드 균열 중 빠르게 클리어 가능한 미션 목록을 확인할 수 있어요. (예: 섬멸, 생포 등)",
       image: `${IMG_PATH}fissures${IMG_EXT}`,
-      width: "50%",
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Fissures",
     }, {
       id: SUB.DEEPARCHIMEDEA,
       title: "심층아르키메디아",
@@ -207,31 +181,32 @@ export const uiTextsKo = {
       desc: "[베타버전] 이번주 헥스 캘린더 할일/보상 목록 등을 확인할 수 있어요.",
       image: `${IMG_PATH}calendar${IMG_EXT}`,
       width: "50%",
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Calendar",
       head: (<><P text="현재 개선 중인 명령어로, 가독성이 떨어지거나 일부 오표기된 정보가 표시될 수 있습니다."/></>),
+    }, {
+      id: SUB.CAMBIONCYCLE,
+      title: "캠비온퇴적지주기",
+      desc: "현재 데이모스 캠비온 퇴적지 주기를 확인합니다.",
+      image: `${IMG_PATH}cambion${IMG_EXT}`,
+      width: "50%",
     }, {
       id: SUB.DAILYDEALS,
       title: "일일특가",
       desc: "다르보가 제시하는 오늘의 특가 물품을 확인할 수 있어요.",
       image: `${IMG_PATH}dailydeals${IMG_EXT}`,
       width: "50%",
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Daily+Deals",
     }, {
-      id: SUB.INVASIONS,
-      title: "침공",
-      desc: "현재 활성화된 침공 미션 목록을 확인할 수 있어요.",
-      image: `${IMG_PATH}invasions${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Invasions",
+      id: SUB.INVASIONS, title: "침공", desc: "현재 활성화된 침공 미션 목록을 확인할 수 있어요.", image: `${IMG_PATH}invasions${IMG_EXT}`,
     }, {
-      id: SUB.MARKET_SEARCH,
-      title: "마켓검색",
-      desc: (<>
+      id: SUB.VALLISCYCLE,
+      title: "오브협곡주기",
+      desc: "현재 오브 협곡 주기를 확인합니다.",
+      image: `${IMG_PATH}vallis${IMG_EXT}`,
+      width: "50%",
+    }, {
+      id: SUB.MARKET_SEARCH, title: "마켓검색", desc: (<>
         <P text="'Warframe Market'(워프레임 마켓) 에서 원하는 아이템을 검색하여 가장 저렴한 매물을 검색할 수 있어요."/>
         <P text="파란색으로 된 아이템 이름을 클릭하면 해당 아이템의 마켓 검색 결과로 이동할 수 있어요."/>
-      </>),
-      image: `${IMG_PATH}market-search-result${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Market+Search",
-      foot: (<>
+      </>), image: `${IMG_PATH}market-search-result${IMG_EXT}`, foot: (<>
         <P text="마켓 검색 명령어 사용 방법은 다음과 같습니다."/>
         <ol className={htags.olTag}>
           <li> 검색창에서 <strong>/마켓검색</strong> 명령어를 입력하여 명령어를 선택 후</li>
@@ -246,11 +221,11 @@ export const uiTextsKo = {
     }, {
       id: SUB.PARTY_CREATE, title: "파티생성", desc: "새로운 파티 구인 글을 생성합니다. (종합 게임 대상)", foot: (<div>
         <p className={htags.pTag}> 자세한 내용은 사이드바 메뉴의 <strong>4. 파티 모집 기능</strong> 섹션을 참고 바랍니다. (링크 삽입)</p>
-      </div>), imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Create+Party",
+      </div>),
     }, {
       id: SUB.TRADE_CREATE, title: "거래", desc: "서버의 거래채널에 거래 글을 생성합니다. (워프레임 아이템 한정)", foot: (<div>
         <p className={htags.pTag}> 자세한 내용은 사이드바 메뉴의 <strong>5. 거래 기능</strong> 섹션을 참고 바랍니다. (링크 삽입)</p>
-      </div>), imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Create+Trade",
+      </div>),
     }, {
       id: SUB.EVENTS,
       title: "이벤트",
@@ -281,17 +256,14 @@ export const uiTextsKo = {
         <H2 text={'불만 접수 전, 아래 내용을 꼭 확인해주세요.'}/>
         <p className={htags.pTag}>
           <strong>이 기능은 {process.env.REACT_APP_SERVER_NAME} 서버와 관련된 문의만 받습니다.</strong><br/>
-          <span className={`${tw.txt.orange} ${tw.bold.eb}`}>
-            봇 관련 문의가 있으신 경우, [이곳](homepage/?id=contact)을 참고하여 별도로 문의 바랍니다.
-          </span>
+          <span className={`${tw.txt.orange} ${tw.bold.eb}`}>봇 관련 문의가 있으신 경우, <ContactMe/></span>
         </p>
-
         <ul className={htags.ulTag}>
           <li>작성한 내용은 한번 제출하면 수정이 불가합니다. 신중히 작성해주세요.</li>
           <li>접수 게시글 또한 서버 규칙이 동일하게 적용됩니다.</li>
           <li>신고 건의 경우 구체적인 증거가 있어야 하며, 허위 사실 기재 시 불이익이 있을 수 있습니다.</li>
         </ul>
-        <DocImage src={`${IMG_PATH}complain${IMG_EXT}`} caption="/디센디아 명령어 예시" maxWidth='60%'/>
+        <DocImage src={`${IMG_PATH}complain${IMG_EXT}`} caption="/문의하기 명령어 예시" maxWidth='60%'/>
       </>),
     }, {
       id: "alert-setup-cmd",
@@ -300,8 +272,7 @@ export const uiTextsKo = {
       image: `${IMG_PATH}alert-set${IMG_EXT}`,
       foot: (<>
         <P text="다양한 워프레임 관련 알림을 받아볼 수 있으니, 확인해보세요!"/>
-        <NOTE color="yellow" icon="info" title="알림"
-              text="현재 알림설정은 개인 서버에서만 이용할 수 있는 기능 입니다. 이용에 참고 바랍니다."/>
+        <NOTE color="yellow" icon="info" title="알림" text="현재 알림설정은 개인 서버에서만 이용할 수 있는 기능 입니다. 이용에 참고 바랍니다."/>
       </>),
     }, {
       id: "alert-delete-cmd",
@@ -310,8 +281,7 @@ export const uiTextsKo = {
       image: `${IMG_PATH}alert-del${IMG_EXT}`,
       foot: (<>
         {/*<p className={htags.pTag}></p>*/}
-        <NOTE color="yellow" icon="info" title="알림"
-              text="현재 알림해제는 개인 서버에서만 이용할 수 있는 기능 입니다. 이용에 참고 바랍니다."/>
+        <NOTE color="yellow" icon="info" title="알림" text="현재 알림해제는 개인 서버에서만 이용할 수 있는 기능 입니다. 이용에 참고 바랍니다."/>
       </>),
     },],
   }, // 4. 파티 섹션
@@ -320,7 +290,7 @@ export const uiTextsKo = {
       {
         id: "party-intro", title: "기능 개요", desc: (<>
           <P text="간편하게 파티 구인 글을 생성할 수 있습니다."/>
-          <P text="이는 종합 게임을 대상으로 하고 있어 워프레임 뿐만 아니라 다른 게임 파티 모집도 가능합니다."/>
+          <P text="종합 게임을 대상으로 하고 있어 워프레임 뿐만 아니라 다른 게임 파티 모집도 가능합니다."/>
           <P text="같이 게임 할 분들을 손쉽게 모집해보세요!"/>
         </>), // image: ...
       }, {// 이용 전 주의사항
@@ -332,45 +302,42 @@ export const uiTextsKo = {
             <li>파티를 생성하고 활동(파티원의 참여/탈퇴, 모집상태 변환 등)이 없다면 <strong>30일 후에 자동으로 모집 종료</strong> 됩니다.</li>
             <li>파티를 생성 및 수정할 때 입력되는 내용은 모두에게 공개되는 내용입니다. <strong>민감한 개인정보는 입력하지 말아주세요.</strong></li>
             <li><strong>서버 규칙이 동일하게 적용</strong>됩니다. 부적절한 단어 사용 시, 게시글 자동 삭제 & 서버 규칙에 따라 제재 및 처벌됩니다.</li>
-            <li>서버 규칙은{" "}<A text="이곳에서" href={process.env.REACT_APP_SERVER_RULE}/> 확인할 수 있습니다.</li>
+            <li>서버 규칙은 <A text="이곳에서" href={process.env.REACT_APP_SERVER_RULE}/> 확인할 수 있습니다.</li>
           </ul>
           <P text="금지사항을 위반하여 적발된 경우, 다른 분들에게 피해가 갈 우려가 있으므로 당사자는 클랜 서버에서 '인게임 닉네임' 을 전체 공개하고 경고를 받습니다."/>
-          <P text="경고 누적 시 클랜 추방 조치가 이루어질 수 있습니다."/>
-          <P text="사안이 중대하다고 판단되는 경우, 간부진 과반수 동의하에 즉시 영구 추방 할 수 있습니다."/>
+          <P/>
+          <ul className={htags.ulTag}>
+            <li>경고 누적 시 클랜 추방 조치가 이루어질 수 있습니다.</li>
+            <li>사안이 중대하다고 판단되는 경우, 간부진 과반수 동의하에 즉시 영구 추방 할 수 있습니다.</li>
+          </ul>
           {/*<p><strong>(경고 3회, 이후 클랜 영구 추방)</strong></p>*/}
         </div>),
-      }, // (1) 파티 정보 확인
-      {
+      }, {
         id: "party-list", title: "(1) 파티 정보 확인하기", desc: "생성된 파티 정보를 확인하는 방법", foot: (<>
           <p className={htags.pTag}>
-            <strong className={tw.txt.sky}>일상채널</strong> 카테고리의{" "}
-            <strong className={tw.txt.sky}>파티모집</strong> 채널로 이동하면 모집 중인 모든 파티 목록을 확인할 수 있습니다.
+            <strong className={tw.txt.sky}>일상채널</strong> 카테고리의 <strong className={tw.txt.sky}>파티모집</strong> 채널로 이동하면
+            모집 중인 모든 파티 목록을 확인할 수 있습니다.
           </p>
           <DocImage src={`${IMG_PATH}party-listing${IMG_EXT}`} caption="파티 목록 예시"/>
           <P text='생성되어있는 스레드를 선택하여 파티 모집 게시글을 확인할 수 있습니다.'/>
         </>),
-      }, // (2) 파티 참여하기
-      {
+      }, {
         id: "party-join-leave", title: "(2) 파티 참여/탈퇴하기", desc: "파티에 참여하는 방법에 대해서 소개합니다.", foot: (<>
+          <DocImage src={`${IMG_PATH}party-article${IMG_EXT}`} caption="파티 게시글 예시"/>
+          <NOTE color="yellow" icon="tip" title="알림" text="디스코드 앱 화면 크기에 따라 버튼 배치는 달라질 수 있어요."/>
+          <P/>
           <h4 className={htags.H4}>파티 참여</h4>
           <p className={htags.pTag}>
-            초록색 <span className={`${tw.txt.green} font-extrabold`}>참여하기</span> 버튼을 누르면 파티에 참여할 수 있습니다! </p>
-          <P/>
+            초록색 <span className={`${tw.txt.green} font-extrabold`}>참여하기</span> 버튼을 누르면 파티에 참여할 수 있습니다</p>
+          <p>참가하기 버튼을 누른 뒤에 확인창이 나타나면 <span className={`${tw.txt.green} font-extrabold`}>Yes (진행)</span> 버튼을 눌러 파티에
+            참가합니다.</p>
+          <DocImage src={`${IMG_PATH}party-confirm-join${IMG_EXT}`} caption="파티 참가 확인 메시지"/>
+
           <h4 className={htags.H4}>파티 탈퇴</h4>
           <p className={htags.pTag}> 빨간색 <span className={`${tw.txt.red} font-extrabold`}>탈퇴하기</span> 버튼을 누르면 탈퇴할 수
             있습니다.</p>
-          <DocImage src={`${IMG_PATH}party-article${IMG_EXT}`} caption="파티 게시글 예시"/>
-          <NOTE color="yellow" icon="tip" title="알림" text="디스코드 앱 화면 크기에 따라 버튼 배치는 달라질 수 있습니다."/>
-          <p>
-            잘못 누르는 것을 대비하여{" "} <span className={`font-extrabold`}>참여하기</span> 버튼을 누르면
-            정말 참여를 할 것인지 물어보는 메시지가 추가로 표시됩니다.
-          </p>
-          {/*maxWidth="100%"*/}
-          <DocImage src={`${IMG_PATH}party-confirm-join${IMG_EXT}`} caption="파티 참가 확인 메시지"/>
-          <p><span className={`${tw.txt.green} font-extrabold`}>Yes (진행)</span> 버튼을 눌러야 파티에 참가됩니다.</p>
         </>),
-      }, // (3) 파티 생성하기
-      {
+      }, {
         id: "party-how-create", title: "(3) 파티 생성하기", desc: "파티 모집 글을 생성하는 방법입니다.", foot: (<>
           <h4 className={htags.H4}><strong>/파티생성</strong> 명령어를 이용하여 파티를 생성할 수 있어요. </h4>
           <ul className={htags.ulTag}>
@@ -383,29 +350,28 @@ export const uiTextsKo = {
           <DocImage src={`${IMG_PATH}party-cmd0${IMG_EXT}`} alt="명령어 검색 결과" caption="명령어 검색 결과"/>
           <h4 className={htags.H4}> 입력 할 수 있는 내용으로 총 4가지가 있습니다. <br/></h4>
           <ul className={htags.ulTag}>
-            <li><span className={htags.graveTag}>title</span>: 모집 글 제목</li>
-            <li><span className={htags.graveTag}>game_type</span>: 플레이 할 게임 이름 (워프레임, 롤, 배그 등)</li>
-            <li>[선택사항] <span className={htags.graveTag}>number_of_user</span>: 모집 인원 수</li>
+            <li><span className={htags.graveTag}>파티_제목</span>: 모집 글 제목</li>
+            <li><span className={htags.graveTag}>같이_할_게임이름</span>: 플레이 할 게임 이름 (워프레임, 롤, 배그 등)</li>
+            <li>[선택사항] <span className={htags.graveTag}>출발하는_날짜</span>: 파티 출발일 입력 (기본값: 미정)</li>
+            <li>[선택사항] <span className={htags.graveTag}>모집_인원_수</span>: 모집 인원 수</li>
             <ul className={htags.ulTag}>
+              <li><strong>기본값: 4명</strong> (워프레임 최대 파티원 수 4명)</li>
               <li><strong>파티장(본인)을 포함</strong>한 인원 수 입니다.</li>
-              <li><strong>기본값으로 4명</strong>이 설정됩니다. (워프레임 최대 파티원 수 4명)</li>
               <li><strong>최대 20명</strong>까지 설정 가능합니다.</li>
             </ul>
-            <li>[선택사항] <span className={htags.graveTag}>description</span>: 모집 글에 대한 세부 설명 등</li>
+            <li>[선택사항] <span className={htags.graveTag}>파티_설명</span>: 모집 글에 대한 세부 설명 등</li>
           </ul>
           <h4 className={htags.H4}>원하는 내용으로 채워주세요.</h4>
           (상단에 어떤 내용이 들어가야할지 알려주는 문구가 있으니 참고바랍니다)
           <DocImage src={`${IMG_PATH}party-cmd-input${IMG_EXT}`} maxWidth="100%" caption="원하는 내용으로 채워주세요."/>
           입력 후 엔터 키를 눌러 전송을 하면 <strong>'파티모집'</strong> 채널에 공개 스레드 및 모집 글이 생성됩니다.
-          <DocImage src={`${IMG_PATH}party-created${IMG_EXT}`} maxWidth="100%" caption="파티 생성 완료 메시지"/>
-          파란색 배경의 링크를 클릭하면 해당 모집글로 바로 이동할 수 있습니다. <br/>
-          또는 직접 파티모집 채널로 이동해주세요.
+          <DocImage src={`${IMG_PATH}party-created${IMG_EXT}`} maxWidth="80%" caption="파티 생성 완료 메시지"/>
+          파란색 배경의 링크를 클릭하면 해당 모집글로 바로 이동할 수 있습니다. <br/>또는 직접 파티모집 채널로 이동해주세요.
+          <DocImage src={`${IMG_PATH}party-created2${IMG_EXT}`} maxWidth="80%" caption="생성된 파티"/>
         </>),
-      }, // (4) 파티 정보 수정하기
-      {
+      }, {
         id: "party-edit", title: "(4) 파티 정보 수정하기", desc: "해당 섹션에서 소개하는 기능은 파티장(파티를 생성한 분)만 사용이 가능해요.",
-      }, // (4-1) 인원 수정
-      {
+      }, {
         id: "party-edit-member", title: "(4-1) 인원 수정", foot: (<>
           <p className={htags.pTag}><BOLD text="인원 수정"/> 버튼을 누르면 모집 정원을 수정할 수 있습니다. </p>
           <ul className={htags.ulTag}>
@@ -417,8 +383,7 @@ export const uiTextsKo = {
           <p className={htags.pTag}> 원하는 인원수를 입력하고 <strong className={`${tw.txt.sky}`}>전송</strong>을 눌러주세요. </p>
           <DocImage src={`${IMG_PATH}party-nop${IMG_EXT}`} caption="인원 수정 팝업창"/>
         </>),
-      }, // (4-2) 게시글 수정
-      {
+      }, {
         id: "party-edit-article", title: "(4-2) 게시글 수정", desc: "잘못 입력한 내용을 수정하기 위한 기능입니다.", foot: (<>
           <p className={htags.pTag}>수정 가능한 항목은 다음과 같습니다.</p>
           <ul className={htags.ulTag}>
@@ -434,9 +399,16 @@ export const uiTextsKo = {
           <DocImage src={`${IMG_PATH}party-mod2${IMG_EXT}`} caption="글 수정"/>
           <DocImage src={`${IMG_PATH}party-mod3-result${IMG_EXT}`} caption="글 수정 결과"/>
         </>),
-      }, // (4-3) 모집 상태 전환
-      {
-        id: "party-change", title: "(4-3) 모집 상태 전환", desc: "모집 글의 모집 상태를 전환할 수 있습니다.", foot: (<>
+      }, {
+        id: "party-change-departure", title: "(4-3) 출발 시간 변경", desc: "출발 시간을 변경할 수 있습니다.", foot: (<>
+          <p className={htags.pTag}>
+            <strong>출발일 변경</strong> 버튼을 누르면 다음과 같은 창이 표시됩니다.<br/>
+            원하는 출발 시간을 자연어로 입력할 수 있습니다.<br/>
+          </p>
+          <DocImage src={`${IMG_PATH}party-departure${IMG_EXT}`} caption="모집 완료 상태"/>
+        </>),
+      }, {
+        id: "party-change", title: "(4-4) 모집 상태 전환", desc: "모집 글의 모집 상태를 전환할 수 있습니다.", foot: (<>
           <p className={htags.pTag}>
             모집 완료 버튼을 누르면 다음과 같이 모집 글을 <strong>모집 완료</strong> 상태로 변경됩니다.
           </p>
@@ -450,9 +422,8 @@ export const uiTextsKo = {
             <strong className={`${tw.txt.green}`}>모집 활성화</strong> 버튼을 누르면 다시 글 상태를 "모집 중" 으로 변경할 수 있습니다.
           </p>
         </>),
-      }, // (4-4) 파티원 호출
-      {
-        id: "party-call", title: "(4-4) 파티원 호출", desc: "파티원 분들에게 호출 알림을 보냅니다", foot: (<>
+      }, {
+        id: "party-call", title: "(4-5) 파티원 호출", desc: "파티원 분들에게 호출 알림을 보냅니다", foot: (<>
           <p className={htags.pTag}>
             현재 참여한 파티원 전원에게 멘션 알림을 합니다. <br/>
             모집 글이 생성된 스레드에 파티원 모두를 호출하는 메시지가 전송됩니다.
@@ -466,46 +437,38 @@ export const uiTextsKo = {
           </p>
           <p className={htags.pTag}>주의하여 사용하시기 바랍니다.</p>
         </>),
-      }, // (4-5) 파티원 내보내기
-      {
-        id: "party-kick", title: "(4-5) 파티원 내보내기", desc: "특정 파티원을 선택하여 강제로 내보냅니다.", foot: (<>
+      }, {
+        id: "party-kick", title: "(4-6) 파티원 내보내기", desc: "특정 파티원을 선택하여 강제로 내보냅니다.", foot: (<>
           <NOTE color="red" icon="alert" title="주의사항" text={<div>
             <div className={htags.pTag}><strong>
               본 기능은 파티원이 개인 사정으로 불참한다고 사전에 연락 했음에도 불구하고, 직접 탈퇴 처리를 하지 못한 상황을 해결하기 위해 마련된 기능입니다.
             </strong></div>
-            <div className={htags.pTag}><strong className={tw.txt.red}>
-              파티원을 예고도 없이 강제로 내보내는 등 부적절한 사용은 금합니다.
-            </strong></div>
-            <div className={htags.pTag}>
-              지속적으로 사용자들에게서 부정 사용을 건의받고 있습니다. 부정 사용 적발 시, 제재가 이루어질 수 있습니다.
+            <div className={htags.pTag}><strong className={tw.txt.red}>파티원을 예고도 없이 강제로 내보내는 등 부적절한 사용은 금합니다.</strong>
             </div>
+            <div className={htags.pTag}> 지속적으로 사용자들에게서 부정 사용을 건의받고 있습니다. 부정 사용 적발 시, 제재가 이루어질 수 있습니다.</div>
           </div>}
           />
           <br/>
           <P text='버튼을 누르면 아래와 같은 메시지가 나타납니다.'/>
           <p className={htags.pTag}><strong>내보낼 파티원을 선택하세요</strong>(드롭다운 메뉴)를 클릭하면 내보내고자 하는 파티원을 선택할 수 있습니다. </p>
           <DocImage src={`${IMG_PATH}party-kick-select${IMG_EXT}`} caption="강제 탈퇴 드롭다운 예"/>
-          <NOTE color="orange" icon="alert" title="주의!" text={<>
-            내보낼 파티원을 클릭하면 즉시 파티원을 탈퇴시킵니다. <br/>
-            잘못 클릭하지 않도록 유의하여 사용해주세요!
-          </>}/>
+          <NOTE color="orange" icon="alert" title="주의!" text={<div>
+            내보낼 파티원을 클릭하면 즉시 파티원을 탈퇴시킵니다. <br/>잘못 클릭하지 않도록 유의하여 사용해주세요!
+          </div>}/>
         </>),
-      }, // (4-6) 모집 종료하기
-      {
-        id: "party-exit", title: "(4-6) 모집 종료하기", desc: "파티 모집을 영구 종료합니다. (글을 비활성화 상태로 변환합니다)", foot: (<>
+      }, {
+        id: "party-exit", title: "(4-7) 모집 종료하기", desc: "파티 모집을 영구 종료합니다. (글을 비활성화 상태로 변환합니다)", foot: (<>
           <p className={htags.pTag}>
             <strong>모집 종료</strong> 버튼을 누르면, 정말로 모집 종료 할 것인지 묻는 버튼이 나타납니다. (실수 방지)
           </p>
           <DocImage src={`${IMG_PATH}party-confirm-delete${IMG_EXT}`} caption="모집 종료 버튼 클릭 후 내용 예"/>
-          <p className={htags.pTag}><strong>Yes (진행)</strong> 버튼을 누르면 모집이 영구 종료됩니다. </p>¸
+          <p className={htags.pTag}><strong>Yes (진행)</strong> 버튼을 누르면 모집이 영구 종료됩니다. </p>
           <P text='아래 사진과 같이 글 전체를 삭제하는 것이 아닌, 게시글을 비활성화 시킵니다. (유사 아카이브 형태)'/>
-          <DocImage src={`${IMG_PATH}party-deleted${IMG_EXT}`} caption="모집 종료 버튼 클릭 후 내용 예"/>
-          {/*<p className={htags.pTag}></p>*/}
-          {/*<p className={htags.pTag}></p>*/}
+          <DocImage src={`${IMG_PATH}party-deleted${IMG_EXT}`} maxWidth='50%' caption="모집 종료 버튼 클릭 후 내용 예"/>
           <NOTE color="orange" icon="alert" title="주의!" text="종료 작업은 되돌릴 수 없습니다."/>
         </>),
       },],
-  }, // 5. 거래 섹션
+  },
   trade: {
     id: "trade", title: "5. 거래 기능", mainTitle: "거래 명령어", list: [// trade warnings
       {
@@ -524,7 +487,7 @@ export const uiTextsKo = {
             {/* detailed description */}
             <ul className={htags.ulTag}>
               <li>단, 워프레임 마켓 시세를 잘 모르는 특정 분들을 겨냥하여 <span className={`${tw.txt.yellow}`}>시세값보다
-                  <span className="font-extrabold">매우</span> 높은가격으로 구매하도록 매물을 올리는 것은 금지</span> 합니다.
+                  <span className="font-extrabold"> 매우</span> 높은가격으로 구매하도록 매물을 올리는 것은 금지</span> 합니다.
               </li>
               <li>
                 시세를 잘 모르는 분들을 위하여, 게시되어 있는 물품의 <strong>워프레임 마켓</strong> 검색 결과를 확인할 수 있도록
@@ -551,34 +514,33 @@ export const uiTextsKo = {
           <P text="사안이 중대하다고 판단되는 경우, 간부진 과반수 동의하에 즉시 영구 추방 할 수 있습니다."/>
           {/*<p className={`text-lg ${tw.bold.b}`}>(경고 3회, 이후 클랜 영구 추방)</p>*/}
         </div>),
-      }, // do trade
-      {
+      }, {
         id: "trade-request", title: "(1) 거래 요청하기", desc: "게시되어 있는 거래 글에 거래를 요청하는 방법입니다.", foot: (<>
-          <h4 className={htags.H4}>거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을 눌러주세요.</h4>
-          {/*<p className={htags.pTag}>거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을 눌러주세요.</p>*/}
-          <P text="버튼을 누르면 거래 글 게시자에게 멘션 알림이 갑니다."/>
-          <P text="이후 스레드에서 자유롭게 대화를 나누며 거래하시면 됩니다."/>
+          <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="90%" caption="거래 게시글 예시"/>
           <NOTE color="blue" icon="tip" title="꿀팁" text={<>
             게시글 하단의 귓속말 및 파티초대 명령어에 마우스를 가져다 놓으면 우측에 복사하기 버튼이 뜹니다.<br/>
-            복사한 뒤, 워프레임 채팅에 붙여넣어서 귓속말 및 파티초대 기능을 사용하시면 됩니다.
+            복사한 뒤, 워프레임 채팅에 붙여넣어서 귓속말 및 인게임 파티초대 기능을 사용하시면 됩니다.
           </>}/>
-          <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="90%" caption="거래 게시글 예시"/>
-          {/*<p className={htags.pTag}></p>*/}
+          <P/>
+          <h4 className={htags.H4}>거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을 눌러주세요.</h4>
+          {/*<p className={htags.pTag}>거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을 눌러주세요.</p>*/}
+          <DocImage src={`${IMG_PATH}trade-confirm${IMG_EXT}`} maxWidth="60%" caption="거래 게시글 예시"/>
+          <P text="2차 확인 버튼을 누르면 거래 글 게시자에게 멘션 알림이 갑니다."/>
+          <DocImage src={`${IMG_PATH}trade-requested${IMG_EXT}`} maxWidth="70%" caption="거래 게시글 예시"/>
+          <P text="이후 스레드 내에서 자유롭게 대화를 나누며 거래하시면 됩니다."/>
+          <P text="요청 메시지의 초대 명령어는 거래 게시자가 사용하면 편리하게 이용할 수 있습니다."/>
         </>),
-      }, // create trade
-      {
+      }, {
         id: "trade-how-create", title: "(2) 거래 글 생성하기", desc: "", foot: (<>
           <p className={htags.pTag}> 채팅창에 <strong>/거래</strong>라고 입력하여 거래 명령어를 검색하고 선택해주세요. </p>
-          <DocImage src={`${IMG_PATH}trade-cmd1${IMG_EXT}`} maxWidth="90%" caption="채팅창에 거래 명령어 검색"/>
+          <DocImage src={`${IMG_PATH}trade-cmd1${IMG_EXT}`} maxWidth="50%" caption="채팅창에 거래 명령어 검색"/>
           <p className={htags.pTag}>입력 가능한 내용은 아래와 같습니다.</p>
           <ul className={htags.ulTag}>
             <li><span className={htags.graveTag}>trade_type</span>: 거래 유형. (판매/구매 중 택1)</li>
             <li><span className={htags.graveTag}>item_name</span>: 판매/구매 하고자 하는 아이템 이름 (마켓에서 판매하는 물품 검색 가능)</li>
-            <li><span className={htags.graveTag}>game_nickname</span>: 사용자 닉네임 기반으로 자동 설정됩니다.</li>
+            {/*<li><span className={htags.graveTag}>game_nickname</span>: 입력값이 무시됩니다. (사용자 닉네임 기반으로 자동 설정)</li>*/}
             {/* 워프레임 닉네임 (디스코드 닉네임 아닙니다!) */}
-            {/*<ul className={htags.ulTag}>
-              <li>귓속말 및 파티초대 명령어에 사용되기에, 정확하게 기입해주세요!</li>
-            </ul>*/}
+            {/*<ul className={htags.ulTag}><li>귓속말 및 파티초대 명령어에 사용되기에, 정확하게 기입해주세요!</li></ul>*/}
             <li>
               <span className={htags.graveTag}>item_rank</span>: [선택사항] 아케인과 같이 아이템 랭크가 존재한다면, 거래하고자 하는 아이템의 랭크를 입력합니다
             </li>
@@ -590,65 +552,58 @@ export const uiTextsKo = {
           </ul>
           <P text="가격을 입력하지 않고 거래 글을 게시하면 실시간 마켓 시세를 기반으로 자동으로 가격을 책정해주는 기능을 내장하였으니, 이용에 참고하시길 바랍니다."/>
           <DocImage src={`${IMG_PATH}trade-cmd${IMG_EXT}`} maxWidth="80%" caption="거래 명령어에 입력 가능한 내용들"/>
-          <DocImage src={`${IMG_PATH}trade-input-ing${IMG_EXT}`} maxWidth="100%" caption="원하는 내용 입력"/>
+          <DocImage src={`${IMG_PATH}trade-input-ing${IMG_EXT}`} maxWidth="90%" caption="원하는 내용 입력"/>
           <P text='원하는 내용으로 입력 후 엔터키를 눌러 전송하면 아래와 같은 메시지와 함께 거래 게시글이 생성됩니다.'/>
-          <DocImage src={`${IMG_PATH}trade-created1${IMG_EXT}`} maxWidth="100%" caption="거래글 생성 완료 메시지"/>
-          <p className={htags.pTag}>파란색 링크를 클릭하면 해당 스레드 (거래글) 로 이동할 수 있어요.<br/> (또는 직접 거래하기 채널로 이동해주세요.) </p>
+          <DocImage src={`${IMG_PATH}trade-created1${IMG_EXT}`} maxWidth="90%" caption="거래글 생성 완료 메시지"/>
+          <NOTE color='yellow' icon='info' title='0플레로 가격이 책정되는 경우'
+                text='게임에 접속 중인 플레이어가 올려놓은 매물이 없을 때 발생합니다. 이 때는 가격수정 버튼을 통해 직접 가격을 입력해주세요.'/>
+          <P/>
+          <p className={htags.pTag}>파란색 링크를 클릭하면 해당 거래글로 이동할 수 있어요. (또는 직접 거래하기 채널로 이동해주세요.) </p>
           <P text='거래하기 채널에서는 원하는 스레드를 선택하여 거래 게시글을 확인할 수 있어요.'/>
-          <DocImage src={`${IMG_PATH}trade-${IMG_EXT}`} caption="거래 게시글 목록 예시"/>
+          {/*<DocImage src={`${IMG_PATH}trade-${IMG_EXT}`} caption="거래 게시글 목록 예시"/>*/}
         </>),
-      }, // edit trade article
-      {
+      }, {
         id: "trade-edit", title: "(3) 거래 게시글 관련", desc: "거래 게시글에서 사용할 수 있는 기능을 소개합니다.", foot: (<>
           <P text='거래 게시글은 다음과 같은 형태를 띄고 있습니다.'/>
           <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="80%" caption="거래 게시글 예시"/>
           <P text='각 버튼에 대한 설명은 다음과 같습니다.'/>
           <ul className={htags.ulTag}>
-            <li>거래하기: 상대방에게 거래 요청 메시지를 보냅니다.</li>
-            <li>* 수량 변경: 판매 수량을 변경할 수 있습니다.</li>
-            <li>* 가격 수정: 물품 가격을 수정할 수 있습니다.</li>
-            <li>* 닉네임 변경: 게임 닉네임을 수정할 수 있습니다.</li>
-            <li>* 거래 종료: 게시글을 아카이브 상태로 전환합니다.</li>
+            <li><strong>거래하기</strong>: 상대방에게 거래 요청 메시지를 보냅니다.</li>
+            <li><strong>수량 변경*</strong>: 판매 수량을 변경할 수 있습니다.</li>
+            <li><strong>가격 수정*</strong>: 물품 가격을 수정할 수 있습니다.</li>
+            <li><strong>닉네임 변경*</strong>: 게임 닉네임을 수정할 수 있습니다.</li>
+            <li><strong>거래 종료*</strong>: 게시글을 아카이브 상태로 전환합니다.</li>
           </ul>
           <P text='(* 표기는 거래글 게시자만 사용 가능합니다.)'/>
-          {/* <DocImage src={`${IMG_PATH}trade-${IMG_EXT}`} caption="" />
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p> */}
         </>),
-      }, // edit qty
-      {
-        id: "trade-edit-qty", title: "수량 수정하기", desc: "수량을 변경할 때 사용하는 버튼입니다.", foot: (<>
+      }, {
+        id: "trade-edit-qty", title: "(3-1) 수량 수정하기", desc: "수량을 변경할 때 사용하는 버튼입니다.", foot: (<>
           <p className={htags.pTag}> 거래 게시글에서 <strong>수량 변경</strong>버튼을 누르면 아래와 같은 창이 뜹니다. </p>
           <DocImage src={`${IMG_PATH}trade-mod-num${IMG_EXT}`} caption="수량 변경 팝업창"/>
           <p className={htags.pTag}> 변경하고자 하는 수량을 입력하고 <strong>전송</strong> 버튼을 누르면 됩니다. </p>
           <P text='숫자가 아닌 값을 입력할 경우, 1개로 자동 설정됩니다.'/>
         </>),
-      }, // edit price
-      {
-        id: "trade-edit-price", title: "가격 수정하기", desc: "가격을 수정할 때 사용하는 버튼입니다.", foot: (<>
+      }, {
+        id: "trade-edit-price", title: "(3-2) 가격 수정하기", desc: "가격을 수정할 때 사용하는 버튼입니다.", foot: (<>
           <p className={htags.pTag}>게시글에서 <strong>가격 변경</strong> 버튼을 누르면 아래와 같은 창이 표시됩니다.</p>
           <DocImage src={`${IMG_PATH}trade-mod-price${IMG_EXT}`} caption="가격 변경 팝업창"/>
           <p className={htags.pTag}>이후, 변경하고자 하는 가격을 입력하고 <strong>전송</strong> 을 눌러주세요.</p>
-          {/*<p className={htags.pTag}></p>*/}
-          {/*<p className={htags.pTag}></p>*/}
-          {/*<p className={htags.pTag}></p>*/}
-          {/*<p className={htags.pTag}></p>*/}
         </>),
-      }, // edit nickname
-      {
-        id: "trade-edit-nick", title: "닉네임 수정하기", desc: "닉네임을 수정할 때 사용하는 버튼입니다.", foot: (<>
+      }, {
+        id: "trade-edit-rank", title: "(3-3) 아이템 랭크 수정하기", desc: "아이템 랭크를 수정할 때 사용하는 버튼입니다.", foot: (<>
+          <p className={htags.pTag}>게시글에서 <strong>랭크 수정 </strong> 버튼을 누르면 아래와 같은 창이 표시됩니다.</p>
+          <DocImage src={`${IMG_PATH}trade-mod-rank${IMG_EXT}`} caption="랭크 수정 팝업창"/>
+          <p className={htags.pTag}>수정하고자 하는 랭크를 입력하고, <strong>전송</strong> 버튼을 눌러주세요.</p>
+        </>),
+      }, /*{
+        id: "trade-edit-nick", title: "(3-3) 닉네임 수정하기", desc: "닉네임을 수정할 때 사용하는 버튼입니다.", foot: (<>
           <p className={htags.pTag}>게시글에서 <strong>닉네임 변경 </strong> 버튼을 누르면 아래와 같은 창이 표시됩니다.</p>
           <DocImage src={`${IMG_PATH}trade-nickname${IMG_EXT}`} caption="닉네임 변경 팝업창"/>
           <p className={htags.pTag}>수정하고자 하는 닉네임을 입력해주고, <strong>전송</strong> 버튼을 눌러주세요.</p>
           <P text='입력한 닉네임은 귓속말 명령어 및 초대 명령어를 복사할 때 사용되므로, 정확하게 기입해주세요.'/>
         </>),
-      }, // finish trade
-      {
-        id: "trade-exit", title: "거래 종료하기", desc: "거래가 모두 완료되어 거래 게시글을 내려야 할 때 사용하는 버튼입니다.", foot: (<>
+      },*/ {
+        id: "trade-exit", title: "(3-4) 거래 종료하기", desc: "거래가 모두 완료되어 거래 게시글을 내려야 할 때 사용하는 버튼입니다.", foot: (<>
           <P text='(거래 종료는 거래글 게시자만 가능합니다.)'/>
           <p className={htags.pTag}><strong>거래 종료</strong> 버튼을 누르면 정말로 게시글을 내릴지 확인차 물어봅니다.</p>
           <DocImage src={`${IMG_PATH}trade-confirm-close${IMG_EXT}`} caption="거래 종료 버튼 누른 직후"/>
@@ -657,16 +612,13 @@ export const uiTextsKo = {
           </p>
           <DocImage src={`${IMG_PATH}trade-deleted${IMG_EXT}`} caption="거래 종료 버튼 누른 직후"/>
           <NOTE color="orange" icon="alert" title="주의!" text="안내 문구와 같이 모든 버튼이 비활성화되어, 게시글을 수정할 수 없고 다시 활성화할 수 없습니다."/>
-          {/*<p className={htags.pTag}></p>*/}
-          {/*<p className={htags.pTag}></p>*/}
-          {/*<p className={htags.pTag}></p>*/}
         </>),
       },],
-  }, // 6. FAQ 섹션
+  },
   troubleshooting: {
     id: "faq", title: "자주 묻는 질문 (FAQ)", list: [// 상호작용 오류
       {
-        q: `버튼을 누르거나 명령어를 사용하면 상호작용 오류가 떠요`, a: (<>
+        q: `"더는 사용되지 않는 명령어입니다. 몇 분 후에 다시 시도해 주세요." 메시지가 뜨는 경우`, a: (<>
           <ol className={`${htags.olTag} ${tw.txt.dim}`}>
             <li><strong>{COMMON.name}</strong> 봇이 <strong>온라인 상태</strong> 인지 확인해주세요.</li>
             <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
@@ -678,12 +630,10 @@ export const uiTextsKo = {
               <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
                 <li>데스크탑 앱 또는 웹 환경의 경우 <strong>Ctrl + R</strong> 키를 눌러서 디스코드 앱을 새로고침 해주세요.</li>
                 <li>(macOS 환경일 경우 <strong>cmd + R</strong>)</li>
-                <li>모바일 환경의 경우, 디스코드 앱을 종료했다가 다시 실행해주세요.
-                </li>
+                <li>모바일 환경의 경우, 디스코드 앱을 종료했다가 다시 실행해주세요.</li>
               </ul>
             </li>
           </ol>
-          <p>위 절차대로 진행해도 문제가 해결되지 않은 경우, <ContactMe/></p>
         </>),
       }, // 애플리케이션 응답 오류
       {
@@ -691,44 +641,39 @@ export const uiTextsKo = {
           <span>다음과 같은 문제가 발생한다면?</span>
           <ul className={`${htags.ulTag} pt-3`}>
             <li>'애플리케이션이 응답하지 않았어요' 메시지가 뜨면서 명령어/버튼 작동이 안되는 경우</li>
-            <li>'상화작용 실패' 메시지가 뜨면서 명령어/버튼 작동이 안되는 경우</li>
+            <li>'상호작용 실패' 메시지가 뜨면서 버튼 작동이 안되는 경우</li>
             <li>1분이상 봇이 응답없이 '생각 중이에요' 메시지만 뜨는 경우</li>
           </ul>
         </>), a: (<>
-          처리 과정에서 예기치 못한 오류가 발생하여 기능 작동이 안되는 상황입니다.<br/>
-          <ContactMe/>
+          처리 과정에서 예기치 못한 오류가 발생하여 기능 작동이 안되는 상황입니다.<br/><ContactMe/>
         </>),
-      }, // // 파티에서 예고없이 탈퇴당함
-      // {
-      //   q: `별다른 공지/예고 없이 파티에서 강제 탈퇴 당했어요`,
-      //   a: (
-      //     <>
-      //       <strong>파티장에게 우선 문의해주세요.</strong> 잘못 사용했을
-      //       가능성이 있습니다.
-      //       <br />
-      //       <br /> 파티장과 연락이 되지 않거나 문제가 해결되지 않은 경우,{" "}
-      //       <strong>부정 사용으로 판단</strong>할 수 있습니다.
-      //       <br />
-      //       <ContactMe />
-      //       <br />
-      //       간부진과 내부 회의를 거친 후, 파티장에게 경고/제재 조치가 이루어질
-      //       예정입니다.
-      //     </>
-      //   ),
-      // },
-      // 개인 서버 추가
+      }, /*{
+        q: `별다른 공지/예고 없이 파티에서 강제 탈퇴 당했어요`,
+        a: (<>
+            <strong>파티장에게 우선 문의해주세요.</strong> 잘못 사용했을 가능성이 있습니다.<br /><br />
+            파티장과 연락이 되지 않거나 문제가 해결되지 않은 경우, <strong>부정 사용으로 판단</strong>할 수 있습니다.<br />
+            <ContactMe /><br />
+            간부진과 내부 회의를 거친 후, 파티장에게 경고/제재 조치가 이루어질 예정입니다.
+        </>)},*/
       {
         q: "봇을 개인 서버에 추가하고 싶어요", a: (<>
-          {/*아직은 추가가 불가능해요... <br/>
-          다른 서버에서도 이용할 수 있도독 기능을 추가하고 있어요. 잠시만 기다려주세요.*/}
-          <span className={`${tw.txt.blue} ${tw.bold.b}`}>추가 가능합니다!</span><br/><br/>
+          추가가 가능하지만, 일부 기능은 사용할 수 없어요... <br/>
+          다른 서버에서도 이용할 수 있도록 수정하고 있으니, 추후 사용이 가능해지면 공지로 알려드립니다.
+          <P/>
+          <p className={htags.H4}>현재 개인 서버에서 사용 불가능한 기능</p>
+          <ul className={htags.ulTag}>
+            <li>파티 모집</li>
+            <li>아이템 거래</li>
+            <li>문의하기</li>
+          </ul>
+          {/*<span className={`${tw.txt.blue} ${tw.bold.b}`}>추가 가능합니다!</span><br/><br/>
           단, 다음 기능은 유료로 제공되고 있어요. (서버 규모에 따라 추가 이용료가 부과될 수 있습니다.)
           <ul className={htags.ulTag}>
             <div></div>
             <li>파티 모집 기능</li>
             <li>거래 기능</li>
           </ul>
-          사용에 관한 문의는 <ContactMe/> <br/>
+          사용에 관한 문의는 <ContactMe/><br/>*/}
         </>),
       }, {
         q: "기타 궁금한 사항이나 문의사항이 있다면?", a: <ContactMe/>,
@@ -832,7 +777,6 @@ export const uiTextsKo = {
 
       <H2 text="개인정보의 수집 및 이용 목적"/>
       <P text="수집된 정보는 다음의 목적 이외의 용도로는 사용되지 않으며, 목적이 변경될 경우 사전에 동의를 구합니다."/>
-
       <ol className={htags.olTag}>
         <li><strong>서비스 제공 및 기능 수행</strong>: 봇의 핵심 기능 제공 및 사용자 식별</li>
         <li><strong>오류 해결 및 기술 지원</strong>: 서비스 이용 중 발생하는 오류 및 버그 추적, 사용자 문의 대응</li>
@@ -862,7 +806,7 @@ export const uiTextsKo = {
       <P text="운영자는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다."/>
       <ul className={htags.ulTag}>
         {/* <li>이용자가 사전에 동의한 경우</li> */}
-        <li> 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+        <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
       </ul>
 
       <H2 text="이용자의 권리와 행사 방법"/>
@@ -946,10 +890,10 @@ export const uiTextsKo = {
       </ul>
       <P text="스크린샷 등 이미지 파일 첨부가 필요한 경우, 공식 지원 서버에서 접수 해주시길 바랍니다."/>
       <P text="피드백은 언제나 환영합니다."/>
-      <NOTE color="red" icon="alert" title="사용자 신고 시, 주의사항" text={<ul>
-        <li><strong>사용자 신고</strong>의 경우,{" "} <strong>구체적 사유가 있어야만 접수가 가능</strong>합니다.</li>
-        <li>스크린샷 등 확실한 증거가 없을 경우, 신고를 접수하여도 제재가 이루어지지 않을 수 있습니다.</li>
-      </ul>}
+      <NOTE color="red" icon="alert" title="사용자 신고 시, 주의사항" text={<>
+        <strong>사용자 신고</strong>의 경우, <strong>구체적 사유가 있어야만 접수가 가능</strong>합니다.<br/>
+        스크린샷 등 확실한 증거가 없을 경우, 신고를 접수하여도 제재가 이루어지지 않을 수 있습니다.
+      </>}
       />
     </>),
   },

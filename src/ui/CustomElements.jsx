@@ -126,8 +126,9 @@ export const UL_LINK_GRID = ({content}) => {
 /**
  * Note components for emphasis
  * @param {string} color - theme color
+ * @param {string} icon - Note block icon
  * @param {string} title - title text (default: 'Note')
- * @param {ReactNode} text - content text
+ * @param {React.JSX.Element} text - content text
  */
 export const NOTE = ({color = "blue", icon, title = "Note", text}) => {
   // use default color

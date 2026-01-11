@@ -92,7 +92,7 @@ export const tw = {
 
 export const htags = {
   pTag: `${tw.txt.normal} leading-relaxed mb-6 ${TXT_SIZE} ${tw.tcd}`,
-  graveTag: `${tw.txt.grave} ${TXT_SIZE} ${tw.tcd}`,
+  graveTag: `${tw.txt.grave} ${TXT_SIZE} ${tw.tcd} ${tw.bold.b}`,
 
   ulTag: `list-disc pl-7 space-y-2 ${tw.txt.normal} mb-10 ${TXT_SIZE}`,
   olTag: `list-decimal pl-5 space-y-2 ${tw.txt.normal} mb-10 ${TXT_SIZE}`,
