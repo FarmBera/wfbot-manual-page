@@ -162,19 +162,11 @@ export const uiTextsKo = {
       title: "심층아르키메디아",
       desc: "[베타버전] 이번주 심층 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
       image: `${IMG_PATH}deep${IMG_EXT}`,
-      foot: (<>
-        <NOTE color="orange" icon="alert" title="안내"
-              text="해당 명령어는 현재 베타 버전으로, 번역이 안 되어 있거나 누락된 정보가 있을 수 있습니다. 이용에 참고 바랍니다."/>
-      </>),
     }, {
       id: SUB.TEMPORALARCHIMEDEA,
       title: "템포럴아르키메디아",
       desc: "[베타버전] 이번주 템포럴 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
       image: `${IMG_PATH}temporal${IMG_EXT}`,
-      foot: (<>
-        <NOTE color="yellow" icon="alert" title="안내"
-              text="해당 명령어는 현재 베타 버전으로, 번역이 안 되어 있거나 누락된 정보가 있을 수 있습니다. 이용에 참고 바랍니다."/>
-      </>),
     }, {
       id: SUB.CALENDAR,
       title: "헥스캘린더",
@@ -220,11 +212,11 @@ export const uiTextsKo = {
       </>),
     }, {
       id: SUB.PARTY_CREATE, title: "파티생성", desc: "새로운 파티 구인 글을 생성합니다. (종합 게임 대상)", foot: (<div>
-        <p className={htags.pTag}> 자세한 내용은 사이드바 메뉴의 <strong>4. 파티 모집 기능</strong> 섹션을 참고 바랍니다. (링크 삽입)</p>
+        <p className={htags.pTag}> 자세한 내용은 사이드바 메뉴의 <strong>4. 파티 모집 기능</strong> 섹션을 참고 바랍니다.</p>
       </div>),
     }, {
       id: SUB.TRADE_CREATE, title: "거래", desc: "서버의 거래채널에 거래 글을 생성합니다. (워프레임 아이템 한정)", foot: (<div>
-        <p className={htags.pTag}> 자세한 내용은 사이드바 메뉴의 <strong>5. 거래 기능</strong> 섹션을 참고 바랍니다. (링크 삽입)</p>
+        <p className={htags.pTag}> 자세한 내용은 사이드바 메뉴의 <strong>5. 거래 기능</strong> 섹션을 참고 바랍니다.</p>
       </div>),
     }, {
       id: SUB.EVENTS,
@@ -348,7 +340,7 @@ export const uiTextsKo = {
             <li>이후 '파티생성' 을 검색하여 해당 명령어를 선택해주세요.</li>
           </ul>
           <DocImage src={`${IMG_PATH}party-cmd0${IMG_EXT}`} alt="명령어 검색 결과" caption="명령어 검색 결과"/>
-          <h4 className={htags.H4}> 입력 할 수 있는 내용으로 총 4가지가 있습니다. <br/></h4>
+          <h4 className={htags.H4}> 입력 할 수 있는 내용으로 총 5가지가 있습니다. <br/></h4>
           <ul className={htags.ulTag}>
             <li><span className={htags.graveTag}>파티_제목</span>: 모집 글 제목</li>
             <li><span className={htags.graveTag}>같이_할_게임이름</span>: 플레이 할 게임 이름 (워프레임, 롤, 배그 등)</li>
@@ -619,21 +611,11 @@ export const uiTextsKo = {
     id: "faq", title: "자주 묻는 질문 (FAQ)", list: [// 상호작용 오류
       {
         q: `"더는 사용되지 않는 명령어입니다. 몇 분 후에 다시 시도해 주세요." 메시지가 뜨는 경우`, a: (<>
-          <ol className={`${htags.olTag} ${tw.txt.dim}`}>
-            <li><strong>{COMMON.name}</strong> 봇이 <strong>온라인 상태</strong> 인지 확인해주세요.</li>
-            <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
-              <li>방해금지 표시와 함께 <strong>"점검 중"</strong> 상태 메시지가 적혀있다면, 점검이 종료될 때 까지 사용이 불가능합니다.</li>
-              <li>봇이 오프라인 상태라면, <ContactMe/></li>
-            </ul>
-            <li>
-              <strong>온라인 상태인 것을 확인</strong>했다면
-              <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
-                <li>데스크탑 앱 또는 웹 환경의 경우 <strong>Ctrl + R</strong> 키를 눌러서 디스코드 앱을 새로고침 해주세요.</li>
-                <li>(macOS 환경일 경우 <strong>cmd + R</strong>)</li>
-                <li>모바일 환경의 경우, 디스코드 앱을 종료했다가 다시 실행해주세요.</li>
-              </ul>
-            </li>
-          </ol>
+          <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
+            <li>데스크탑 앱 또는 웹 환경의 경우 <strong>Ctrl + R</strong> 키를 눌러서 디스코드 앱을 새로고침 해주세요.</li>
+            <li>(macOS 환경일 경우 <strong>cmd + R</strong>)</li>
+            <li>모바일 환경의 경우, 디스코드 앱을 종료했다가 다시 실행해주세요.</li>
+          </ul>
         </>),
       }, // 애플리케이션 응답 오류
       {
@@ -645,7 +627,14 @@ export const uiTextsKo = {
             <li>1분이상 봇이 응답없이 '생각 중이에요' 메시지만 뜨는 경우</li>
           </ul>
         </>), a: (<>
-          처리 과정에서 예기치 못한 오류가 발생하여 기능 작동이 안되는 상황입니다.<br/><ContactMe/>
+          <ul className={`${htags.olTag} ${tw.txt.dim}`}>
+            <li><strong>{COMMON.name}</strong> 봇이 <strong>온라인 상태</strong> 인지 확인해주세요.</li>
+            <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
+              <li>방해금지 표시와 함께 <strong>"점검 중"</strong> 상태 메시지가 적혀있다면, 점검이 종료될 때 까지 사용이 불가능합니다.</li>
+              <li>봇이 오프라인 상태라면, <ContactMe/></li>
+            </ul>
+            <li>처리 과정에서 예기치 못한 오류가 발생하여 기능 작동이 안되는 상황입니다.<br/><ContactMe/></li>
+          </ul>
         </>),
       }, /*{
         q: `별다른 공지/예고 없이 파티에서 강제 탈퇴 당했어요`,
@@ -657,21 +646,22 @@ export const uiTextsKo = {
         </>)},*/
       {
         q: "봇을 개인 서버에 추가하고 싶어요", a: (<>
-          추가가 가능하지만, 일부 기능은 사용할 수 없어요... <br/>
-          다른 서버에서도 이용할 수 있도록 수정하고 있으니, 추후 사용이 가능해지면 공지로 알려드립니다.
+          추가가 가능하지만, 하단 기능들은 베타 버전으로 제공되고 있어요.<br/>
           <P/>
-          <p className={htags.H4}>현재 개인 서버에서 사용 불가능한 기능</p>
+          {/*<p className={htags.H4}>현재 개인 서버에서 사용 불가능한 기능</p>*/}
           <ul className={htags.ulTag}>
             <li>파티 모집</li>
             <li>아이템 거래</li>
             <li>문의하기</li>
           </ul>
+          베타테스터 등록 및 사용을 원하신다면 <ContactMe/>
           {/*<span className={`${tw.txt.blue} ${tw.bold.b}`}>추가 가능합니다!</span><br/><br/>
           단, 다음 기능은 유료로 제공되고 있어요. (서버 규모에 따라 추가 이용료가 부과될 수 있습니다.)
           <ul className={htags.ulTag}>
             <div></div>
             <li>파티 모집 기능</li>
             <li>거래 기능</li>
+            <li>문의하기</li>
           </ul>
           사용에 관한 문의는 <ContactMe/><br/>*/}
         </>),
