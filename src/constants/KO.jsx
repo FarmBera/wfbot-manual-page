@@ -69,7 +69,7 @@ export const uiTextsKo = {
     },],
   }, // 3. 명령어 섹션
   manual: {
-    id: "manual", title: "3. 워프레임 컨텐츠 명령어", mainTitle: "모든 명령어 목록", list: [{
+    id: "manual", title: "3. 사용 가능한 명령어", mainTitle: "모든 명령어 목록", list: [{
       id: SUB.HELP,
       title: "도움말",
       desc: "사용 가능한 명령어 및 관련 도움말을 확인할 수 있어요.",
@@ -160,12 +160,12 @@ export const uiTextsKo = {
     }, {
       id: SUB.DEEPARCHIMEDEA,
       title: "심층아르키메디아",
-      desc: "[베타버전] 이번주 심층 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
+      desc: "이번주 심층 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
       image: `${IMG_PATH}deep${IMG_EXT}`,
     }, {
       id: SUB.TEMPORALARCHIMEDEA,
       title: "템포럴아르키메디아",
-      desc: "[베타버전] 이번주 템포럴 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
+      desc: "이번주 템포럴 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
       image: `${IMG_PATH}temporal${IMG_EXT}`,
     }, {
       id: SUB.CALENDAR,
@@ -247,33 +247,15 @@ export const uiTextsKo = {
       id: "cmd-complain", title: "문의하기", desc: "서버에 대한 문의 및 건의사항을 접수할 수 있어요. (사용자 신고, 서버 문의사항 등)", foot: (<>
         <H2 text={'불만 접수 전, 아래 내용을 꼭 확인해주세요.'}/>
         <p className={htags.pTag}>
-          <strong>이 기능은 {process.env.REACT_APP_SERVER_NAME} 서버와 관련된 문의만 받습니다.</strong><br/>
+          <strong>이 기능은 각 서버별 담당자에게 문의를 접수하기 위한 기능입니다.</strong><br/>
           <span className={`${tw.txt.orange} ${tw.bold.eb}`}>봇 관련 문의가 있으신 경우, <ContactMe/></span>
         </p>
         <ul className={htags.ulTag}>
           <li>작성한 내용은 한번 제출하면 수정이 불가합니다. 신중히 작성해주세요.</li>
-          <li>접수 게시글 또한 서버 규칙이 동일하게 적용됩니다.</li>
+          {/*<li>접수 게시글 또한 서버 규칙이 동일하게 적용됩니다.</li>*/}
           <li>신고 건의 경우 구체적인 증거가 있어야 하며, 허위 사실 기재 시 불이익이 있을 수 있습니다.</li>
         </ul>
         <DocImage src={`${IMG_PATH}complain${IMG_EXT}`} caption="/문의하기 명령어 예시" maxWidth='60%'/>
-      </>),
-    }, {
-      id: "alert-setup-cmd",
-      title: "알림설정",
-      desc: "명령어를 사용한 채널에서 선택한 워프레임 소식을 구독합니다.",
-      image: `${IMG_PATH}alert-set${IMG_EXT}`,
-      foot: (<>
-        <P text="다양한 워프레임 관련 알림을 받아볼 수 있으니, 확인해보세요!"/>
-        <NOTE color="yellow" icon="info" title="알림" text="현재 알림설정은 개인 서버에서만 이용할 수 있는 기능 입니다. 이용에 참고 바랍니다."/>
-      </>),
-    }, {
-      id: "alert-delete-cmd",
-      title: "알림해제",
-      desc: "명령어를 사용한 채널에서 /알림설정 명령어를 이용하여 구독했던 워프레임 소식 알림을 해제합니다.",
-      image: `${IMG_PATH}alert-del${IMG_EXT}`,
-      foot: (<>
-        {/*<p className={htags.pTag}></p>*/}
-        <NOTE color="yellow" icon="info" title="알림" text="현재 알림해제는 개인 서버에서만 이용할 수 있는 기능 입니다. 이용에 참고 바랍니다."/>
       </>),
     },],
   }, // 4. 파티 섹션
@@ -876,10 +858,11 @@ export const uiTextsKo = {
           <A href={process.env.REACT_APP_SUPPORT_SERVER} text="공식 지원 서버"/> 에 접수 <br/>
           <span className={tw.txt.dark}>(파란색 글씨를 클릭하면 지원 서버 초대장으로 이동합니다.)</span>
         </li>
-        {/* <li><strong className={htags.graveTag}>/문의하기</strong> 명령어를 이용하여 문의 접수</li> */}
       </ul>
       <P text="스크린샷 등 이미지 파일 첨부가 필요한 경우, 공식 지원 서버에서 접수 해주시길 바랍니다."/>
       <P text="피드백은 언제나 환영합니다."/>
+      <NOTE color='orange' icon='alert' title="빠르고 정확한 답변을 위해, 문의는 '지원 서버'로 부탁드립니다."
+            text='(개인 DM은 일상 메시지와 섞여 확인이 어렵거나, 답변이 매우 늦어질 수 있습니다.)'/>
       <NOTE color="red" icon="alert" title="사용자 신고 시, 주의사항" text={<>
         <strong>사용자 신고</strong>의 경우, <strong>구체적 사유가 있어야만 접수가 가능</strong>합니다.<br/>
         스크린샷 등 확실한 증거가 없을 경우, 신고를 접수하여도 제재가 이루어지지 않을 수 있습니다.
