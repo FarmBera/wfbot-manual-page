@@ -187,7 +187,7 @@ export const uiTextsKo = {
       image: `${IMG_PATH}dailydeals${IMG_EXT}`,
       width: "50%",
     }, {
-      id: SUB.INVASIONS, title: "침공", desc: "현재 활성화된 침공 미션 목록을 확인할 수 있어요.", image: `${IMG_PATH}invasions${IMG_EXT}`,
+      id: SUB.INVASIONS, title: "침공", desc: "특별 아이템(포르마, 오로킨 리액터/카탈리스트 등)을 획득할 수 있는 침공 목록을 확인할 수 있어요.", image: `${IMG_PATH}invasions${IMG_EXT}`,
     }, {
       id: SUB.VALLISCYCLE,
       title: "오브협곡주기",
