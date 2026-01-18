@@ -91,19 +91,29 @@ export const H4 = ({id, text}) => {
 };
 
 export const UL_LINK_GRID = ({content}) => {
-  return (// <ul className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm text-gray-600">
-    <div
-      className="bg-gray-50 dark:bg-slate-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600 mb-8 transition-colors duration-1000">
-      {/* <p className="text-gray-600">클릭하면 해당 명령어 가이드로 이동합니다.</p> */}
-      {/* <h4 className="font-semibold text-gray-700 mb-2">클릭하면 해당 명령어 가이드로 이동합니다.</h4> */}
-      <ul
-        className={`grid grid-cols-2 md:grid-cols-3 gap-2 ${TXT_SIZE} text-gray-600 dark:text-gray-200 transition-colors duration-1000`}
-      >
-        {content.map((cmd) => (<li key={cmd.id}>
+  // 정렬 로직이 필요하다면 주석 해제하여 사용
+  // const sortedContent = React.useMemo(() => [...content].sort((a, b) => {
+  //   const titleA = a.title || '';
+  //   const titleB = b.title || '';
+  //   return String(titleA).localeCompare(String(titleB));
+  // }), [content]);
+
+  return (<div
+    className="bg-gray-50 dark:bg-slate-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600 mb-8 transition-colors duration-1000">
+    {/* 변경사항:
+         1. grid grid-cols-2 -> columns-2 (세로 방향 흐름으로 변경)
+         2. gap-2 -> gap-4 (컬럼 사이 간격, 필요에 따라 조절)
+      */}
+    <ul className={`columns-2 gap-4 ${TXT_SIZE} text-gray-600 dark:text-gray-200 transition-colors duration-1000`}>
+      {content.map((cmd) => (/* 변경사항:
+             1. break-inside-avoid: 아이템이 컬럼 사이에서 잘리는 것을 방지
+             2. mb-2: columns 속성은 세로 gap을 지원하지 않으므로 마진 추가
+          */
+        <li key={cmd.id} className="break-inside-avoid mb-1">
           <DocLink to={cmd.id}>{cmd.title}</DocLink>
         </li>))}
-      </ul>
-    </div>);
+    </ul>
+  </div>);
 };
 
 // const UL_LINK_GRID = ({ content }) => {

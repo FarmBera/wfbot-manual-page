@@ -24,6 +24,7 @@ export const SUB = {
   FISSURES: "ActiveMissions",
   DEEPARCHIMEDEA: "ConquestsDeep",
   TEMPORALARCHIMEDEA: "ConquestsTemporal",
+  DUVIRICYCLE: 'duviriCycle',
   CALENDAR: "KnownCalendarSeasons",
   CAMBIONCYCLE: 'cambionCycle',
   DAILYDEALS: "DailyDeals",

@@ -53,7 +53,7 @@ export const getManualSections = (t, isMobile) => {
       id: cmd.id, title: cmd.title,
     })), content: (<div className="space-y-4">
       <H2 text={t.manual.mainTitle}/>
-      <UL_LINK_GRID content={t.manual.list}/>
+      <UL_LINK_GRID content={[...t.manual.list].sort((a, b) => a.title.localeCompare(b.title))}/>
       {t.manual.list.map((cmd, idx) => (<div key={cmd.id} className="mt-12 first:mt-8">
         <HR/>
         <H3 id={cmd.id} text={`/${cmd.title}`}/>

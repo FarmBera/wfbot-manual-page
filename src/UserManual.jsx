@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from "react";
 import {
   // Book,
-  Menu, X, ChevronRight, Search, Globe, ChevronDown, Check, Moon, Sun,
+  Menu, X, ChevronRight, Globe, ChevronDown, Check, Moon, Sun,//Search
 } from "lucide-react";
 import {APP_INFO, UI_TEXTS} from "./constants/constants";
 import {getManualSections} from "./data/manualData";
@@ -397,7 +397,7 @@ const UserManual = () => {
       </div>)}
 
       {/* search bar */}
-      <div className="p-4 pb-0">
+      {/*<div className="p-4 pb-0">
         <div className="relative">
           <Search
             className={`absolute left-3 top-2.5 ${tw.txt.dark}`}
@@ -410,7 +410,7 @@ const UserManual = () => {
             className={`w-full pl-9 pr-4 py-2 ${tw.bg.bright} border ${tw.border.dim} rounded-md text-sm ${tw.txt.light} focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow ${tw.tcd}`}
           />
         </div>
-      </div>
+      </div>*/}
 
       {/* navigation menu */}
       <nav ref={sidebarRef} className="flex-1 overflow-y-auto p-4 space-y-1">

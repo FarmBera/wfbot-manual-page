@@ -168,6 +168,12 @@ export const uiTextsKo = {
       desc: "이번주 템포럴 아르키메디아 미션 및 기타 정보를 확인할 수 있어요.",
       image: `${IMG_PATH}temporal${IMG_EXT}`,
     }, {
+      id: SUB.DUVIRICYCLE,
+      title: "두비리주기",
+      desc: "현재 두비리 월드 상태를 확인할 수 있어요.",
+      image: `${IMG_PATH}duviri${IMG_EXT}`,
+      width: "50%",
+    }, {
       id: SUB.CALENDAR,
       title: "헥스캘린더",
       desc: "[베타버전] 이번주 헥스 캘린더 할일/보상 목록 등을 확인할 수 있어요.",
@@ -187,7 +193,10 @@ export const uiTextsKo = {
       image: `${IMG_PATH}dailydeals${IMG_EXT}`,
       width: "50%",
     }, {
-      id: SUB.INVASIONS, title: "침공", desc: "특별 아이템(포르마, 오로킨 리액터/카탈리스트 등)을 획득할 수 있는 침공 목록을 확인할 수 있어요.", image: `${IMG_PATH}invasions${IMG_EXT}`,
+      id: SUB.INVASIONS,
+      title: "침공",
+      desc: "특별 아이템(포르마, 오로킨 리액터/카탈리스트 등)을 획득할 수 있는 침공 목록을 확인할 수 있어요.",
+      image: `${IMG_PATH}invasions${IMG_EXT}`,
     }, {
       id: SUB.VALLISCYCLE,
       title: "오브협곡주기",
@@ -243,6 +252,15 @@ export const uiTextsKo = {
               text="해당 명령어는 현재 베타 버전으로, 일부 번역이 안된 텍스트가 있을 수 있습니다. 이용에 참고 바랍니다."/>
         <DocImage src={`${IMG_PATH}descendia${IMG_EXT}`} caption="/디센디아 명령어 예시"/>
       </>),
+    }, {
+      id: "cmd-steel-incursion", title: "강길-얼럿", desc: "오늘의 강길 얼럿 미션을 확인할 수 있어요.", foot: (<>
+        <DocImage src={`${IMG_PATH}steel-incursion${IMG_EXT}`} caption="/강길-얼럿 명령어 예시"/>
+      </>),
+    }, {
+      id: "cmd-arbitration", title: "중재", desc: "현재 진행중인 중재 미션 종류를 확인할 수 있어요.", foot: (<>
+        <DocImage src={`${IMG_PATH}arbitration${IMG_EXT}`} maxWidth="50%" caption="/중재 명령어 예시"/>
+      </>),
+
     }, {
       id: "cmd-complain", title: "문의하기", desc: "서버에 대한 문의 및 건의사항을 접수할 수 있어요. (사용자 신고, 서버 문의사항 등)", foot: (<>
         <H2 text={'불만 접수 전, 아래 내용을 꼭 확인해주세요.'}/>
