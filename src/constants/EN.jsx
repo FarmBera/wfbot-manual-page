@@ -2,1608 +2,928 @@ import {COMMON, SUB} from "./common";
 import {htags, tw} from "../style/tailwind";
 
 import {A, BOLD, H2, H3, NOTE, P} from "../ui/CustomElements";
-import TipTime from "../components/TipTime";
+// import TipTime from "../components/TipTime";
 import DocImage from "../components/DocImage";
-import {ContactMeEn} from "../components/ContactAdmin";
+import {ContactMe} from "../components/ContactAdmin";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".webp";
 
 export const uiTextsEn = {
   // common UI
-  docTitle: (<span>
-      <span>{COMMON.nameEn}</span> Home
-    </span>),
-  searchPlaceholder: "Search... is currently unavailable...",
-  contents: "Contents",
+  docTitle: <span>{COMMON.nameEn} Home</span>,
+  searchPlaceholder: "Search functionality coming soon...",
+  contents: "Table of Contents",
   next: "Next",
-  footerMsg: "End of Documents",
-  donate: "☕️ Buy Me a Coffee",
+  footerMsg: "End of document.",
+  donate: "☕️ Support the Developer",
   copyright: (<>
-    (C) {COMMON.year}. {COMMON.companyEn}. All rights reserved.
-    <br/>
-    Note: Copyright for Warframe-related images and data belongs to Digital
-    Extremes Ltd.
+    (C) {COMMON.year}. {COMMON.company}. All rights reserved.<br/>
+    Warframe art and related data are copyrighted by Digital Extremes Ltd.
   </>),
+  picEx: "Example",
 
-  picEx: "Content Example",
-
-  // 1. Introduction
+  // 1. Introduction Section
   intro: {
     id: "intro", title: "1. Introduction", welcomeTitle: (<>
-      Welcome to the{" "}
-      <strong className={`${tw.txt.blue}`}>'{COMMON.nameEn}'</strong> Homepage!
+      Welcome to the <strong className={`${tw.txt.blue}`}>{COMMON.nameEn}</strong> Bot Homepage!
     </>), welcomeDesc: (<>
       {/* This document explains how to use <strong>{COMMON.name}</strong>. */}
-      You can quickly navigate to the desired information using the Table of
-      Contents on the left.
-    </>), imgDesc: `Meow~ My name is ${COMMON.nameEn}! Nice to meet you`, foot: (<>
-      <NOTE
-        color="yellow"
-        icon="info"
-        title="Notify"
-        text={<p>
-          This homepage is currently in Beta Version.
-          <br/>
-          Please understand that there may be typos.
-        </p>}
-      />
-      <NOTE
-        color="red"
-        icon="alert"
-        title="Translation Alert"
-        text={<p>
-          Mistakes may have occurred during the translation process.
-          <br/>
-          Please bear with us if there are any typos or awkward phrasing.
-        </p>}
-      />
-    </>),
-  }, // 2. Features
+      Use the Table of Contents on the left to navigate quickly. <br/>
+      Sections 3, 4, and 5 cover how to use the bot commands.
+    </>), imgDesc: `Thanks for visiting, meow!`, foot: '', note: "",
+  },
+
+  // 2. Features Section
   features: {
-    id: "features", title: "2. So, what does this bot do?", mainTitle: "Let's check the key points quickly!", items: [{
-      title: "Real-time Warframe Content Check on Discord",
-      desc: "You can check in-game Warframe content using commands.",
+    id: "features",
+    title: "2. So, what does this bot do?",
+    mainTitle: "Key Features at a Glance",
+    head: (<P text="It provides real-time Warframe content updates and convenient utility features for your server."/>),
+    items: [{
+      title: "Real-time Warframe Content",
+      desc: "Check in-game world state using simple commands.",
       subDesc: "(Baro Ki'Teer status, Sorties, Invasions, Alerts, etc.)",
     }, {
-      title: "Real-time Content Notifications", desc: (<>
-        It sends real-time messages whenever new content is updated! With
-        the same layout you see in the commands!
+      title: "Real-time Notifications", desc: (<>
+        Get instant notifications whenever new content or alerts are updated.
       </>),
     }, {
-      title: "Market Search Feature", desc: (<>
-        <p className="text-lg">
-          If you enter the market website every time to search,
-        </p>
-        <br/>
-        With this bot, you can easily search for prices directly on Discord.
-        No need to visit the Warframe Market website every time!
-        <br/>
-        <br/>
-        Also, since we provide a link to the market in the search results,
-        you can go directly to the market if you want!
-      </>), subDesc: "",
+      title: "Market Search", desc: (<>
+        Tired of opening the browser every time to check market prices?<br/><br/>
+        You can easily search for item prices directly within Discord. No need to visit the Warframe Market website for
+        every little thing!<br/>
+      </>), subDesc: "Search results include a direct link to the Market page if you need more details.",
     }, {
-      title: "Party Recruitment System", desc: (<>
-        Was it hard to DM party members every time?
-        <br/>
-        Now you can conveniently recruit parties with simple commands and a
-        management system.
+      title: "Server LFG (Party) System", desc: (<>
+        Is it hard to DM everyone to gather a squad? <br/><br/>
+        Use simple commands and our management system to recruit party members easily.
       </>),
     }, {
-      title: "Item Trading System", desc: (<>
-        With simple commands and a management system, you can conveniently
-        buy and sell items within your guild.
-        <br/>
-        <br/>
-        Additionally, it features built-in automatic pricing based on market
-        prices, so even beginners can post trade listings without worrying
-        about market prices.
+      title: "Server Trading System", desc: (<>
+        Easily buy and sell items within your guild/server using our command system.<br/><br/>
+        It includes an automatic pricing feature based on real-time Market data, so even beginners can list items
+        without worrying about pricing errors.
       </>),
     },],
-  }, // 3. Manual Section
+  },
+
+  // 3. Manual (Commands) Section
   manual: {
-    id: "manual", title: "3. Commands for Warframe Content", mainTitle: "All Commands List", list: [{
+    id: "manual", title: "3. Commands", mainTitle: "Command List", list: [{
       id: SUB.HELP,
       title: "help",
-      desc: "You can check available commands and related help.",
+      desc: "Check available commands and usage guides.",
       image: `${IMG_PATH}help1${IMG_EXT}`,
-      width: "80%",
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Help+Command",
+      width: "60%",
       head: (<>
-        <P text="It shows a link to the web page you are currently viewing."/>
+        {/* <P text="Shows a link to the web page you are currently viewing." /> */}
       </>),
     }, {
       id: SUB.ANNOUNCEMENT,
       title: "announcements",
-      desc: "You can check bot announcements.",
+      desc: "Check the latest bot announcements.",
       image: `${IMG_PATH}announcement${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Announcement",
     }, {
       id: SUB.PATCHNOTE,
       title: "patch-note",
-      desc: "You can check the recent update/patch history of the bot.",
+      desc: "View the recent update history and patch notes for the bot.",
       image: `${IMG_PATH}patchnote${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Patch+Note",
-      head: <P text="You can check newly updated content, bug fixes, etc."/>,
+      head: (<P text="See what's new, bug fixes, and improvements."/>),
     }, {
       id: SUB.PRIVACY,
       title: "privacy-policy",
-      desc: "Displays important information regarding the bot's privacy policy.",
+      desc: "Read the Privacy Policy for this bot.",
       image: `${IMG_PATH}privacy-policy${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Privacy",
       foot: (<>
-        <p>
-          For more details, please check the{" "}
-          <strong>Terms of Service / Privacy Policy</strong> section in the
-          table of contents on the left.
-        </p>
+        <p> For more details, please check the <strong>Terms of Service / Privacy Policy</strong> section in the
+          sidebar. </p>
+        <p>Click the button to view the full legal text. (Opens an external page)</p>
       </>),
     }, {
       id: SUB.ALERTS,
       title: "alerts",
-      desc: "You can check currently active Alert missions.",
+      desc: "Check currently active Alert missions.",
       image: `${IMG_PATH}alerts${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Alerts",
       head: (<>
-        <p className={htags.pTag}>
-          It displays the list of obtainable rewards first. Then it displays
-          the information below.
-        </p>
+        <p className={htags.pTag}> Displays the following information for Alerts:</p>
         <ul className={htags.ulTag}>
           <li>Mission Type - Node (Location)</li>
-          <li>Mission Info (Enemy level, Wave count, etc.)</li>
-          <li>Time remaining until end</li>
+          <li>Mission Info (Enemy Level, Wave count, etc.)</li>
+          <li>Time remaining</li>
         </ul>
-        <TipTime sampleTime="in 4 days"/>
+        {/* <TipTime sampleTime="in 4 days" /> */}
       </>),
     }, {
       id: SUB.NEWS,
       title: "news",
-      desc: "You can check the latest Warframe news.",
+      desc: "Get the latest official Warframe news.",
       image: `${IMG_PATH}news${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=News",
       head: (<>
-        <p className={htags.pTag}>
-          Clicking the blue text takes you directly to the corresponding
-          announcement.
-        </p>
+        <p className={htags.pTag}>Click the blue text to jump directly to the official news post.</p>
       </>),
+    }, {
+      id: SUB.CETUSCYCLE,
+      title: "cetus-cycle",
+      desc: "Check the current Day/Night cycle for Cetus, Earth.",
+      image: `${IMG_PATH}cetus${IMG_EXT}`,
+      width: '50%',
     }, {
       id: SUB.SORTIE,
       title: "sortie",
-      desc: "You can check today's Sortie missions.",
+      desc: "Check today's Sortie missions.",
       image: `${IMG_PATH}sortie${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Sortie",
       head: (<>
-        <p className={htags.pTag}>
-          You can simply check the time remaining, which node it is on, and
-          what the modifiers are.
-        </p>
+        <p className={htags.pTag}>Quickly see the time remaining, mission nodes, and modifiers/hazards.</p>
       </>),
     }, {
       id: SUB.ARCHONHUNT,
       title: "archonhunt",
-      desc: "You can check this week's Archon mission list and the Shard you can obtain.",
+      desc: "View this week's Archon Hunt missions and the reward Shard.",
       image: `${IMG_PATH}archonhunt${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Archon+Hunt",
       head: (<>
-        <NOTE
-          color="green"
-          icon="tip"
-          title="Tip"
-          text="The color of the strip on the left changes depending on the type of Shard you can get, so you can intuitively check which Shard is available!"
-        />
+        <NOTE color="green" icon="tip" title="Tip"
+              text="The color of the stripe on the left changes based on the available Archon Shard, so you can tell what you'll get at a glance!"/>
       </>),
     }, {
       id: SUB.VOIDTRADERS,
       title: "whenbaro",
-      desc: "You can check the current status of Baro Ki'Teer.",
+      desc: "Check the status of Baro Ki'Teer.",
       image: `${IMG_PATH}voidtraders${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Void+Trader",
-      head: (<>
-        <P text="It tells you if he has arrived, and when/where he will appear."/>
-      </>),
+      head: (<><P text="Tells you if he is here, or when and where he will arrive."/></>),
       foot: (<>
-        <P text="If Baro Ki'Teer has arrived, it appears as below."/>
-        <DocImage
-          src={`${IMG_PATH}voidtraders-activated${IMG_EXT}`}
-          alt="Image when Baro Ki'Teer arrived"
-          caption="Content displayed when Baro Ki'Teer has arrived"
-        />
+        <P text="If Baro Ki'Teer has arrived, it will look like this:"/>
+        <DocImage src={`${IMG_PATH}voidtraders-activated${IMG_EXT}`} caption="Display when Baro is active"/>
       </>),
     }, {
       id: SUB.VOIDTRADERSITEM,
       title: "baro-items",
-      desc: "You can check the list of items Baro Ki'Teer is selling.",
+      desc: "View the inventory list Baro Ki'Teer is currently selling.",
       image: `${IMG_PATH}voidtraders-item-yes${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Void+Trader+Items",
       foot: (<>
-        <P text="If Baro Ki'Teer has not arrived, it is displayed as below."/>
-        <DocImage
-          src={`${IMG_PATH}voidtraders-item-no${IMG_EXT}`}
-          alt="Baro Ki'Teer not arrived"
-          caption="When Ki'Teer has not arrived"
-        />
+        <P text="If Baro hasn't arrived yet, it will appear like this:"/>
+        <DocImage src={`${IMG_PATH}voidtraders-item-no${IMG_EXT}`} caption="When Baro is inactive"/>
       </>),
     }, {
       id: SUB.STEELPATH,
       title: "steelpathreward",
-      desc: "You can check Teshin's Steel Essence weekly exchange items.",
+      desc: "Check Teshin's weekly Steel Essence offerings.",
       image: `${IMG_PATH}steelpath${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Steel+Path",
     }, {
       id: SUB.FISSURES,
       title: "voidfissures",
-      desc: "Shows a list of currently active Relic nodes (Void Fissures) that can be cleared quickly (e.g., Exterminate, Capture, etc.).",
+      desc: "List active Void Fissure missions that are quick to clear (e.g., Exterminate, Capture).",
       image: `${IMG_PATH}fissures${IMG_EXT}`,
+    }, {
+      id: SUB.DEEPARCHIMEDEA,
+      title: "eeparchimedea",
+      desc: "Check this week's Deep Archimedea missions and modifiers.",
+      image: `${IMG_PATH}deep${IMG_EXT}`,
+    }, {
+      id: SUB.TEMPORALARCHIMEDEA,
+      title: "temporalarchimedea",
+      desc: "Check this week's Temporal Archimedea missions and details.",
+      image: `${IMG_PATH}temporal${IMG_EXT}`,
+    }, {
+      id: SUB.DUVIRICYCLE,
+      title: "duviricycle",
+      desc: "Check the current emotional state (Spiral) of Duviri.",
+      image: `${IMG_PATH}duviri${IMG_EXT}`,
       width: "50%",
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Fissures",
     }, {
       id: SUB.CALENDAR,
       title: "hexcalendar",
-      desc: "[Beta] You can check this week's Hex Calendar tasks/rewards list.",
+      desc: "[Beta] Check this week's Hex Calendar tasks and rewards.",
       image: `${IMG_PATH}calendar${IMG_EXT}`,
       width: "50%",
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Calendar",
-      head: (<>
-        <P
-          text="This command is currently under improvement, so readability may be poor or some information may not be displayed."/>
-      </>),
+      head: (<><P text="This command is under improvement. Some information might be displayed incorrectly."/></>),
+    }, {
+      id: SUB.CAMBIONCYCLE,
+      title: "cambion-cycle",
+      desc: "Check the current Vome/Fass cycle for Cambion Drift, Deimos.",
+      image: `${IMG_PATH}cambion${IMG_EXT}`,
+      width: "50%",
     }, {
       id: SUB.DAILYDEALS,
       title: "dailydeals",
-      desc: "You can check today's special deal items offered by Darvo.",
+      desc: "Check Darvo's daily deal item.",
       image: `${IMG_PATH}dailydeals${IMG_EXT}`,
       width: "50%",
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Daily+Deals",
     }, {
       id: SUB.INVASIONS,
       title: "invasions",
-      desc: "You can check the list of currently active Invasion missions.",
+      desc: "List active Invasions with special rewards (Forma, Reactors/Catalysts, etc.).",
       image: `${IMG_PATH}invasions${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Invasions",
-      foot: (<div>
-        <P
-          text="(Subsequent content is omitted due to the large amount of information displayed. When actually used, all invasion nodes are displayed.)"/>
-      </div>),
     }, {
-      id: SUB.MARKET_SEARCH,
-      title: "market-search",
-      desc: (<>
-        <P text="You can search for desired items on 'Warframe Market' to find the cheapest listings."/>
-        <P text="Clicking on the blue item name takes you to the market search results for that item."/>
-      </>),
-      image: `${IMG_PATH}market-search-result${IMG_EXT}`,
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Market+Search",
-      foot: (<>
-        <P text="How to use the Market Search command:"/>
-        <ol className={htags.olTag}>
-          <li>
-            Type <strong>/market-search</strong> in the search bar and
-            select the command.
-          </li>
-          <li>
-            Enter the item you want to search for in the{" "}
-            <strong>item_name</strong> part.
-          </li>
-        </ol>
-        <DocImage src={`${IMG_PATH}market-search-searching${IMG_EXT}`}/>
-        <p className={htags.pTag}>
-          It supports auto-complete, so you can search for items easily.
-        </p>
-        <NOTE
-          color="yellow"
-          icon="alert"
-          title="Notice"
-          text={<>
-            There may be some items that are not translated.
-            <br/>
-            If there is an item that cannot be searched, please{" "}
-            <ContactMeEn/>
-          </>}
+      id: SUB.VALLISCYCLE,
+      title: "vallis-cycle",
+      desc: "Check the current Warm/Cold cycle for Orb Vallis, Venus.",
+      image: `${IMG_PATH}vallis${IMG_EXT}`,
+      width: "50%",
+    }, {
+      id: SUB.MARKET_SEARCH, title: "market-search", desc: (<>
+        <P text="Search for items on 'Warframe Market' to find the best deals."/>
+        <P text="Clicking the item name in blue will take you directly to the market search result page."/>
+      </>), image: `${IMG_PATH}market-search-result${IMG_EXT}`, foot: (<>
+        <NOTE color="yellow" icon="alert" title="Notice"
+              text={<>If an item doesn't appear in the search results, please <ContactMe/></>}
         />
       </>),
     }, {
       id: SUB.PARTY_CREATE,
       title: "create-party",
-      desc: "Creates a new party recruitment post. (For general games)",
+      desc: "Create a new LFG (Looking For Group) post. (For any game)",
       foot: (<div>
-        <p className={htags.pTag}>
-          For more details, please refer to the{" "}
-          <strong>4. Party Recruitment Feature</strong> section in the
-          sidebar menu. (Link inserted)
+        <p className={htags.pTag}> For details, please refer to <strong>4. Party Recruitment</strong> in the sidebar.
         </p>
       </div>),
-      imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Create+Party",
     }, {
-      id: SUB.TRADE_CREATE, title: "trade", desc: "Creates a new trade post. (Warframe items only)", foot: (<div>
-        <p className={htags.pTag}>
-          For more details, please refer to the{" "}
-          <strong>5. Trade Feature</strong> section in the sidebar menu.
-          (Link inserted)
-        </p>
-      </div>), imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Create+Trade",
+      id: SUB.TRADE_CREATE,
+      title: "trade",
+      desc: "Create a trade listing in the server's trade channel. (Warframe items only)",
+      foot: (<div>
+        <p className={htags.pTag}> For details, please refer to <strong>5. Trading System</strong> in the sidebar.</p>
+      </div>),
     }, {
       id: SUB.EVENTS,
-      title: "events",
-      desc: "[Beta] You can check the list of currently ongoing regular events (Thermia, Fomorian, etc.).",
+      title: "event",
+      desc: "[Beta] Check currently active recurring events (Thermia Fractures, Fomorians, etc.).",
       image: `${IMG_PATH}events${IMG_EXT}`,
       imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Events",
     }, {
       id: SUB.DUVIRI_WF,
-      title: "circuit-warframe",
-      desc: "Checks the list of Warframe for this week's Duviri Circuit.",
+      title: "circuit-warframes",
+      desc: "Check which Warframes are available in the Duviri Normal Circuit this week.",
       image: `${IMG_PATH}circuit-warframe${IMG_EXT}`,
       imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Duviri+Warframe",
     }, {
       id: SUB.DUVIRI_INC,
-      title: "circuit-incarnon",
-      desc: "Checks the list of Incarnon for this week's Duviri Circuit.",
+      title: "circuit-incarnons",
+      desc: "Check which Incarnon Adapters are available in the Steel Path Circuit this week.",
       image: `${IMG_PATH}circuit-incarnon${IMG_EXT}`,
       imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Duviri+Incarnon",
+    }, {
+      id: "cmd-descendia",
+      title: "descendia",
+      desc: "[Beta] Fetch this week's Descendia missions and challenges.",
+      foot: (<>
+        {/* <p className={htags.pTag}></p> */}
+        <NOTE color="yellow" icon="alert" title="Notice"
+              text="This command is currently in Beta. Some text may not be fully translated."/>
+        <DocImage src={`${IMG_PATH}descendia${IMG_EXT}`} caption="/descendia command example"/>
+      </>),
+    }, {
+      id: "cmd-steel-incursion", title: "steelpath-incursion", desc: "Check today's Steel Path Incursions.", foot: (<>
+        <DocImage src={`${IMG_PATH}steel-incursion${IMG_EXT}`} caption="/sp-incursion command example"/>
+      </>),
+    }, {
+      id: "cmd-arbitration", title: "arbitration", desc: "Check the current Arbitration mission type.", foot: (<>
+        <DocImage src={`${IMG_PATH}arbitration${IMG_EXT}`} maxWidth="50%" caption="/arbitration command example"/>
+      </>),
+
+    }, {
+      id: "cmd-complain",
+      title: "contact-us",
+      desc: "Submit inquiries or reports to the server staff. (User reports, questions, etc.)",
+      foot: (<>
+        <H2 text={'Please check the following before submitting.'}/>
+        <p className={htags.pTag}>
+          <strong>This feature is for contacting the specific server's administrators.</strong><br/>
+          <span
+            className={`${tw.txt.orange} ${tw.bold.eb}`}>If you have inquiries about the BOT itself, please <ContactMe/></span>
+        </p>
+        <ul className={htags.ulTag}>
+          <li>Once submitted, the content cannot be edited. Please write carefully.</li>
+          {/*<li>Server rules apply to these submissions.</li>*/}
+          <li>Reports must include specific evidence. False reporting may lead to penalties.</li>
+        </ul>
+        <DocImage src={`${IMG_PATH}complain${IMG_EXT}`} caption="/contact command example" maxWidth='60%'/>
+      </>),
     },],
-  }, // 4. Party Section
+  },
+
+  // 4. Party Section
   party: {
-    id: "party", title: "4. Party Recruitment Feature", mainTitle: "Party Recruitment Commands", list: [// Party Feature Overview
+    id: "party", title: "4. Party Recruitment", mainTitle: "Party Commands", list: [// Party Overview
       {
-        id: "party-intro", title: "Feature Overview", desc: (<>
-          <P text="You can easily create a party recruitment post."/>
-          <P text="This is targeted to all general games, so you can recruit for other games as well as Warframe."/>
-          <P text="Easily recruit people to play with!"/>
+        id: "party-intro", title: "Overview", desc: (<>
+          <P text="Easily create LFG (Looking For Group) posts."/>
+          <P text="It supports general gaming, so you can recruit for Warframe as well as other games."/>
+          <P text="Gather your squad effortlessly!"/>
         </>), // image: ...
-      }, // Precautions before use
-      {
-        id: "party-warning", title: (<span className={tw.txt.red}>
-            [Must Read] Precautions Before Using this Feature
-          </span>), desc: "We will guide you through the instructions before using this feature.", foot: (<div>
+      }, {// Warnings
+        id: "party-warning",
+        title: <span className={tw.txt.red}>[Must Read] Usage Guidelines</span>,
+        desc: "Please read before using the party system.", //
+        foot: (<div>
           <ul className={htags.ulTag}>
-            <li>
-              The content entered when creating or modifying a party is public
-              to everyone.{" "}
-              <strong>
-                Please do not enter sensitive personal information.
-              </strong>
+            <li>If there is no activity (joins/leaves, status changes) for <strong>30 days</strong>, the recruitment
+              will <strong>automatically end</strong>.
             </li>
-            <li>
-              <strong>Server rules apply equally.</strong> If inappropriate
-              words are used, the post will be automatically deleted, and you
-              will be sanctioned or punished according to server rules.
+            <li>Information entered when creating/editing a party is public. <strong>Do not enter sensitive personal
+              information.</strong></li>
+            <li><strong>Server rules apply.</strong> Inappropriate language will result in automatic deletion and
+              penalties according to server rules.
             </li>
-            <li>
-              Server rules can be checked{" "}
-              <A text="here" href={process.env.REACT_APP_SERVER_RULE}/>.
-            </li>
+            <li>You can check the server rules <A text="here." href={process.env.REACT_APP_SERVER_RULE}/></li>
           </ul>
-          <p>
-            If caught violating prohibitions, as it may harm others, the
-            person involved will have their 'In-game Nickname' publicly
-            revealed in the Clan Server and receive a warning.
-          </p>
-          <br/>
-          <p>
-            <strong>(3 Warnings, then Permanent Ban from Clan)</strong>
-          </p>
-        </div>),
-      }, // (1) Check Party Info
-      {
-        id: "party-list",
-        title: "(1) Checking Party Info",
-        desc: "Describes how to check created party information.",
-        foot: (<>
-          <p className={htags.pTag}>
-            Go to the{" "}
-            <strong className={tw.txt.sky}>
-              Party Recruitment (파티모집)
-            </strong>{" "}
-            channel in the{" "}
-            <strong className={tw.txt.sky}>Daily Channels (일상채널)</strong>{" "}
-            category to see a list of all active parties.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}party-listing${IMG_EXT}`}
-            caption="Party List Example"
-          />
-          <p className={htags.pTag}>
-            You can select a created thread to view the party recruitment
-            post.
-          </p>
-        </>),
-      }, // (2) Join/Leave Party
-      {
-        id: "party-join-leave",
-        title: "(2) Joining/Leaving a Party",
-        desc: "Introduces how to participate in a party.",
-        foot: (<>
-          <h4 className={htags.H4}>It's not difficult!</h4>
-          <p className={htags.pTag}>
-            Just press the green{" "}
-            <span className={`${tw.txt.green} font-extrabold`}>Join</span>{" "}
-            button to join the party!
-          </p>
+          <P
+            text="Violators caught breaking these rules may have their 'In-game Nickname' publicly shamed in the server and receive a warning to prevent harm to others."/>
           <P/>
-          <h4 className={htags.H4}>Leaving a Party</h4>{" "}
+          <ul className={htags.ulTag}>
+            <li>Accumulated warnings may lead to a ban from the clan/server.</li>
+            <li>In serious cases, an immediate permanent ban may be issued with the consensus of the administration.
+            </li>
+          </ul>
+          {/*<p><strong>(3 Warnings = Permanent Ban)</strong></p>*/}
+        </div>),
+      }, {
+        id: "party-list", title: "(1) Checking Party Info", desc: "How to check created party listings.", foot: (<>
           <p className={htags.pTag}>
-            Press the red{" "}
-            <span className={`${tw.txt.red} font-extrabold`}>Leave</span>{" "}
-            button to leave.
+            Go to the <strong className={tw.txt.sky}>Party-Recruitment</strong> channel under the <strong
+            className={tw.txt.sky}>General</strong> category
+            to see all active parties.
           </p>
-          <DocImage
-            src={`${IMG_PATH}party-article${IMG_EXT}`}
-            caption="Party Post Example"
-          />
-          <NOTE
-            color="yellow"
-            icon="tip"
-            title="Notice"
-            text="Button layout may vary depending on Discord app screen size."
-          />
-          {/* <p>
-              To prevent accidental clicks, pressing the{" "}
-              <span className={`font-extrabold`}>Join</span> button will display an additional message asking if you really want to join.{" "}
-            </p>
-            <DocImage
-              src={`${IMG_PATH}party-confirm-join${IMG_EXT}`}
-              // maxWidth="100%"
-              caption="Party Join Confirmation Message"
-            />
-            <p>
-              You must press the <span className={`${tw.txt.green} font-extrabold`}>
-                Yes (Proceed)
-              </span>{" "}
-              button to actually join the party.
-            </p> */}
+          <DocImage src={`${IMG_PATH}party-listing${IMG_EXT}`} caption="Example of party list"/>
+          <P text='Select a created thread to view the recruitment details.'/>
         </>),
-      }, // (3) Creating a Party
-      {
-        id: "party-how-create",
-        title: "(3) Creating a Party",
-        desc: "How to create a party recruitment post.",
-        foot: (<>
-          <h4 className={htags.H4}>
-            You can create a party using the <strong>/create-party</strong>{" "}
-            command.
-          </h4>
+      }, {
+        id: "party-join-leave", title: "(2) Joining/Leaving", desc: "How to join or leave a party.", foot: (<>
+          <DocImage src={`${IMG_PATH}party-article${IMG_EXT}`} caption="Party post example"/>
+          <NOTE color="yellow" icon="tip" title="Tip"
+                text="Button layout may vary depending on your Discord app screen size."/>
+          <P/>
+          <h4 className={htags.H4}>Joining a Party</h4>
+          <p className={htags.pTag}>
+            Click the green <span className={`${tw.txt.green} font-extrabold`}>Join</span> button to join the party.</p>
+          <p>When the confirmation prompt appears, click <span className={`${tw.txt.green} font-extrabold`}>Yes (Proceed)</span> to
+            confirm.</p>
+          <DocImage src={`${IMG_PATH}party-confirm-join${IMG_EXT}`} caption="Join confirmation message"/>
+
+          <h4 className={htags.H4}>Leaving a Party</h4>
+          <p className={htags.pTag}> Click the red <span className={`${tw.txt.red} font-extrabold`}>Leave</span> button
+            to leave the party.</p>
+        </>),
+      }, {
+        id: "party-how-create", title: "(3) Creating a Party", desc: "How to create a recruitment post.", foot: (<>
+          <h4 className={htags.H4}>Use the <strong>/create-party</strong> command. </h4>
           <ul className={htags.ulTag}>
-            <li>Type the / symbol in the chat input to use commands.</li>
+            <li>Type the <code>/</code> character in the chat bar to use commands.</li>
             <ul className={htags.ulTag}>
-              <li>
-                The / key is located just to the left of the Right-Shift key.{" "}
-              </li>
+              <li>(The slash key is usually near the right Shift key.)</li>
             </ul>
-            <li>Then search for 'create-party' and select the command.</li>
+            <li>Search for 'party' or 'create' and select the command.</li>
           </ul>
-          <DocImage
-            src={`${IMG_PATH}party-cmd0${IMG_EXT}`}
-            alt="Command Search Result"
-            caption="Command Search Result"
-          />
-          <h4 className={htags.H4}>
-            There are a total of 4 input fields. <br/>
-          </h4>
+          <DocImage src={`${IMG_PATH}party-cmd0${IMG_EXT}`} alt="Command search result"
+                    caption="Command search result"/>
+          <h4 className={htags.H4}> There are 5 input fields available. <br/></h4>
           <ul className={htags.ulTag}>
-            <li>
-              <span className={htags.graveTag}>title</span>: Recruitment post
-              title
-            </li>
-            <li>
-              <span className={htags.graveTag}>game_type</span>: Name of the
-              game to play (Warframe, League of Legends, PUBG, etc.)
-            </li>
-            <li>
-              [Optional]{" "}
-              <span className={htags.graveTag}>number_of_user</span>: Number
-              of recruits
-            </li>
+            <li><span className={htags.graveTag}>title</span>: Title of your post</li>
+            <li><span className={htags.graveTag}>game_name</span>: Name of the game (Warframe, LoL, Apex, etc.)</li>
+            <li>[Optional] <span className={htags.graveTag}>start_time</span>: When the party starts (Default: TBD)</li>
+            <li>[Optional] <span className={htags.graveTag}>member_count</span>: Total number of members</li>
             <ul className={htags.ulTag}>
-              <li>
-                This number{" "}
-                <strong>includes the Party Leader (yourself)</strong>.
-              </li>
-              <li>
-                <strong>Default is 4</strong>. (Warframe max party size is 4)
-              </li>
-              <li>
-                Can be set up to a <strong>maximum of 20</strong>.
-              </li>
+              <li><strong>Default: 4</strong> (Standard Warframe squad size)</li>
+              <li>Includes <strong>the leader (you)</strong>.</li>
+              <li><strong>Max 20</strong> members allowed.</li>
             </ul>
-            <li>
-              [Optional] <span className={htags.graveTag}>description</span>:
-              Detailed description of the recruitment post, etc.
+            <li>[Optional] <span className={htags.graveTag}>description</span>: Detailed description, requirements, etc.
             </li>
           </ul>
-          <h4 className={htags.H4}>Please fill in the desired content.</h4>
-          (There are hints at the top telling you what to put in)
-          <DocImage
-            src={`${IMG_PATH}party-cmd-input${IMG_EXT}`}
-            maxWidth="100%"
-            caption="Please fill in the desired content."
-          />
-          After inputting, press Enter to send, and a public thread and
-          recruitment post will be created in the{" "}
-          <strong>'Party Recruitment' (파티모집)</strong> channel.
-          <DocImage
-            src={`${IMG_PATH}party-created${IMG_EXT}`}
-            maxWidth="100%"
-            caption="Party Creation Complete Message"
-          />
-          Clicking the blue background link will take you directly to that
-          recruitment post.
-          <br/>
-          Or please go to the Party Recruitmen (파티모집) channel directly.
+          <h4 className={htags.H4}>Fill in the desired information.</h4>
+          (Guides appear above the fields to help you)
+          <DocImage src={`${IMG_PATH}party-cmd-input${IMG_EXT}`} maxWidth="100%" caption="Fill in the details."/>
+          Press Enter to send. A public thread and recruitment post will be created in
+          the <strong>'party-recruitment'</strong> channel.
+          <DocImage src={`${IMG_PATH}party-created${IMG_EXT}`} maxWidth="80%" caption="Creation completion message"/>
+          Click the blue link to jump directly to your post, or go to the channel manually.
+          <DocImage src={`${IMG_PATH}party-created2${IMG_EXT}`} maxWidth="80%" caption="Created Party Thread"/>
         </>),
-      }, // (4) Edit Party Info
-      {
+      }, {
         id: "party-edit",
         title: "(4) Editing Party Info",
-        desc: "The features introduced in this section can only be used by the Party Leader (the person who created the party).",
-      }, // (4-1) Edit Member Count
-      {
-        id: "party-edit-member", title: "(4-1) Edit Member Count", foot: (<>
-          <p className={htags.pTag}>
-            Click the <BOLD text="Edit Capacity"/> button to modify the
-            recruitment limit.
+        desc: "These features are only available to the Party Leader (Creator).",
+      }, {
+        id: "party-edit-member", title: "(4-1) Edit Capacity", foot: (<>
+          <p className={htags.pTag}><BOLD text="Edit Capacity"/> button allows you to change the max number of members.
           </p>
           <ul className={htags.ulTag}>
-            <li>
-              This number{" "}
-              <strong>includes the Party Leader (yourself)</strong>.
-            </li>
-            <li>
-              Can be set between <strong>2 ~ 20</strong>.
-            </li>
-            <li>
-              If a non-numeric value is entered, the{" "}
-              <strong>default of 4</strong> is automatically set. <br/>
-              (Warframe max party size is 4)
-            </li>
+            <li>Includes <strong>the leader (you)</strong>.</li>
+            <li>Can be set between <strong>2 ~ 20</strong>.</li>
+            <li>If a non-number is entered, it defaults to <strong>4</strong>.</li>
           </ul>
-          <P text="Clicking the Edit Capacity button displays the following window."/>
-          <p className={htags.pTag}>
-            Enter the desired number and press{" "}
-            <strong className={`${tw.txt.sky}`}>Send</strong>.
+          <P text="Clicking the button shows this modal:"/>
+          <p className={htags.pTag}> Enter the new number and click <strong className={`${tw.txt.sky}`}>Submit</strong>.
           </p>
-          <DocImage
-            src={`${IMG_PATH}party-nop${IMG_EXT}`}
-            caption="Edit Capacity Popup"
-          />
+          <DocImage src={`${IMG_PATH}party-nop${IMG_EXT}`} caption="Capacity edit modal"/>
         </>),
-      }, // (4-2) Edit Post
-      {
-        id: "party-edit-article",
-        title: "(4-2) Edit Post",
-        desc: "This feature is for correcting incorrectly entered content.",
-        foot: (<>
-          <p className={htags.pTag}>Editable items are as follows:</p>
+      }, {
+        id: "party-edit-article", title: "(4-2) Edit Post", desc: "Fix typos or update information.", foot: (<>
+          <p className={htags.pTag}>You can modify:</p>
           <ul className={htags.ulTag}>
-            <li>Post Title</li>
+            <li>Title</li>
             <li>Game Name</li>
             <li>Description</li>
           </ul>
+          <P text='Clicking the Edit Post button shows this modal:'/>
+          <DocImage src={`${IMG_PATH}party-mod1${IMG_EXT}`} caption="Post edit modal"/>
           <p className={htags.pTag}>
-            Clicking the Edit Post button displays the following window.
+            Update the fields and click <strong className={`${tw.txt.sky} ${tw.bold.eb}`}>Submit</strong>.
           </p>
-          <DocImage
-            src={`${IMG_PATH}party-mod1${IMG_EXT}`}
-            caption="Edit Post Popup"
-          />
-          <p className={htags.pTag}>
-            After modifying the desired items, press the{" "}
-            <strong className={`${tw.txt.sky} ${tw.bold.eb}`}>Send</strong>{" "}
-            button to update the items.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}party-mod2${IMG_EXT}`}
-            caption="Edit Post"
-          />
-          <DocImage
-            src={`${IMG_PATH}party-mod3-result${IMG_EXT}`}
-            caption="Edit Result"
-          />
-        </>),
-      }, // (4-3) Toggle Recruitment Status
-      {
-        id: "party-change",
-        title: "(4-3) Toggle Recruitment Status",
-        desc: "You can toggle the recruitment status of the post.",
-        foot: (<>
-          <p className={htags.pTag}>
-            Pressing the Complete Recruitment button changes the post to{" "}
-            <strong>Recruitment Complete</strong> status as shown below.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}party-toggle${IMG_EXT}`}
-            caption="Recruitment Complete Status"
-          />
-
-          <p className={htags.pTag}>In Recruitment Complete status:</p>
-          <ul className={htags.ulTag}>
-            <li>
-              <strong>Party members cannot join.</strong>
-            </li>
-            <li>
-              <strong>Capacity cannot be edited.</strong>
-            </li>
-          </ul>
-          <p className={htags.pTag}>
-            Pressing the{" "}
-            <strong className={`${tw.txt.green}`}>
-              Activate Recruitment
-            </strong>{" "}
-            button can change the post status back to "Recruiting".{" "}
-          </p>
-        </>),
-      }, // (4-4) Call Party Members
-      {
-        id: "party-call", title: "(4-4) Call Party Members", desc: "Sends a notification to party members.", foot: (<>
-          <p className={htags.pTag}>
-            Mentions all currently joined party members.
-            <br/>A message calling all party members is sent to the thread
-            where the recruitment post was created.
-          </p>
-          <p className={htags.pTag}>
-            Usage examples: Departure notification, important notices to all
-            users, etc.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}party-call-result${IMG_EXT}`}
-            maxWidth="75%"
-            caption="Party Call Message Example"
-          />
-          <p className={htags.pTag}>
-            To prevent excessive use, a 15-minute cooldown applies after one
-            use.
-            <br/> If this feature is abused (e.g., spamming notifications),
-            the bot may analyze usage patterns and automatically blacklist or
-            sanction the user.
-            <br/>
-            We also continuously receive reports of abuse from users. Abuse
-            may result in sanctions.
-          </p>
-          <p className={htags.pTag}>Please use with caution.</p>
-        </>),
-      }, // (4-5) Kick Party Member
-      {
-        id: "party-kick",
-        title: "(4-5) Kick Party Member",
-        desc: "Selects a specific party member to forcibly remove.",
-        foot: (<>
-          <NOTE
-            color="red"
-            icon="alert"
-            title="Warning"
-            text={<div>
-              <div className={htags.pTag}>
-                <strong>
-                  This feature is designed to resolve situations where a
-                  party member cannot leave the party themselves despite
-                  notifying in advance that they cannot attend due to
-                  personal reasons.
-                </strong>
-              </div>
-              <div className={htags.pTag}>
-                <strong className={tw.txt.red}>
-                  Inappropriate use, such as forcibly removing party members
-                  without notice, is prohibited.
-                </strong>
-              </div>
-              <div className={htags.pTag}>
-                We continuously receive reports of abuse from users. Abuse
-                may result in sanctions.
-              </div>
-            </div>}
-          />
-          <br/>
-          <p className={htags.pTag}>
-            Clicking the button displays the message below.
-          </p>
-          <p className={htags.pTag}>
-            Clicking <strong>Select party member to kick</strong> (dropdown
-            menu) allows you to select the member you want to remove.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}party-kick-select${IMG_EXT}`}
-            caption="Kick Dropdown Example"
-          />
-          <NOTE
-            color="orange"
-            icon="alert"
-            title="Caution"
-            text={<>
-              Clicking a party member to kick removes them immediately.{" "}
-              <br/>
-              Please be careful not to click by mistake!
-            </>}
-          />
-        </>),
-      }, // (4-6) End Recruitment
-      {
-        id: "party-exit",
-        title: "(4-6) End Recruitment",
-        desc: "Permanently ends the party recruitment. (Converts the post to inactive status)",
-        foot: (<>
-          <p className={htags.pTag}>
-            Clicking the <strong>End Recruitment</strong> button displays a
-            confirmation button to prevent mistakes.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}party-confirm-delete${IMG_EXT}`}
-            caption="After clicking End Recruitment button"
-          />
-          <p className={htags.pTag}>
-            Clicking the <strong>Yes (Proceed)</strong> button permanently
-            ends the recruitment.
-          </p>
-
-          <p className={htags.pTag}>
-            It deactivates the post as shown in the photo below, rather than
-            deleting the entire post. (Similar to an archive)
-          </p>
-          <DocImage
-            src={`${IMG_PATH}party-deleted${IMG_EXT}`}
-            caption="After clicking End Recruitment button"
-          />
-          <p className={htags.pTag}></p>
-          <p className={htags.pTag}></p>
-          <NOTE
-            color="orange"
-            icon="alert"
-            title="Caution"
-            text="The end action cannot be undone."
-          />
-        </>),
-      },],
-  }, // 5. Trade Section
-  trade: {
-    id: "trade", title: "5. Trade Feature", mainTitle: "Trade Commands", list: [// trade warnings
-      {
-        id: "trade-warning", title: (<span className={tw.txt.red}>
-            [Must Read] Precautions Before Using this Feature
-          </span>), desc: "We will guide you through the instructions before using the feature.", foot: (<div>
-          <ul className={htags.ulTag}>
-            <li>
-              The trade feature is{" "}
-              <span className="text-red-500 font-bold">
-                  limited to Warframe items
-                </span>
-              . (Items from other games are prohibited)
-            </li>
-            <li>
-              All{" "}
-              <span className="text-blue-500 font-bold">trade prices</span>
-              are based on{" "}
-              <span className="text-green-600 font-bold">
-                  real-time prices on Warframe Market.
-                </span>
-            </li>
-            {/* detailed description */}
-            <ul className={htags.ulTag}>
-              <li>
-                However, targeting specific users who are unaware of Warframe
-                Market prices and{" "}
-                <span className="text-red-500 font-semibold">
-                    listing items at a{" "}
-                  <span className="font-extrabold">very</span> high price
-                    compared to the market price is prohibited
-                  </span>
-                .
-              </li>
-              <li>
-                For those who are not familiar with market prices, we provide
-                a shortcut link to check the{" "}
-                <span className="text-blue-500">Warframe Market</span> search
-                results for the posted item. (Clicking the{" "}
-                <span className="text-blue-600 font-bold underline">
-                    blue link text
-                  </span>
-                in the trade post takes you to the market search results.)
-              </li>
-            </ul>
-            <li>
-              The currency corresponding to the item being traded does not
-              necessarily have to be{" "}
-              <span className="font-bold">[Platinum]</span>, and this depends
-              entirely on the seller's decision.
-            </li>
-            <ul className={htags.ulTag}>
-              <li>
-                However,{" "}
-                <span className="text-red-500 font-bold">
-                    transactions with real money are prohibited
-                  </span>
-                .
-              </li>
-              <li>
-                In{" "}
-                <A
-                  href="https://www.warframe.com/en/eula#virtualGoods"
-                  text="Warframe End User License Agreements (EULA)"
-                />
-                , Section{" "}
-                <strong>
-                  '9. Virtual Goods and Game Currency' - Clause B
-                </strong>{" "}
-                of the document specifies that
-                <strong className={`${tw.txt.orange}`}>
-                  trading accounts or items for cash (physical currency) is
-                  prohibited
-                </strong>
-                If caught, the DE may{" "}
-                <strong>permanently suspend (ban) your/their account</strong>.
-              </li>
-            </ul>
-          </ul>
-          <P
-            text='If caught violating the above prohibitions, as it may harm others, the person involved will have their "In-game Nickname" publicly revealed in the Clan Server and receive a warning.'/>
-          <p className="text-lg font-bold">
-            (3 Warnings, then Permanent Ban from Clan)
-          </p>
-        </div>),
-      }, // do trade
-      {
-        id: "trade-request",
-        title: "(1) Requesting Trade",
-        desc: "How to request a trade on a posted trade article.",
-        foot: (<>
-          <h4 className={htags.H4}>It's not difficult!</h4>
-          <p className={htags.pTag}>
-            Please press the purple <strong>Trade</strong> button on the trade
-            post.
-          </p>
-          <P text="Pressing the button sends a mention notification to the trade post creator."/>
-          <P text="Then you can freely chat and trade in the thread."/>
-          <NOTE
-            color="blue"
-            icon="tip"
-            title="Tip"
-            text={<>
-              If you hover your mouse over the whisper and party invite
-              commands at the bottom of the post, a copy button will appear
-              on the right.
-              <br/>
-              <br/>
-              Copy it, then paste it into the Warframe chat to use the
-              whisper and party invite features.
-            </>}
-          />
-          <DocImage
-            src={`${IMG_PATH}trade-created${IMG_EXT}`}
-            maxWidth="90%"
-            caption="Trade Post Example"
-          />
-          <p className={htags.pTag}></p>
-        </>),
-      }, // create trade
-      {
-        id: "trade-how-create", title: "(2) Creating Trade Post", desc: "", foot: (<>
-          <p className={htags.pTag}>
-            Type <strong>/trade</strong> in the chat window to search for and
-            select the trade command.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}trade-cmd1${IMG_EXT}`}
-            maxWidth="90%"
-            caption="Search for trade command in chat"
-          />
-          <p className={htags.pTag}>The input fields are as follows.</p>
-          <ul className={htags.ulTag}>
-            <li>
-              <span className={htags.graveTag}>trade_type</span>: Trade type.
-              (Select Sell/Buy)
-            </li>
-            <li>
-              <span className={htags.graveTag}>item_name</span>: Item name to
-              Sell/Buy (Searchable for items sold in the market)
-            </li>
-            <li>
-              <span className={htags.graveTag}>game_nickname</span>:
-              Automatically set based on user nickname.
-              {/* Warframe nickname (Not Discord nickname!) */}
-            </li>
-            {/* <ul className={htags.ulTag}>
-                <li>
-                  It is used for whisper and party invite commands, so please enter it correctly!
-                </li>
-              </ul> */}
-            <li>
-              <span className={htags.graveTag}>item_rank</span>: [Optional] If
-              the item has a rank, such as an Arcane, enter the rank of the
-              item to trade.
-            </li>
-            <li>
-              <span className={htags.graveTag}>price</span>: [Optional] Price
-              per unit
-            </li>
-            <ul className={htags.ulTag}>
-              <li>
-                If left blank, it is automatically set to a reasonable price
-                based on the market lowest price.
-              </li>
-            </ul>
-            <li>
-              <span className={htags.graveTag}>quantity</span>: [Optional]
-              Item quantity. (Default is 1.)
-            </li>
-          </ul>
-          <DocImage
-            src={`${IMG_PATH}trade-cmd${IMG_EXT}`}
-            maxWidth="80%"
-            caption="Content that can be entered in the trade command"
-          />
-          <DocImage
-            src={`${IMG_PATH}trade-input-ing${IMG_EXT}`}
-            maxWidth="100%"
-            caption="Enter desired content"
-          />
-          <p className={htags.pTag}>
-            After entering the desired content and pressing Enter to send, a
-            trade post is created with the message below.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}trade-created1${IMG_EXT}`}
-            maxWidth="100%"
-            caption="Trade post creation complete message"
-          />
-          <p className={htags.pTag}>
-            Clicking the blue link takes you to the corresponding thread
-            (trade post). <br/>
-            (Or please go to the trade channel directly.)
-          </p>
-          <p className={htags.pTag}>
-            In the trade channel, you can select the desired thread to check
-            the trade post.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}trade-${IMG_EXT}`}
-            caption="Trade Post List Example"
-          />
-        </>),
-      }, // edit trade article
-      {
-        id: "trade-edit",
-        title: "(3) Trade Post Related",
-        desc: "Introduces features available in trade posts.",
-        foot: (<>
-          <p className={htags.pTag}>Trade posts look like this:</p>
-          <DocImage
-            src={`${IMG_PATH}trade-created${IMG_EXT}`}
-            maxWidth="80%"
-            caption="Trade Post Example"
-          />
-          <p className={htags.pTag}>
-            Descriptions for each button are as follows.
-          </p>
-          <ul className={htags.ulTag}>
-            <li>Trade: Sends a trade request message to the other party.</li>
-            <li>* Change Qty: Can change the sales quantity.</li>
-            <li>* Edit Price: Can modify the item price.</li>
-            <li>* Change Nickname: Can modify the game nickname.</li>
-            <li>* End Trade: Converts the post to archive status.</li>
-          </ul>
-          <p className={htags.pTag}>
-            (* marked items are only available to the trade post creator.)
-          </p>
-          {/* <DocImage src={`${IMG_PATH}trade-${IMG_EXT}`} caption="" />
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p>
-            <p className={htags.pTag}></p> */}
-        </>),
-      }, // edit qty
-      {
-        id: "trade-edit-qty", title: "Change Quantity", desc: "Button used to change quantity.", foot: (<>
-          <p className={htags.pTag}>
-            Clicking the <strong>Change Qty</strong> button on the trade post
-            displays the window below.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}trade-mod-num${IMG_EXT}`}
-            caption="Change Quantity Popup"
-          />
-          <p className={htags.pTag}>
-            Enter the quantity you want to change and press the{" "}
-            <strong>Send</strong> button.
-          </p>
-          <p className={htags.pTag}>
-            If a non-numeric value is entered, it is automatically set to 1.
-          </p>
-        </>),
-      }, // edit price
-      {
-        id: "trade-edit-price", title: "Edit Price", desc: "Button used to modify price.", foot: (<>
-          <p className={htags.pTag}>
-            Clicking the <strong>Edit Price</strong> button on the post
-            displays the window below.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}trade-mod-price${IMG_EXT}`}
-            caption="Edit Price Popup"
-          />
-          <p className={htags.pTag}>
-            Then, enter the price you want to change and press{" "}
-            <strong>Send</strong>.
-          </p>
-          <p className={htags.pTag}></p>
-          <p className={htags.pTag}></p>
-          <p className={htags.pTag}></p>
-          <p className={htags.pTag}></p>
-        </>),
-      }, // edit nickname
-      {
-        id: "trade-edit-nick", title: "Change Nickname", desc: "Button used to modify nickname.", foot: (<>
-          <p className={htags.pTag}>
-            Clicking the <strong>Change Nickname</strong> button on the post
-            displays the window below.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}trade-nickname${IMG_EXT}`}
-            caption="Change Nickname Popup"
-          />
-          <p className={htags.pTag}>
-            Enter the nickname you want to modify and press the{" "}
-            <strong>Send</strong> button.
-          </p>
-          <p className={htags.pTag}>
-            The entered nickname is used when copying whisper commands and
-            invite commands, so please enter it accurately.
-          </p>
-        </>),
-      }, // finish trade
-      {
-        id: "trade-exit",
-        title: "End Trade",
-        desc: "Button used when the trade is complete and the trade post needs to be taken down.",
-        foot: (<>
-          <p className={htags.pTag}>
-            (End Trade is only available to the trade post creator.)
-          </p>
-          <p className={htags.pTag}>
-            Clicking the <strong>End Trade</strong> button asks for
-            confirmation to really take down the post.
-          </p>
-          <DocImage
-            src={`${IMG_PATH}trade-confirm-close${IMG_EXT}`}
-            caption="after clicking End Trade button"
-          />
-          <p className={htags.pTag}>
-            Clicking the <strong>Yes (End)</strong> button converts the trade
-            post to archive status. <br/> (It is not completely deleted.)
-          </p>
-          <DocImage
-            src={`${IMG_PATH}trade-deleted${IMG_EXT}`}
-            caption="After clicking confirm button"
-          />
-          <NOTE
-            color="orange"
-            icon="alert"
-            title="Caution"
-            text="As stated in the guidance, all buttons become inactive, so the post cannot be modified or reactivated."
-          />
-          <p className={htags.pTag}></p>
-          <p className={htags.pTag}></p>
-          <p className={htags.pTag}></p>
-        </>),
-      },],
-  }, // 6. FAQ Section
-  troubleshooting: {
-    id: "faq", title: "Frequently Asked Questions (FAQ)", list: [// Interaction Error
-      {
-        q: `Interaction error appears when pressing a button or using a command`, a: (<>
-          <ol className={`${htags.olTag} ${tw.txt.dim}`}>
-            <li>
-              Check if <strong>{COMMON.nameEn} Bot</strong> is{" "}
-              <strong>Online</strong>.
-            </li>
-            <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
-              <li>
-                If it is <strong>under maintenance</strong>, it cannot be used
-                until maintenance is over.
-              </li>
-              <li>
-                If the bot is offline, <ContactMeEn/>
-              </li>
-            </ul>
-            <li>
-              If you <strong>confirmed it is online</strong>
-              <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
-                <li>
-                  For desktop and web environments, press Ctrl + R to refresh
-                  the Discord app.
-                </li>
-                <li>(For macOS environment, cmd + R)</li>
-                <li>
-                  For mobile environment, close the Discord app and restart
-                  it.
-                </li>
-              </ul>
-            </li>
-          </ol>
-          {/* <br /> */}
-        </>),
-      }, // Application Response Error
-      {
-        q: (<span>
-            'The application did not respond' message appears and
-            commands/buttons do not work.
-            <br/>
-            Or the bot thinks for too long (e.g., 'Thinking' message for more
-            than 1 minute)
-          </span>), a: (<>
-          An unexpected error occurred during processing, so the feature is
-          not working.
-          <br/>
-          <ContactMeEn/>
-        </>),
-      }, // Kicked from party without notice
-      {
-        q: `I was forcibly removed from the party without any notice/announcement`, a: (<>
-          <strong>Please contact the Party Leader first.</strong> There is a
-          possibility it was a mistake.
-          <br/>
-          <br/> If you cannot contact the Party Leader, it can be{" "}
-          <strong>judged as abuse</strong>.
-          <br/>
-          <ContactMeEn/>
-          <br/>
-          After internal meetings with the executives, warnings/sanctions for
-          abuse will be taken against the Party Leader.
-        </>),
-      }, // Continuous Notifications
-      {
-        q: `A specific user is spamming notifications using the alert system of party or trade posts`, a: (<>
-          Spamming notifications is a violation of this Discord bot's terms of
-          service.
-          <br/>
-          <ContactMeEn/>
-          If a report is received, we will take action after internal review
-          and meetings with executives.
-          <br/>
-          (Attaching chat screenshots is even better.)
-        </>),
-      }, // Add Private Server
-      {
-        q: "I want to add the bot to my private server", a: (<>
-          This feature is built for the Korea Warframe server. <br/>
-          If you want to add it to a private server, you can use it by paying
-          a fee.
-          <br/>
-          Since the fee depends on the server scale, if you want a
-          consultation, <ContactMeEn/>
+          <DocImage src={`${IMG_PATH}party-mod2${IMG_EXT}`} caption="Editing..."/>
+          <DocImage src={`${IMG_PATH}party-mod3-result${IMG_EXT}`} caption="Edit result"/>
         </>),
       }, {
-        q: "If you have any other questions or inquiries?", a: <ContactMeEn/>,
+        id: "party-change-departure",
+        title: "(4-3) Change Start Time",
+        desc: "Update the departure/start time.",
+        foot: (<>
+          <p className={htags.pTag}>
+            Click <strong>Change Time</strong> to open the input modal.<br/>
+            You can type the time in natural language (e.g., "in 1 hour", "8 PM EST").<br/>
+          </p>
+          <DocImage src={`${IMG_PATH}party-departure${IMG_EXT}`} caption="Recruitment complete state"/>
+        </>),
+      }, {
+        id: "party-change",
+        title: "(4-4) Toggle Status",
+        desc: "Switch the recruitment status between Open and Closed.",
+        foot: (<>
+          <p className={htags.pTag}>
+            Clicking <strong>Close Recruitment</strong> changes the status to <strong>Closed/Full</strong>.
+          </p>
+          <DocImage src={`${IMG_PATH}party-toggle${IMG_EXT}`} caption="Closed state"/>
+          <p className={htags.pTag}>In the Closed state:</p>
+          <ul className={htags.ulTag}>
+            <li><strong>New members cannot join.</strong></li>
+            <li><strong>Capacity cannot be edited.</strong></li>
+          </ul>
+          <p className={htags.pTag}>
+            Click <strong className={`${tw.txt.green}`}>Reopen</strong> to switch back to "Recruiting".
+          </p>
+        </>),
+      }, {
+        id: "party-call",
+        title: "(4-5) Mention Members",
+        desc: "Send a notification ping to all party members.",
+        foot: (<>
+          <p className={htags.pTag}>
+            Mentions everyone currently in the party. <br/>
+            A message pinging all members will be sent in the thread.
+          </p>
+          <p className={htags.pTag}>Usage examples: "We are starting now!", "Check this announcement", etc.</p>
+          <DocImage src={`${IMG_PATH}party-call-result${IMG_EXT}`} maxWidth="75%" caption="Mention example"/>
+          <p className={htags.pTag}>
+            There is a 15-minute cooldown to prevent spam.<br/>
+            Abusing this feature (e.g., notification spam) may lead to automatic blacklisting by the bot and
+            penalties. <br/>
+            We take abuse reports seriously.
+          </p>
+          <p className={htags.pTag}>Please use responsibly.</p>
+        </>),
+      }, {
+        id: "party-kick",
+        title: "(4-6) Kick Member",
+        desc: "Forcefully remove a specific member from the party.",
+        foot: (<>
+          <NOTE color="red" icon="alert" title="Warning" text={<div>
+            <div className={htags.pTag}><strong>
+              This feature is intended for situations where a member cannot attend but forgets to leave the party
+              themselves.
+            </strong></div>
+            <div className={htags.pTag}><strong className={tw.txt.red}>Do not use this to kick members without notice or
+              reason.</strong>
+            </div>
+            <div className={htags.pTag}> Abuse of this feature may result in penalties.</div>
+          </div>}
+          />
+          <br/>
+          <P text='Clicking the button shows the following menu:'/>
+          <p className={htags.pTag}>Select the member you wish to remove from the <strong>Select member to
+            kick</strong> dropdown. </p>
+          <DocImage src={`${IMG_PATH}party-kick-select${IMG_EXT}`} caption="Kick dropdown example"/>
+          <NOTE color="orange" icon="alert" title="Caution!" text={<div>
+            Selecting a member immediately removes them. <br/>Be careful not to click the wrong person!
+          </div>}/>
+        </>),
+      }, {
+        id: "party-exit",
+        title: "(4-7) End Recruitment",
+        desc: "Permanently end the party recruitment. (Archives the post)",
+        foot: (<>
+          <p className={htags.pTag}>
+            Clicking <strong>End Party</strong> will ask for confirmation to prevent accidents.
+          </p>
+          <DocImage src={`${IMG_PATH}party-confirm-delete${IMG_EXT}`} caption="Confirmation prompt"/>
+          <p className={htags.pTag}>Clicking <strong>Yes (Proceed)</strong> permanently ends the recruitment. </p>
+          <P text='This disables the post and archives it, as shown below (it does not delete the thread entirely).'/>
+          <DocImage src={`${IMG_PATH}party-deleted${IMG_EXT}`} maxWidth='50%' caption="Archived post"/>
+          <NOTE color="orange" icon="alert" title="Caution!" text="This action cannot be undone."/>
+        </>),
       },],
-  }, // 7. Terms of Service
+  },
+  trade: {
+    id: "trade", title: "5. Trading System", mainTitle: "Trade Commands", list: [// trade warnings
+      {
+        id: "trade-warning",
+        title: <span className={tw.txt.red}>[Must Read] Usage Guidelines</span>,
+        desc: "Please read before trading.",
+        foot: (<div>
+          {/* <NOTE color="yellow" icon="alert" title="Notice" ... /> */}
+          <ul className={htags.ulTag}>
+            <li>Trading is limited to <span className={tw.txt.yellow}>Warframe items only</span>. (No other game items)
+            </li>
+            <li> All prices are based on <span className="font-bold">Real-time Warframe Market values</span>.</li>
+            {/* detailed description */}
+            <ul className={htags.ulTag}>
+              <li>Listing items at <span className="font-extrabold">excessively</span> high prices to scam users unaware
+                of market values is <span className={`${tw.txt.yellow}`}>strictly prohibited</span>.
+              </li>
+              <li>
+                To protect beginners, we provide a direct link to the <strong>Warframe Market</strong> search results
+                for the listed item. (Click the <strong>blue link</strong> in the trade post).
+              </li>
+            </ul>
+            <li>
+              The currency does not necessarily have to be <span className="font-bold">[Platinum]</span>; it is up to
+              the seller.
+            </li>
+            <ul className={htags.ulTag}>
+              <li>
+                However, <span
+                className={`${tw.txt.red} ${tw.bold.eb}`}>Real Money Trading (RMT) is strictly prohibited</span>.
+                <span className={`${tw.txt.red} ${tw.bold.b}`}>(Immediate permanent ban if caught)</span>
+              </li>
+              <li>
+                According to the <A href="https://www.warframe.com/eula#virtualGoods" text="Warframe EULA"/>{" "}
+                <strong>Section 9 - Virtual Goods</strong>,{" "}
+                <strong>buying/selling items for real-world currency is prohibited</strong>.
+                If caught, DE may <strong>permanently ban</strong> your Warframe account.
+              </li>
+            </ul>
+          </ul>
+          <P text='Violators will be publicly shamed in the server and warned.'/>
+          <P text="Serious offenses may result in an immediate permanent ban."/>
+        </div>),
+      }, {
+        id: "trade-request", title: "(1) Requesting a Trade", desc: "How to buy/trade for a listed item.", foot: (<>
+          <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="90%" caption="Trade post example"/>
+          <NOTE color="blue" icon="tip" title="Tip" text={<>
+            Hover over the Whisper/Invite command at the bottom of the post to see a Copy button.<br/>
+            Copy and paste it into the in-game chat to easily contact the seller.
+          </>}/>
+          <P/>
+          <h4 className={htags.H4}>Click the purple <strong>Trade</strong> button on the post.</h4>
+          <DocImage src={`${IMG_PATH}trade-confirm${IMG_EXT}`} maxWidth="60%" caption="Confirmation"/>
+          <P text="Confirming sends a notification ping to the seller."/>
+          <DocImage src={`${IMG_PATH}trade-requested${IMG_EXT}`} maxWidth="70%" caption="Trade request sent"/>
+          <P text="You can then discuss the trade details in the thread."/>
+          <P text="The seller can use the invite command provided in the request message."/>
+        </>),
+      }, {
+        id: "trade-how-create", title: "(2) Creating a Trade Post", desc: "", foot: (<>
+          <p className={htags.pTag}> Type <strong>/trade</strong> in the chat to search for the command. </p>
+          <DocImage src={`${IMG_PATH}trade-cmd1${IMG_EXT}`} maxWidth="50%" caption="Searching for command"/>
+          <p className={htags.pTag}>Input fields:</p>
+          <ul className={htags.ulTag}>
+            <li><span className={htags.graveTag}>trade_type</span>: Sell or Buy.</li>
+            <li><span className={htags.graveTag}>item_name</span>: Name of the item (Searchable from Warframe Market
+              database)
+            </li>
+            <li>
+              <span className={htags.graveTag}>item_rank</span>: [Optional] Rank of the item (for Mods/Arcanes).
+            </li>
+            <li><span className={htags.graveTag}>price</span>: [Optional] Price per unit.</li>
+            <ul className={htags.ulTag}>
+              <li> If left empty, it automatically sets a reasonable price based on the lowest Market listing.</li>
+            </ul>
+            <li><span className={htags.graveTag}>quantity</span>: [Optional] Number of items. (Default: 1)</li>
+          </ul>
+          <P
+            text="The built-in auto-pricing feature helps you list items quickly without checking the market manually."/>
+          <DocImage src={`${IMG_PATH}trade-cmd${IMG_EXT}`} maxWidth="80%" caption="Input fields"/>
+          <DocImage src={`${IMG_PATH}trade-input-ing${IMG_EXT}`} maxWidth="90%" caption="Entering data"/>
+          <P text='Press Enter to create the listing.'/>
+          <DocImage src={`${IMG_PATH}trade-created1${IMG_EXT}`} maxWidth="90%" caption="Listing created"/>
+          <NOTE color='yellow' icon='info' title='Price set to 0 Platinum?'
+                text='This happens if no players are currently online selling that item. Please use the Edit Price button to set it manually.'/>
+          <P/>
+          <p className={htags.pTag}>Click the blue link or go to the trade channel to view your post.</p>
+        </>),
+      }, {
+        id: "trade-edit", title: "(3) Managing Trade Posts", desc: "Features available on the trade post.", foot: (<>
+          <P text='A trade post looks like this:'/>
+          <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="80%" caption="Trade post example"/>
+          <P text='Button descriptions:'/>
+          <ul className={htags.ulTag}>
+            <li><strong>Trade</strong>: Sends a trade request to the owner.</li>
+            <li><strong>Edit Qty*</strong>: Change the quantity.</li>
+            <li><strong>Edit Price*</strong>: Change the price.</li>
+            <li><strong>Edit Nick*</strong>: Update your in-game nickname.</li>
+            <li><strong>Close*</strong>: Archive/Close the trade listing.</li>
+          </ul>
+          <P text='(* marked buttons are for the owner only)'/>
+        </>),
+      }, {
+        id: "trade-edit-qty", title: "(3-1) Edit Quantity", desc: "Change the number of items.", foot: (<>
+          <p className={htags.pTag}> Click <strong>Edit Qty</strong> to open the modal. </p>
+          <DocImage src={`${IMG_PATH}trade-mod-num${IMG_EXT}`} caption="Quantity modal"/>
+          <p className={htags.pTag}> Enter the new quantity and click <strong>Submit</strong>. </p>
+          <P text='Non-numeric values will default to 1.'/>
+        </>),
+      }, {
+        id: "trade-edit-price", title: "(3-2) Edit Price", desc: "Change the price.", foot: (<>
+          <p className={htags.pTag}>Click <strong>Edit Price</strong> to open the modal.</p>
+          <DocImage src={`${IMG_PATH}trade-mod-price${IMG_EXT}`} caption="Price modal"/>
+          <p className={htags.pTag}>Enter the new price and click <strong>Submit</strong>.</p>
+        </>),
+      }, {
+        id: "trade-edit-rank", title: "(3-3) Edit Rank", desc: "Change the item rank.", foot: (<>
+          <p className={htags.pTag}>Click <strong>Edit Rank</strong> to open the modal.</p>
+          <DocImage src={`${IMG_PATH}trade-mod-rank${IMG_EXT}`} caption="Rank modal"/>
+          <p className={htags.pTag}>Enter the rank and click <strong>Submit</strong>.</p>
+        </>),
+      }, {
+        id: "trade-exit", title: "(3-4) Close Trade", desc: "Mark the trade as complete/closed.", foot: (<>
+          <P text='(Owner only)'/>
+          <p className={htags.pTag}>Clicking <strong>Close</strong> will ask for confirmation.</p>
+          <DocImage src={`${IMG_PATH}trade-confirm-close${IMG_EXT}`} caption="Confirmation"/>
+          <p className={htags.pTag}>
+            Clicking <strong>Yes (Close)</strong> will archive the post. <br/> (It is not fully deleted from the channel
+            history.)
+          </p>
+          <DocImage src={`${IMG_PATH}trade-deleted${IMG_EXT}`} caption="Closed trade"/>
+          <NOTE color="orange" icon="alert" title="Note"
+                text="Once closed, buttons are disabled and the post cannot be reactivated."/>
+        </>),
+      },],
+  },
+  troubleshooting: {
+    id: "faq", title: "FAQ / Troubleshooting", list: [// Interaction failed
+      {
+        q: `"This command is deprecated... try again later."`, a: (<>
+          <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
+            <li>On Desktop/Web: Press <strong>Ctrl + R</strong> (or <strong>Cmd + R</strong> on macOS) to reload
+              Discord.
+            </li>
+            <li>On Mobile: Completely close and restart the Discord app.</li>
+          </ul>
+        </>),
+      }, // Application did not respond
+      {
+        q: (<>
+          <span>If you encounter the following issues:</span>
+          <ul className={`${htags.ulTag} pt-3`}>
+            <li>"The application did not respond"</li>
+            <li>"Interaction failed"</li>
+            <li>Bot is stuck "Thinking..." for over a minute</li>
+          </ul>
+        </>), a: (<>
+          <ul className={`${htags.olTag} ${tw.txt.dim}`}>
+            <li>Check if <strong>{COMMON.nameEn}</strong> is <strong>Online</strong>.</li>
+            <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
+              <li>If the status says <strong>"Maintenance"</strong> with a Do Not Disturb icon, please wait until
+                maintenance is over.
+              </li>
+              <li>If the bot is Offline, please <ContactMe/></li>
+            </ul>
+            <li>Try reloading Discord as mentioned above.</li>
+            <li>If the issue persists, it may be an unexpected server error.<br/><ContactMe/></li>
+          </ul>
+        </>),
+      }, {
+        q: "Can I add this bot to my personal server?", a: (<>
+          Yes!<br/>
+          Click the bot's profile in the user list and click "Add App" to invite it to your server.<br/><br/>
+          However, the following features are in Beta and require approval:<br/>
+          <P/>
+          <ul className={htags.ulTag}>
+            <li>Party Recruitment</li>
+            <li>Item Trading</li>
+            <li>Contact Support</li>
+          </ul>
+          If you want to be a beta tester, please <ContactMe/>
+        </>),
+      }, {
+        q: "Have other questions?", a: <ContactMe/>,
+      },],
+  },
+
+  // 7. Terms of Service
   terms: {
     id: "tos", title: "Terms of Service", desc: (<>
       <H2 text="Purpose"/>
-      <p className={htags.pTag}>
-        These terms aim to define the rights, obligations, and
-        responsibilities between the <strong>{COMMON.companyEn}</strong>{" "}
-        executives (hereinafter "Operator") providing the service and the user
-        in using all features, content, and websites provided by the{" "}
-        <strong>"{COMMON.nameEn}" Bot</strong> (hereinafter
-        "Service").
+      <p>These Terms of Service ("Terms") govern the relationship between {COMMON.company} ("Operator"), the provider of
+        the {COMMON.nameEn} service ("Service"), and the user.
       </p>
-      <P text="By adding the bot to a server or using its features, the user is deemed to agree to these terms."/>
-      <H2 text="Effectiveness and Modification of Terms"/>
+      <P text="By adding this bot to a server or using its features, you agree to these Terms."/>
+      <H2 text="Effect and Changes"/>
       <ul className={htags.ulTag}>
-        <li>These terms apply to all users using the Service.</li>
-        <li>
-          The Operator may revise the terms within the scope that does not
-          violate relevant laws if necessary.
-        </li>
-        <li>
-          If the terms are changed, they will be announced in advance through
-          Discord bot announcements or the support server.
-        </li>
-        <li>
-          If the user continues to use the Service after the changed terms are
-          announced, they are deemed to have agreed to the changes. If not
-          agreed, User should be stop using this service.
-        </li>
+        <li>These Terms apply to all users of the Service.</li>
+        <li>The Operator may amend these Terms within the scope of applicable laws.</li>
+        <li>Changes will be notified via Bot Announcements or the Support Server.</li>
+        <li>Continued use of the Service after changes constitutes acceptance of the new Terms.</li>
       </ul>
-      <H2 text="Provision and Change of Service"/>
+      <H2 text="Service Provision"/>
       <ul className={htags.ulTag}>
-        <li>
-          The Operator provides various features for user convenience within
-          the Discord platform.
+        <li>The Operator provides various convenience features within the Discord platform.</li>
+        <li>The Service may be modified or suspended due to maintenance, Discord API policy changes, or force majeure.
         </li>
-        <li>
-          The Operator may change or suspend all or part of the Service in the
-          event of unavoidable reasons such as maintenance, Discord API policy
-          changes, or force majeure.
-        </li>
-        <li>
-          The Operator is not responsible for any damages to the user caused
-          by the change or suspension of the Service and does not provide
-          separate compensation.
-        </li>
+        <li>The Operator is not liable for damages arising from service changes or suspension.</li>
       </ul>
-      <H2 text="Obligations of User"/>
+      <H2 text="User Obligations"/>
       <ul className={htags.ulTag}>
-        <li>
-          Users must comply with Discord's Terms of Service and Community
-          Guidelines.
+        <li>Users must comply with Discord's Terms of Service and Community Guidelines.</li>
+        <li>Users must use the Service for legal purposes only. The following are prohibited:</li>
+        <ul className={htags.ulTag}>
+          <li>Spamming, advertising, or harassment using the bot.</li>
+          <li>Accessing the Service outside of its intended scope.</li>
+          <li>Commercial use without prior permission.</li>
+          <li>Illegal activities.</li>
+          <li>Exploiting bugs or vulnerabilities.</li>
+        </ul>
+        <li>Users must report bugs immediately and not exploit them.</li>
+        <li>Violation of these obligations may result in a ban from the Service.</li>
+      </ul>
+      <H2 text="Privacy"/>
+      <P text="We collect data to provide better service."/>
+      <P text="Collected info is not used for other purposes or shared with third parties unless required by law."/>
+      <p className={htags.pTag}> For details, please refer to the <strong>Privacy Policy</strong>. <br/>
+        Check the sidebar for the full Privacy Policy text.
+      </p>
+      <H2 text="Limitation of Liability"/>
+      <ul className={htags.ulTag}>
+        <li>The Operator is not liable for service interruptions due to force majeure, game server maintenance, or
+          Discord platform issues.
         </li>
-        <li>
-          Users must use the Service only for legal purposes and are
-          prohibited from doing the following:
+        <li>The Operator is not liable for data loss caused by user negligence.</li>
+        <li>The Operator is not liable for disputes between users.</li>
+        <li>The Trading features are tools for convenience. The actual transaction is the responsibility of the users.
         </li>
         <ul className={htags.ulTag}>
-          <li>
-            Acts that cause discomfort to others such as flooding, spamming,
-            advertising using the bot
+          <li>Users bear full responsibility for trades made through the Service.</li>
+          <li>The Operator is not responsible for scams, in-game losses, or financial damages unless caused by
+            intentional misconduct or gross negligence of the Operator.
           </li>
-          <li>
-            Accessing or using the Service outside the intended scope of use
-            (according to the Operator's independent judgment)
-          </li>
-          <li>
-            Commercially using the Service without the Operator's prior
-            permission
-          </li>
-          <li>Using the Service illegally</li>
-          <li>
-            Exploiting bugs or vulnerabilities of the Service or distributing
-            them
-          </li>
-          <li>
-            Other acts that violate relevant laws or interfere with Service
-            operation
-          </li>
+          <li>The Operator is not liable for account penalties (bans) resulting from violations of the game's EULA.</li>
         </ul>
       </ul>
-      <li>
-        If a bug or security vulnerability is discovered during Service use,
-        the user must immediately report it to the Operator and must not
-        exploit it.
-      </li>
-      <li>
-        In case of violation of the above obligations, the Operator may
-        restrict or permanently ban the user's Service use without prior
-        notice.
-      </li>
-      <H2 text="Privacy Protection"/>
-      <P text="The Operator collects data to provide better service."/>
-      <P
-        text="Collected information is not used for purposes other than Service operation and is not provided to third parties except when required by law."/>
-
-      <p className={htags.pTag}>
-        Details follow the separately notified <strong>Privacy Policy</strong>
-        .
-        <br/>
-        Please click the Privacy Policy in the left sidebar to check. (On
-        mobile, you can navigate through the top right menu button.)
-      </p>
-
-      <H2 text="Limitation of Liability (Indemnification)"/>
-      <ul className={htags.ulTag}>
-        <li>
-          The Operator is not responsible for cases where the Service cannot
-          be provided due to force majeure such as natural disasters, Discord
-          platform failures, or communication network failures.
-        </li>
-        <li>
-          The Operator is not responsible for Service usage obstacles or data
-          loss caused by the user's fault.
-        </li>
-        <li>
-          The Operator is not responsible for the loss of expected profits
-          from using the Service or damages caused by materials obtained
-          through the Service unless there is intentional or gross negligence
-          by the Operator.
-        </li>
-      </ul>
-
       <H2 text="Copyright"/>
-      <ul className={htags.ulTag}>
-        <li>
-          Copyright and intellectual property rights for functions, codes,
-          designs, etc., provided by the Service belong to the Operator.
-        </li>
-        <li>
-          However, data, images, trademarks, etc., related to the game
-          (Warframe) displayed within the Service belong to the respective
-          copyright holders (Digital Extremes).
-        </li>
-        <li>
-          Users may not use information obtained using the Service for
-          commercial purposes or distribute it to third parties without the
-          Operator's consent.
-        </li>
-      </ul>
-
+      <P text="See the 'Legal & Copyright' section for details."/>
       <H2 text="Links"/>
       <P
-        text="If links to external websites and resources provided by third parties are included in the Service, these links are provided for user convenience. The Operator does not control the content or policies of such external sites and is not responsible for any problems arising from the user's use thereof."/>
-
-      <H2 text="Usage Restriction and Age Compliance"/>
+        text="The Service may contain links to third-party websites. The Operator does not control these sites and is not responsible for their content."/>
+      <H2 text="Age Requirement"/>
       <P
-        text="This Service is intended for users aged 14 or older. Children under 14 cannot use the Service, and Service use may be restricted if such fact is confirmed."/>
+        text="This Service is intended for users 13 years of age or older. Users under 13 are not permitted to use the Service."/>
 
-      <H2 text="Governing Law and Jurisdiction"/>
+      <H2 text="Governing Law"/>
       <P
-        text="The interpretation of these terms and disputes shall follow the laws of the Republic of Korea, and if a lawsuit is filed regarding Service use, it shall follow the competent court under the Civil Procedure Act."/>
-
+        text="These Terms are governed by the laws of the Republic of Korea. Any disputes shall be subject to the jurisdiction of the competent courts under the Civil Procedure Act."/>
       <H2 text="Addendum"/>
-      <P text="These Terms of Service may be added, deleted, or modified according to changes in laws and policies."/>
-      <P
-        text="If there are changes, they will be announced through Discord bot announcements or the official support server 7 days before enforcement."/>
+      <P text="These Terms may be updated according to changes in laws or policies."/>
       <ul className={htags.ulTag}>
-        <li>Announcement Date: December 4, 2025</li>
-        <li>Effective Date: December 5, 2025</li>
+        <li>Announcement Date: Dec 4, 2025</li>
+        <li>Effective Date: Dec 10, 2025</li>
+        <li>Last Revised: Dec 24, 2025</li>
       </ul>
     </>),
-  }, // 8. Privacy Policy
+  },
+
+  // 8. Privacy Policy
   privacy: {
     id: "privacy", title: "Privacy Policy", desc: (<>
       <p>
-        {COMMON.companyEn} (hereinafter 'Operator') operating the{" "}
-        {COMMON.nameEn} Bot (hereinafter 'Service') values the
-        user's personal information and does its best to protect the user's
-        personal information.
+        {COMMON.company} ("Operator"), operating the {COMMON.nameEn} ("Service"), values your privacy and is committed
+        to
+        protecting your personal information.
       </p>
-      <P
-        text="By using the bot, you are deemed to agree to this Privacy Policy. If you do not agree, you must stop using the bot."/>
+      <P text="By using the bot, you agree to this Privacy Policy."/>
 
-      <H2 text="Items of Personal Information Collected"/>
-      <P
-        text="The Operator collects the following minimum information for smooth service provision and problem resolution."/>
+      <H2 text="Items Collected"/>
+      <P text="We collect the following info to provide services and solve issues:"/>
       <ul className={htags.ulTag}>
-        <li>
-          <strong>User Identification Information</strong>: Discord User ID,
-          Nickname
-        </li>
-        <li>
-          <strong>Usage Environment Information</strong>: Name and ID of the
-          server (Guild) where the command was used, Channel Name and ID
-        </li>
-        <li>
-          <strong>Service Usage Records</strong>: Commands used, data entered
-          through pop-ups (Modals), error logs
-        </li>
+        <li><strong>User Identification</strong>: Discord User ID, Nickname</li>
+        <li><strong>Environment Info</strong>: Server (Guild) Name/ID, Channel Name/ID where commands are used.</li>
+        <li><strong>Usage Logs</strong>: Used commands, data entered via Modals, error logs.</li>
       </ul>
 
       <H2 text="Collection Method"/>
-      <P text="Automatically generated and collected during bot usage"/>
+      <P text="Automatically collected during bot usage."/>
 
-      <H2 text="Purpose of Collection and Use of Personal Information"/>
-      <P
-        text="Collected information is not used for purposes other than the following, and prior consent will be sought if the purpose changes."/>
-
+      <H2 text="Purpose of Collection"/>
       <ol className={htags.olTag}>
-        <li>
-          <strong>Service Provision and Feature Execution</strong>: Providing
-          core bot features and user identification
-        </li>
-        <li>
-          <strong>Error Resolution and Technical Support</strong>: Tracking
-          errors and bugs occurring during service use, responding to user
-          inquiries
-        </li>
-        <li>
-          <strong>Service Improvement</strong>: Identifying preferred features
-          through usage statistics analysis to improve existing features or
-          use as data for new feature development
-        </li>
+        <li><strong>Service Provision</strong>: Core features and user identification.</li>
+        <li><strong>Support & Debugging</strong>: Tracking bugs and responding to inquiries.</li>
+        <li><strong>Improvement</strong>: Analyzing usage statistics to improve features.</li>
+        <li><strong>Security</strong>: Identifying banned users.</li>
       </ol>
 
-      <H2 text="Personal Information Retention Period"/>
+      <H2 text="Retention Period"/>
       <P
-        text="In principle, the user's personal information is destroyed without delay once the purpose of collection and use is achieved. However, the following information is retained for the period specified below for the following reasons."/>
+        text="Personal information is destroyed immediately once the purpose is achieved, with the following exceptions:"/>
       <ul className={htags.ulTag}>
-        <li>
-          <strong>Retained Items</strong>: Service usage records and log data
-        </li>
-        <li>
-          <strong>Retention Period</strong>: Maximum 1 year from collection
-          date
-        </li>
-        <li>
-          <strong>Retention Reason</strong>: Securing statistical data for
-          preventing service abuse and improving features
-        </li>
-        <li>
-          <strong>Upon Service Termination</strong>: If the bot service
-          termination is confirmed, all collected information will be
-          immediately destroyed upon service termination.
-        </li>
+        <li><strong>Items</strong>: Usage logs and records.</li>
+        <li><strong>Period</strong>: Up to 1 year.</li>
+        <li><strong>Reason</strong>: Statistics for improvement and prevention of abuse.</li>
+        <li><strong>Service Termination</strong>: All data is destroyed upon the termination of the Service.</li>
       </ul>
-      <P
-        text="However, if retention is necessary under relevant laws, the Operator retains the information for a certain period set by the relevant laws."/>
+      <P text="Information on banned users may be retained until the Service ends."/>
 
-      <H2 text="Destruction Procedure and Method of Information"/>
-      <P
-        text="When the time for personal information destruction arrives, it is destroyed by the following methods."/>
+      <H2 text="Destruction Method"/>
       <ul className={htags.ulTag}>
-        <li>
-          <strong>Procedure</strong>: Personal information for which the
-          retention period has elapsed or the processing purpose has been
-          achieved is safely destroyed according to internal policies.
-        </li>
-        <li>
-          <strong>Electronic File Form</strong>: Permanently deleted using
-          technical methods that cannot be restored or regenerated.
-        </li>
+        <li><strong>Procedure</strong>: Data is safely destroyed after the retention period.</li>
+        <li><strong>Method</strong>: Permanent deletion using technical methods that make recovery impossible.</li>
       </ul>
 
-      <H2 text="Provision of Personal Information to Third Parties"/>
+      <H2 text="Third-Party Provision"/>
       <P
-        text="The Operator does not, in principle, provide the user's personal information externally. However, the following cases are exceptions."/>
+        text="We do not provide personal info to third parties, except when required by law or investigative agencies."/>
+
+      <H2 text="User Rights"/>
+      <P text="Users may request to view or delete their personal information at any time."/>
       <ul className={htags.ulTag}>
-        <li>When the user has agreed in advance</li>
-        <li>
-          When requested by investigation agencies in accordance with
-          procedures and methods prescribed by laws for investigation purposes
-          or under the provisions of laws
-        </li>
+        <li><strong>How to Request</strong>: Contact via email or the Support Server.</li>
+        <li><strong>Scope</strong>: Access, correction, deletion, or suspension of processing.</li>
       </ul>
 
-      <H2 text="User Rights and How to Exercise Them"/>
-      <P text="Users can view their registered personal information or request deletion at any time."/>
-      <ul className={htags.ulTag}>
-        <li>
-          <strong>How to Exercise Rights</strong>: Request via email or
-          official support server through writing, chat, etc.
-        </li>
-        <li>
-          <strong>Requestable Matters</strong>: Personal information access,
-          correction, deletion, suspension of processing
-        </li>
-      </ul>
-
-      <H2 text="Measures to Ensure Safety of Personal Information"/>
-      <P text="The Operator takes the following measures to ensure the safety of personal information."/>
+      <H2 text="Security Measures"/>
       <ol className={htags.ulTag}>
-        <li>
-          <strong>Administrative Measures</strong>: Minimizing the number of
-          personnel with access to personal information to Operators.
-        </li>
-        <li>
-          <strong>Technical Measures</strong>:
-        </li>
-        <ul className={htags.ulTag}>
-          <li>
-            Stored data is kept in storage devices with OS (Operating System)
-            level encryption technology applied.
-          </li>
-          <li>
-            Encrypted communication protocols are used during external
-            transmission.
-          </li>
-          <li>
-            Systems are protected from hacking or viruses through regular
-            software updates.
-          </li>
-        </ul>
+        <li><strong>Administrative</strong>: Access is limited to the Operator.</li>
+        <li><strong>Technical</strong>: Data encryption, encrypted communication, and regular security updates.</li>
       </ol>
 
-      <H2 text="Personal Information Protection Officer and Contact"/>
-      <P
-        text="Please contact the channel below for all personal information protection-related complaints occurring during service use."/>
+      <H2 text="Contact Info"/>
+      <P text="For privacy-related inquiries:"/>
       <ul className={htags.ulTag}>
-        <li>
-          Officer: Executive(Server Administrator) with nickname{" "}
-          <strong>Cat</strong> (Founding Clan Role)
-        </li>
+        <li>Responsible: {COMMON.company}</li>
         <li>Email: {process.env.REACT_APP_CONTACT_EMAIL}</li>
-        <li>
-          <A
-            href={process.env.REACT_APP_SUPPORT_SERVER}
-            text="Discord Support Server"
-          />{" "}
-          Shortcut
-        </li>
+        <li><A href={process.env.REACT_APP_SUPPORT_SERVER} text={`${COMMON.nameEn} Support Server`}/></li>
       </ul>
 
-      <H2 text="Changes to Privacy Policy"/>
+      <H2 text="Changes to Policy"/>
       <P
-        text="This Privacy Policy may be added, deleted, or modified according to changes in laws, policies, or security technologies. If there are changes, they will be announced through Discord bot announcements or the official support server 7 days before enforcement."/>
+        text="This policy may be updated. Changes will be notified 7 days in advance via Bot Announcements."/>
       <ul className={htags.ulTag}>
-        <li>Announcement Date: December 4, 2025</li>
-        <li>Effective Date: December 5, 2025</li>
+        <li>Announcement Date: Dec 4, 2025</li>
+        <li>Effective Date: Dec 10, 2025</li>
+        <li>Last Revised: Dec 24, 2025</li>
       </ul>
     </>),
-  }, // 9. Legal Notice
+  },
+
+  // 9. Legal & Copyright
   legal: {
-    id: "legal", title: "Copyright & Legal Notice", desc: (<>
-      <H3 text="Service Copyright"/>
-      {/* <p>
-          Ownership of the Bot The source code, design, and custom mechanics of
-          {COMMON.nameEn} are the intellectual property of{" "}
-          <strong>{COMMON.companyEn}</strong>. All rights reserved.
-        </p> */}
-      <p>
-        The copyright for the proprietary source code, database structures,
-        website designs, and other elements related to the development and
-        operation of {COMMON.name} (hereinafter referred to as
-        the “Service”) belongs to the developer {COMMON.companyEn}.
+    id: "legal", title: "Legal & Copyright", desc: (<>
+      <H3 text="Operator Rights"/>
+      <p>The copyright for the source code, database structure, and website design of {COMMON.nameEn} belongs to the
+        developer, {COMMON.company}.
       </p>
-      <p>
-        Service users may not copy, modify, distribute the code of this
-        service, or create any derivative works without the operator's
-        explicit written consent. (However, portions released as open source
-        shall follow the applicable license.)
+      <p>Users may not copy, modify, or distribute the code without written permission.
+        (Open-source components follow their respective licenses.)
       </p>
-
       <H3 text="Third-Party Content"/>
-      <p>
-        Warframe Intellectual Property Portions of the materials used are
-        trademarks and/or copyrighted works of Digital Extremes Ltd. All
-        rights reserved by Digital Extremes Ltd. This material is not official
-        and is not endorsed by Digital Extremes.
+      <p>All intellectual property rights regarding <strong>Warframe</strong> (art, logos, text, data) belong
+        to <strong>Digital Extremes Ltd.</strong>
       </p>
-      <p>
-        Warframe© and the Warframe logo are trademarks of Digital Extremes
-        Ltd. The game-related images used in this service are intended solely
-        for informational purposes and are not intended to infringe upon the
-        rights of the copyright holder.
+      <p><strong>Warframe©</strong> is a registered trademark of Digital Extremes Ltd.
+        Images and content used in this service are for informational purposes only, with no intent to infringe on
+        copyright.
       </p>
 
-      <H3 text="Disclaimer"/>
-      <p>
-        This bot is a fan-made utility tool. It is not affiliated with,
-        endorsed, sponsored, or specifically approved by Digital Extremes Ltd.
-        The information provided by this service may differ from the actual
-        game content due to updates.
+      <H3 text="Unofficial Fan Project Notice"/>
+      <p>This service is an <strong>Unofficial</strong> project created by a fan.
+        <strong>'{COMMON.nameEn}'</strong> is not affiliated with, endorsed, sponsored, or approved by Digital Extremes
+        Ltd.
+        Information provided may differ from the actual game due to updates.
       </p>
     </>),
-  }, // 10. Contact
+  },
   contact: {
     id: "contact", title: "Need Help?", foot: (<>
-      {/* <H3 text="You can contact us in the following situations." /> */}
       <ul className={htags.ulTag}>
-        <li>
-          If the issue persists even after following the 'FAQ' troubleshooting
-          steps
-        </li>
-        <li>Report Abuse</li>
-        <li>Report Bug</li>
-        <li>Other Bot Inquiries, Suggestions</li>
+        <li>If the FAQ didn't solve your problem</li>
+        <li>Reporting abusive users</li>
+        <li>Bug reports</li>
+        <li>Suggestions & Feedback</li>
       </ul>
 
       <H3 text="How to Contact"/>
-      <P text="Please choose one of the methods below to contact the person in charge."/>
+      <P text="Please contact us via:"/>
       <ul className={htags.ulTag}>
         <li>
-          Submit to{" "}
-          <A
-            href={process.env.REACT_APP_SUPPORT_SERVER}
-            text="Official Support Server"
-          />
-          <br/>
-          <span className={tw.txt.dark}>
-              (Clicking the blue text takes you to the support server invite.)
-            </span>
+          <A href={process.env.REACT_APP_SUPPORT_SERVER} text="Official Support Server"/> <br/>
+          <span className={tw.txt.dark}>(Click the blue text to join the server.)</span>
         </li>
-        {/* <li>
-            Use the <strong className={htags.graveTag}>/inquiry</strong> command
-            to submit an inquiry
-          </li> */}
       </ul>
-      <P
-        text="If you need to attach image files such as screenshots, please submit them on the official support server."/>
-      <P text="Feedback is always welcome."/>
-      <NOTE
-        color="red"
-        icon="alert"
-        title="Notice"
-        text={<ul>
-          <li>
-            In the case of <strong>User Reporting</strong>,{" "}
-            <strong>
-              reception is only possible with specific reasons
-            </strong>
-            .
-          </li>
-          <li>
-            If there is no clear evidence such as screenshots, sanctions may
-            not be imposed even if a report is filed.
-          </li>
-        </ul>}
+      <P text="If you need to attach screenshots, please use the Support Server."/>
+      <P text="Feedback is always welcome!"/>
+      <NOTE color='orange' icon='alert' title="Please use the Support Server for faster responses."
+            text='(Direct Messages (DMs) may be missed or delayed.)'/>
+      <NOTE color="red" icon="alert" title="Reporting Users" text={<>
+        <strong>User reports</strong> require <strong>specific evidence</strong>.<br/>
+        Without proof (e.g., screenshots), we may not be able to take action.
+      </>}
       />
     </>),
   },
