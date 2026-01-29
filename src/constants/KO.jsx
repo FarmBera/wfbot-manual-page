@@ -636,7 +636,7 @@ export const uiTextsKo = {
       {
         q: "봇을 개인 서버에 추가하고 싶어요", a: (<>
           추가 가능합니다!<br/>
-          우측 사용자 목록에서 고양이 프라임 봇을 찾아 '앱 추가하기' 버튼을 눌러서 개인 서버에 추가할 수 있어요.<br/><br/>
+          우측 사용자 목록에서 {COMMON.name} 봇을 찾아 '앱 추가하기' 버튼을 눌러서 개인 서버에 추가할 수 있어요.<br/><br/>
           단, 다음 기능들은 개인 서버에서 사용할 수 없습니다. ({process.env.REACT_APP_SERVER_NAME} 독점 제공)
           <P/>
           <ul className={htags.ulTag}>
@@ -762,8 +762,8 @@ export const uiTextsKo = {
         <li><strong>보존 사유</strong>: 기능 개선을 위한 통계 데이터 확보 및 서비스 부정 이용 방지</li>
         <li><strong>서비스 종료 시</strong>: 봇 서비스 종료가 확정될 경우, 서비스 종료와 함께 수집된 모든 정보는 즉시 파기됩니다.</li>
       </ul>
-      <P text="단, 부정 사용자 식별 정보는 서비스가 종료될 때 까지 보관될 수 있습니다."/>
-      <P text="또한, 관계 법령의 규정에 의하여 보존할 필요가 있는 경우, 운영자는 해당 법령에서 정한 일정한 기간 동안 정보를 보관할 수 있습니다."/>
+      {/*<P text="단, 부정 사용자 식별 정보는 서비스가 종료될 때 까지 보관될 수 있습니다."/>*/}
+      <P text="관계 법령의 규정에 의하여 보존할 필요가 있는 경우, 운영자는 해당 법령에서 정한 일정한 기간 동안 정보를 보관할 수 있습니다."/>
 
       <H2 text="정보의 파기절차 및 방법"/>
       <P text="개인정보 파기 시점 도래 시 다음의 방법으로 파기합니다."/>
@@ -801,7 +801,7 @@ export const uiTextsKo = {
       <H2 text="개인정보 보호 책임자 및 연락처"/>
       <P text="서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 관리자에게 문의해 주시기 바랍니다."/>
       <ul className={htags.ulTag}>
-        <li>책임자: {COMMON.company} (창설클랜 역할)</li>
+        <li>책임자: {COMMON.company} (서버운영진 역할)</li>
         <li>이메일: {process.env.REACT_APP_CONTACT_EMAIL}</li>
         <li><A href={process.env.REACT_APP_SUPPORT_SERVER} text={`${COMMON.name} 디스코드 지원 서버`}/> 바로가기</li>
       </ul>
