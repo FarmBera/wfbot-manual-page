@@ -857,7 +857,7 @@ export const uiTextsEn = {
       <P text="For privacy-related inquiries:"/>
       <ul className={htags.ulTag}>
         <li>Responsible: {COMMON.company}</li>
-        <li>Email: {process.env.REACT_APP_CONTACT_EMAIL}</li>
+        {/*<li>Email: {process.env.REACT_APP_CONTACT_EMAIL}</li>*/}
         <li><A href={process.env.REACT_APP_SUPPORT_SERVER} text={`${COMMON.nameEn} Support Server`}/></li>
       </ul>
 

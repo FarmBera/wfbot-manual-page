@@ -802,7 +802,7 @@ export const uiTextsKo = {
       <P text="서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 관리자에게 문의해 주시기 바랍니다."/>
       <ul className={htags.ulTag}>
         <li>책임자: {COMMON.company} (서버운영진 역할)</li>
-        <li>이메일: {process.env.REACT_APP_CONTACT_EMAIL}</li>
+        {/*<li>이메일: {process.env.REACT_APP_CONTACT_EMAIL}</li>*/}
         <li><A href={process.env.REACT_APP_SUPPORT_SERVER} text={`${COMMON.name} 디스코드 지원 서버`}/> 바로가기</li>
       </ul>
 
