@@ -263,33 +263,24 @@ const UserManual = () => {
     {isMobile && (<div
       className={`fixed top-0 left-0 w-full h-14 ${tw.l.bg_main} border-b dark:border-gray-700 z-20 flex items-center justify-between px-4 shadow-lg ${tw.tcd} ${tw.bg.dim}`}
     >
-      <div
-        className={`flex items-center space-x-2 font-bold ${tw.txt.theme}`}
-      >
+      <div className={`flex items-center space-x-2 font-bold ${tw.txt.theme}`}>
         {/* <Book size={20} /> */}
         <BotLogo/>
         <span className="text-xl">{uiText.docTitle}</span>
       </div>
       <div className="flex items-center space-x-2">
         {/* mobile dark mode toggle btn */}
-        <button
-          onClick={toggleDarkMode}
-          className={`p-2 ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} ${tw.tcd}`}
-        >
+        <button onClick={toggleDarkMode}
+                className={`p-2 ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} ${tw.tcd}`}>
           {isDarkMode ? <Moon size={28}/> : <Sun size={28}/>}
         </button>
 
         {/* language dropdown */}
         <div className="relative lang-dropdown">
-          <button
-            onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-            className={`flex items-center space-x-1 p-2 ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} ${tw.tc}`}
-          >
+          <button onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                  className={`flex items-center space-x-1 p-2 ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} ${tw.tc}`}>
             <Globe size={26}/>
-            <ChevronDown
-              size={20}
-              className={`transition-transform ${tw.d2} ${isLangMenuOpen ? "rotate-180" : ""}`}
-            />
+            <ChevronDown size={20} className={`transition-transform ${tw.d2} ${isLangMenuOpen ? "rotate-180" : ""}`}/>
           </button>
 
           {/* lang menu pop-up */}
@@ -299,8 +290,7 @@ const UserManual = () => {
             {languages.map((l) => (<button
               key={l.code}
               onClick={() => handleLangSelect(l.code)}
-              className={`
-                      w-full text-left px-4 py-2.5 text-sm flex items-center justify-between ${tw.txt.theme} ${tw.txt.themeHoverBg} ${tw.tc} ${tw.d2}
+              className={`w-full text-left px-4 py-2.5 text-sm flex items-center justify-between ${tw.txt.theme} ${tw.txt.themeHoverBg} ${tw.tc} ${tw.d2}
                       ${lang === l.code ? `${tw.txt.theme} font-lg ${tw.bg.indigo} ${tw.tcd}` : `${tw.txt.normal} ${tw.tc} ${tw.d2}`}
                     `}
             >
@@ -310,19 +300,14 @@ const UserManual = () => {
           </div>)}
         </div>
 
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`p-2 ${tw.txt.normal}`}
-        >
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={`p-2 ${tw.txt.normal}`}>
           {isMobileMenuOpen ? <X size={36}/> : <Menu size={36}/>}
         </button>
       </div>
     </div>)}
     {/* sidebar */}
     <aside
-      style={{
-        width: isMobile ? "399px" : `${SIDEBAR_WIDTH}px`, maxWidth: "100%",
-      }}
+      style={{width: isMobile ? "399px" : `${SIDEBAR_WIDTH}px`, maxWidth: "100%"}}
       className={`
           z-30 h-full ${tw.bg.point} border-r ${tw.border.dim}
           flex flex-col transition-transform duration-300 ease-in-out
@@ -335,9 +320,7 @@ const UserManual = () => {
       >
         {/* text area */}
         <div className="flex items-center space-x-2">
-          <div
-            // className: "p-2"
-            className={`p-0 rounded-lg ${tw.txt.theme} ${tw.tcd}`}
+          <div className={`p-0 rounded-lg ${tw.txt.theme} ${tw.tcd}`} // className: "p-2"
           >
             <BotLogo/> {/* <Book size={24} /> */}
           </div>
@@ -353,10 +336,9 @@ const UserManual = () => {
 
         <div className="flex items-center space-x-2">
           {/* btn: dark mode toggle */}
-          <button
-            onClick={toggleDarkMode}
-            className={`p-2 rounded-lg ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} border ${tw.border.dim}  ${tw.d2}`}
-            title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          <button onClick={toggleDarkMode}
+                  className={`p-2 rounded-lg ${tw.txt.theme} ${tw.txt.themeHover} ${tw.txt.themeHoverBg} border ${tw.border.dim}  ${tw.d2}`}
+                  title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
             {isDarkMode ? <Moon size={18}/> : <Sun size={18}/>}
           </button>
@@ -371,9 +353,8 @@ const UserManual = () => {
               <span className="text-sm font-medium">
                     {languages.find((l) => l.code === lang).label}
                   </span>
-              <ChevronDown
-                size={14}
-                className={`${tw.txt.dark} transition-transform duration-200 ${isLangMenuOpen ? "rotate-180" : ""}`}
+              <ChevronDown size={14}
+                           className={`${tw.txt.dark} transition-transform duration-200 ${isLangMenuOpen ? "rotate-180" : ""}`}
               />
             </button>
 
@@ -381,10 +362,8 @@ const UserManual = () => {
               className={`absolute right-0 top-full mt-2 w-36 ${tw.bg.dim} rounded-xl shadow-xl border ${tw.border.gray} py-1.5 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100`}
             >
               {languages.map((l) => (<button
-                key={l.code}
-                onClick={() => handleLangSelect(l.code)}
-                className={`
-                      w-full text-left px-4 py-2 text-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors
+                key={l.code} onClick={() => handleLangSelect(l.code)}
+                className={`w-full text-left px-4 py-2 text-sm flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors
                       ${lang === l.code ? `${tw.txt.theme} font-bold ${tw.bg.theme}` : `${tw.txt.normal}`}
                     `}
               >
@@ -415,8 +394,7 @@ const UserManual = () => {
       {/* navigation menu */}
       <nav ref={sidebarRef} className="flex-1 overflow-y-auto p-4 space-y-1">
         <div
-          className={`text-xl center font-semibold ${tw.txt.dark} uppercase tracking-wider mb-2 ml-2 mt-2 ${tw.tcd}`}
-        >
+          className={`text-xl center font-semibold ${tw.txt.dark} uppercase tracking-wider mb-2 ml-2 mt-2 ${tw.tcd}`}>
           {uiText.contents}
         </div>
         {currentSections.map((section) => {
@@ -440,9 +418,7 @@ const UserManual = () => {
                       ${isActive ? `${tw.txt.theme}` : `${tw.txt.normal}`}
                     `}
               >
-                    <span
-                      className={`transition-colors ${isActive ? `${tw.txt.theme}` : `${tw.txt.dark}`}`}
-                    >
+                    <span className={`transition-colors ${isActive ? `${tw.txt.theme}` : `${tw.txt.dark}`}`}>
                       {section.icon}
                     </span>
                 <span className={`${section.strong}`}>{section.title}</span>
@@ -455,15 +431,12 @@ const UserManual = () => {
                   e.stopPropagation();
                   toggleExpand(section.id);
                 }}
-                className={`
-                        p-1 rounded-md transition-colors ml-1
-                        ${isActive ? `${tw.txt.theme} hover:bg-gray-300 dark:hover:bg-gray-500 hover:text-gray-600 dark:hover:text-gray-300` : `${tw.txt.dim} hover:bg-gray-300 dark:hover:bg-gray-500 hover:text-gray-600 dark:hover:text-gray-300`}
-                      `}
+                className={`p-1 rounded-md transition-colors ml-1
+                  ${isActive ? `${tw.txt.theme} hover:bg-gray-300 dark:hover:bg-gray-500 hover:text-gray-600 dark:hover:text-gray-300` : `${tw.txt.dim} hover:bg-gray-300 dark:hover:bg-gray-500 hover:text-gray-600 dark:hover:text-gray-300`}
+                `}
               >
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
-                />
+                <ChevronDown size={16}
+                             className={`transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}/>
               </button>)}
             </div>
 
@@ -491,15 +464,9 @@ const UserManual = () => {
       </nav>
 
       {/* copyright */}
-      <div
-        className={`p-4 border-t ${tw.border.dim} text-xs text-center ${tw.txt.dark} ${tw.tcd}`}
-      >
-        <a
-          className="inline-block mb-3 rounded-2xl bg-yellow-400 text-gray-950 font-bold text-xl p-3"
-          href={process.env.REACT_APP_DONATION}
-          target="_blank"
-          rel="noreferrer"
-        >
+      <div className={`p-4 border-t ${tw.border.dim} text-xs text-center ${tw.txt.dark} ${tw.tcd}`}>
+        <a className="inline-block mb-3 rounded-2xl bg-yellow-400 text-gray-950 font-bold text-xl p-3"
+           href={process.env.REACT_APP_DONATION} target="_blank" rel="noreferrer">
           {uiText.donate}
         </a>
         <div></div>
@@ -513,14 +480,11 @@ const UserManual = () => {
     />)}
 
     {/* main content (manual page) */}
-    <main
-      ref={contentRef}
-      className={`flex-1 h-full overflow-y-auto ${tw.main.bg} scroll-smooth relative ${tw.tcd}`}
+    <main ref={contentRef}
+          className={`flex-1 h-full overflow-y-auto ${tw.main.bg} scroll-smooth relative ${tw.tcd}`}
     >
       <div
-        style={{
-          width: isMobile ? "100%" : `${CONTENT_WIDTH}px`,
-        }}
+        style={{width: isMobile ? "100%" : `${CONTENT_WIDTH}px`}}
         className="mx-auto max-w-4xl px-6 py-10 md:py-16 mt-10 md:mt-0"
       >
         {currentSections.map((section, index) => (<section
@@ -528,12 +492,8 @@ const UserManual = () => {
           id={section.id}
           className={`mb-16 scroll-mt-20 ${tw.main.secBg} p-8 rounded-xl shadow-sm border ${tw.border.gray} transition-all hover:shadow-md ${tw.tcd}`}
         >
-          <div
-            className={`flex items-center space-x-3 mb-6 pb-4 border-b ${tw.border.gray} ${tw.tcd}`}
-          >
-            <div
-              className={`p-2 ${tw.main.secIconBg} rounded-lg ${tw.txt.theme} ${tw.bg.theme} ${tw.tcd}`}
-            >
+          <div className={`flex items-center space-x-3 mb-6 pb-4 border-b ${tw.border.gray} ${tw.tcd}`}>
+            <div className={`p-2 ${tw.main.secIconBg} rounded-lg ${tw.txt.theme} ${tw.bg.theme} ${tw.tcd}`}>
               {section.icon}
             </div>
             <h2 className={`text-2xl font-bold ${tw.txt.light} ${tw.tcd}`}>
@@ -541,9 +501,7 @@ const UserManual = () => {
             </h2>
           </div>
 
-          <div
-            className={`prose prose-indigo dark:prose-invert max-w-none ${tw.txt.normal} ${tw.tcd}`}
-          >
+          <div className={`prose prose-indigo dark:prose-invert max-w-none ${tw.txt.normal} ${tw.tcd}`}>
             {section.content}
           </div>
 
@@ -551,16 +509,12 @@ const UserManual = () => {
           {index < currentSections.length - 1 && (<div
             className={`mt-10 pt-6 border-t border-dashed ${tw.border.dim} flex justify-end ${tw.tcd}`}
           >
-            <button
-              onClick={() => scrollToSection(currentSections[index + 1].id)}
-              className={`group flex items-center text-md font-medium ${tw.txt.theme} hover:text-indigo-800 dark:hover:text-indigo-300 ${tw.tcd}`}
+            <button onClick={() => scrollToSection(currentSections[index + 1].id)}
+                    className={`group flex items-center text-md font-medium ${tw.txt.theme} hover:text-indigo-800 dark:hover:text-indigo-300 ${tw.tcd}`}
             >
               {uiText.next}:{" "}
               {currentSections[index + 1].title.split(". ")[1] || currentSections[index + 1].title}
-              <ChevronRight
-                size={16}
-                className="ml-1 group-hover:translate-x-1 transition-transform"
-              />
+              <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform"/>
             </button>
           </div>)}
         </section>))}

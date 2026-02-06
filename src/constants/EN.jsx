@@ -693,16 +693,8 @@ export const uiTextsEn = {
         </>),
       }, {
         q: "Can I add this bot to my personal server?", a: (<>
-          Yes!<br/>
-          Click the bot's profile in the user list and click "Add App" to invite it to your server.<br/><br/>
-          However, the following features are in Beta and require approval:<br/>
-          <P/>
-          <ul className={htags.ulTag}>
-            <li>Party Recruitment</li>
-            <li>Item Trading</li>
-            <li>Contact Support</li>
-          </ul>
-          If you want to be a beta tester, please <ContactMe/>
+          This bot is a feature exclusively available on the '{process.env.REACT_APP_SERVER_NAME}' server and cannot be
+          used on other servers.
         </>),
       }, {
         q: "Have other questions?", a: <ContactMe/>,
@@ -857,8 +849,10 @@ export const uiTextsEn = {
       <P text="For privacy-related inquiries:"/>
       <ul className={htags.ulTag}>
         <li>Responsible: {COMMON.company}</li>
-        {/*<li>Email: {process.env.REACT_APP_CONTACT_EMAIL}</li>*/}
-        <li><A href={process.env.REACT_APP_SUPPORT_SERVER} text={`${COMMON.nameEn} Support Server`}/></li>
+        <li>Email: <A href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}
+                      text={process.env.REACT_APP_CONTACT_EMAIL}/>
+        </li>
+        {/*<li><A href={process.env.REACT_APP_SUPPORT_SERVER} text={`${COMMON.nameEn} Discord Support Server`}/></li>*/}
       </ul>
 
       <H2 text="Changes to Policy"/>
@@ -912,15 +906,23 @@ export const uiTextsEn = {
       <P text="Please contact us via:"/>
       <ul className={htags.ulTag}>
         <li>
-          <A href={process.env.REACT_APP_SUPPORT_SERVER} text="Official Support Server"/> <br/>
+          <A href={process.env.REACT_APP_SUPPORT_SERVER} text="Discord Support Server"/> <br/>
           <span className={tw.txt.dark}>(Click the blue text to join the server.)</span>
         </li>
+        <li>Email: <A href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}
+                      text={process.env.REACT_APP_CONTACT_EMAIL}/>
+          <br/>
+          <span className={tw.txt.dark}>(Click the blue text to send email.)</span>
+        </li>
       </ul>
-      <P text="If you need to attach screenshots, please use the Support Server."/>
-      <P text="Feedback is always welcome!"/>
-      <NOTE color='orange' icon='alert' title="Please use the Support Server for faster responses."
-            text='(Direct Messages (DMs) may be missed or delayed.)'/>
-      <NOTE color="red" icon="alert" title="Reporting Users" text={<>
+      <P text="Feedback is Always Welcome!"/>
+      <NOTE color='orange' icon='alert' title="We do not accept inquiries via private DM."
+            text={<>
+              Direct Messages (DM) may be missed or delayed.<br/>
+              For quick and accurate responses, please use the contact methods listed above for all inquiries and bug
+              reports.
+            </>}/>
+      <NOTE color="red" icon="alert" title="About Reporting Users" text={<>
         <strong>User reports</strong> require <strong>specific evidence</strong>.<br/>
         Without proof (e.g., screenshots), we may not be able to take action.
       </>}

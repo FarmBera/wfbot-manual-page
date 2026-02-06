@@ -1,8 +1,8 @@
-// 앱 기본 정보 (언어 공통)
+// app default information
 export const COMMON = {
-  name: "고양이 프라임",
-  nameEn: "Cat Prime",
-  version: `v1.3.0-rc`,
+  name: "오디스",
+  nameEn: "Clan Bot",
+  version: `v1.4.0-rc`,
   company: <strong>'고양이' 간부진</strong>,
   companyEn: <strong>Admin who have nickname: 'Cat'</strong>,
   year: 2025,
