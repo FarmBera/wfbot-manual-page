@@ -175,7 +175,8 @@ export const uiTextsKo = {
       desc: "[베타버전] 이번주 헥스 캘린더 할일/보상 목록 등을 확인할 수 있어요.",
       image: `${IMG_PATH}calendar${IMG_EXT}`,
       width: "50%",
-      head: (<><P text="현재 개선 중인 명령어로, 가독성이 떨어지거나 일부 오표기된 정보가 표시될 수 있습니다."/></>),
+      head: (<NOTE color="yellow" icon="alert" title="안내"
+                   text="해당 명령어는 현재 베타 버전으로, 일부 번역이 안된 텍스트가 있을 수 있습니다. 이용에 참고 바랍니다."/>),
     }, {
       id: SUB.CAMBIONCYCLE,
       title: "캠비온퇴적지주기",
@@ -249,7 +250,6 @@ export const uiTextsKo = {
       id: "cmd-arbitration", title: "중재", desc: "현재 진행중인 중재 미션 종류를 확인할 수 있어요.", foot: (<>
         <DocImage src={`${IMG_PATH}arbitration${IMG_EXT}`} maxWidth="50%" caption="/중재 명령어 예시"/>
       </>),
-
     }, {
       id: "cmd-complain", title: "문의하기", desc: "서버에 대한 문의 및 건의사항을 접수할 수 있어요. (사용자 신고, 서버 문의사항 등)", foot: (<>
         <H2 text={'불만 접수 전, 아래 내용을 꼭 확인해주세요.'}/>
@@ -846,6 +846,7 @@ export const uiTextsKo = {
       <H3 text="연락 방법"/>
       <P text="아래 방법 중 하나를 선택하여 담당자에게 연락 바랍니다."/>
       <ul className={htags.ulTag}>
+        <li>디스코드 서버 내 <span className={htags.graveTag}>/문의하기</span> 명령어 이용 (이미지 첨부 불가)</li>
         <li>
           <A href={process.env.REACT_APP_SUPPORT_SERVER} text="디스코드 지원 서버"/>에 접수 <br/>
           <span className={tw.txt.dark}>(파란색 글씨를 클릭하면 디스코드 서버 초대장으로 이동합니다.)</span>
