@@ -5,7 +5,7 @@ import {uiTextsEn} from "./EN";
 export {COMMON as APP_INFO};
 
 // integrated UI text
-export const UI_TEXTS = {
+export const UI_TEXTS: Record<string, any> = {
     ko: uiTextsKo,
     en: uiTextsEn,
 };

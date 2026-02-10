@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {getOrdisMsg} from './getOrdisMsg';
 
-export const useOrdisMsg = () => {
-    const [message, setMessage] = useState('');
+export const useOrdisMsg = (): React.ReactNode => {
+    const [message, setMessage] = useState<React.ReactNode>('');
 
     useEffect(() => {
         // message decision at mount point

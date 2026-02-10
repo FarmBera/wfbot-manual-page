@@ -1,10 +1,12 @@
+import React from 'react';
+
 // app default information
 export const COMMON = {
     name: "오디스",
     nameEn: "Clan Bot",
     version: `v1.4.0-rc`,
-    company: <strong>'고양이' 간부진</strong>,
-    companyEn: <strong>Admin who have nickname: 'Cat'</strong>,
+    company: <strong>'고양이' 간부진</strong> as React.ReactNode,
+    companyEn: <strong>Admin who have nickname: 'Cat'</strong> as React.ReactNode,
     year: 2025,
 };
 

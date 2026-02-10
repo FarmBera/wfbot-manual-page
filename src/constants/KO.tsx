@@ -20,8 +20,7 @@ export const uiTextsKo = {
     footerMsg: "문서의 끝부분 입니다.",
     donate: "☕️ 개발자 후원하기",
     copyright: (<>
-        (C) {COMMON.year}. {COMMON.company}. All rights reserved.
-        <br/>
+        (C) {COMMON.year}. {COMMON.company}. All rights reserved.<br/>
         단, 워프레임 관련 이미지/데이터의 저작권은 Digital Extremes Ltd.에 있음
     </>),
     picEx: "내용 예시",
@@ -337,7 +336,7 @@ export const uiTextsKo = {
                         </ul>
                         <li>이후 '파티생성' 을 검색하여 해당 명령어를 선택해주세요.</li>
                     </ul>
-                    <DocImage src={`${IMG_PATH}party-cmd0${IMG_EXT}`} alt="명령어 검색 결과" caption="명령어 검색 결과"/>
+                    <DocImage src={`${IMG_PATH}party-cmd0${IMG_EXT}`} caption="명령어 검색 결과"/>
                     <h4 className={htags.H4}> 입력 할 수 있는 내용으로 총 5가지가 있습니다. <br/></h4>
                     <ul className={htags.ulTag}>
                         <li><span className={htags.graveTag}>파티_제목</span>: 모집 글 제목</li>

@@ -397,8 +397,7 @@ export const uiTextsEn = {
                         </ul>
                         <li>Search for 'party' or 'create' and select the command.</li>
                     </ul>
-                    <DocImage src={`${IMG_PATH}party-cmd0${IMG_EXT}`} alt="Command search result"
-                              caption="Command search result"/>
+                    <DocImage src={`${IMG_PATH}party-cmd0${IMG_EXT}`} caption="Command search result"/>
                     <h4 className={htags.H4}> There are 5 input fields available. <br/></h4>
                     <ul className={htags.ulTag}>
                         <li><span className={htags.graveTag}>title</span>: Title of your post</li>

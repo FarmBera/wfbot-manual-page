@@ -6,9 +6,24 @@ import {htags, tw, TXT_SIZE} from "../style/tailwind";
 import DocImage from "../components/DocImage";
 import {H2, H3, HR, P, UL_LINK_GRID} from "../ui/CustomElements";
 
-export const getManualSections = (t, isMobile) => {
+// interfaces
+export interface SubSection {
+    id: string;
+    title: string;
+}
+
+export interface Section {
+    id: string;
+    title: string;
+    icon: React.ReactNode;
+    content: React.ReactNode;
+    subSections?: SubSection[];
+    strong?: string;
+}
+
+export const getManualSections = (t: any, isMobile: boolean): Section[] => {
     // setup automatic image width
-    const getImageWidth = (customWidth) => {
+    const getImageWidth = (customWidth?: string) => {
         if (isMobile) return "90%";
         return customWidth || "60%";
     };
@@ -28,9 +43,9 @@ export const getManualSections = (t, isMobile) => {
             <H2 text={t.features.mainTitle}/>
             {t.features.head}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {t.features.items.map((item, idx) => (<div
-                    key={idx}
-                    className={`border ${tw.border.dim} p-4 rounded-lg shadow-sm dark:shadow-sm hover:shadow-md dark:hover:shadow-xl transition-shadow ${tw.tcd}`}>
+                {t.features.items.map((item: any, idx: number) => (<div
+                    className={`border ${tw.border.dim} p-4 rounded-lg shadow-sm dark:shadow-sm hover:shadow-md dark:hover:shadow-xl transition-shadow ${tw.tcd}`}
+                    key={idx}>
                     <h4 className={`font-bold text-lg mb-2 ${tw.txt.theme}`}>
                         {item.title}
                     </h4>
@@ -46,12 +61,14 @@ export const getManualSections = (t, isMobile) => {
             </div>
         </div>),
     }, {
-        id: t.manual.id, title: t.manual.title, icon: <Terminal size={18}/>, subSections: t.manual.list.map((cmd) => ({
+        id: t.manual.id, title: t.manual.title, icon: <Terminal size={18}/>,
+        subSections: t.manual.list.map((cmd: any) => ({
             id: cmd.id, title: cmd.title,
-        })), content: (<div className="space-y-4">
+        })),
+        content: (<div className="space-y-4">
             <H2 text={t.manual.mainTitle}/>
-            <UL_LINK_GRID content={[...t.manual.list].sort((a, b) => a.title.localeCompare(b.title))}/>
-            {t.manual.list.map((cmd, idx) => (<div key={cmd.id} className="mt-12 first:mt-8">
+            <UL_LINK_GRID content={[...t.manual.list].sort((a: any, b: any) => a.title.localeCompare(b.title))}/>
+            {t.manual.list.map((cmd: any) => (<div key={cmd.id} className="mt-12 first:mt-8">
                 <HR/>
                 <H3 id={cmd.id} text={`/${cmd.title}`}/>
                 <P text={cmd.desc}/>
@@ -62,7 +79,6 @@ export const getManualSections = (t, isMobile) => {
                         <strong className="font-extrabold">/{cmd.title}</strong>{" "}
                         {t.picEx}
                     </>}
-                    alt={cmd.title}
                     maxWidth={getImageWidth(cmd.width)}
                 />)}
                 {cmd.foot && (<div className={`mt-2 ${TXT_SIZE} ${tw.txt.normal}`}>
@@ -71,42 +87,38 @@ export const getManualSections = (t, isMobile) => {
             </div>))}
         </div>),
     }, {
-        id: t.party.id, title: t.party.title, icon: <UsersRound size={18}/>, subSections: t.party.list.map((item) => ({
+        id: t.party.id, title: t.party.title, icon: <UsersRound size={18}/>,
+        subSections: t.party.list.map((item: any) => ({
             id: item.id, title: item.title,
-        })), content: (<div className="space-y-4">
+        })),
+        content: (<div className="space-y-4">
             <H2 text={t.party.mainTitle}/>
             <UL_LINK_GRID content={t.party.list}/>
-            {t.party.list.map((item) => (<div key={item.id} className="mt-12 first:mt-8">
+            {t.party.list.map((item: any) => (<div key={item.id} className="mt-12 first:mt-8">
                 <HR/>
                 <H3 id={item.id} text={item.title}/>
                 <P text={item.desc}/>
                 {item.head}
-                {item.image && (<DocImage
-                    src={item.image}
-                    caption={`${item.title} 명령어 출력 예시`}
-                    maxWidth={getImageWidth(item.width)}
-                    alt={item.title}
-                />)}
+                {item.image && (<DocImage src={item.image} caption={`${item.title} 명령어 출력 예시`}
+                                          maxWidth={getImageWidth(item.width)}/>)}
                 {item.foot}
             </div>))}
         </div>),
     }, {
-        id: t.trade.id, title: t.trade.title, icon: <Handshake size={18}/>, subSections: t.trade.list.map((item) => ({
+        id: t.trade.id, title: t.trade.title, icon: <Handshake size={18}/>,
+        subSections: t.trade.list.map((item: any) => ({
             id: item.id, title: item.title,
-        })), content: (<div className="space-y-4">
+        })),
+        content: (<div className="space-y-4">
             <H2 text={t.trade.mainTitle}/>
             <UL_LINK_GRID content={t.trade.list}/>
-            {t.trade.list.map((item) => (<div key={item.id} className="mt-12 first:mt-8">
+            {t.trade.list.map((item: any) => (<div key={item.id} className="mt-12 first:mt-8">
                 <HR/>
                 <H3 id={item.id} text={item.title}/>
                 <P text={item.desc}/>
                 {item.head}
-                {item.image && (<DocImage
-                    src={item.image}
-                    caption={item.title}
-                    alt={item.title}
-                    maxWidth={getImageWidth(item.width)}
-                />)}
+                {item.image && (
+                    <DocImage src={item.image} caption={item.title} maxWidth={getImageWidth(item.width)}/>)}
                 {item.foot}
             </div>))}
         </div>),
@@ -117,7 +129,7 @@ export const getManualSections = (t, isMobile) => {
         content: (<div className="space-y-4">
             <H2 text={t.troubleshooting.mainTitle}/>
             <div className="space-y-4">
-                {t.troubleshooting.list.map((qna, idx) => (// className="border-b pb-4"
+                {t.troubleshooting.list.map((qna: any, idx: number) => (// className="border-b pb-4"
                     <div key={idx}>
                         {idx !== 0 && <HR/>}
                         <div className={`${htags.H4} ${tw.bold.b}`}>Q. {qna.q}</div>
