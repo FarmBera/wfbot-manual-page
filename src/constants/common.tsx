@@ -1,0 +1,42 @@
+import React from 'react';
+
+// app default information
+export const COMMON = {
+    name: "오디스",
+    nameEn: "Clan Bot",
+    version: `v1.4.0-rc`,
+    company: <strong>'고양이' 간부진</strong> as React.ReactNode,
+    companyEn: <strong>Admin who have nickname: 'Cat'</strong> as React.ReactNode,
+    year: 2025,
+};
+
+export const SUB = {
+    HELP: "cmd-help",
+    ANNOUNCEMENT: "cmd-announcement",
+    PATCHNOTE: "cmd-patchnote",
+    PRIVACY: "cmd-privacy",
+    ALERTS: "Alerts",
+    NEWS: "Events",
+    CETUSCYCLE: 'cetusCycle',
+    SORTIE: "Sorties",
+    ARCHONHUNT: "LiteSorties",
+    VOIDTRADERS: "VoidTraders",
+    VOIDTRADERSITEM: "VoidTradersItem",
+    STEELPATH: "steelPath",
+    FISSURES: "ActiveMissions",
+    DEEPARCHIMEDEA: "ConquestsDeep",
+    TEMPORALARCHIMEDEA: "ConquestsTemporal",
+    DUVIRICYCLE: 'duviriCycle',
+    CALENDAR: "KnownCalendarSeasons",
+    CAMBIONCYCLE: 'cambionCycle',
+    DAILYDEALS: "DailyDeals",
+    INVASIONS: "Invasions",
+    VALLISCYCLE: "vallisCycle",
+    MARKET_SEARCH: "market-search",
+    MARKET_HELP: "market-help",
+    PARTY_CREATE: "partys",
+    TRADE_CREATE: "trades",
+    DUVIRI_WF: "EndlessXpChoicesWF",
+    DUVIRI_INC: "EndlessXpChoicesINC",
+    EVENTS: "Goals",
+};

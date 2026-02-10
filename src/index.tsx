@@ -3,14 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./style/index.css";
 import App from "./UserManual";
 import reportWebVitals from "./reportWebVitals";
-import { Analytics } from "@vercel/analytics/react";
+import {Analytics} from "@vercel/analytics/react";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Failed to find the root element");
+
+const root = ReactDOM.createRoot(rootElement);
 root.render(
-  <React.StrictMode>
-    <App />
-    <Analytics />
-  </React.StrictMode>
+    <React.StrictMode>
+        <App/>
+        <Analytics/>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
