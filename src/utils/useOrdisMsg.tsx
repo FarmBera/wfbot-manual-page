@@ -7,6 +7,7 @@ export const useOrdisMsg = (): React.ReactNode => {
     useEffect(() => {
         // message decision at mount point
         const msg = getOrdisMsg();
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMessage(msg);
     }, []);
 

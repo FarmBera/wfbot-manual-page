@@ -338,7 +338,7 @@ export const uiTextsEn = {
                             deletion and
                             penalties according to server rules.
                         </li>
-                        <li>You can check the server rules <A text="here." href={process.env.REACT_APP_SERVER_RULE}/>
+                        <li>You can check the server rules <A text="here." href={import.meta.env.VITE_SERVER_RULE}/>
                         </li>
                     </ul>
                     <P
@@ -751,7 +751,7 @@ export const uiTextsEn = {
                 </>),
             }, {
                 q: "Can I add this bot to my personal server?", a: (<>
-                    This bot is a feature exclusively available on the '{process.env.REACT_APP_SERVER_NAME}' server and
+                    This bot is a feature exclusively available on the '{import.meta.env.VITE_SERVER_NAME}' server and
                     cannot be
                     used on other servers.
                 </>),
@@ -919,10 +919,10 @@ export const uiTextsEn = {
             <P text="For privacy-related inquiries:"/>
             <ul className={htags.ulTag}>
                 <li>Responsible: {COMMON.company}</li>
-                <li>Email: <A href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}
-                              text={process.env.REACT_APP_CONTACT_EMAIL}/>
+                <li>Email: <A href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
+                              text={import.meta.env.VITE_CONTACT_EMAIL}/>
                 </li>
-                {/*<li><A href={process.env.REACT_APP_SUPPORT_SERVER} text={`${COMMON.nameEn} Discord Support Server`}/></li>*/}
+                {/*<li><A href={import.meta.env.VITE_SUPPORT_SERVER} text={`${COMMON.nameEn} Discord Support Server`}/></li>*/}
             </ul>
 
             <H2 text="Changes to Policy"/>
@@ -979,11 +979,11 @@ export const uiTextsEn = {
             <P text="Please contact us via:"/>
             <ul className={htags.ulTag}>
                 <li>
-                    <A href={process.env.REACT_APP_SUPPORT_SERVER} text="Discord Support Server"/> <br/>
+                    <A href={import.meta.env.VITE_SUPPORT_SERVER} text="Discord Support Server"/> <br/>
                     <span className={tw.txt.dark}>(Click the blue text to join the server.)</span>
                 </li>
-                <li>Email: <A href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}
-                              text={process.env.REACT_APP_CONTACT_EMAIL}/>
+                <li>Email: <A href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
+                              text={import.meta.env.VITE_CONTACT_EMAIL}/>
                     <br/>
                     <span className={tw.txt.dark}>(Click the blue text to send email.)</span>
                 </li>
