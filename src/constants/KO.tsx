@@ -288,7 +288,7 @@ export const uiTextsKo = {
                         <li>파티를 생성하고 활동(파티원의 참여/탈퇴, 모집상태 변환 등)이 없다면 <strong>30일 후에 자동으로 모집 종료</strong> 됩니다.</li>
                         <li>파티를 생성 및 수정할 때 입력되는 내용은 모두에게 공개되는 내용입니다. <strong>민감한 개인정보는 입력하지 말아주세요.</strong></li>
                         <li><strong>서버 규칙이 동일하게 적용</strong>됩니다. 부적절한 단어 사용 시, 게시글 자동 삭제 & 서버 규칙에 따라 제재 및 처벌됩니다.</li>
-                        <li>서버 규칙은 <A text="이곳에서" href={process.env.REACT_APP_SERVER_RULE}/> 확인할 수 있습니다.</li>
+                        <li>서버 규칙은 <A text="이곳에서" href={import.meta.env.VITE_SERVER_RULE}/> 확인할 수 있습니다.</li>
                     </ul>
                     <P text="금지사항을 위반하여 적발된 경우, 다른 분들에게 피해가 갈 우려가 있으므로 당사자는 클랜 서버에서 '인게임 닉네임' 을 전체 공개하고 경고를 받습니다."/>
                     <P/>
@@ -653,7 +653,7 @@ export const uiTextsKo = {
         </>)},*/
             {
                 q: "봇을 개인 서버에 추가하고 싶어요", a: (<>
-                    이 봇은 {process.env.REACT_APP_SERVER_NAME} 서버에 독점 제공되는 기능으로, 타 서버에서는 사용할 수 없습니다.
+                    이 봇은 {import.meta.env.VITE_SERVER_NAME} 서버에 독점 제공되는 기능으로, 타 서버에서는 사용할 수 없습니다.
                 </>),
             }, {
                 q: "기타 궁금한 사항이나 문의사항이 있다면?", a: <ContactMe/>,
@@ -816,10 +816,10 @@ export const uiTextsKo = {
             <P text="서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 관리자에게 문의해 주시기 바랍니다."/>
             <ul className={htags.ulTag}>
                 <li>책임자: {COMMON.company} (서버운영진 역할)</li>
-                <li>이메일: <A href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}
-                            text={process.env.REACT_APP_CONTACT_EMAIL}/>
+                <li>이메일: <A href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
+                            text={import.meta.env.VITE_CONTACT_EMAIL}/>
                 </li>
-                {/*<li><A href={process.env.REACT_APP_SUPPORT_SERVER} text={`${COMMON.name} 디스코드 지원 서버`}/> 바로가기</li>*/}
+                {/*<li><A href={import.meta.env.VITE_SUPPORT_SERVER} text={`${COMMON.name} 디스코드 지원 서버`}/> 바로가기</li>*/}
             </ul>
 
             <H2 text="개인정보 처리방침의 변경"/>
@@ -870,11 +870,11 @@ export const uiTextsKo = {
             <ul className={htags.ulTag}>
                 <li>디스코드 서버 내 <span className={htags.graveTag}>/문의하기</span> 명령어 이용 (이미지 첨부 불가)</li>
                 <li>
-                    <A href={process.env.REACT_APP_SUPPORT_SERVER} text="디스코드 지원 서버"/>에 접수 <br/>
+                    <A href={import.meta.env.VITE_SUPPORT_SERVER} text="디스코드 지원 서버"/>에 접수 <br/>
                     <span className={tw.txt.dark}>(파란색 글씨를 클릭하면 디스코드 서버 초대장으로 이동합니다.)</span>
                 </li>
-                <li>이메일 접수: <A href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL}`}
-                               text={process.env.REACT_APP_CONTACT_EMAIL}/>
+                <li>이메일 접수: <A href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
+                               text={import.meta.env.VITE_CONTACT_EMAIL}/>
                     <br/>
                     <span className={tw.txt.dark}>(파란색 글씨를 클릭하면 메일 발송 페이지로 이동합니다.)</span>
                 </li>

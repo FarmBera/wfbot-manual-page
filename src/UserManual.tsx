@@ -1,25 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Check, ChevronDown, ChevronRight, Globe, Menu, Moon, Sun, X,} from "lucide-react";
 import {APP_INFO, UI_TEXTS} from "./constants/constants";
-import {getManualSections} from "./data/manualData";
+import {getManualSections, type Section, type SubSection} from "./data/manualData";
 import {tw} from "./style/tailwind";
 import BotLogo from "./components/BotLogo";
 
 // interfaces
-interface SubSection {
-    id: string;
-    title: string;
-}
-
-interface Section {
-    id: string;
-    title: string;
-    icon: React.ReactNode;
-    content: React.ReactNode;
-    subSections?: SubSection[];
-    strong?: string;
-}
-
 interface Language {
     code: string;
     label: string;
@@ -69,7 +55,7 @@ const UserManual: React.FC = () => {
     // create section structure based on current lang object
 
     // load data
-    const uiText = UI_TEXTS[lang];
+    const uiText: any = UI_TEXTS[lang];
     const currentSections: Section[] = getManualSections(uiText, isMobile);
 
     const languages: Language[] = [{code: "ko", label: "한국어"}, {code: "en", label: "English"},];
@@ -132,8 +118,8 @@ const UserManual: React.FC = () => {
             const scrollPosition = contentRef.current.scrollTop + 120;
 
             const allTrackableItems = currentSections.flatMap((section) => {
-                const items = [section];
-                if (section.subSections) items.push(...(section.subSections as any));
+                const items: (Section | SubSection)[] = [section];
+                if (section.subSections) items.push(...(section.subSections as SubSection[]));
                 return items;
             });
 
@@ -262,7 +248,6 @@ const UserManual: React.FC = () => {
                 img.removeEventListener("load", handleImageLoad);
             });
         };
-        // eslint-disable-next-line
     }, [lang, currentSections, activeSection]); // Re-attach listeners when content changes
 
     // update resize handler to use TOTAL_WIDTH_TRIGGER
@@ -273,7 +258,7 @@ const UserManual: React.FC = () => {
     }, []);
 
     // update resize handler to use TOTAL_WIDTH_TRIGGER
-    return (<div className={`flex h-screen font-sans overflow-hidden break-keep ${tw.tcd}`}>
+    return (<div className={`font-cst flex h-screen overflow-hidden break-keep ${tw.tcd}`}>
         {/* Mobile Header */}
         {isMobile && (<div
             className={`fixed top-0 left-0 w-full h-14 ${tw.l.bg_main} border-b dark:border-gray-700 z-20 flex items-center justify-between px-4 shadow-lg ${tw.tcd} ${tw.bg.dim}`}>
@@ -403,7 +388,7 @@ const UserManual: React.FC = () => {
                     const hasSubSections = section.subSections && section.subSections.length > 0;
 
                     return (<div key={section.id} className="mb-1">
-                        <div className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all cursor-pointer sticky top-[-16px] z-10
+                        <div className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all cursor-pointer sticky -top-4 z-10
                     ${isActive ? `${tw.bg.theme} shadow-lg` : `${tw.bg.dim} ${tw.bg.hover}`}`}
                              onClick={(e) => handleItemClick(e, section)}
                         >
@@ -460,7 +445,7 @@ const UserManual: React.FC = () => {
             {/* copyright */}
             <div className={`p-4 border-t ${tw.border.dim} text-xs text-center ${tw.txt.dark} ${tw.tcd}`}>
                 <a className="inline-block mb-3 rounded-2xl bg-yellow-400 text-gray-950 font-bold text-xl p-3"
-                   href={process.env.REACT_APP_DONATION} target="_blank" rel="noreferrer">
+                   href={import.meta.env.VITE_DONATIONREACT_APP_DONATION} target="_blank" rel="noreferrer">
                     {uiText.donate}
                 </a>
                 <div></div>
