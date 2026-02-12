@@ -4,7 +4,7 @@ import {htags, tw} from "../style/tailwind";
 import {A, BOLD, H2, H3, NOTE, P} from "../ui/CustomElements";
 // import TipTime from "../components/TipTime";
 import DocImage from "../components/DocImage";
-import {ContactMe} from "../components/ContactAdmin";
+import {ContactMeEn} from "../components/ContactAdmin.tsx";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".webp";
@@ -18,8 +18,8 @@ export const uiTextsEn = {
     footerMsg: "End of document.",
     donate: "☕️ Support the Developer",
     copyright: (<>
-        (C) {COMMON.year}. {COMMON.company}. All rights reserved.<br/>
-        Warframe art and related data are copyrighted by Digital Extremes Ltd.
+        (C) {COMMON.year}. {COMMON.companyEn}. All rights reserved.<br/>
+        Warframe art & related data are copyrighted by Digital Extremes Ltd.
     </>),
     picEx: "Example",
 
@@ -230,7 +230,7 @@ export const uiTextsEn = {
                 <P text="Clicking the item name in blue will take you directly to the market search result page."/>
             </>), image: `${IMG_PATH}market-search-result${IMG_EXT}`, foot: (<>
                 <NOTE color="yellow" icon="alert" title="Notice"
-                      text={<>If an item doesn't appear in the search results, please <ContactMe/></>}
+                      text={<>If an item doesn't appear in the search results, please <ContactMeEn/></>}
                 />
             </>),
         }, {
@@ -300,7 +300,7 @@ export const uiTextsEn = {
                 <p className={htags.pTag}>
                     <strong>This feature is for contacting the specific server's administrators.</strong><br/>
                     <span
-                        className={`${tw.txt.orange} ${tw.bold.eb}`}>If you have inquiries about the BOT itself, please <ContactMe/></span>
+                        className={`${tw.txt.orange} ${tw.bold.eb}`}>If you have inquiries about the BOT itself, please <ContactMeEn/></span>
                 </p>
                 <ul className={htags.ulTag}>
                     <li>Once submitted, the content cannot be edited. Please write carefully.</li>
@@ -743,10 +743,10 @@ export const uiTextsEn = {
                                 wait until
                                 maintenance is over.
                             </li>
-                            <li>If the bot is Offline, please <ContactMe/></li>
+                            <li>If the bot is Offline, please <ContactMeEn/></li>
                         </ul>
                         <li>Try reloading Discord as mentioned above.</li>
-                        <li>If the issue persists, it may be an unexpected server error.<br/><ContactMe/></li>
+                        <li>If the issue persists, it may be an unexpected server error.<br/><ContactMeEn/></li>
                     </ul>
                 </>),
             }, {
@@ -756,7 +756,7 @@ export const uiTextsEn = {
                     used on other servers.
                 </>),
             }, {
-                q: "Have other questions?", a: <ContactMe/>,
+                q: "Have other questions?", a: <ContactMeEn/>,
             },],
     },
 
@@ -764,7 +764,7 @@ export const uiTextsEn = {
     terms: {
         id: "tos", title: "Terms of Service", desc: (<>
             <H2 text="Purpose"/>
-            <p>These Terms of Service ("Terms") govern the relationship between {COMMON.company} ("Operator"), the
+            <p>These Terms of Service ("Terms") govern the relationship between {COMMON.companyEn} ("Operator"), the
                 provider of
                 the {COMMON.nameEn} service ("Service"), and the user.
             </p>
@@ -842,7 +842,7 @@ export const uiTextsEn = {
             <ul className={htags.ulTag}>
                 <li>Announcement Date: Dec 4, 2025</li>
                 <li>Effective Date: Dec 10, 2025</li>
-                <li>Last Revised: Dec 24, 2025</li>
+                <li>Last Revised: Feb 12, 2026</li>
             </ul>
         </>),
     },
@@ -851,7 +851,7 @@ export const uiTextsEn = {
     privacy: {
         id: "privacy", title: "Privacy Policy", desc: (<>
             <p>
-                {COMMON.company} ("Operator"), operating the {COMMON.nameEn} ("Service"), values your privacy and is
+                {COMMON.companyEn} ("Operator"), operating the {COMMON.nameEn} ("Service"), values your privacy and is
                 committed
                 to
                 protecting your personal information.
@@ -918,7 +918,7 @@ export const uiTextsEn = {
             <H2 text="Contact Info"/>
             <P text="For privacy-related inquiries:"/>
             <ul className={htags.ulTag}>
-                <li>Responsible: {COMMON.company}</li>
+                <li>Responsible: {COMMON.companyEn}</li>
                 <li>Email: <A href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
                               text={import.meta.env.VITE_CONTACT_EMAIL}/>
                 </li>
@@ -942,7 +942,7 @@ export const uiTextsEn = {
             <H3 text="Operator Rights"/>
             <p>The copyright for the source code, database structure, and website design of {COMMON.nameEn} belongs to
                 the
-                developer, {COMMON.company}.
+                developer, {COMMON.companyEn}.
             </p>
             <p>Users may not copy, modify, or distribute the code without written permission.
                 (Open-source components follow their respective licenses.)
@@ -978,14 +978,15 @@ export const uiTextsEn = {
             <H3 text="How to Contact"/>
             <P text="Please contact us via:"/>
             <ul className={htags.ulTag}>
-                <li>
-                    <A href={import.meta.env.VITE_SUPPORT_SERVER} text="Discord Support Server"/> <br/>
-                    <span className={tw.txt.dark}>(Click the blue text to join the server.)</span>
+                <li>Use the <span className={htags.graveTag}>/contact-us</span> command within the Discord server
+                    (images cannot be attached)
                 </li>
-                <li>Email: <A href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
-                              text={import.meta.env.VITE_CONTACT_EMAIL}/>
-                    <br/>
-                    <span className={tw.txt.dark}>(Click the blue text to send email.)</span>
+                <li>Send Email: <A href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}
+                                   text={import.meta.env.VITE_CONTACT_EMAIL}/>
+                </li>
+                <li>
+                    Send message in <A href={import.meta.env.VITE_SUPPORT_SERVER} text="Discord Support Server"/> <br/>
+                    <span className={tw.txt.dark}>(Click the blue text to join the server.)</span>
                 </li>
             </ul>
             <P text="Feedback is Always Welcome!"/>
@@ -993,8 +994,7 @@ export const uiTextsEn = {
                   text={<>
                       Direct Messages (DM) may be missed or delayed.<br/>
                       For quick and accurate responses, please use the contact methods listed above for all inquiries
-                      and bug
-                      reports.
+                      and bug reports.
                   </>}/>
             <NOTE color="red" icon="alert" title="About Reporting Users" text={<>
                 <strong>User reports</strong> require <strong>specific evidence</strong>.<br/>
