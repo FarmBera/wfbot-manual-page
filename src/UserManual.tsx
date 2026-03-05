@@ -258,7 +258,7 @@ const UserManual: React.FC = () => {
     }, []);
 
     // update resize handler to use TOTAL_WIDTH_TRIGGER
-    return (<div className={`font-cst flex h-screen overflow-hidden break-keep ${tw.tcd}`}>
+    return (<div className={`font-cst flex h-screen overflow-hidden break-keep ${tw.tcd} select-none `}>
         {/* Mobile Header */}
         {isMobile && (<div
             className={`fixed top-0 left-0 w-full h-14 ${tw.l.bg_main} border-b dark:border-gray-700 z-20 flex items-center justify-between px-4 shadow-lg ${tw.tcd} ${tw.bg.dim}`}>

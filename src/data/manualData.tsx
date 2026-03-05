@@ -35,8 +35,8 @@ export const getManualSections = (t: any, isMobile: boolean): Section[] => {
             <p className={`${tw.txt.dim} ${tw.tcd} leading-relaxed whitespace-pre-line`}>
                 {t.intro.welcomeDesc}
             </p>
-            <DocImage src="/logo.webp" maxWidth="40%" caption={t.intro.imgDesc}/>
-            {t.intro.foot}
+            {/*<DocImage src="/logo.webp" maxWidth="40%" caption={t.intro.imgDesc}/>*/}
+            {/*{t.intro.foot}*/}
         </div>),
     }, {
         id: t.features.id, title: t.features.title, icon: <Zap size={18}/>, content: (<div className="space-y-6">

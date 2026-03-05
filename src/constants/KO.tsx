@@ -6,6 +6,7 @@ import {A, BOLD, H2, H3, NOTE, P} from "../ui/CustomElements";
 import DocImage from "../components/DocImage";
 import {ContactMe} from "../components/ContactAdmin";
 import {getOrdisMsg} from "../utils/getOrdisMsg";
+import TaskInfo from "../components/TaskInfo.tsx";
 
 const IMG_PATH = "/imgko/";
 const IMG_EXT = ".webp";
@@ -25,7 +26,7 @@ export const uiTextsKo = {
     </>),
     picEx: "내용 예시",
 
-    // 1. 소개 섹션
+
     intro: {
         id: "intro", title: "1. 소개", welcomeTitle: (<>
             <strong className={`${tw.txt.blue}`}>{COMMON.name}</strong> 봇 홈페이지에 오신 것을 환영합니다!
@@ -33,8 +34,7 @@ export const uiTextsKo = {
             왼쪽의 목차를 통해 원하는 정보로 빠르게 이동할 수 있습니다. <br/>
             3, 4, 5번 목차는 봇 사용법에 대해서 담고 있습니다.
         </>), foot: <span className={`flex items-center justify-center text-xl`}><i>{ordis_msg}</i></span>, note: "",
-    }, // 2. 주요 기능 섹션
-    features: {
+    }, features: {
         id: "features",
         title: "2. 그래서 이게 뭘 하는 봇인데요?",
         mainTitle: "핵심만 빠르게 살펴보죠!",
@@ -64,8 +64,7 @@ export const uiTextsKo = {
                 또한 마켓 가격을 기반, 자동 가격 책정 기능이 내장되어있어, 초보자 분들도 시세 걱정없이 거래 게시글을 작성할 수 있어요.
             </>),
         },],
-    }, // 3. 명령어 섹션
-    manual: {
+    }, manual: {
         id: "manual", title: "3. 사용 가능한 명령어", mainTitle: "모든 명령어 목록", list: [{
             id: SUB.HELP,
             title: "도움말",
@@ -199,6 +198,10 @@ export const uiTextsKo = {
             title: "침공",
             desc: "특별 아이템(포르마, 오로킨 리액터/카탈리스트 등)을 획득할 수 있는 침공 목록을 확인할 수 있어요.",
             image: `${IMG_PATH}invasions${IMG_EXT}`,
+            foot: (<>
+                <P text="만약 포르마, 오로킨 카탈리스트/리액터 등 특별 아이템을 가진 침공이 없다면 아래와 같은 메시지가 뜹니다."/>
+                <DocImage src={`${IMG_PATH}invasions-no${IMG_EXT}`} caption='특별 침공 미션이 없을 때' maxWidth='60%'/>
+            </>)
         }, {
             id: SUB.VALLISCYCLE,
             title: "오브협곡주기",
@@ -270,9 +273,8 @@ export const uiTextsKo = {
                 <DocImage src={`${IMG_PATH}complain${IMG_EXT}`} caption="/문의하기 명령어 예시" maxWidth='60%'/>
             </>),
         },],
-    }, // 4. 파티 섹션
-    party: {
-        id: "party", title: "4. 파티 모집 기능", mainTitle: "파티 모집 명령어", list: [// 파티 기능 개요
+    }, party: {
+        id: "party", title: "4. 파티 모집 기능", mainTitle: "파티 모집 명령어", list: [
             {
                 id: "party-intro", title: "기능 개요", desc: (<>
                     <P text="간편하게 파티 구인 글을 생성할 수 있습니다."/>
@@ -317,9 +319,11 @@ export const uiTextsKo = {
                     <p className={htags.pTag}>
                         초록색 <span className={`${tw.txt.green} font-extrabold`}>참여하기</span> 버튼을 누르면 파티에 참여할 수 있습니다</p>
                     <p>참가하기 버튼을 누른 뒤에 확인창이 나타나면 <span className={`${tw.txt.green} font-extrabold`}>Yes (진행)</span> 버튼을
-                        눌러 파티에
-                        참가합니다.</p>
+                        눌러 파티에 참가합니다.</p>
                     <DocImage src={`${IMG_PATH}party-confirm-join${IMG_EXT}`} caption="파티 참가 확인 메시지"/>
+
+                    <p>파티 참가에 성공한다면 완료 메시지와 함께 파티장에게 알림이 갑니다.</p>
+                    <DocImage src={`${IMG_PATH}party-confirm-joined${IMG_EXT}`} caption="파티 참가 확인 메시지"/>
 
                     <h4 className={htags.H4}>파티 탈퇴</h4>
                     <p className={htags.pTag}> 빨간색 <span className={`${tw.txt.red} font-extrabold`}>탈퇴하기</span> 버튼을 누르면
@@ -353,9 +357,10 @@ export const uiTextsKo = {
                     <h4 className={htags.H4}>원하는 내용으로 채워주세요.</h4>
                     (상단에 어떤 내용이 들어가야할지 알려주는 문구가 있으니 참고바랍니다)
                     <DocImage src={`${IMG_PATH}party-cmd-input${IMG_EXT}`} maxWidth="100%" caption="원하는 내용으로 채워주세요."/>
-                    입력 후 엔터 키를 눌러 전송을 하면 <strong>'파티모집'</strong> 채널에 공개 스레드 및 모집 글이 생성됩니다.
-                    <DocImage src={`${IMG_PATH}party-created${IMG_EXT}`} maxWidth="80%" caption="파티 생성 완료 메시지"/>
-                    파란색 배경의 링크를 클릭하면 해당 모집글로 바로 이동할 수 있습니다. <br/>또는 직접 파티모집 채널로 이동해주세요.
+                    입력 후 엔터 키를 눌러 전송을 하면 <strong>'파티모집'</strong> 채널에 공개 스레드 및 모집 글이 생성됩니다.<br/><br/>
+                    파란색 배경의 링크를 클릭하면 해당 모집글로 바로 이동할 수 있습니다.<br/>또는 직접 파티모집 채널로 이동해주세요.
+                    <DocImage src={`${IMG_PATH}party-create0${IMG_EXT}`} maxWidth='80%' caption='생성 대기 안내문'/>
+                    <TaskInfo/>
                     <DocImage src={`${IMG_PATH}party-created2${IMG_EXT}`} maxWidth="80%" caption="생성된 파티"/>
                 </>),
             }, {
@@ -391,11 +396,13 @@ export const uiTextsKo = {
                     <DocImage src={`${IMG_PATH}party-mod3-result${IMG_EXT}`} caption="글 수정 결과"/>
                 </>),
             }, {
-                id: "party-change-departure", title: "(4-3) 출발 시간 변경", desc: "출발 시간을 변경할 수 있습니다.", foot: (<>
-                    <p className={htags.pTag}>
-                        <strong>출발일 변경</strong> 버튼을 누르면 다음과 같은 창이 표시됩니다.<br/>
-                        원하는 출발 시간을 자연어로 입력할 수 있습니다.<br/>
-                    </p>
+                id: "party-change-departure",
+                title: "(4-3) 출발 시간 변경",
+                desc: "출발 시간을 변경할 수 있습니다.",
+                foot: (<><p className={htags.pTag}>
+                    <strong>출발일 변경</strong> 버튼을 누르면 다음과 같은 창이 표시됩니다.<br/>
+                    원하는 출발 시간을 자연어로 입력할 수 있습니다.<br/>
+                </p>
                     <DocImage src={`${IMG_PATH}party-departure${IMG_EXT}`} caption="모집 완료 상태"/>
                 </>),
             }, {
@@ -457,30 +464,26 @@ export const uiTextsKo = {
                     <DocImage src={`${IMG_PATH}party-confirm-delete${IMG_EXT}`} caption="모집 종료 버튼 클릭 후 내용 예"/>
                     <p className={htags.pTag}><strong>Yes (진행)</strong> 버튼을 누르면 모집이 영구 종료됩니다. </p>
                     <P text='아래 사진과 같이 글 전체를 삭제하는 것이 아닌, 게시글을 비활성화 시킵니다. (유사 아카이브 형태)'/>
-                    <DocImage src={`${IMG_PATH}party-deleted${IMG_EXT}`} maxWidth='50%' caption="모집 종료 버튼 클릭 후 내용 예"/>
+                    <DocImage src={`${IMG_PATH}party-deleted${IMG_EXT}`} maxWidth='50%'
+                              caption="모집 종료 버튼 클릭 후 내용 예"/>
                     <NOTE color="orange" icon="alert" title="주의!" text="종료 작업은 되돌릴 수 없습니다."/>
                 </>),
-            },],
-    },
-    trade: {
-        id: "trade", title: "5. 거래 기능", mainTitle: "거래 명령어", list: [// trade warnings
+            }],
+    }, trade: {
+        id: "trade", title: "5. 거래 기능", mainTitle: "거래 명령어", list: [
             {
                 id: "trade-warning",
                 title: <span className={tw.txt.red}>[필독] 기능 이용 전 주의사항</span>,
                 desc: "기능 이용 전 주의사항을 안내합니다.",
                 foot: (<div>
-                    {/* <NOTE color="yellow" icon="alert" title="알림"
-            text="본 서비스는 거래 편의를 위한 정보 공유 기능만을 제공합니다. 실제 거래 시 발생하는 모든 게임 내 재화 손실에 대한 책임은 사용자 본인에게 있습니다.
-            운영진은 회원 간의 분쟁이나 사기 피해 등에 대해 법적 책임을 지지 않습니다."
-            />*/}
-                    {/*<P />*/}
+                    {/* <NOTE color="yellow" icon="alert" title="알림" text="본 서비스는 거래 편의를 위한 정보 공유 기능만을 제공합니다. 실제 거래 시 발생하는 모든 게임 내 재화 손실에 대한 책임은 사용자 본인에게 있습니다.<br/>운영진은 회원 간의 분쟁이나 사기 피해 등에 대해 법적 책임을 지지 않습니다."/>*/}
                     <ul className={htags.ulTag}>
                         <li>거래는 <span className={tw.txt.yellow}>워프레임 아이템으로 한정</span> 합니다. (타 게임 아이템 불가)</li>
                         <li> 모든 거래 시세는 <strong>워프레임 마켓의 실시간 시세값을 기준</strong> 으로 합니다.</li>
                         {/* detailed description */}
-                        <ul className={htags.ulTag}>
+                        <ul className={`${htags.ulTag}`}>
                             <li>단, 워프레임 마켓 시세를 잘 모르는 특정 분들을 겨냥하여 <span className={`${tw.txt.yellow}`}>시세값보다
-                  <span className="font-extrabold"> 매우</span> 높은가격으로 구매하도록 매물을 올리는 것은 금지</span> 합니다.
+                                <span className="font-extrabold"> 매우</span> 높은가격으로 구매하도록 매물을 올리는 것은 금지</span> 합니다.
                             </li>
                             <li>
                                 시세를 잘 모르는 분들을 위하여, 게시되어 있는 물품의 <strong>워프레임 마켓</strong> 검색 결과를 확인할 수 있도록
@@ -500,7 +503,7 @@ export const uiTextsKo = {
                                 <A href="https://www.warframe.com/ko/eula#virtualGoods"
                                    text="워프레임 소프트웨어 사용권 계약(EULA)"/>{" "}
                                 문서의 <strong>'9. 가상 상품 및 게임 통화' - B 조항</strong>에{" "}
-                                <strong> 현금(현찰)을 주고받는 형태의 계정·아이템 현물 거래를 금지한다고 명시</strong>되어 있습니다.
+                                <strong>현금(현찰)을 주고받는 형태의 계정·아이템 현물 거래를 금지한다고 명시</strong>되어 있습니다.
                                 이에 적발 시 DE 측에서 <strong>계정을 영구 정지(밴)</strong> 시킬 수 있습니다.
                             </li>
                         </ul>
@@ -531,21 +534,21 @@ export const uiTextsKo = {
                     <DocImage src={`${IMG_PATH}trade-cmd1${IMG_EXT}`} maxWidth="50%" caption="채팅창에 거래 명령어 검색"/>
                     <p className={htags.pTag}>입력 가능한 내용은 아래와 같습니다.</p>
                     <ul className={htags.ulTag}>
-                        <li><span className={htags.graveTag}>trade_type</span>: 거래 유형. (판매/구매 중 택1)</li>
-                        <li><span className={htags.graveTag}>item_name</span>: 판매/구매 하고자 하는 아이템 이름 (마켓에서 판매하는 물품 검색 가능)
+                        <li><span className={htags.graveTag}>거래_종류</span>: 거래 유형. (판매/구매 중 택1)</li>
+                        <li><span className={htags.graveTag}>아이템_이름</span>: 판매/구매 하고자 하는 아이템 이름 (마켓에서 판매하는 물품 검색 가능)
                         </li>
                         {/*<li><span className={htags.graveTag}>game_nickname</span>: 입력값이 무시됩니다. (사용자 닉네임 기반으로 자동 설정)</li>*/}
                         {/* 워프레임 닉네임 (디스코드 닉네임 아닙니다!) */}
                         {/*<ul className={htags.ulTag}><li>귓속말 및 파티초대 명령어에 사용되기에, 정확하게 기입해주세요!</li></ul>*/}
                         <li>
-                            <span className={htags.graveTag}>item_rank</span>: [선택사항] 아케인과 같이 아이템 랭크가 존재한다면, 거래하고자 하는
+                            <span className={htags.graveTag}>아이템_랭크</span>: [선택사항] 아케인과 같이 아이템 랭크가 존재한다면, 거래하고자 하는
                             아이템의 랭크를 입력합니다
                         </li>
-                        <li><span className={htags.graveTag}>price</span>: [선택사항] 물품 개당 가격</li>
+                        <li><span className={htags.graveTag}>개당_가격</span>: [선택사항] 물품 개당 가격</li>
                         <ul className={htags.ulTag}>
                             <li> 빈칸으로 설정하면 마켓 최저가 기반 적정 가격으로 자동 설정됩니다.</li>
                         </ul>
-                        <li><span className={htags.graveTag}>quantity</span>: [선택사항] 아이템 수량. (기본값으로 1개가 설정됩니다.)</li>
+                        <li><span className={htags.graveTag}>수량</span>: [선택사항] 아이템 수량. (기본값으로 1개가 설정됩니다.)</li>
                     </ul>
                     <P text="가격을 입력하지 않고 거래 글을 게시하면 실시간 마켓 시세를 기반으로 자동으로 가격을 책정해주는 기능을 내장하였으니, 이용에 참고하시길 바랍니다."/>
                     <DocImage src={`${IMG_PATH}trade-cmd${IMG_EXT}`} maxWidth="80%" caption="거래 명령어에 입력 가능한 내용들"/>
@@ -557,7 +560,6 @@ export const uiTextsKo = {
                     <P/>
                     <p className={htags.pTag}>파란색 링크를 클릭하면 해당 거래글로 이동할 수 있어요. (또는 직접 거래하기 채널로 이동해주세요.) </p>
                     <P text='거래하기 채널에서는 원하는 스레드를 선택하여 거래 게시글을 확인할 수 있어요.'/>
-                    {/*<DocImage src={`${IMG_PATH}trade-${IMG_EXT}`} caption="거래 게시글 목록 예시"/>*/}
                 </>),
             }, {
                 id: "trade-edit", title: "(3) 거래 게시글 관련", desc: "거래 게시글에서 사용할 수 있는 기능을 소개합니다.", foot: (<>
@@ -612,8 +614,7 @@ export const uiTextsKo = {
                           text="안내 문구와 같이 모든 버튼이 비활성화되어, 게시글을 수정할 수 없고 다시 활성화할 수 없습니다."/>
                 </>),
             },],
-    },
-    troubleshooting: {
+    }, troubleshooting: {
         id: "faq", title: "자주 묻는 질문 (FAQ)", list: [// 상호작용 오류
             {
                 q: `"더는 사용되지 않는 명령어입니다. 몇 분 후에 다시 시도해 주세요." 메시지가 뜨는 경우`, a: (<>
@@ -647,10 +648,17 @@ export const uiTextsKo = {
                     이 봇은 {import.meta.env.VITE_SERVER_NAME} 서버에 독점 제공되는 기능으로, 타 서버에서는 사용할 수 없습니다.
                 </>),
             }, {
+                q: "게시글을 생성/수정하였지만, 수정 사항이 바로 반영되지 않아요.", a: (<>
+                    특정 시간대에 이용자의 요청이 집중될 경우, 시스템의 처리량 한계로 인해 생성 및 수정 작업의 반영이 다소 지연될 수 있습니다.
+                    (접수된 요청은 유실되지 않고 순차적으로 처리하고 있습니다.)<br/>
+                    현재 이러한 지연 현상을 최소화하고 더 쾌적한 환경을 제공해 드리기 위해, 내부 처리 알고리즘을 지속적으로 최적화하고 있습니다.<br/>
+                    조금 답답하시더라도 너른 마음으로 양해해 주시면 감사하겠습니다.<br/><br/>
+                    만약 1시간 이상 기다려도 처리가 안되는 경우, <ContactMe/>
+                </>),
+            }, {
                 q: "기타 궁금한 사항이나 문의사항이 있다면?", a: <ContactMe/>,
             },],
-    }, // 7. 이용 약관
-    terms: {
+    }, terms: {
         id: "tos", title: "이용 약관", desc: (<>
             <H2 text="목적"/>
             <p>본 약관은 {COMMON.name}(이하 "서비스") 봇이 제공하는 모든 기능과 콘텐츠, 웹사이트를 이용함에 있어, 서비스를 제공해드리는
@@ -731,8 +739,7 @@ export const uiTextsKo = {
                 <li>개정 일자: 2026년 02월 12일</li>
             </ul>
         </>),
-    }, // 8. 개인정보 처리방침
-    privacy: {
+    }, privacy: {
         id: "privacy", title: "개인정보 처리방침", desc: (<>
             <p>{COMMON.name}(이하 “서비스”) 봇을 운영하는 {COMMON.company}
                 (이하 “운영자”)은 사용자의 개인정보를 소중하게 생각하며, 사용자의 개인정보 보호를 위해 최선을 다하고 있습니다.
@@ -822,8 +829,7 @@ export const uiTextsKo = {
                 <li>개정 일자: 2025년 12월 24일</li>
             </ul>
         </>),
-    }, // 9. 저작권 & 법적 고지
-    legal: {
+    }, legal: {
         id: "legal", title: "저작권 및 법적 고지", desc: (<>
             <H3 text="서비스 운영자의 권리"/>
             <p>{COMMON.name}(이하 서비스) 의 개발 및 운영과 관련된 독자적인 소스 코드, 데이터베이스 구조, 웹사이트 디자인 등에 대한 저작권은
@@ -843,11 +849,15 @@ export const uiTextsKo = {
             <H3 text="비공식 팬 프로젝트 고지"/>
             <p>본 서비스는 Warframe의 팬(Fan)에 의해 만들어진 비공식(Unofficial) 프로젝트입니다.
                 <strong>'{COMMON.name}'</strong> 봇은 Digital Extremes Ltd. 와 제휴, 보증, 후원 또는 공식적인 승인 관계에 있지 않습니다.
-                본 서비스가 제공하는 정보는 게임의 업데이트에 따라 실제 게임 내용과 다를 수 있습니다.
             </p>
+
+            <H3 text='게임 내 정보 표기'/>
+            <ul className={htags.ulTag}>
+                <li>본 서비스가 제공하는 워프레임 정보는 게임의 업데이트에 따라 실제 게임 내용과 다를 수 있습니다.</li>
+                <li>월드주기 타이머는 실제 인게임 시간과 약 1~2분정도 오차가 있을 수 있습니다.</li>
+            </ul>
         </>),
-    }, // 10. 연락 방법
-    contact: {
+    }, contact: {
         id: "contact", title: "도움이 필요하신가요?", foot: (<>
             <ul className={htags.ulTag}>
                 <li>'자주 묻는 질문' 절차대로 진행해도 문제가 해결되지 않은 경우</li>
@@ -855,7 +865,6 @@ export const uiTextsKo = {
                 <li>버그 제보</li>
                 <li>기타 봇 관련 문의 / 건의 / 제안사항</li>
             </ul>
-
             <H3 text="연락 방법"/>
             <P text="아래 방법 중 하나를 선택하여 담당자에게 연락 바랍니다."/>
             <ul className={htags.ulTag}>
@@ -878,8 +887,7 @@ export const uiTextsKo = {
             <NOTE color="red" icon="alert" title="사용자 신고 시, 주의사항" text={<>
                 <strong>사용자 신고</strong>의 경우, <strong>구체적 사유가 있어야만 접수가 가능</strong>합니다.<br/>
                 스크린샷 등 확실한 증거가 없을 경우, 신고를 접수하여도 제재가 이루어지지 않을 수 있습니다.
-            </>}
-            />
+            </>}/>
         </>),
     },
 };

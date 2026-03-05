@@ -3,7 +3,7 @@ import {tw} from "../style/tailwind";
 
 export const ContactMe: React.FC = () => {
     return (<span className={`${tw.bold.b}`}>
-        좌측 사이드바의 <strong>'도움이 필요하신가요?'</strong> 섹션을 참고하여 담당자에게 연락 바랍니다.<br/>
+        좌측 사이드바의 <strong>'도움이 필요하신가요?'</strong>를 참고하여 담당자에게 연락 바랍니다.<br/>
         (모바일 사용자는 우측 상단 메뉴를 이용해주세요.)<br/>
     </span>);
 };
