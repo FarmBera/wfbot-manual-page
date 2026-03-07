@@ -139,15 +139,6 @@ export const uiTextsKo = {
                 <DocImage src={`${IMG_PATH}voidtraders-activated${IMG_EXT}`} caption="바로 키 티어가 등장했을 때 표시되는 내용"/>
             </>),
         }, {
-            id: SUB.VOIDTRADERSITEM,
-            title: "바로키티어-물품",
-            desc: "바로 키 티어가 판매하는 물품 목록을 확인할 수 있어요.",
-            image: `${IMG_PATH}voidtraders-item-yes${IMG_EXT}`,
-            foot: (<>
-                <P text="만약 바로 키 티어가 등장하지 않았다면, 아래와 같이 표시됩니다"/>
-                <DocImage src={`${IMG_PATH}voidtraders-item-no${IMG_EXT}`} caption="키 티어가 등장하지 않았을 때"/>
-            </>),
-        }, {
             id: SUB.STEELPATH,
             title: "스틸에센스",
             desc: "이번주 태신의 스틸에센스 교환 물품을 확인할 수 있어요.",
