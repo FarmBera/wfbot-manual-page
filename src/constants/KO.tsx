@@ -235,34 +235,21 @@ export const uiTextsKo = {
             image: `${IMG_PATH}circuit-incarnon${IMG_EXT}`,
             imagealt: "https://placehold.co/600x300/e2e8f0/64748b?text=Duviri+Incarnon",
         }, {
-            id: "cmd-descendia", title: "디센디아", desc: "[베타버전] 이번주 디센디아(하강) 미션 및 도전 목록을 불러옵니다.", foot: (<>
-                {/* <p className={htags.pTag}></p> */}
+            id: "cmd-descendia", title: "디센디아", desc: "[베타버전] 이번주 디센디아(하강) 미션 및 도전 목록을 불러옵니다.",
+            image: `${IMG_PATH}descendia${IMG_EXT}`,
+            foot: (<>
                 <NOTE color="yellow" icon="alert" title="안내"
                       text="해당 명령어는 현재 베타 버전으로, 일부 번역이 안된 텍스트가 있을 수 있습니다. 이용에 참고 바랍니다."/>
-                <DocImage src={`${IMG_PATH}descendia${IMG_EXT}`} caption="/디센디아 명령어 예시"/>
             </>),
         }, {
-            id: "cmd-steel-incursion", title: "강길-얼럿", desc: "오늘의 강길 얼럿 미션을 확인할 수 있어요.", foot: (<>
-                <DocImage src={`${IMG_PATH}steel-incursion${IMG_EXT}`} caption="/강길-얼럿 명령어 예시"/>
-            </>),
+            id: "cmd-steel-incursion", title: "강길-얼럿", desc: "오늘의 강길 얼럿 미션을 확인할 수 있어요.",
+            image: `${IMG_PATH}steel-incursion${IMG_EXT}`,
         }, {
-            id: "cmd-arbitration", title: "중재", desc: "현재 진행중인 중재 미션 종류를 확인할 수 있어요.", foot: (<>
-                <DocImage src={`${IMG_PATH}arbitration${IMG_EXT}`} maxWidth="50%" caption="/중재 명령어 예시"/>
-            </>),
+            id: "cmd-arbitration", title: "중재", desc: "현재 진행중인 중재 미션 종류를 확인할 수 있어요.",
+            image: `${IMG_PATH}arbitration${IMG_EXT}`,
         }, {
-            id: "cmd-complain", title: "문의하기", desc: "서버에 대한 문의 및 건의사항을 접수할 수 있어요. (사용자 신고, 서버 문의사항 등)", foot: (<>
-                <H2 text={'불만 접수 전, 아래 내용을 꼭 확인해주세요.'}/>
-                <p className={htags.pTag}>
-                    <strong>이 기능은 각 서버별 담당자에게 문의를 접수하기 위한 기능입니다.</strong><br/>
-                    <span className={`${tw.txt.orange} ${tw.bold.eb}`}>봇 관련 문의가 있으신 경우, <ContactMe/></span>
-                </p>
-                <ul className={htags.ulTag}>
-                    <li>작성한 내용은 한번 제출하면 수정이 불가합니다. 신중히 작성해주세요.</li>
-                    {/*<li>접수 게시글 또한 서버 규칙이 동일하게 적용됩니다.</li>*/}
-                    <li>신고 건의 경우 구체적인 증거가 있어야 하며, 허위 사실 기재 시 불이익이 있을 수 있습니다.</li>
-                </ul>
-                <DocImage src={`${IMG_PATH}complain${IMG_EXT}`} caption="/문의하기 명령어 예시" maxWidth='60%'/>
-            </>),
+            id: "cmd-complain", title: "문의하기", desc: "서버에 대한 문의 및 건의사항을 접수할 수 있어요. (사용자 신고, 서버 문의사항 등)",
+            image: `${IMG_PATH}complain${IMG_EXT}`,
         },],
     }, party: {
         id: "party", title: "4. 파티 모집 기능", mainTitle: "파티 모집 명령어", list: [
@@ -326,7 +313,7 @@ export const uiTextsKo = {
                     <h4 className={htags.H4}><strong>/파티생성</strong> 명령어를 이용하여 파티를 생성할 수 있어요. </h4>
                     <ul className={htags.ulTag}>
                         <li>채팅을 입력하는 곳에 / 기호를 입력하면 명령어를 사용할 수 있어요.</li>
-                        <ul className={htags.ulTag}>
+                        <ul className={htags.ulTagSub}>
                             <li>( / 키는 우측 시프트(Shift) 키 바로 왼쪽에 있어요.)</li>
                         </ul>
                         <li>이후 '파티생성' 을 검색하여 해당 명령어를 선택해주세요.</li>
@@ -338,7 +325,7 @@ export const uiTextsKo = {
                         <li><span className={htags.graveTag}>같이_할_게임이름</span>: 플레이 할 게임 이름 (워프레임, 롤, 배그 등)</li>
                         <li>[선택사항] <span className={htags.graveTag}>출발하는_날짜</span>: 파티 출발일 입력 (기본값: 미정)</li>
                         <li>[선택사항] <span className={htags.graveTag}>모집_인원_수</span>: 모집 인원 수</li>
-                        <ul className={htags.ulTag}>
+                        <ul className={htags.ulTagSub}>
                             <li><strong>기본값: 4명</strong> (워프레임 최대 파티원 수 4명)</li>
                             <li><strong>파티장(본인)을 포함</strong>한 인원 수 입니다.</li>
                             <li><strong>최대 20명</strong>까지 설정 가능합니다.</li>
@@ -461,131 +448,128 @@ export const uiTextsKo = {
                 </>),
             }],
     }, trade: {
-        id: "trade", title: "5. 거래 기능", mainTitle: "거래 명령어", list: [
-            {
-                id: "trade-warning",
-                title: <span className={tw.txt.red}>[필독] 기능 이용 전 주의사항</span>,
-                desc: "기능 이용 전 주의사항을 안내합니다.",
-                foot: (<div>
-                    {/* <NOTE color="yellow" icon="alert" title="알림" text="본 서비스는 거래 편의를 위한 정보 공유 기능만을 제공합니다. 실제 거래 시 발생하는 모든 게임 내 재화 손실에 대한 책임은 사용자 본인에게 있습니다.<br/>운영진은 회원 간의 분쟁이나 사기 피해 등에 대해 법적 책임을 지지 않습니다."/>*/}
-                    <ul className={htags.ulTag}>
-                        <li>거래는 <span className={tw.txt.yellow}>워프레임 아이템으로 한정</span> 합니다. (타 게임 아이템 불가)</li>
-                        <li> 모든 거래 시세는 <strong>워프레임 마켓의 실시간 시세값을 기준</strong> 으로 합니다.</li>
-                        {/* detailed description */}
-                        <ul className={`${htags.ulTag}`}>
-                            <li>단, 워프레임 마켓 시세를 잘 모르는 특정 분들을 겨냥하여 <span className={`${tw.txt.yellow}`}>시세값보다
+        id: "trade", title: "5. 거래 기능", mainTitle: "거래 명령어", list: [{
+            id: "trade-warning",
+            title: <span className={tw.txt.red}>[필독] 기능 이용 전 주의사항</span>,
+            desc: "기능 이용 전 주의사항을 안내합니다.",
+            foot: (<div>
+                {/* <NOTE color="yellow" icon="alert" title="알림" text="본 서비스는 거래 편의를 위한 정보 공유 기능만을 제공합니다. 실제 거래 시 발생하는 모든 게임 내 재화 손실에 대한 책임은 사용자 본인에게 있습니다.<br/>운영진은 회원 간의 분쟁이나 사기 피해 등에 대해 법적 책임을 지지 않습니다."/>*/}
+                <ul className={htags.ulTag}>
+                    <li>거래는 <span className={tw.txt.yellow}>워프레임 아이템으로 한정</span> 합니다. (타 게임 아이템 불가)</li>
+                    <li> 모든 거래 시세는 <strong>워프레임 마켓의 실시간 시세값을 기준</strong> 으로 합니다.</li>
+                    {/* detailed description */}
+                    <ul className={`${htags.ulTagSub}`}>
+                        <li>마켓 시세를 잘 모르는 특정 분들을 겨냥하여 <span className={`${tw.txt.yellow}`}>시세값보다
                                 <span className="font-extrabold"> 매우</span> 높은가격으로 구매하도록 매물을 올리는 것은 금지</span> 합니다.
-                            </li>
-                            <li>
-                                시세를 잘 모르는 분들을 위하여, 게시되어 있는 물품의 <strong>워프레임 마켓</strong> 검색 결과를 확인할 수 있도록
-                                바로가기 링크를 제공하고 있습니다. (거래 게시글의 <strong>파란색 링크로된 글씨</strong> 클릭)
-                            </li>
-                        </ul>
+                        </li>
+                    </ul>
+                    <li><span className={tw.txt.yellow}>구걸성 게시글은 금지</span>합니다.</li>
+                    <li>
+                        거래하는 아이템에 상응하는 재화가 반드시 <span className="font-bold">[플레티넘]</span>일 필요는 없으며, 이것은 판매자 분들의 결정에
+                        전적으로 달려있습니다.
+                    </li>
+                    <ul className={htags.ulTagSub}>
                         <li>
-                            거래하는 아이템에 상응하는 재화가 반드시 <span className="font-bold">[플레티넘]</span>일 필요는 없으며, 이것은 판매자 분들의 결정에
-                            전적으로 달려있습니다.
+                            <span className={`${tw.txt.red} ${tw.bold.eb}`}>현찰로의 거래는 엄격히 금지</span> 합니다.
+                            <span className={`${tw.bold.b}`}>(적발 시, 경고조치 없이 클랜 영구 추방)</span>
                         </li>
-                        <ul className={htags.ulTag}>
-                            <li>
-                                단, <span className={`${tw.txt.red} ${tw.bold.eb}`}>현찰로의 거래는 금지</span> 합니다.
-                                <span className={`${tw.txt.red} ${tw.bold.b}`}>(적발 시, 경고조치 없이 클랜 영구 추방)</span>
-                            </li>
-                            <li>
-                                <A href="https://www.warframe.com/ko/eula#virtualGoods"
-                                   text="워프레임 소프트웨어 사용권 계약(EULA)"/>{" "}
-                                문서의 <strong>'9. 가상 상품 및 게임 통화' - B 조항</strong>에{" "}
-                                <strong>현금(현찰)을 주고받는 형태의 계정·아이템 현물 거래를 금지한다고 명시</strong>되어 있습니다.
-                                이에 적발 시 DE 측에서 <strong>계정을 영구 정지(밴)</strong> 시킬 수 있습니다.
-                            </li>
-                        </ul>
-                    </ul>
-                    <P text='위의 금지사항을 위반하여 적발될 경우 다른분들에게 피해가 갈 우려가 있으므로, 당사자는 클랜 서버에서 "인게임 닉네임"을 전체공개하고 경고를 받습니다.'/>
-                    <P text="사안이 중대하다고 판단되는 경우, 간부진 과반수 동의하에 즉시 영구 추방 할 수 있습니다."/>
-                    {/*<p className={`text-lg ${tw.bold.b}`}>(경고 3회, 이후 클랜 영구 추방)</p>*/}
-                </div>),
-            }, {
-                id: "trade-request", title: "(1) 거래 요청하기", desc: "게시되어 있는 거래 글에 거래를 요청하는 방법입니다.", foot: (<>
-                    <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="90%" caption="거래 게시글 예시"/>
-                    <NOTE color="blue" icon="tip" title="꿀팁" text={<>
-                        게시글 하단의 귓속말 및 파티초대 명령어에 마우스를 가져다 놓으면 우측에 복사하기 버튼이 뜹니다.<br/>
-                        복사한 뒤, 워프레임 채팅에 붙여넣어서 귓속말 및 인게임 파티초대 기능을 사용하시면 됩니다.
-                    </>}/>
-                    <P/>
-                    <h4 className={htags.H4}>거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을 눌러주세요.</h4>
-                    {/*<p className={htags.pTag}>거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을 눌러주세요.</p>*/}
-                    <DocImage src={`${IMG_PATH}trade-confirm${IMG_EXT}`} maxWidth="60%" caption="거래 게시글 예시"/>
-                    <P text="2차 확인 버튼을 누르면 거래 글 게시자에게 멘션 알림이 갑니다."/>
-                    <DocImage src={`${IMG_PATH}trade-requested${IMG_EXT}`} maxWidth="70%" caption="거래 게시글 예시"/>
-                    <P text="이후 스레드 내에서 자유롭게 대화를 나누며 거래하시면 됩니다."/>
-                    <P text="요청 메시지의 초대 명령어는 거래 게시자가 사용하면 편리하게 이용할 수 있습니다."/>
-                </>),
-            }, {
-                id: "trade-how-create", title: "(2) 거래 글 생성하기", desc: "", foot: (<>
-                    <p className={htags.pTag}> 채팅창에 <strong>/거래</strong>라고 입력하여 거래 명령어를 검색하고 선택해주세요. </p>
-                    <DocImage src={`${IMG_PATH}trade-cmd1${IMG_EXT}`} maxWidth="50%" caption="채팅창에 거래 명령어 검색"/>
-                    <p className={htags.pTag}>입력 가능한 내용은 아래와 같습니다.</p>
-                    <ul className={htags.ulTag}>
-                        <li><span className={htags.graveTag}>거래_종류</span>: 거래 유형. (판매/구매 중 택1)</li>
-                        <li><span className={htags.graveTag}>아이템_이름</span>: 판매/구매 하고자 하는 아이템 이름 (마켓에서 판매하는 물품 검색 가능)
-                        </li>
-                        {/*<li><span className={htags.graveTag}>game_nickname</span>: 입력값이 무시됩니다. (사용자 닉네임 기반으로 자동 설정)</li>*/}
-                        {/* 워프레임 닉네임 (디스코드 닉네임 아닙니다!) */}
-                        {/*<ul className={htags.ulTag}><li>귓속말 및 파티초대 명령어에 사용되기에, 정확하게 기입해주세요!</li></ul>*/}
                         <li>
-                            <span className={htags.graveTag}>아이템_랭크</span>: [선택사항] 아케인과 같이 아이템 랭크가 존재한다면, 거래하고자 하는
-                            아이템의 랭크를 입력합니다
+                            이는 클랜 규칙 위반사항이 아닌, 워프레임 이용약관에 위배되는 행위입니다.<br/>
+                            <A href="https://www.warframe.com/ko/eula#virtualGoods"
+                               text="워프레임 소프트웨어 사용권 계약(EULA)"/>{" "}
+                            문서의 <strong>'9. 가상 상품 및 게임 통화' - B 조항</strong>에{" "}
+                            <strong>현금(현찰)을 주고받는 형태의 계정·아이템 현물 거래를 금지한다고 명시</strong>되어 있습니다.
+                            이에 적발 시 <strong>DE 측에서 계정을 영구 정지(밴)</strong> 시킬 수 있습니다.
                         </li>
-                        <li><span className={htags.graveTag}>개당_가격</span>: [선택사항] 물품 개당 가격</li>
-                        <ul className={htags.ulTag}>
-                            <li> 빈칸으로 설정하면 마켓 최저가 기반 적정 가격으로 자동 설정됩니다.</li>
-                        </ul>
-                        <li><span className={htags.graveTag}>수량</span>: [선택사항] 아이템 수량. (기본값으로 1개가 설정됩니다.)</li>
                     </ul>
-                    <P text="가격을 입력하지 않고 거래 글을 게시하면 실시간 마켓 시세를 기반으로 자동으로 가격을 책정해주는 기능을 내장하였으니, 이용에 참고하시길 바랍니다."/>
-                    <DocImage src={`${IMG_PATH}trade-cmd${IMG_EXT}`} maxWidth="80%" caption="거래 명령어에 입력 가능한 내용들"/>
-                    <DocImage src={`${IMG_PATH}trade-input-ing${IMG_EXT}`} maxWidth="90%" caption="원하는 내용 입력"/>
-                    <P text='원하는 내용으로 입력 후 엔터키를 눌러 전송하면 아래와 같은 메시지와 함께 거래 게시글이 생성됩니다.'/>
-                    <DocImage src={`${IMG_PATH}trade-created1${IMG_EXT}`} maxWidth="90%" caption="거래글 생성 완료 메시지"/>
-                    <NOTE color='yellow' icon='info' title='0플레로 가격이 책정되는 경우'
-                          text='게임에 접속 중인 플레이어가 올려놓은 매물이 없을 때 발생합니다. 이 때는 가격수정 버튼을 통해 직접 가격을 입력해주세요.'/>
-                    <P/>
-                    <p className={htags.pTag}>파란색 링크를 클릭하면 해당 거래글로 이동할 수 있어요. (또는 직접 거래하기 채널로 이동해주세요.) </p>
-                    <P text='거래하기 채널에서는 원하는 스레드를 선택하여 거래 게시글을 확인할 수 있어요.'/>
-                </>),
-            }, {
-                id: "trade-edit", title: "(3) 거래 게시글 관련", desc: "거래 게시글에서 사용할 수 있는 기능을 소개합니다.", foot: (<>
-                    <P text='거래 게시글은 다음과 같은 형태를 띄고 있습니다.'/>
-                    <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="80%" caption="거래 게시글 예시"/>
-                    <P text='각 버튼에 대한 설명은 다음과 같습니다.'/>
-                    <ul className={htags.ulTag}>
-                        <li><strong>거래하기</strong>: 상대방에게 거래 요청 메시지를 보냅니다.</li>
-                        <li><strong>수량 변경*</strong>: 판매 수량을 변경할 수 있습니다.</li>
-                        <li><strong>가격 수정*</strong>: 물품 가격을 수정할 수 있습니다.</li>
-                        <li><strong>닉네임 변경*</strong>: 게임 닉네임을 수정할 수 있습니다.</li>
-                        <li><strong>거래 종료*</strong>: 게시글을 아카이브 상태로 전환합니다.</li>
+                </ul>
+                <P text='위의 금지사항을 위반하여 적발될 경우 다른분들에게 피해가 갈 우려가 있으므로, 당사자는 클랜 서버에서 "인게임 닉네임"을 전체공개하고 경고를 받습니다.'/>
+                <P text="사안이 중대하다고 판단되는 경우, 간부진 과반수 동의하에 즉시 영구 추방 할 수 있습니다."/>
+                {/*<p className={`text-lg ${tw.bold.b}`}>(경고 3회, 이후 클랜 영구 추방)</p>*/}
+            </div>),
+        }, {
+            id: "trade-request", title: "(1) 거래 요청하기", desc: "게시되어 있는 거래 글에 거래를 요청하는 방법입니다.", foot: (<>
+                <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="90%" caption="거래 게시글 예시"/>
+                <NOTE color="blue" icon="tip" title="꿀팁" text={<>
+                    게시글 하단의 귓속말 및 파티초대 명령어에 마우스를 가져다 놓으면 우측에 복사하기 버튼이 뜹니다.<br/>
+                    복사한 뒤, 워프레임 채팅에 붙여넣어서 귓속말 및 인게임 파티초대 기능을 사용하시면 됩니다.
+                </>}/>
+                <P/>
+                <h4 className={htags.H4}>거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을 눌러주세요.</h4>
+                {/*<p className={htags.pTag}>거래 게시글에 있는 보라색 <strong>거래하기</strong> 버튼을 눌러주세요.</p>*/}
+                <DocImage src={`${IMG_PATH}trade-confirm${IMG_EXT}`} maxWidth="60%" caption="거래 게시글 예시"/>
+                <P text="2차 확인 버튼을 누르면 거래 글 게시자에게 멘션 알림이 갑니다."/>
+                <DocImage src={`${IMG_PATH}trade-requested${IMG_EXT}`} maxWidth="70%" caption="거래 게시글 예시"/>
+                <P text="이후 스레드 내에서 자유롭게 대화를 나누며 거래하시면 됩니다."/>
+                <P text="요청 메시지의 초대 명령어는 거래 게시자가 사용하면 편리하게 이용할 수 있습니다."/>
+            </>),
+        }, {
+            id: "trade-how-create", title: "(2) 거래 글 생성하기", desc: "", foot: (<>
+                <p className={htags.pTag}> 채팅창에 <strong>/거래</strong>라고 입력하여 거래 명령어를 검색하고 선택해주세요. </p>
+                <DocImage src={`${IMG_PATH}trade-cmd1${IMG_EXT}`} maxWidth="50%" caption="채팅창에 거래 명령어 검색"/>
+                <p className={htags.pTag}>입력 가능한 내용은 아래와 같습니다.</p>
+                <ul className={htags.ulTag}>
+                    <li><span className={htags.graveTag}>거래_종류</span>: 거래 유형. (판매/구매 중 택1)</li>
+                    <li><span className={htags.graveTag}>아이템_이름</span>: 판매/구매 하고자 하는 아이템 이름 (마켓에서 판매하는 물품 검색 가능)
+                    </li>
+                    {/*<li><span className={htags.graveTag}>game_nickname</span>: 입력값이 무시됩니다. (사용자 닉네임 기반으로 자동 설정)</li>*/}
+                    {/* 워프레임 닉네임 (디스코드 닉네임 아닙니다!) */}
+                    {/*<ul className={htags.ulTag}><li>귓속말 및 파티초대 명령어에 사용되기에, 정확하게 기입해주세요!</li></ul>*/}
+                    <li>
+                        [선택사항] <span className={htags.graveTag}>아이템_랭크</span>: 아케인과 같이 아이템 랭크가 존재한다면, 거래하고자 하는
+                        아이템의 랭크를 입력합니다
+                    </li>
+                    <li>[선택사항] <span className={htags.graveTag}>개당_가격</span>: 물품 개당 가격</li>
+                    <ul className={htags.ulTagSub}>
+                        <li> 빈칸으로 설정하면 마켓 최저가 기반 적정 가격으로 자동 설정됩니다.</li>
                     </ul>
-                    <P text='(* 표기는 거래글 게시자만 사용 가능합니다.)'/>
-                </>),
-            }, {
-                id: "trade-edit-qty", title: "(3-1) 수량 수정하기", desc: "수량을 변경할 때 사용하는 버튼입니다.", foot: (<>
-                    <p className={htags.pTag}> 거래 게시글에서 <strong>수량 변경</strong>버튼을 누르면 아래와 같은 창이 뜹니다. </p>
-                    <DocImage src={`${IMG_PATH}trade-mod-num${IMG_EXT}`} caption="수량 변경 팝업창"/>
-                    <p className={htags.pTag}> 변경하고자 하는 수량을 입력하고 <strong>전송</strong> 버튼을 누르면 됩니다. </p>
-                    <P text='숫자가 아닌 값을 입력할 경우, 1개로 자동 설정됩니다.'/>
-                </>),
-            }, {
-                id: "trade-edit-price", title: "(3-2) 가격 수정하기", desc: "가격을 수정할 때 사용하는 버튼입니다.", foot: (<>
-                    <p className={htags.pTag}>게시글에서 <strong>가격 변경</strong> 버튼을 누르면 아래와 같은 창이 표시됩니다.</p>
-                    <DocImage src={`${IMG_PATH}trade-mod-price${IMG_EXT}`} caption="가격 변경 팝업창"/>
-                    <p className={htags.pTag}>이후, 변경하고자 하는 가격을 입력하고 <strong>전송</strong> 을 눌러주세요.</p>
-                </>),
-            }, {
-                id: "trade-edit-rank", title: "(3-3) 아이템 랭크 수정하기", desc: "아이템 랭크를 수정할 때 사용하는 버튼입니다.", foot: (<>
-                    <p className={htags.pTag}>게시글에서 <strong>랭크 수정 </strong> 버튼을 누르면 아래와 같은 창이 표시됩니다.</p>
-                    <DocImage src={`${IMG_PATH}trade-mod-rank${IMG_EXT}`} caption="랭크 수정 팝업창"/>
-                    <p className={htags.pTag}>수정하고자 하는 랭크를 입력하고, <strong>전송</strong> 버튼을 눌러주세요.</p>
-                </>),
-            }, /*{
+                    <li>[선택사항] <span className={htags.graveTag}>수량</span>: 아이템 수량 (기본값: 1개)</li>
+                </ul>
+                <P text="가격을 입력하지 않는다면 실시간 마켓 시세를 기반으로 자동으로 가격을 책정해 드립니다. 이용에 참고 바랍니다."/>
+                <DocImage src={`${IMG_PATH}trade-cmd${IMG_EXT}`} maxWidth="80%" caption="거래 명령어에 입력 가능한 내용들"/>
+                <DocImage src={`${IMG_PATH}trade-input-ing${IMG_EXT}`} maxWidth="90%" caption="원하는 내용 입력"/>
+                <P text='원하는 내용으로 입력 후 엔터키를 눌러 전송하면 아래와 같은 메시지와 함께 거래 게시글이 생성됩니다.'/>
+                <DocImage src={`${IMG_PATH}trade-created1${IMG_EXT}`} maxWidth="90%" caption="거래글 생성 완료 메시지"/>
+                <NOTE color='yellow' icon='info' title='0플레로 가격이 책정되는 경우'
+                      text='게임에 접속 중인 플레이어가 올려놓은 매물이 없을 때 발생합니다. 이 때는 가격수정 버튼을 통해 직접 가격을 입력해주세요.'/>
+                <P/>
+                <p className={htags.pTag}>파란색 링크를 클릭하면 해당 거래글로 이동할 수 있어요. (또는 직접 거래하기 채널로 이동해주세요.) </p>
+                <P text='거래하기 채널에서는 원하는 스레드를 선택하여 거래 게시글을 확인할 수 있어요.'/>
+            </>),
+        }, {
+            id: "trade-edit", title: "(3) 거래 게시글 관련", desc: "거래 게시글에서 사용할 수 있는 기능을 소개합니다.", foot: (<>
+                <P text='거래 게시글은 다음과 같은 형태를 띄고 있습니다.'/>
+                <DocImage src={`${IMG_PATH}trade-created${IMG_EXT}`} maxWidth="80%" caption="거래 게시글 예시"/>
+                <P text='각 버튼에 대한 설명은 다음과 같습니다.'/>
+                <ul className={htags.ulTag}>
+                    <li><strong>거래하기</strong>: 상대방에게 거래 요청 메시지를 보냅니다.</li>
+                    <li><strong>수량 변경*</strong>: 판매 수량을 변경할 수 있습니다.</li>
+                    <li><strong>가격 수정*</strong>: 물품 가격을 수정할 수 있습니다.</li>
+                    <li><strong>닉네임 변경*</strong>: 게임 닉네임을 수정할 수 있습니다.</li>
+                    <li><strong>거래 종료*</strong>: 게시글을 아카이브 상태로 전환합니다.</li>
+                </ul>
+                <P text='(* 표기는 거래글 게시자만 사용 가능합니다.)'/>
+            </>),
+        }, {
+            id: "trade-edit-qty", title: "(3-1) 수량 수정하기", desc: "수량을 변경할 때 사용하는 버튼입니다.", foot: (<>
+                <p className={htags.pTag}> 거래 게시글에서 <strong>수량 변경</strong>버튼을 누르면 아래와 같은 창이 뜹니다. </p>
+                <DocImage src={`${IMG_PATH}trade-mod-num${IMG_EXT}`} caption="수량 변경 팝업창"/>
+                <p className={htags.pTag}> 변경하고자 하는 수량을 입력하고 <strong>전송</strong> 버튼을 누르면 됩니다. </p>
+                <P text='숫자가 아닌 값을 입력할 경우, 1개로 자동 설정됩니다.'/>
+            </>),
+        }, {
+            id: "trade-edit-price", title: "(3-2) 가격 수정하기", desc: "가격을 수정할 때 사용하는 버튼입니다.", foot: (<>
+                <p className={htags.pTag}>게시글에서 <strong>가격 변경</strong> 버튼을 누르면 아래와 같은 창이 표시됩니다.</p>
+                <DocImage src={`${IMG_PATH}trade-mod-price${IMG_EXT}`} caption="가격 변경 팝업창"/>
+                <p className={htags.pTag}>이후, 변경하고자 하는 가격을 입력하고 <strong>전송</strong> 을 눌러주세요.</p>
+            </>),
+        }, {
+            id: "trade-edit-rank", title: "(3-3) 아이템 랭크 수정하기", desc: "아이템 랭크를 수정할 때 사용하는 버튼입니다.", foot: (<>
+                <p className={htags.pTag}>게시글에서 <strong>랭크 수정 </strong> 버튼을 누르면 아래와 같은 창이 표시됩니다.</p>
+                <DocImage src={`${IMG_PATH}trade-mod-rank${IMG_EXT}`} caption="랭크 수정 팝업창"/>
+                <p className={htags.pTag}>수정하고자 하는 랭크를 입력하고, <strong>전송</strong> 버튼을 눌러주세요.</p>
+            </>),
+        }, /*{
         id: "trade-edit-nick", title: "(3-3) 닉네임 수정하기", desc: "닉네임을 수정할 때 사용하는 버튼입니다.", foot: (<>
           <p className={htags.pTag}>게시글에서 <strong>닉네임 변경 </strong> 버튼을 누르면 아래와 같은 창이 표시됩니다.</p>
           <DocImage src={`${IMG_PATH}trade-nickname${IMG_EXT}`} caption="닉네임 변경 팝업창"/>
@@ -593,62 +577,61 @@ export const uiTextsKo = {
           <P text='입력한 닉네임은 귓속말 명령어 및 초대 명령어를 복사할 때 사용되므로, 정확하게 기입해주세요.'/>
         </>),
       },*/ {
-                id: "trade-exit", title: "(3-4) 거래 종료하기", desc: "거래가 모두 완료되어 거래 게시글을 내려야 할 때 사용하는 버튼입니다.", foot: (<>
-                    <P text='(거래 종료는 거래글 게시자만 가능합니다.)'/>
-                    <p className={htags.pTag}><strong>거래 종료</strong> 버튼을 누르면 정말로 게시글을 내릴지 확인차 물어봅니다.</p>
-                    <DocImage src={`${IMG_PATH}trade-confirm-close${IMG_EXT}`} caption="거래 종료 버튼 누른 직후"/>
-                    <p className={htags.pTag}>
-                        <strong>Yes (종료하기)</strong> 버튼을 누르면 거래 게시글이 아카이브 상태로 전환됩니다. <br/> (완전히 삭제되지 않습니다.)
-                    </p>
-                    <DocImage src={`${IMG_PATH}trade-deleted${IMG_EXT}`} caption="거래 종료 버튼 누른 직후"/>
-                    <NOTE color="orange" icon="alert" title="주의!"
-                          text="안내 문구와 같이 모든 버튼이 비활성화되어, 게시글을 수정할 수 없고 다시 활성화할 수 없습니다."/>
-                </>),
-            },],
+            id: "trade-exit", title: "(3-4) 거래 종료하기", desc: "거래가 모두 완료되어 거래 게시글을 내려야 할 때 사용하는 버튼입니다.", foot: (<>
+                <P text='(거래 종료는 거래글 게시자만 가능합니다.)'/>
+                <p className={htags.pTag}><strong>거래 종료</strong> 버튼을 누르면 정말로 게시글을 내릴지 확인차 물어봅니다.</p>
+                <DocImage src={`${IMG_PATH}trade-confirm-close${IMG_EXT}`} caption="거래 종료 버튼 누른 직후"/>
+                <p className={htags.pTag}>
+                    <strong>Yes (종료하기)</strong> 버튼을 누르면 거래 게시글이 아카이브 상태로 전환됩니다. <br/> (완전히 삭제되지 않습니다.)
+                </p>
+                <DocImage src={`${IMG_PATH}trade-deleted${IMG_EXT}`} caption="거래 종료 버튼 누른 직후"/>
+                <NOTE color="orange" icon="alert" title="주의!"
+                      text="안내 문구와 같이 모든 버튼이 비활성화되어, 게시글을 수정할 수 없고 다시 활성화할 수 없습니다."/>
+            </>),
+        },],
     }, troubleshooting: {
-        id: "faq", title: "자주 묻는 질문 (FAQ)", list: [// 상호작용 오류
-            {
-                q: `"더는 사용되지 않는 명령어입니다. 몇 분 후에 다시 시도해 주세요." 메시지가 뜨는 경우`, a: (<>
+        id: "faq", title: "자주 묻는 질문 (FAQ)", list: [{
+            q: `"더는 사용되지 않는 명령어입니다. 몇 분 후에 다시 시도해 주세요." 메시지가 뜨는 경우`, a: (<>
+                <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
+                    <li>데스크탑 앱 또는 웹 환경의 경우 <strong>Ctrl + R</strong> 키를 눌러서 디스코드를 새로고침 해주세요.</li>
+                    <li>(macOS 환경일 경우 <strong>cmd + R</strong>)</li>
+                    <li>모바일 환경의 경우, 디스코드 앱을 종료했다가 다시 실행해주세요.</li>
+                </ul>
+            </>),
+        }, {
+            q: (<>
+                <span>다음과 같은 문제가 발생한다면?</span>
+                <ul className={`${htags.ulTag} pt-3`}>
+                    <li>'애플리케이션이 응답하지 않았어요' 메시지가 뜨면서 명령어/버튼 작동이 안되는 경우</li>
+                    <li>'상호작용 실패' 메시지가 뜨면서 버튼 작동이 안되는 경우</li>
+                    <li>1분이상 봇이 응답없이 '생각 중이에요' 메시지만 뜨는 경우</li>
+                </ul>
+            </>), a: (<>
+                <ul className={`${htags.olTag} ${tw.txt.dim}`}>
+                    <li><strong>{COMMON.name}</strong> 봇이 <strong>온라인 상태</strong> 인지 확인해주세요.</li>
                     <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
-                        <li>데스크탑 앱 또는 웹 환경의 경우 <strong>Ctrl + R</strong> 키를 눌러서 디스코드를 새로고침 해주세요.</li>
-                        <li>(macOS 환경일 경우 <strong>cmd + R</strong>)</li>
-                        <li>모바일 환경의 경우, 디스코드 앱을 종료했다가 다시 실행해주세요.</li>
+                        <li>방해금지 표시와 함께 <strong>"점검 중"</strong> 상태 메시지가 적혀있다면, 점검이 종료될 때 까지 사용이 불가능합니다.</li>
+                        <li>별도의 점검 공지가 없었는데 봇이 오프라인 상태라면 <ContactMe/></li>
                     </ul>
-                </>),
-            }, {
-                q: (<>
-                    <span>다음과 같은 문제가 발생한다면?</span>
-                    <ul className={`${htags.ulTag} pt-3`}>
-                        <li>'애플리케이션이 응답하지 않았어요' 메시지가 뜨면서 명령어/버튼 작동이 안되는 경우</li>
-                        <li>'상호작용 실패' 메시지가 뜨면서 버튼 작동이 안되는 경우</li>
-                        <li>1분이상 봇이 응답없이 '생각 중이에요' 메시지만 뜨는 경우</li>
-                    </ul>
-                </>), a: (<>
-                    <ul className={`${htags.olTag} ${tw.txt.dim}`}>
-                        <li><strong>{COMMON.name}</strong> 봇이 <strong>온라인 상태</strong> 인지 확인해주세요.</li>
-                        <ul className={`${htags.ulTag} ${tw.txt.dim}`}>
-                            <li>방해금지 표시와 함께 <strong>"점검 중"</strong> 상태 메시지가 적혀있다면, 점검이 종료될 때 까지 사용이 불가능합니다.</li>
-                            <li>봇이 오프라인 상태라면, <ContactMe/></li>
-                        </ul>
-                        <li>바로 위의 가이드대로 진행해주세요.</li>
-                        <li>그래도 안된다면, 처리 과정에서 예기치 못한 오류가 발생하여 기능 작동이 안되는 상황입니다.<br/><ContactMe/></li>
-                    </ul>
-                </>),
-            }, {
-                q: "봇을 개인 서버에 추가 및 사용할 수 있을까요?", a: (<>
-                    이 봇은 {import.meta.env.VITE_SERVER_NAME} 서버에 독점 제공되는 기능으로, 타 서버에서는 사용할 수 없습니다.
-                </>),
-            }, {
-                q: "게시글을 생성/수정하였지만, 수정 사항이 바로 반영되지 않아요.", a: (<>
-                    특정 시간대에 이용자의 요청이 집중될 경우, 시스템의 처리량 한계로 인해 생성 및 수정 작업의 반영이 다소 지연될 수 있습니다.
-                    (접수된 요청은 유실되지 않고 순차적으로 처리하고 있습니다.)<br/>
-                    현재 이러한 지연 현상을 최소화하고 더 쾌적한 환경을 제공해 드리기 위해, 내부 처리 알고리즘을 지속적으로 최적화하고 있습니다.<br/>
-                    조금 답답하시더라도 너른 마음으로 양해해 주시면 감사하겠습니다.<br/><br/>
-                    만약 1시간 이상 기다려도 처리가 안되는 경우, <ContactMe/>
-                </>),
-            }, {
-                q: "기타 궁금한 사항이나 문의사항이 있다면?", a: <ContactMe/>,
-            },],
+                    <li>바로 위의 가이드대로 진행해주세요.</li>
+                    <li>그래도 안된다면, 처리 과정에서 예기치 못한 오류가 발생하여 기능 작동이 안되는 상황입니다.<br/><ContactMe/></li>
+                </ul>
+            </>),
+        }, {
+            q: "봇을 개인 서버에 추가 및 사용할 수 있을까요?", a: (<>
+                이 봇은 {import.meta.env.VITE_SERVER_NAME} 서버에 독점 제공되는 기능으로, 타 서버에서는 사용할 수 없습니다.
+            </>),
+        }, {
+            q: "게시글을 생성/수정하였지만, 수정 사항이 바로 반영되지 않아요.", a: (<>
+                특정 시간대에 이용자의 요청이 집중될 경우, 시스템의 처리량 한계로 인해 생성 및 수정 작업의 반영이 다소 지연될 수 있습니다.
+                (접수된 요청은 유실되지 않고 순차적으로 처리하고 있습니다.)<br/>
+                현재 이러한 지연 현상을 최소화하고 더 쾌적한 환경을 제공해 드리기 위해, 내부 처리 알고리즘을 지속적으로 최적화하고 있습니다.<br/>
+                조금 답답하시더라도 너른 마음으로 양해해 주시면 감사하겠습니다.<br/><br/>
+                만약 1시간 이상 기다려도 처리가 안되는 경우, <ContactMe/>
+            </>),
+        }, {
+            q: "기타 궁금한 사항이나 문의사항이 있다면?", a: <ContactMe/>,
+        },],
     }, terms: {
         id: "tos", title: "이용 약관", desc: (<>
             <H2 text="목적"/>
@@ -672,8 +655,9 @@ export const uiTextsKo = {
             <H2 text="사용자의 의무"/>
             <ul className={htags.ulTag}>
                 <li>사용자는 디스코드의 자체 이용약관(Terms of Service) 및 커뮤니티 가이드라인을 준수해야 합니다.</li>
+                <li>사용자는 {import.meta.env.VITE_SERVER_NAME} 서버 규칙을 준수해야 합니다.</li>
                 <li>사용자는 서비스를 오직 합법적인 목적으로만 사용해야 하며, 다음 각 호의 행위를 금지합니다.</li>
-                <ul className={htags.ulTag}>
+                <ul className={htags.ulTagSub}>
                     <li>봇을 활용한 도배, 스팸, 광고 등 타인에게 불쾌감을 주는 행위</li>
                     <li>서비스의 의도된 이용 범위(운영자의 독자적인 판단에 따름)를 벗어나 서비스에 접근하거나 이용하는 행위</li>
                     <li>운영자의 사전 허가 없이 서비스를 상업적으로 이용하는 행위</li>
@@ -712,7 +696,7 @@ export const uiTextsKo = {
             <H2 text="저작권"/>
             <P text="자세한 내용은 좌측 '저작권 및 법적고지' 섹션을 확인해주세요."/>
 
-            <H2 text="링크"/>
+            <H2 text="외부 링크"/>
             <P text="서비스 내에 제3자가 제공하는 외부 웹사이트 및 자원에 대한 링크가 포함되는 경우, 이러한 링크는 사용자의 편의를 위해 제공되는 것입니다. 운영자는 해당 외부 사이트의 콘텐츠나 정책을 통제하지 않으며, 사용자가 이를 이용함으로써 발생하는 문제에 대해 책임을 지지 않습니다."/>
 
             <H2 text="이용 제한 및 연령 준수"/>
@@ -776,7 +760,7 @@ export const uiTextsKo = {
             </ul>
 
             <H2 text="개인정보의 제3자 제공"/>
-            <P text="운영자는 사용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다."/>
+            <P text="운영자는 사용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 단, 아래의 경우에는 예외로 합니다."/>
             <ul className={htags.ulTag}>
                 {/* <li>사용자가 사전에 동의한 경우</li> */}
                 <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
